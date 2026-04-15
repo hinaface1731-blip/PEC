@@ -7,6 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
   turbopack: {},
+  output: 'export',   
 }
 
 export default nextConfig
