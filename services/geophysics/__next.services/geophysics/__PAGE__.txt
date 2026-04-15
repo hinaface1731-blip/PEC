@@ -1,7 +1,7 @@
 1:"$Sreact.fragment"
-2:I[79223,["/_next/static/chunks/0_x0do6c.wkz~.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/050bwegm3hsf7.js","/_next/static/chunks/0u5fqdla.ijf0.js","/_next/static/chunks/0rw5.rp7gdde2.js"],"PageLayout"]
-3:I[27306,["/_next/static/chunks/0_x0do6c.wkz~.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/050bwegm3hsf7.js","/_next/static/chunks/0u5fqdla.ijf0.js","/_next/static/chunks/0rw5.rp7gdde2.js"],"GeophysicsContent"]
-4:I[97367,["/_next/static/chunks/0_x0do6c.wkz~.js","/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+2:I[79223,["/PEC/_next/static/chunks/0_x0do6c.wkz~.js","/PEC/_next/static/chunks/0d3shmwh5_nmn.js","/PEC/_next/static/chunks/050bwegm3hsf7.js","/PEC/_next/static/chunks/0u5fqdla.ijf0.js","/PEC/_next/static/chunks/0g2t6zgth79.t.js"],"PageLayout"]
+3:I[27306,["/PEC/_next/static/chunks/0_x0do6c.wkz~.js","/PEC/_next/static/chunks/0d3shmwh5_nmn.js","/PEC/_next/static/chunks/050bwegm3hsf7.js","/PEC/_next/static/chunks/0u5fqdla.ijf0.js","/PEC/_next/static/chunks/0g2t6zgth79.t.js"],"GeophysicsContent"]
+4:I[97367,["/PEC/_next/static/chunks/0_x0do6c.wkz~.js","/PEC/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
 5:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"children":["$","$L3",null,{}]}],[["$","script","script-0",{"src":"/_next/static/chunks/050bwegm3hsf7.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0u5fqdla.ijf0.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0rw5.rp7gdde2.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"hKuWdAjVoiOrQArA3-pDF"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"children":["$","$L3",null,{}]}],[["$","script","script-0",{"src":"/PEC/_next/static/chunks/050bwegm3hsf7.js","async":true}],["$","script","script-1",{"src":"/PEC/_next/static/chunks/0u5fqdla.ijf0.js","async":true}],["$","script","script-2",{"src":"/PEC/_next/static/chunks/0g2t6zgth79.t.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"t769ZYSR_UThfHCz2VfFK"}
 6:null
