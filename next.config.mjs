@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-  turbopack: {},
-  output: 'export',   
+  typescript: { ignoreBuildErrors: true },
+  images: { unoptimized: true },
+  output: 'export',
+  basePath: '/PEC',        // ← ЭТО ГЛАВНОЕ
 }
 
 export default nextConfig
