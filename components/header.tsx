@@ -66,60 +66,69 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center justify-center gap-1">
-          {/* Services Dropdown */}
-          <div
-            ref={dropdownRef}
-            className="relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button className="flex items-center gap-1 px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]">
-              {t('Услуги', 'Services')}
-              <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-            </button>
+<div className="hidden lg:flex items-center justify-center gap-1">
+  {/* О компании - первый */}
+  <Link
+    href="/about"
+    className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+  >
+    {t('О компании', 'About')}
+  </Link>
 
-            {servicesOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden"
-              >
-                <div className="py-2">
-                  {services.map((service) => (
-                    <Link
-                      key={service.href}
-                      href={service.href}
-                      className="block px-5 py-3 text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)] transition-all hover:translate-x-1"
-                    >
-                      {t(service.ru, service.en)}
-                    </Link>
-                  ))}
-                  <div className="border-t border-[var(--border)] mt-2 pt-2">
-                    <Link
-                      href="/services"
-                      className="block px-5 py-3 font-semibold text-[var(--accent)] hover:bg-[var(--accent-glow)] transition-all"
-                    >
-                      {t('Все услуги →', 'All Services →')}
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </div>
+  {/* Услуги Dropdown - второй */}
+  <div
+    ref={dropdownRef}
+    className="relative"
+    onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}
+  >
+    <button className="flex items-center gap-1 px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]">
+      {t('Услуги', 'Services')}
+      <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+    </button>
 
-          {navItems.map((item) => (
+    {servicesOpen && (
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2 }}
+        className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden"
+      >
+        <div className="py-2">
+          {services.map((service) => (
             <Link
-              key={item.href}
-              href={item.href}
-              className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+              key={service.href}
+              href={service.href}
+              className="block px-5 py-3 text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)] transition-all hover:translate-x-1"
             >
-              {t(item.ru, item.en)}
+              {t(service.ru, service.en)}
             </Link>
           ))}
+          <div className="border-t border-[var(--border)] mt-2 pt-2">
+            <Link
+              href="/services"
+              className="block px-5 py-3 font-semibold text-[var(--accent)] hover:bg-[var(--accent-glow)] transition-all"
+            >
+              {t('Все услуги →', 'All Services →')}
+            </Link>
+          </div>
         </div>
+      </motion.div>
+    )}
+  </div>
+
+  {/* Остальные пункты - Проекты, Техника, Контакты */}
+  {navItems.filter(item => item.href !== '/about').map((item) => (
+    <Link
+      key={item.href}
+      href={item.href}
+      className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+    >
+      {t(item.ru, item.en)}
+    </Link>
+  ))}
+</div>
 
         {/* Right side controls */}
         <div className="flex items-center gap-2">

@@ -161,9 +161,22 @@ export function EquipmentContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        <div className="absolute inset-0">
+          <img 
+        src="/images/projects.jpg" 
+        alt="Контакты ПЭК"
+        className="w-full h-f object-cover object-[center_80%]"
+        style={{
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 50%'  // ← Здесь точно сработает
+  }}
+            />
+          
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -174,16 +187,16 @@ export function EquipmentContent() {
             className="max-w-3xl"
           >
             <div className="flex items-center gap-2 text-muted-foreground mb-4">
-              <Link href="/" className="hover:text-primary transition-colors">Главная</Link>
+              <Link href="/" className="hover:text-primary text-white">Главная</Link>
               <span>/</span>
-              <span className="text-foreground">Оборудование</span>
+              <span className="text-white">Оборудование</span>
             </div>
             
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Современное оборудование
             </h1>
             
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-white leading-relaxed">
               Собственный парк техники и приборов мирового уровня для выполнения 
               полного цикла геологоразведочных работ в любых условиях.
             </p>

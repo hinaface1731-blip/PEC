@@ -5,13 +5,13 @@ import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, ArrowRig
 import { motion } from 'framer-motion'
 
 const steps = [
-  { icon: Mountain, labelRu: 'Геология', labelEn: 'Geology' },
-  { icon: Radio, labelRu: 'Геофизика', labelEn: 'Geophysics' },
-  { icon: Drill, labelRu: 'Бурение', labelEn: 'Drilling' },
-  { icon: Compass, labelRu: 'Маркшейдерия', labelEn: 'Surveying' },
-  { icon: FlaskConical, labelRu: 'Лаборатория', labelEn: 'Laboratory' },
-  { icon: FileText, labelRu: 'Проектирование', labelEn: 'Design' },
-  { icon: Leaf, labelRu: 'Экология', labelEn: 'Ecology' },
+  { icon: FileText, labelRu: 'Проектирование', labelEn: 'Design' },      // 1. Планирование
+  { icon: Mountain, labelRu: 'Геология', labelEn: 'Geology' },           // 2. Изучение
+  { icon: Radio, labelRu: 'Геофизика', labelEn: 'Geophysics' },         // 3. Поиск
+  { icon: Drill, labelRu: 'Бурение', labelEn: 'Drilling' },             // 4. Подтверждение
+  { icon: FlaskConical, labelRu: 'Лаборатория', labelEn: 'Laboratory' }, // 5. Анализ
+  { icon: Compass, labelRu: 'Маркшейдерия', labelEn: 'Surveying' },     // 6. Подсчёт запасов
+  { icon: Leaf, labelRu: 'Экология', labelEn: 'Ecology' },              // 7. Завершение
 ]
 
 export function CycleSection() {
