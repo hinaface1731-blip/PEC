@@ -17,13 +17,13 @@ const milestones = [
 
 const team = [
   {
-    name: "Каримов Рустам Шавкатович",
+    name: "Калмыков Иван Валерьевич",
     position: "Генеральный директор",
     experience: "30+ лет",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
   },
   {
-    name: "Алиева Нигора Хамидовна",
+    name: "Черненко Наталья Ярославовна",
     position: "Главный геолог",
     experience: "25+ лет",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
@@ -70,9 +70,22 @@ export function AboutContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        <div className="absolute inset-0 ">
+          <img 
+        src="/images/compashka.jpg" 
+        alt="Контакты ПЭК"
+        className="w-full h-f object-cover object-[center_80%]"
+        style={{
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 50%'  // ← Здесь точно сработает
+  }}
+            />
+          
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -82,17 +95,17 @@ export function AboutContent() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <div className="flex items-center gap-2 text-muted-foreground mb-4">
-              <Link href="/" className="hover:text-primary transition-colors">Главная</Link>
+            <div className="flex items-center gap-2 text-white mb-4">
+              <Link href="/" className="hover:text-primary text-white">Главная</Link>
               <span>/</span>
-              <span className="text-foreground">О компании</span>
+              <span className="text-white">О компании</span>
             </div>
             
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               О компании ПЭК
             </h1>
             
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-white leading-relaxed">
               Более 25 лет мы помогаем недропользователям открывать и осваивать 
               месторождения полезных ископаемых в Центральной Азии и за её пределами.
             </p>
@@ -123,14 +136,14 @@ export function AboutContent() {
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
+           <motion.div
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="bg-card p-8 md:p-10 rounded-2xl border border-border"
             >
-              <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                <Eye className="w-7 h-7 text-accent" />
+              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <Eye className="w-7 h-7 text-primary" />
               </div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-4">
                 Наше видение

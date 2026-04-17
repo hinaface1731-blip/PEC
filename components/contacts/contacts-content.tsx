@@ -22,8 +22,8 @@ const offices = [
 const departments = [
   { name: "Отдел продаж", email: "info@polar-ec.ru", phone: "+7 (391) 205-15-84" },
   { name: "Геологический отдел", email: "geo@polar-ec.ru", phone: "+7 (391) 205-15-85" },
-  { name: "Геофизический отдел", email: "geophysics@polar-ec.ru", phone: "+7 (391) 205-15-86" },
-  { name: "Маркшейдерский отдел", email: "survey@polar-ec.ru", phone: "+7 (391) 205-15-87" }
+  { name: "Геофизический отдел", email: "geofiz@polar-ec.ru", phone: "+7 (391) 205-15-86" },
+  { name: "Маркшейдерский отдел", email: "mark@polar-ec.ru", phone: "+7 (391) 205-15-87" }
 ]
 
 export function ContactsContent() {
@@ -76,34 +76,52 @@ export function ContactsContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        <div className="absolute inset-0">
+          <img 
+        src="/images/hero-contacts2.png" 
+        alt="Контакты ПЭК"
+        className="w-full h-f object-cover object-[center_80%]"
+        style={{
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 20%'  // ← Здесь точно сработает
+  }}
+            />
+          
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <div className="flex items-center gap-2 text-muted-foreground mb-4">
-              <Link href="/" className="hover:text-primary transition-colors">Главная</Link>
-              <span>/</span>
-              <span className="text-foreground">Контакты</span>
-            </div>
-            
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Свяжитесь с нами
-            </h1>
-            
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Готовы обсудить ваш проект? Наши специалисты ответят на все вопросы 
-              и помогут подобрать оптимальное решение.
-            </p>
-          </motion.div>
+        <div className="relative z-10 h-full flex items-center">
+    <div className="container mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-3xl"
+      >
+        {/* Хлебные крошки */}
+        <div className="flex items-center gap-2 text-white/70 mb-4">
+          <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+          <span>/</span>
+          <span className="text-white">Контакты</span>
         </div>
+        
+        {/* Заголовок */}
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          Свяжитесь с нами
+        </h1>
+        
+        {/* Описание */}
+        <p className="text-xl text-white/90 leading-relaxed">
+          Готовы обсудить ваш проект? Наши специалисты ответят на все вопросы 
+          и помогут подобрать оптимальное решение.
+        </p>
+      </motion.div>
+    </div>
+  </div>
       </section>
 
       {/* Contact Form & Info */}

@@ -43,7 +43,7 @@ const projects = [
     resultEn: 'Flank exploration, 12,500m drilling with 96% core recovery',
   },
   {
-    image: '/api/placeholder/400/300',
+    image: '/images/vankor.jpg',
     titleRu: 'Ванкорское месторождение',
     titleEn: 'Vankor Field',
     clientRu: 'Роснефть',

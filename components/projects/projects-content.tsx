@@ -259,25 +259,38 @@ export function ProjectsContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        <div className="absolute inset-0">
+          <img 
+        src="/images/projects3.jpg" 
+        alt="Контакты ПЭК"
+        className="w-full h-f object-cover object-[center_80%]"
+        style={{
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 53%'  // ← Здесь точно сработает
+  }}
+            />
+         
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                <Link href="/" className="hover:text-primary transition-colors">{t('Главная', 'Home')}</Link>
+                <Link href="/" className="hover:text-primary text-black/90">{t('Главная', 'Home')}</Link>
                 <span>/</span>
-                <span className="text-foreground">{t('Проекты', 'Projects')}</span>
+                <span className="text-black/90">{t('Проекты', 'Projects')}</span>
               </div>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black/90 mb-6">
                 {t('Реализованные проекты', 'Completed Projects')}
               </h1>
               
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-xl text-white/90 leading-relaxed">
                 {t(
                   'Более 30 проектов геологоразведки в Арктике и Субарктике России. Собственные юниорные проекты с лицензиями на медно-никелевое оруденение.',
                   'Over 30 exploration projects in the Arctic and Subarctic Russia. Own junior projects with copper-nickel mineralization licenses.'
@@ -294,8 +307,8 @@ export function ProjectsContent() {
           <FadeIn>
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-accent" />
+                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center text-accent">
+                  <FileText className="w-6 h-6" style={{ color: '#F97316' }} />
                 </div>
                 <div>
                   <h3 className="font-display font-semibold text-foreground">
@@ -308,10 +321,10 @@ export function ProjectsContent() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="/documents/license-notification.pdf"
+                  href="/documents/documents.rar"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium"
                 >
                   <Download className="w-4 h-4" />
                   {t('Уведомление о лицензиях', 'License Notification')}
@@ -380,7 +393,7 @@ export function ProjectsContent() {
                   {t(cat.label, cat.labelEn)}
                   {cat.value === "junior" && (
                     <span className="ml-2 px-1.5 py-0.5 bg-accent/20 text-accent text-xs rounded">
-                      {t('Лицензии', 'Licensed')}
+                     
                     </span>
                   )}
                 </button>
@@ -403,7 +416,7 @@ export function ProjectsContent() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${isFilterOpen ? "rotate-180" : ""}`} />
               </button>
               
-              <AnimatePresence>
+              <AnimatePresence >
                 {isFilterOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -458,7 +471,7 @@ export function ProjectsContent() {
                     </div>
                   </div>
                   
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-2  ">
                     {t(project.title, project.titleEn)}
                   </h3>
                   
@@ -467,9 +480,7 @@ export function ProjectsContent() {
                       <MapPin className="w-4 h-4" />
                       {t(project.location, project.locationEn)}
                     </span>
-                    <span className="text-accent font-medium">
-                      {t(project.mineral, project.mineralEn || project.mineral)}
-                    </span>
+                    
                   </div>
                   
                   {project.client && (
