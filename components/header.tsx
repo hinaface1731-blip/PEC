@@ -2,9 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
-import { Sun, Moon, Menu, X, ChevronDown, Snowflake } from 'lucide-react'
+import { Sun, Moon, Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
@@ -57,78 +58,83 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 h-[78px] border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-xl">
       <nav className="h-full max-w-7xl mx-auto px-6 grid grid-cols-[auto_1fr_auto] items-center gap-8">
-        {/* Logo */}
+        {/* Logo - с маленьким логотипом вместо снежинки */}
         <Link href="/" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors">
-          <Snowflake className="w-8 h-8 text-[var(--accent)]" />
-          <span className="font-[family-name:var(--font-heading)] font-semibold text-xl tracking-tight">
-            {t('ПЭК', 'PEC')}
-          </span>
+
+            <Image
+              src="/images/logo.png"
+              alt={t('ПЭК', 'PEC')}
+              width={150}
+              height={32}
+              className="object-contain"
+            />
+    
         </Link>
 
         {/* Desktop Navigation */}
-<div className="hidden lg:flex items-center justify-center gap-1">
-  {/* О компании - первый */}
-  <Link
-    href="/about"
-    className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
-  >
-    {t('О компании', 'About')}
-  </Link>
+        <div className="hidden lg:flex items-center justify-center gap-1">
+          {/* О компании - первый */}
+          <Link
+            href="/about"
+            className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+          >
+            {t('О компании', 'About')}
+          </Link>
 
-  {/* Услуги Dropdown - второй */}
-  <div
-    ref={dropdownRef}
-    className="relative"
-    onMouseEnter={handleMouseEnter}
-    onMouseLeave={handleMouseLeave}
-  >
-    <button className="flex items-center gap-1 px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]">
-      {t('Услуги', 'Services')}
-      <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-    </button>
+          {/* Услуги Dropdown - второй */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button className="flex items-center gap-1 px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]">
+              {t('Услуги', 'Services')}
+              <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+            </button>
 
-    {servicesOpen && (
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2 }}
-        className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden"
-      >
-        <div className="py-2">
-          {services.map((service) => (
+            {servicesOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden"
+              >
+                <div className="py-2">
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      className="block px-5 py-3 text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)] transition-all hover:translate-x-1"
+                    >
+                      {t(service.ru, service.en)}
+                    </Link>
+                  ))}
+                  <div className="border-t border-[var(--border)] mt-2 pt-2">
+                    <Link
+                      href="/services"
+                      className="block px-5 py-3 font-semibold text-[var(--accent)] hover:bg-[var(--accent-glow)] transition-all"
+                    >
+                      {t('Все услуги →', 'All Services →')}
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+
+          {/* Остальные пункты - Проекты, Техника, Контакты */}
+          {navItems.filter(item => item.href !== '/about').map((item) => (
             <Link
-              key={service.href}
-              href={service.href}
-              className="block px-5 py-3 text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)] transition-all hover:translate-x-1"
+              key={item.href}
+              href={item.href}
+              className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
             >
-              {t(service.ru, service.en)}
+              {t(item.ru, item.en)}
             </Link>
           ))}
-          <div className="border-t border-[var(--border)] mt-2 pt-2">
-            <Link
-              href="/services"
-              className="block px-5 py-3 font-semibold text-[var(--accent)] hover:bg-[var(--accent-glow)] transition-all"
-            >
-              {t('Все услуги →', 'All Services →')}
-            </Link>
-          </div>
         </div>
-      </motion.div>
-    )}
-  </div>
-
-  {/* Остальные пункты - Проекты, Техника, Контакты */}
-  {navItems.filter(item => item.href !== '/about').map((item) => (
-    <Link
-      key={item.href}
-      href={item.href}
-      className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
-    >
-      {t(item.ru, item.en)}
-    </Link>
-  ))}
-</div>
 
         {/* Right side controls */}
         <div className="flex items-center gap-2">
