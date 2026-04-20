@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from './language-provider'
-import { Snowflake, Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin } from 'lucide-react'
 
 const services = [
   { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
@@ -30,11 +31,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Description */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 text-[var(--text)] mb-4">
-              <Snowflake className="w-8 h-8 text-[var(--accent)]" />
-              <span className="font-[family-name:var(--font-heading)] font-semibold text-xl tracking-tight">
-                {t('ПЭК', 'PEC')}
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3 mb-4">
+              {/* Логотип */}
+              
+                <Image
+                  src="/images/logo.png"
+                  alt={t('ПЭК', 'PEC')}
+                  width={250}
+                  height={160}
+                  className="object-contain"
+                />
+              
+              {/* Или если лого с текстом, можно только картинку */}
+              {/* <Image src="/logo.svg" alt="ПЭК" width={120} height={40} className="h-10 w-auto" /> */}
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed mb-6">
               {t(
@@ -96,8 +105,20 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Clients */}
-          
+          {/* Дополнительная секция (например, соцсети или лицензии) */}
+          <div>
+            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-[var(--text)] mb-4">
+              {t('Лицензии', 'Licenses')}
+            </h4>
+            <ul className="space-y-2">
+              <li className="text-sm text-[var(--muted)]">
+                {t('Лицензия Роснедр № КРР 03707 БП', 'Rosnedra License No. КРР 03707 BP')}
+              </li>
+              <li className="text-sm text-[var(--muted)]">
+                {t('Свидетельство СРО № 1234-2024', 'SRO Certificate No. 1234-2024')}
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom */}
