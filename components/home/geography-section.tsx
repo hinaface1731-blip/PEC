@@ -29,10 +29,15 @@ export function GeographySection() {
     if (mapInstanceRef.current) return
 
     const initMap = () => {
-      if (!mapRef.current || !window.ymaps) return
+      // Проверяем, что API загружен и есть DOM-элемент
+      if (!mapRef.current) return
+      
+      // Используем any для обхода конфликта типов
+      const ymaps = (window as any).ymaps
+      if (!ymaps) return
 
       try {
-        const map = new window.ymaps.Map(mapRef.current, {
+        const map = new ymaps.Map(mapRef.current, {
           center: [65.0, 100.0],
           zoom: 4,
           controls: ['zoomControl', 'fullscreenControl']
@@ -42,8 +47,8 @@ export function GeographySection() {
 
         // Маркеры регионов
         regions.forEach(region => {
-          const placemark = new window.ymaps.Placemark(
-            region.coordinates,
+          const placemark = new ymaps.Placemark(
+            region.coordinates as [number, number],
             {
               hintContent: t(region.ru, region.en),
               balloonContent: `
@@ -65,8 +70,8 @@ export function GeographySection() {
 
         // Маркеры баз
         bases.forEach(base => {
-          const placemark = new window.ymaps.Placemark(
-            base.coordinates,
+          const placemark = new ymaps.Placemark(
+            base.coordinates as [number, number],
             {
               hintContent: t(base.ru, base.en),
               balloonContent: `
@@ -89,12 +94,13 @@ export function GeographySection() {
         setIsLoading(false)
       } catch (err) {
         console.error('Map init error:', err)
+        setIsLoading(false)
       }
     }
 
     // Если API уже загружен — сразу инициализируем
-    if (window.ymaps) {
-      window.ymaps.ready(initMap)
+    if ((window as any).ymaps) {
+      ;(window as any).ymaps.ready(initMap)
       return
     }
 
@@ -102,9 +108,9 @@ export function GeographySection() {
     const existingScript = document.querySelector('script[src*="api-maps.yandex.ru"]')
     if (existingScript) {
       const interval = setInterval(() => {
-        if (window.ymaps) {
+        if ((window as any).ymaps) {
           clearInterval(interval)
-          window.ymaps.ready(initMap)
+          ;(window as any).ymaps.ready(initMap)
         }
       }, 100)
       
@@ -114,11 +120,11 @@ export function GeographySection() {
 
     // Загружаем API
     const script = document.createElement('script')
-    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=b14c1be4-5b7c-444a-b7b4-05a0bfc3ab10&lang=ru_RU'
+    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=3a5e7e04-0d22-4c7c-bdec-0779f79fff0e&lang=ru_RU'
     script.async = true
     script.onload = () => {
-      if (window.ymaps) {
-        window.ymaps.ready(initMap)
+      if ((window as any).ymaps) {
+        ;(window as any).ymaps.ready(initMap)
       }
     }
 
@@ -173,10 +179,4 @@ export function GeographySection() {
       </div>
     </section>
   )
-}
-
-declare global {
-  interface Window {
-    ymaps: any
-  }
 }

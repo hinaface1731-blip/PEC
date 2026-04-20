@@ -1,7 +1,9 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { FileText } from 'lucide-react'
+import { FileText, BarChart3, ClipboardCheck, ShieldCheck, TrendingUp, Users } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
+
 
 const data = {
   icon: FileText,
@@ -9,19 +11,42 @@ const data = {
   titleEn: 'Design & Consulting',
   descRu: 'Полный комплекс проектных работ и консультационных услуг: от ТЭО кондиций до защиты запасов в ГКЗ. Опыт работы с российскими и международными стандартами.',
   descEn: 'Full range of design and consulting services: from feasibility studies to resource approval at GKZ. Experience with Russian and international standards.',
-  heroImage: '/api/placeholder/600/400',
+  heroImage: '/images/project.jpg',
   reverse: true,
-  methods: [
-    { ru: 'ТЭО кондиций для подсчёта запасов', en: 'Feasibility study for resource estimation' },
-    { ru: 'Подсчёт запасов ГКЗ/ТКЗ', en: 'GKZ/TKZ resource estimation' },
-    { ru: 'Проектирование ГРР (геологическое задание)', en: 'GRR project design (geological assignment)' },
-    { ru: 'ГИС-моделирование (Micromine, Surpac)', en: 'GIS modeling (Micromine, Surpac)' },
-    { ru: 'Блочное моделирование месторождений', en: 'Block modeling of deposits' },
-    { ru: 'Оценка ресурсов по стандартам JORC', en: 'JORC resource assessment' },
-    { ru: 'Сопровождение лицензирования', en: 'Licensing support' },
-    { ru: 'Разработка инвестиционных программ', en: 'Investment program development' },
-    { ru: 'Экспертиза геологических отчётов', en: 'Geological report review' },
-    { ru: 'Технико-экономическое обоснование', en: 'Technical and economic assessment' },
+  methodsGroups: [
+    {
+      titleRu: 'Проектирование ГРР',
+      titleEn: 'GRR Design',
+      icon: FileText,
+      methods: [
+        { ru: 'Проектирование ГРР (геологическое задание)', en: 'GRR project design (geological assignment)' },
+        { ru: 'Разработка инвестиционных программ', en: 'Investment program development' },
+        { ru: 'Сопровождение лицензирования', en: 'Licensing support' },
+        { ru: 'Технико-экономическое обоснование', en: 'Technical and economic assessment' },
+      ]
+    },
+    {
+      titleRu: 'Подсчёт запасов и моделирование',
+      titleEn: 'Resource Estimation & Modeling',
+      icon: BarChart3,
+      methods: [
+        { ru: 'ГИС-моделирование (Micromine, Surpac)', en: 'GIS modeling (Micromine, Surpac)' },
+        { ru: 'Блочное моделирование месторождений', en: 'Block modeling of deposits' },
+        { ru: 'ТЭО кондиций для подсчёта запасов', en: 'Feasibility study for resource estimation' },
+        { ru: 'Подсчёт запасов ГКЗ/ТКЗ', en: 'GKZ/TKZ resource estimation' },
+      ]
+    },
+    {
+      titleRu: 'Оценка и экспертиза',
+      titleEn: 'Assessment & Expertise',
+      icon: ClipboardCheck,
+      methods: [
+        { ru: 'Оценка ресурсов по стандартам JORC', en: 'JORC resource assessment' },
+        { ru: 'Экспертиза геологических отчётов', en: 'Geological report review' },
+        { ru: 'Аудит геологических данных', en: 'Geological data audit' },
+        { ru: 'Due Diligence проектов', en: 'Project Due Diligence' },
+      ]
+    },
   ],
   methodsImage: '/api/placeholder/500/350',
   equipment: [
