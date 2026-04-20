@@ -1,7 +1,9 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Leaf } from 'lucide-react'
+import { Leaf, Droplets, Mountain, Recycle, FileCheck, Building } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
+
 
 const data = {
   icon: Leaf,
@@ -11,21 +13,42 @@ const data = {
   descEn: 'Full range of environmental services: from surveys and EIA to technical and biological reclamation. Project support at Rosprirodnadzor.',
   heroImage: '/images/ecol.jpg',
   reverse: false,
-  methods: [
-    { ru: 'Инженерно-экологические изыскания', en: 'Environmental engineering surveys' },
-    { ru: 'Оценка воздействия на окружающую среду (ОВОС)', en: 'Environmental Impact Assessment (EIA)' },
-    { ru: 'Перечень экологических мероприятий (ПЭМ)', en: 'Environmental measures program' },
-    { ru: 'Фоновый мониторинг недр', en: 'Background subsoil monitoring' },
-    { ru: 'Отбор проб почв, воды, воздуха', en: 'Soil, water, air sampling' },
-    { ru: 'Радиационное обследование', en: 'Radiation survey' },
-    { ru: 'Санитарно-химические исследования', en: 'Sanitary-chemical research' },
-    { ru: 'Проекты рекультивации земель', en: 'Land reclamation projects' },
-    { ru: 'Техническая рекультивация', en: 'Technical reclamation' },
-    { ru: 'Биологическая рекультивация', en: 'Biological reclamation' },
-    { ru: 'Проекты санитарно-защитных зон (СЗЗ)', en: 'Sanitary protection zone projects' },
-    { ru: 'Паспортизация отходов', en: 'Waste certification' },
-    { ru: 'Согласование в Росприроднадзоре', en: 'Rosprirodnadzor approval' },
-    { ru: 'Государственная экологическая экспертиза (ГЭЭ)', en: 'State Environmental Review (SER)' },
+   methodsGroups: [
+    {
+      titleRu: 'Экологические изыскания',
+      titleEn: 'Environmental Surveys',
+      icon: Droplets,
+      methods: [
+        { ru: 'Инженерно-экологические изыскания', en: 'Environmental engineering surveys' },
+        { ru: 'Отбор проб почв, воды, воздуха', en: 'Soil, water, air sampling' },
+        { ru: 'Радиационное обследование', en: 'Radiation survey' },
+        { ru: 'Санитарно-химические исследования', en: 'Sanitary-chemical research' },
+        { ru: 'Фоновый мониторинг недр', en: 'Background subsoil monitoring' },
+      ]
+    },
+    {
+      titleRu: 'Проектная документация',
+      titleEn: 'Project Documentation',
+      icon: FileCheck,
+      methods: [
+        { ru: 'Оценка воздействия на окружающую среду (ОВОС)', en: 'Environmental Impact Assessment (EIA)' },
+        { ru: 'Перечень экологических мероприятий (ПЭМ)', en: 'Environmental measures program' },
+        { ru: 'Проекты рекультивации земель', en: 'Land reclamation projects' },
+        { ru: 'Проекты санитарно-защитных зон (СЗЗ)', en: 'Sanitary protection zone projects' },
+        { ru: 'Паспортизация отходов', en: 'Waste certification' },
+      ]
+    },
+    {
+      titleRu: 'Рекультивация и согласование',
+      titleEn: 'Reclamation & Approval',
+      icon: Recycle,
+      methods: [
+        { ru: 'Техническая рекультивация', en: 'Technical reclamation' },
+        { ru: 'Биологическая рекультивация', en: 'Biological reclamation' },
+        { ru: 'Согласование в Росприроднадзоре', en: 'Rosprirodnadzor approval' },
+        { ru: 'Государственная экологическая экспертиза (ГЭЭ)', en: 'State Environmental Review (SER)' },
+      ]
+    },
   ],
   methodsImage: '/images/recul.jpg',
   equipment: [

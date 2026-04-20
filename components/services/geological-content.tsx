@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Mountain } from 'lucide-react'
+import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
 
 const data = {
   icon: Mountain,
@@ -11,18 +11,42 @@ const data = {
   descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
   heroImage: '/images/geo.jpg',
   reverse: false,
-  methods: [
-    { ru: 'Геологическое картирование масштабов 1:10 000 – 1:200 000', en: 'Geological mapping at scales 1:10,000 – 1:200,000' },
-    { ru: 'Поисковые маршруты с опробованием', en: 'Exploration routes with sampling' },
-    { ru: 'Шлиховое опробование водотоков', en: 'Placer sampling of watercourses' },
-    { ru: 'Проходка канав и шурфов', en: 'Trenching and pitting' },
-    { ru: 'Литолого-стратиграфическое расчленение', en: 'Lithological-stratigraphic subdivision' },
-    { ru: 'Структурно-тектонический анализ', en: 'Structural-tectonic analysis' },
-    { ru: 'Петрографические шлифы и минераграфия', en: 'Petrographic thin sections and mineralography' },
-    { ru: 'Бороздовое и керновое опробование', en: 'Channel and core sampling' },
-    { ru: 'Геохимические поиски по вторичным ореолам', en: 'Geochemical exploration by secondary halos' },
-    { ru: 'Документация горных выработок', en: 'Mine workings documentation' },
+  methodsGroups: [
+    {
+      titleRu: 'Скважинная геофизика (ГИС)',
+      titleEn: 'Borehole Geophysics',
+      icon: Drill,
+      methods: [
+        { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
+        { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
+        { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
+        { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
+      ]
+    },
+    {
+      titleRu: 'Наземная геофизика',
+      titleEn: 'Ground Geophysics',
+      icon: Radio,
+      methods: [
+        { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография)', en: 'Electrical survey' },
+        { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
+        { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
+        { ru: 'Гравиразведка', en: 'Gravity survey' },
+      ]
+    },
+    {
+      titleRu: 'Воздушная геофизика',
+      titleEn: 'Airborne Geophysics',
+      icon: Compass,
+      methods: [
+        { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
+        { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
+        { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
+        { ru: 'Аэромагниторазведка (вертолётная)', en: 'Aeromagnetic survey' },
+      ]
+    },
   ],
+
   methodsImage: '/api/placeholder/500/350',
   equipment: [
     {
@@ -132,7 +156,7 @@ const data = {
     resultRu: 'Выявлено 7 перспективных участков на медно-никелевое оруденение. Подготовлены рекомендации по дальнейшим работам.',
     resultEn: 'Identified 7 prospective areas for copper-nickel mineralization. Prepared recommendations for further work.',
   },
-  caseImage: '/api/placeholder/500/300',
+  caseImage: '/images/geoproject.jpg',
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Якутия', en: 'Yakutia' },

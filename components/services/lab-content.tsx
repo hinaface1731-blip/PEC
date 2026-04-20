@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { FlaskConical } from 'lucide-react'
+import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
 
 const data = {
   icon: FlaskConical,
@@ -9,7 +9,7 @@ const data = {
   titleEn: 'Laboratory Research',
   descRu: 'Собственная аккредитованная лаборатория с современным аналитическим оборудованием. Полный спектр геохимических, минералогических и физико-механических исследований.',
   descEn: 'In-house accredited laboratory with modern analytical equipment. Full range of geochemical, mineralogical and physical-mechanical research.',
-  heroImage: '/api/placeholder/600/400',
+  heroImage: '/images/i.jpg',
   reverse: false,
   methods: [
     { ru: 'ICP-MS анализ (45 элементов)', en: 'ICP-MS analysis (45 elements)' },
@@ -25,7 +25,7 @@ const data = {
     { ru: 'Компрессионные испытания', en: 'Compression testing' },
     { ru: 'Испытания на сдвиг', en: 'Shear testing' },
   ],
-  methodsImage: '/api/placeholder/500/350',
+  methodsImage: '/images/lab.jpg',
   equipment: [
     {
       titleRu: 'Спектрометрия',
@@ -144,7 +144,7 @@ const data = {
     resultRu: 'Выявлено рудное тело мощностью 12 м с содержанием Au до 8 г/т. Данные использованы для подсчёта запасов.',
     resultEn: 'Identified ore body 12m thick with Au grades up to 8 g/t. Data used for resource estimation.',
   },
-  caseImage: '/api/placeholder/500/300',
+  caseImage: '/images/rocks.jpg',
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Иркутская область', en: 'Irkutsk Region' },

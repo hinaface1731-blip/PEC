@@ -2,11 +2,13 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'  // ← ДОБАВЬТЕ ЭТУ СТРОКУ
 import { useLanguage } from '@/components/language-provider'
 import { CTAForm } from '@/components/cta-form'
 import { ArrowRight, MapPin, CheckCircle2, type LucideIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-
+import { StepsCarousel } from '@/components/ui/steps-carousel'
+import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck } from 'lucide-react'
 
 interface ServiceMethod {
   ru: string
@@ -18,6 +20,8 @@ interface ServiceEquipment {
   titleEn: string
   items: string[]
 }
+
+
 
 interface ServiceStep {
   numRu: string
@@ -65,7 +69,8 @@ interface ServicePageData {
   descRu: string
   descEn: string
   heroImage: string
-  methods: ServiceMethod[]
+  methods: ServiceMethod[]  // оставляем для обратной совместимости
+  methodsGroups?: ServiceMethodGroup[]  // новое поле для группировки
   methodsImage: string
   reverse?: boolean
   equipment: ServiceEquipment[]
@@ -81,6 +86,13 @@ interface ServicePageData {
 interface ServicePageTemplateProps {
   data: ServicePageData
 }
+
+const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.4, ease: 'easeOut' }
+}
+
 export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
   const { t } = useLanguage()
   const mapRef = useRef<HTMLDivElement>(null)
@@ -191,100 +203,142 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
 </section>
 
       {/* Methods */}
-      <section className="section">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
-            {t('Что входит в услугу', 'What the Service Includes')}
-          </h2>
-          <div className={`flex flex-col ${data.reverse ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-start`}>
-            <div className="flex-1">
-              <ul className="space-y-3">
-                {data.methods.map((method, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[var(--accent)] mt-0.5 shrink-0" />
-                    <span className="text-[var(--text)]">{t(method.ru, method.en)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex-1 lg:max-w-md">
-              <Image
-                src={data.methodsImage}
-                alt={t('Методы работ', 'Work methods')}
-                width={500}
-                height={350}
-                className="rounded-2xl w-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+{/* Methods Section */}
+<section className="section">
+  <div className="container mx-auto">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
+        {t('Что входит в услугу', 'What the Service Includes')}
+      </h2>
+      <p className="text-[var(--muted)] max-w-2xl mx-auto">
+        {t(
+          'Полный комплекс геологоразведочных работ — от проектирования до защиты запасов',
+          'Full range of exploration services — from design to reserve approval'
+        )}
+      </p>
+    </div>
 
-      {/* Equipment */}
-      <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
-            {t('Применяемые методики и оборудование', 'Methods & Equipment')}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.equipment.map((eq, i) => (
-              <div key={i} className="card">
-                <h3 className="text-lg font-semibold text-[var(--text)] mb-4">
-                  {t(eq.titleRu, eq.titleEn)}
-                </h3>
-                <ul className="space-y-2">
-                  {eq.items.map((item, j) => (
-                    <li key={j} className="text-sm text-[var(--muted)] flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Steps */}
-      <section className="section">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
-            {t('Процесс выполнения', 'Work Process')}
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              {data.steps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center text-white font-bold shrink-0">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[var(--text)] mb-1">
-                      {t(step.titleRu, step.titleEn)}
-                    </h4>
-                    <p className="text-sm text-[var(--muted)]">
-                      {t(step.descRu, step.descEn)}
-                    </p>
-                  </div>
+    {/* Если есть groups — показываем в 3 колонки */}
+    {data.methodsGroups ? (
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {data.methodsGroups.map((group, idx) => (
+          <div key={idx} className="card group">
+            <div className="w-14 h-14 rounded-2xl bg-[var(--accent-glow)] flex items-center justify-center mb-5">
+              {group.icon ? (
+                <group.icon className="w-7 h-7 text-[var(--accent)]" />
+              ) : (
+                <span className="text-2xl">📌</span>
+              )}
+            </div>
+            <h3 className="text-xl font-semibold text-[var(--text)] mb-4">
+              {t(group.titleRu, group.titleEn)}
+            </h3>
+            <div className="space-y-3">
+              {group.methods.map((method, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
+                  <span className="text-sm text-[var(--muted)]">
+                    {t(method.ru, method.en)}
+                  </span>
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-3 gap-3">
-              {data.stepImages.map((img, i) => (
-                <Image
-                  key={i}
-                  src={img}
-                  alt={t(`Этап ${i + 1}`, `Step ${i + 1}`)}
-                  width={250}
-                  height={180}
-                  className="rounded-xl w-full h-32 object-cover"
-                />
-              ))}
-            </div>
           </div>
+        ))}
+      </div>
+    ) : (
+      // Старый вариант (список + картинка) для обратной совместимости
+      <div className={`flex flex-col ${data.reverse ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-start`}>
+        <div className="flex-1">
+          <ul className="space-y-3">
+            {data.methods.map((method, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-[var(--accent)] mt-0.5 shrink-0" />
+                <span className="text-[var(--text)]">{t(method.ru, method.en)}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
+        <div className="flex-1 lg:max-w-md">
+          <Image
+            src={data.methodsImage}
+            alt={t('Методы работ', 'Work methods')}
+            width={500}
+            height={350}
+            className="rounded-2xl w-full object-cover"
+          />
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+
+      {/* Equipment */}
+<section className="section bg-[var(--bg2)]">
+  <div className="container mx-auto px-6">
+    <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
+      {t('Применяемые методики и оборудование', 'Methods & Equipment')}
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {data.equipment.map((eq, i) => (
+        <div key={i} className="card group">
+          {eq.href ? (
+            <Link href={eq.href}>
+              <h3 className="text-lg font-semibold text-[var(--text)] mb-4 group-hover:text-[var(--accent)] transition-colors">
+                {t(eq.titleRu, eq.titleEn)}
+              </h3>
+            </Link>
+          ) : (
+            <h3 className="text-lg font-semibold text-[var(--text)] mb-4">
+              {t(eq.titleRu, eq.titleEn)}
+            </h3>
+          )}
+          <ul className="space-y-2">
+            {eq.items.map((item, j) => (
+              <li key={j} className="text-sm text-[var(--muted)] flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          {eq.href && (
+            <Link 
+              href={eq.href}
+              className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--accent)] hover:gap-3 transition-all"
+            >
+              {t('Подробнее →', 'Learn more →')}
+            </Link>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* Process Steps */}
+      <section className="section bg-gradient-to-b from-[var(--bg)] to-[var(--bg2)]">
+  <div className="container mx-auto">
+    {/* Убираем motion вообще — заголовок просто виден сразу */}
+    <div className="text-center mb-12">
+      <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
+        {t('Процесс выполнения', 'Work Process')}
+      </h2>
+      <p className="text-[var(--muted)] max-w-2xl mx-auto">
+        {t(
+          'От проектирования до финального отчёта — прозрачный и контролируемый процесс',
+          'From design to final report — transparent and controlled process'
+        )}
+      </p>
+    </div>
+
+    <StepsCarousel 
+      steps={data.steps} 
+      stepImages={data.stepImages} 
+      t={t} 
+    />
+  </div>
+</section>
 
       {/* Results */}
       <section className="section bg-[var(--bg2)]">

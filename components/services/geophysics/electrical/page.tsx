@@ -7,6 +7,9 @@ import { CTAForm } from '@/components/cta-form'
 import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
 import Link from 'next/link'
+import { PageLayout } from '@/components/page-layout'
+import { ServicePageTemplate } from '@/components/services/service-page-template'
+import { Zap } from 'lucide-react'
 
 const subMethods = [
   {
@@ -318,4 +321,12 @@ export function ElectricalContent() {
       <CTAForm />
     </div>
   )
+  
+export default function ElectricalPage() {
+  return (
+    <PageLayout>
+      <ServicePageTemplate data={electricalData} />
+    </PageLayout>
+  )
+}
 }

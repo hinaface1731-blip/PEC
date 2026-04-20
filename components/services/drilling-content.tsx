@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Drill } from 'lucide-react'
+import { Drill, Droplets, Compass, Thermometer, Ruler, Wrench } from 'lucide-react'
 
 const data = {
   icon: Drill,
@@ -11,18 +11,39 @@ const data = {
   descEn: 'Full range of drilling services for geological exploration: core drilling with high recovery, rotary drilling, hydrogeological and engineering wells.',
   heroImage: '/images/hero-drilling-image2.jpg',
   reverse: false,
-  methods: [
-    { ru: 'Колонковое бурение ССК до 1200 м', en: 'SSK core drilling up to 1200m' },
-    { ru: 'Шарошечное бурение', en: 'Rotary drilling' },
-    { ru: 'Бурение с отбором керна', en: 'Core recovery drilling' },
-    { ru: 'Гидрогеологические скважины', en: 'Hydrogeological wells' },
-    { ru: 'Инженерно-геологические скважины', en: 'Engineering-geological wells' },
-    { ru: 'Наклонно-направленное бурение', en: 'Directional drilling' },
-    { ru: 'Отбор монолитов', en: 'Undisturbed sample collection' },
-    { ru: 'ГТНТ (гидротермальные наблюдения)', en: 'Hydrothermal observations' },
-    { ru: 'Ликвидационный тампонаж', en: 'Well abandonment cementing' },
-    { ru: 'Установка обсадных колонн', en: 'Casing installation' },
-    { ru: 'Термометрия и расходометрия', en: 'Temperature and flow logging' },
+   methodsGroups: [
+    {
+      titleRu: 'Технологии бурения',
+      titleEn: 'Drilling Technologies',
+      icon: Drill,
+      methods: [
+        { ru: 'Колонковое бурение ССК до 1200 м', en: 'SSK core drilling up to 1200m' },
+        { ru: 'Шарошечное бурение', en: 'Rotary drilling' },
+        { ru: 'Бурение с отбором керна', en: 'Core recovery drilling' },
+        { ru: 'Наклонно-направленное бурение', en: 'Directional drilling' },
+      ]
+    },
+    {
+      titleRu: 'Специализированные скважины',
+      titleEn: 'Specialized Wells',
+      icon: Droplets,
+      methods: [
+        { ru: 'Гидрогеологические скважины', en: 'Hydrogeological wells' },
+        { ru: 'Инженерно-геологические скважины', en: 'Engineering-geological wells' },
+        { ru: 'ГТНТ (гидротермальные наблюдения)', en: 'Hydrothermal observations' },
+        { ru: 'Термометрия и расходометрия', en: 'Temperature and flow logging' },
+      ]
+    },
+    {
+      titleRu: 'Оснастка и завершение',
+      titleEn: 'Completion & Equipment',
+      icon: Wrench,
+      methods: [
+        { ru: 'Отбор монолитов', en: 'Undisturbed sample collection' },
+        { ru: 'Установка обсадных колонн', en: 'Casing installation' },
+        { ru: 'Ликвидационный тампонаж', en: 'Well abandonment cementing' },
+      ]
+    },
   ],
   methodsImage: '/images/hero-drilling-image.jpg',
   equipment: [

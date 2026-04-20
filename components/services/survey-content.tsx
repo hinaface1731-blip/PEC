@@ -1,9 +1,11 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Compass, FileText, Download, Shield, Award } from 'lucide-react'
+import { Download, Shield, Award } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
 import { FadeIn } from '@/components/fade-in'
+import { Compass, Map, Ruler, Crosshair, LineChart, Globe, FileText } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data = {
   icon: Compass,
@@ -13,17 +15,40 @@ const data = {
   descEn: 'Mining surveying services licensed by Rostechnadzor. High-precision GNSS receivers, electronic total stations, licensed software. Full cycle from planning to documentation delivery.',
   heroImage: '/images/mark.jpg',
   reverse: true,
-  methods: [
-    { ru: 'Статические спутниковые измерения от пунктов ГГС', en: 'Static satellite measurements from state geodetic network' },
-    { ru: 'Развитие опорной маркшейдерской сети (ОМС)', en: 'Mine surveying control network development' },
-    { ru: 'Топографическая съемка исходной поверхности', en: 'Initial surface topographic survey' },
-    { ru: 'Вынос проектируемых горных выработок', en: 'Project mine workings staking' },
-    { ru: 'Контроль проходки буровых скважин', en: 'Drilling operations control' },
-    { ru: 'Инклинометрический контроль скважин', en: 'Borehole inclinometry control' },
-    { ru: 'Маркшейдерская съемка после производства работ', en: 'Post-work surveying' },
-    { ru: 'Съемка рекультивируемых территорий', en: 'Reclamation area surveying' },
-    { ru: 'Подготовка 2D и 3D маркшейдерских планов', en: '2D and 3D survey plan preparation' },
-    { ru: 'Составление картограмм объемов горных работ', en: 'Mining volume cartogram preparation' },
+  methodsGroups: [
+    {
+      titleRu: 'Геодезические измерения',
+      titleEn: 'Geodetic Measurements',
+      icon: Globe,
+      methods: [
+        { ru: 'Статические спутниковые измерения от пунктов ГГС', en: 'Static satellite measurements from state geodetic network' },
+        { ru: 'Развитие опорной маркшейдерской сети (ОМС)', en: 'Mine surveying control network development' },
+        { ru: 'Топографическая съемка исходной поверхности', en: 'Initial surface topographic survey' },
+        { ru: 'Вынос проектируемых горных выработок', en: 'Project mine workings staking' },
+      ]
+    },
+    {
+      titleRu: 'Контроль и съёмка',
+      titleEn: 'Control & Surveying',
+      icon: Crosshair,
+      methods: [
+        { ru: 'Контроль проходки буровых скважин', en: 'Drilling operations control' },
+        { ru: 'Инклинометрический контроль скважин', en: 'Borehole inclinometry control' },
+        { ru: 'Маркшейдерская съемка после производства работ', en: 'Post-work surveying' },
+        { ru: 'Съемка рекультивируемых территорий', en: 'Reclamation area surveying' },
+      ]
+    },
+    {
+      titleRu: 'Обработка и отчётность',
+      titleEn: 'Processing & Reporting',
+      icon: LineChart,
+      methods: [
+        { ru: 'Подготовка 2D и 3D маркшейдерских планов', en: '2D and 3D survey plan preparation' },
+        { ru: 'Составление картограмм объёмов горных работ', en: 'Mining volume cartogram preparation' },
+        { ru: 'Подсчёт объёмов горной массы', en: 'Rock mass volume calculation' },
+        { ru: '3D-моделирование горных выработок', en: '3D mine workings modeling' },
+      ]
+    },
   ],
   methodsImage: '/images/mark_obor.jpg',
   equipment: [
@@ -91,9 +116,11 @@ const data = {
     },
   ],
   stepImages: [
-    '/api/placeholder/250/180',
-    '/api/placeholder/250/180',
-    '/api/placeholder/250/180',
+    '/images/one.jpg',
+    '/images/two.jpg',
+    '/images/three.jpg',
+    '/images/four.jpg',
+    '/images/five.jpg',
   ],
   results: [
     {
