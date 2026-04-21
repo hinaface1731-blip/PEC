@@ -19,6 +19,8 @@ interface ServiceEquipment {
   titleRu: string
   titleEn: string
   items: string[]
+  href?: string      // опциональная ссылка на страницу методики
+ 
 }
 
 
@@ -62,15 +64,23 @@ interface ServiceRegion {
   en: string
 }
 
-interface ServicePageData {
+interface ServiceMethodGroup {
+  titleRu: string
+  titleEn: string
+  icon?: LucideIcon
+  href?: string
+  methods: ServiceMethod[]
+}
+
+export interface ServicePageData {
   icon: LucideIcon
   titleRu: string
   titleEn: string
   descRu: string
   descEn: string
   heroImage: string
-  methods: ServiceMethod[]  // оставляем для обратной совместимости
-  methodsGroups?: ServiceMethodGroup[]  // новое поле для группировки
+  methods: ServiceMethod[]
+  methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
   reverse?: boolean
   equipment: ServiceEquipment[]
@@ -460,4 +470,6 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       <CTAForm serviceName={t(data.titleRu, data.titleEn)} />
     </>
   )
+  
 }
+
