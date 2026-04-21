@@ -414,16 +414,7 @@ export function ContactsContent() {
       </section>
 
       {/* Map Placeholder */}
-      <section className="h-96 bg-muted relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">
-              Интерактивная карта офисов
-            </p>
-          </div>
-        </div>
-      </section>
+      
     </div>
   )
 }

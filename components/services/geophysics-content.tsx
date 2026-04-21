@@ -10,7 +10,7 @@ const data = {
   titleEn: 'Geophysical Works',
   descRu: 'Комплекс наземных и скважинных геофизических исследований для поиска и разведки месторождений полезных ископаемых. Современное оборудование и опытные специалисты.',
   descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
-  heroImage: '/images/geophys.jpg',
+  heroImage: '/images/geophys3.jpg',
   reverse: true,
    methodsGroups: [
     {
@@ -29,7 +29,7 @@ const data = {
       titleEn: 'Ground Geophysics',
       icon: Radio,
       methods: [
-        { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография)', en: 'Electrical survey' },
+        { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical survey' },
         { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
         { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
         { ru: 'Гравиразведка', en: 'Gravity survey' },
@@ -43,7 +43,6 @@ const data = {
         { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
         { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
         { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
-        { ru: 'Аэромагниторазведка (вертолётная)', en: 'Aeromagnetic survey' },
       ]
     },
   ],
