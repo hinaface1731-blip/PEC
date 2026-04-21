@@ -15,6 +15,7 @@ const data = {
   descEn: 'Mining surveying services licensed by Rostechnadzor. High-precision GNSS receivers, electronic total stations, licensed software. Full cycle from planning to documentation delivery.',
   heroImage: '/images/mark.jpg',
   reverse: true,
+  methods: [],  // ← добавляем
   methodsGroups: [
     {
       titleRu: 'Геодезические измерения',

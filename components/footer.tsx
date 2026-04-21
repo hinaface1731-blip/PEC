@@ -28,48 +28,43 @@ export function Footer() {
   return (
     <footer className="bg-[var(--bg2)] border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo & Description */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 mb-4">
-              {/* Логотип */}
-              
-                <Image
-                  src="/images/logo.png"
-                  alt={t('ПЭК', 'PEC')}
-                  width={250}
-                  height={160}
-                  className="object-contain"
-                />
-              
-              {/* Или если лого с текстом, можно только картинку */}
-              {/* <Image src="/logo.svg" alt="ПЭК" width={120} height={40} className="h-10 w-auto" /> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Logo & Description - колонка 1 */}
+          <div className="space-y-4">
+            <Link href="/" className="inline-block">
+              <Image
+                src="/images/logo.png"
+                alt={t('ПЭК', 'PEC')}
+                width={200}
+                height={80}
+                className="object-contain w-auto h-16"
+              />
             </Link>
-            <p className="text-[var(--muted)] text-sm leading-relaxed mb-6">
+            <p className="text-[var(--muted)] text-sm leading-relaxed">
               {t(
                 'Полярная Экспедиционная Компания — геологоразведка полного цикла в Арктике и Сибири с 2009 года.',
                 'Polar Expedition Company — full-cycle geological exploration in the Arctic and Siberia since 2009.'
               )}
             </p>
-            <div className="space-y-3 text-sm">
-              <a href="tel:+74951234567" className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
+            <div className="space-y-2 text-sm">
+              <a href="tel:+73912051584" className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                 <Phone className="w-4 h-4" />
                 +7 (391) 205‑15‑84
               </a>
-              <a href="mailto:info@pek-geo.ru" className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
+              <a href="mailto:info@polar-ec.ru" className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                 <Mail className="w-4 h-4" />
                 info@polar-ec.ru
               </a>
               <p className="flex items-start gap-2 text-[var(--muted)]">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                {t('г. Красноярск, ул. Ленина, 84', 'Krasnoyarsk, Lenina St., 84')}
+                <span>{t('г. Красноярск, ул. Ленина, 84', 'Krasnoyarsk, Lenina St., 84')}</span>
               </p>
             </div>
           </div>
 
-          {/* Services */}
+          {/* Services - колонка 2 */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-[var(--text)] mb-4">
+            <h4 className="font-semibold text-[var(--text)] mb-4">
               {t('Услуги', 'Services')}
             </h4>
             <ul className="space-y-2">
@@ -86,9 +81,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Company - колонка 3 */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-[var(--text)] mb-4">
+            <h4 className="font-semibold text-[var(--text)] mb-4">
               {t('Компания', 'Company')}
             </h4>
             <ul className="space-y-2">
@@ -105,9 +100,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Дополнительная секция (например, соцсети или лицензии) */}
+          {/* Licenses - колонка 4 */}
           <div>
-            <h4 className="font-[family-name:var(--font-heading)] font-semibold text-[var(--text)] mb-4">
+            <h4 className="font-semibold text-[var(--text)] mb-4">
               {t('Лицензии', 'Licenses')}
             </h4>
             <ul className="space-y-2">
