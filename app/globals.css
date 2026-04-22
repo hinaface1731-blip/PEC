@@ -166,8 +166,11 @@
 
 /* Scroll snap for full section view */
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+}
+
+html:not([data-scroll-behavior]) {
+  scroll-behavior: smooth;
 }
 
 /* Optional: enable scroll-snap on main container */

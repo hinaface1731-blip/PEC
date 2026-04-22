@@ -30,14 +30,17 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo & Description - колонка 1 */}
-          <div className="space-y-4">
+          <div className="space-y-1">
             <Link href="/" className="inline-block">
               <Image
                 src="/images/logo.png"
                 alt={t('ПЭК', 'PEC')}
-                width={200}
-                height={80}
-                className="object-contain w-auto h-16"
+                width={150}
+                height={100}
+                className="object-contain"
+                loading="eager"
+                priority
+                style={{ width: '150', height: '100px' }}
               />
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">

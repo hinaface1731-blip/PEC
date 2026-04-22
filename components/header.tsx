@@ -62,12 +62,15 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors">
 
             <Image
-              src="/images/logo.png"
-              alt={t('ПЭК', 'PEC')}
-              width={150}
-              height={32}
-              className="object-contain"
-            />
+  src="/images/logo.png"
+  alt={t('ПЭК', 'PEC')}
+  width={150}
+  height={100}
+  className="object-contain"
+  loading="eager"
+  priority
+  style={{ width: '150', height: '60px' }}
+/>
     
         </Link>
 
