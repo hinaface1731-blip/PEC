@@ -1,9 +1,10 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
+import { FlaskConical } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
 
-const data = {
+const data: ServicePageData = {
   icon: FlaskConical,
   titleRu: 'Лабораторные исследования',
   titleEn: 'Laboratory Research',
@@ -24,6 +25,41 @@ const data = {
     { ru: 'Гранулометрический анализ', en: 'Grain size analysis' },
     { ru: 'Компрессионные испытания', en: 'Compression testing' },
     { ru: 'Испытания на сдвиг', en: 'Shear testing' },
+  ],
+  methodsGroups: [
+    {
+      titleRu: 'Геохимические методы',
+      titleEn: 'Geochemical Methods',
+      icon: FlaskConical,
+      methods: [
+        { ru: 'ICP-MS анализ (45 элементов)', en: 'ICP-MS analysis (45 elements)' },
+        { ru: 'Пробирный анализ (Au, Ag, Pt, Pd)', en: 'Fire assay (Au, Ag, Pt, Pd)' },
+        { ru: 'Атомно-абсорбционный анализ', en: 'Atomic absorption analysis' },
+        { ru: 'Рентгенофлуоресцентный анализ (XRF)', en: 'X-ray fluorescence analysis (XRF)' },
+        { ru: 'Силикатный анализ', en: 'Silicate analysis' },
+      ]
+    },
+    {
+      titleRu: 'Минералогические исследования',
+      titleEn: 'Mineralogical Studies',
+      icon: FlaskConical,
+      methods: [
+        { ru: 'Гравитационное обогащение', en: 'Gravity concentration' },
+        { ru: 'Минералогические исследования', en: 'Mineralogical studies' },
+        { ru: 'Изготовление шлифов и аншлифов', en: 'Thin and polished section preparation' },
+      ]
+    },
+    {
+      titleRu: 'Физико-механические испытания',
+      titleEn: 'Physical-Mechanical Testing',
+      icon: FlaskConical,
+      methods: [
+        { ru: 'Физико-механические испытания грунтов', en: 'Soil physical-mechanical testing' },
+        { ru: 'Гранулометрический анализ', en: 'Grain size analysis' },
+        { ru: 'Компрессионные испытания', en: 'Compression testing' },
+        { ru: 'Испытания на сдвиг', en: 'Shear testing' },
+      ]
+    },
   ],
   methodsImage: '/images/lab.jpg',
   equipment: [

@@ -2,8 +2,9 @@
 
 import { ServicePageTemplate } from './service-page-template'
 import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
 
-const data = {
+const data: ServicePageData = {
   icon: Mountain,
   titleRu: 'Геологические работы',
   titleEn: 'Geological Works',
@@ -11,6 +12,20 @@ const data = {
   descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
   heroImage: '/images/geo.jpg',
   reverse: false,
+  methods: [
+    { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
+    { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
+    { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
+    { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
+    { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография)', en: 'Electrical survey' },
+    { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
+    { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
+    { ru: 'Гравиразведка', en: 'Gravity survey' },
+    { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
+    { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
+    { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
+    { ru: 'Аэромагниторазведка (вертолётная)', en: 'Aeromagnetic survey' },
+  ],
   methodsGroups: [
     {
       titleRu: 'Скважинная геофизика (ГИС)',
@@ -46,8 +61,7 @@ const data = {
       ]
     },
   ],
-
-  methodsImage: '/api/placeholder/500/350',
+  methodsImage: '/images/geo-methods.jpg',
   equipment: [
     {
       titleRu: 'Геодезическое оборудование',
