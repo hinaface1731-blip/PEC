@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/components/language-provider'
 import { CTAForm } from '@/components/cta-form'
 import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, ArrowRight, ArrowUpRight, Users, Calendar } from 'lucide-react'
@@ -85,19 +86,50 @@ export function ServicesHubContent() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-[var(--text)] mb-6">
+      {/* Hero Section с изображением */}
+      <section className="relative section bg-[var(--bg2)] overflow-hidden">
+        {/* Фоновое изображение */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/services-hub-hero.jpg"
+            alt={t('Геологоразведка полного цикла', 'Full cycle exploration')}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+        </div>
+
+        {/* Контент */}
+        <div className="relative z-10 container mx-auto px-4 py-20 md:py-28">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 text-white/70 mb-4">
+              <Link href="/" className="hover:text-white transition-colors">
+                {t('Главная', 'Home')}
+              </Link>
+              <span>/</span>
+              <span className="text-white">{t('Услуги', 'Services')}</span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               {t('Полный цикл геологоразведочных работ', 'Full Cycle of Geological Exploration')}
             </h1>
-            <p className="text-xl text-[var(--muted)] leading-relaxed">
+            
+            <p className="text-xl text-white/90 leading-relaxed max-w-2xl">
               {t(
                 'Все этапы ГРР — от проектирования до защиты запасов — выполняются собственными силами без привлечения субподрядчиков',
                 'All GRR stages — from design to resource approval — are performed in-house without subcontractors'
               )}
             </p>
+
+            {/* Кнопка CTA в hero */}
+            <div className="mt-8">
+              <Link href="#cta" className="btn btn-primary inline-flex items-center gap-2">
+                {t('Обсудить проект', 'Discuss Project')}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -105,6 +137,15 @@ export function ServicesHubContent() {
       {/* Process Flow */}
       <section className="py-16 border-b border-[var(--border)]">
         <div className="container mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-[var(--text)] mb-2">
+              {t('Этапы работ', 'Work Stages')}
+            </h2>
+            <p className="text-[var(--muted)]">
+              {t('7 ключевых направлений деятельности', '7 key areas of activity')}
+            </p>
+          </div>
+
           <div className="hidden lg:flex items-center justify-between">
             {steps.map((step, index) => (
               <div key={step.num} className="flex items-center">
@@ -145,13 +186,25 @@ export function ServicesHubContent() {
 
       {/* Services Grid */}
       <section className="section">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
+              {t('Наши услуги', 'Our Services')}
+            </h2>
+            <p className="text-[var(--muted)] max-w-2xl mx-auto">
+              {t(
+                'Комплексный подход к решению задач любого масштаба',
+                'Comprehensive approach to tasks of any scale'
+              )}
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {services.map((service) => (
               <Link
                 key={service.href}
                 href={service.href}
-                className="card group flex gap-6 hover:border-[var(--accent)]/30"
+                className="card group flex gap-6 hover:border-[var(--accent)]/30 transition-all duration-300"
               >
                 <div className="shrink-0">
                   <div className="w-14 h-14 rounded-xl bg-[var(--accent-glow)] flex items-center justify-center group-hover:bg-[var(--accent)] transition-colors">
@@ -163,7 +216,7 @@ export function ServicesHubContent() {
                     {t(service.titleRu, service.titleEn)}
                     <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
-                  <p className="text-[var(--muted)] leading-relaxed">
+                  <p className="text-[var(--muted)] leading-relaxed text-sm">
                     {t(service.descRu, service.descEn)}
                   </p>
                 </div>
@@ -176,15 +229,17 @@ export function ServicesHubContent() {
       {/* Stats */}
       <section className="py-16 bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
-          <h2 className="text-2xl font-bold text-[var(--text)] text-center mb-10">
+          <h2 className="text-3xl font-bold text-[var(--text)] text-center mb-10">
             {t('Ключевые мощности', 'Key Capabilities')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {stats.map((stat) => (
-              <div key={stat.labelRu} className="card text-center">
-                <stat.icon className="w-8 h-8 text-[var(--accent)] mx-auto mb-3" />
-                <div className="stat-num">{stat.value}</div>
-                <div className="stat-label">{t(stat.labelRu, stat.labelEn)}</div>
+              <div key={stat.labelRu} className="card text-center group hover:border-[var(--accent)]/30 transition-all">
+                <div className="w-14 h-14 rounded-xl bg-[var(--accent-glow)] flex items-center justify-center mx-auto mb-4 group-hover:bg-[var(--accent)] transition-colors">
+                  <stat.icon className="w-7 h-7 text-[var(--accent)] group-hover:text-white transition-colors" />
+                </div>
+                <div className="stat-num text-3xl md:text-4xl font-bold text-[var(--text)] mb-1">{stat.value}</div>
+                <div className="stat-label text-[var(--muted)]">{t(stat.labelRu, stat.labelEn)}</div>
               </div>
             ))}
           </div>

@@ -16,8 +16,8 @@ const subMethods = [
     titleRu: 'АМТЗ (Аудиомагнитотеллурические зондирования)',
     titleEn: 'AMT (Audio-Magnetotelluric Sounding)',
     descRu: 'Метод основан на регистрации естественных электромагнитных полей в диапазоне частот 1-10000 Гц. Позволяет изучать геоэлектрический разрез на глубинах до 2-3 км.',
-    descEn: 'Method based on recording natural electromagnetic fields in the 1-10000 Hz frequency range.',
-    image: '/images/methods/amtz.jpg',
+    descEn: 'Method based on recording natural electromagnetic fields in the 1-10000 Hz frequency range. Allows studying geoelectric sections to depths of 2-3 km.',
+    image: '/images/methods/amtz.png',
     tasksRu: [
       'Картирование глубинных структур',
       'Выделение зон разломов',
@@ -35,8 +35,8 @@ const subMethods = [
     titleRu: 'ЗСБ (Зондирование становлением поля)',
     titleEn: 'TEM (Transient Electromagnetic Method)',
     descRu: 'Импульсный электромагнитный метод с контролируемым источником. Высокая чувствительность к проводящим объектам на глубинах до 500-800 м.',
-    descEn: 'Pulsed electromagnetic method with controlled source. High sensitivity to conductive objects.',
-    image: '/images/methods/tem.jpg',
+    descEn: 'Pulsed electromagnetic method with controlled source. High sensitivity to conductive objects at depths up to 500-800 m.',
+    image: '/images/methods/tem.png',
     tasksRu: [
       'Поиск сульфидных рудных тел',
       'Картирование водоносных горизонтов',
@@ -54,7 +54,7 @@ const subMethods = [
     titleRu: 'ВП (Метод вызванной поляризации)',
     titleEn: 'IP (Induced Polarization Method)',
     descRu: 'Метод основан на изучении процессов накопления и разрядки электрических зарядов в горных породах. Эффективен для поиска вкрапленных сульфидных руд.',
-    descEn: 'Method based on studying charge accumulation and discharge processes in rocks.',
+    descEn: 'Method based on studying charge accumulation and discharge processes in rocks. Effective for disseminated sulfide ore search.',
     image: '/images/methods/ip.jpg',
     tasksRu: [
       'Поиск вкрапленного сульфидного оруденения',
@@ -127,7 +127,7 @@ const caseStudy = {
   volumeRu: 'Комплекс АМТЗ+ЗСБ на площади 200 км², 450 км профилей ВП',
   volumeEn: 'AMT+TEM complex over 200 km² area, 450 km IP profiles',
   resultRu: 'Выявлены перспективные проводящие аномалии, совпадающие с зонами повышенной поляризуемости. Локализованы 5 первоочередных участков для заверки бурением.',
-  resultEn: 'Identified prospective conductive anomalies coinciding with high chargeability zones.',
+  resultEn: 'Identified prospective conductive anomalies coinciding with high chargeability zones. Located 5 priority areas for drilling verification.',
 }
 
 export default function ElectricalPage() {
@@ -137,44 +137,57 @@ export default function ElectricalPage() {
     <PageLayout>
       <div className="min-h-screen bg-background">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-gradient-to-br from-card to-background overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.03]">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <FadeIn>
-              <div className="max-w-3xl">
-                <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm flex-wrap">
-                  <Link href="/" className="hover:text-primary transition-colors">{t('Главная', 'Home')}</Link>
-                  <span>/</span>
-                  <Link href="/services" className="hover:text-primary transition-colors">{t('Услуги', 'Services')}</Link>
-                  <span>/</span>
-                  <Link href="/services/geophysics" className="hover:text-primary transition-colors">{t('Геофизика', 'Geophysics')}</Link>
-                  <span>/</span>
-                  <span className="text-foreground">{t('Электроразведка', 'Electrical')}</span>
-                </div>
-
-                <div className="flex items-center gap-4 mb-6">
-  <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-lg">
-    <Zap className="w-8 h-8 text-orange-500" />
+        {/* Hero */}
+<section className="relative pt-32 pb-20 bg-gradient-to-br from-card to-background overflow-hidden">
+  {/* Фоновое изображение */}
+  <div className="absolute inset-0 z-0">
+    <Image
+      src="/images/electrorazvedka.jpg"
+      alt="Электроразведка"
+      fill
+      priority
+      className="object-cover opacity-0"
+      sizes="100vw"
+    />
   </div>
-  <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-    {t('Электроразведка', 'Electrical Methods')}
-  </h1>
-</div>
-                
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  {t(
-                    'Комплекс электромагнитных методов для изучения геоэлектрического строения недр, поиска рудных тел и структурного картирования.',
-                    'Complex of electromagnetic methods for studying geoelectric structure, ore body detection, and structural mapping.'
-                  )}
-                </p>
-              </div>
-            </FadeIn>
+  
+  <div className="absolute inset-0 opacity-[0.03] z-0">
+    <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full blur-3xl" />
+    <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+  </div>
+  
+  <div className="container mx-auto px-4 relative z-10">
+    <FadeIn>
+      <div className="max-w-3xl">
+        <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm flex-wrap">
+          <Link href="/" className="hover:text-primary transition-colors">{t('Главная', 'Home')}</Link>
+          <span>/</span>
+          <Link href="/services" className="hover:text-primary transition-colors">{t('Услуги', 'Services')}</Link>
+          <span>/</span>
+          <Link href="/services/geophysics" className="hover:text-primary transition-colors">{t('Геофизика', 'Geophysics')}</Link>
+          <span>/</span>
+          <span className="text-foreground">{t('Электроразведка', 'Electrical')}</span>
+        </div>
+
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-lg">
+            <Zap className="w-8 h-8 text-orange-500" />
           </div>
-        </section>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+            {t('Электроразведка', 'Electrical Methods')}
+          </h1>
+        </div>
+        
+        <p className="text-xl text-muted-foreground leading-relaxed">
+          {t(
+            'Комплекс электромагнитных методов для изучения геоэлектрического строения недр, поиска рудных тел и структурного картирования.',
+            'Complex of electromagnetic methods for studying geoelectric structure, ore body detection, and structural mapping.'
+          )}
+        </p>
+      </div>
+    </FadeIn>
+  </div>
+</section>
 
         {/* Methods - карточки с фиксированной структурой: текст слева, картинка справа */}
         <section className="py-20">
@@ -191,12 +204,12 @@ export default function ElectricalPage() {
             <div className="space-y-8">
               {subMethods.map((method, index) => (
                 <FadeIn key={method.id} delay={index * 0.1}>
-                 <div className="card-enhanced rounded-2xl overflow-hidden group">
-                    <div className="flex flex-col md:flex-row gap-6 p-6">
-                      {/* Левая часть - текстовая (фиксированная ширина) */}
-                      <div className="flex-1 p-8">
+                  <div className="card-enhanced rounded-2xl overflow-hidden group">
+                    <div className="flex flex-col md:flex-row">
+                      {/* Левая часть - текстовая */}
+                      <div className="flex-1 p-6 md:p-8">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center shadow-md shrink-0">
+                          <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
                             <method.icon className="w-6 h-6 text-orange-500" />
                           </div>
                           <h3 className="font-display text-xl lg:text-2xl font-semibold text-foreground">
@@ -212,10 +225,10 @@ export default function ElectricalPage() {
                           <h4 className="font-medium text-foreground mb-2 text-sm">
                             {t('Решаемые задачи:', 'Applications:')}
                           </h4>
-                          <ul className="space-y-1">
+                          <ul className="space-y-2">
                             {method.tasksRu.map((task, idx) => (
-                              <li key={idx} className="flex items-center gap-2 text-sm">
-                                <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                              <li key={idx} className="flex items-start gap-2 text-sm">
+                                <CheckCircle className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
                                 <span className="text-muted-foreground">
                                   {t(task, method.tasksEn[idx])}
                                 </span>
@@ -225,15 +238,15 @@ export default function ElectricalPage() {
                         </div>
                       </div>
 
-                      {/* Правая часть - картинка (фиксированная ширина 300px) */}
-                      <div className="relative w-full md:w-80 lg:w-96 rounded-xl overflow-hidden">
+                      {/* Правая часть - картинка */}
+                      <div className="relative w-full md:w-80 lg:w-96 h-64 md:h-auto">
                         <Image
                           src={method.image}
                           alt={t(method.titleRu, method.titleEn)}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 384px"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-l from-black/10 to-transparent md:bg-gradient-to-r" />
                       </div>
                     </div>
                   </div>
@@ -258,17 +271,17 @@ export default function ElectricalPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {equipment.map((item, index) => (
                 <FadeIn key={item.nameRu} delay={index * 0.1}>
-                  <div className="p-6 bg-background rounded-xl border border-border h-full hover:border-accent/50 transition-all hover:shadow-lg">
+                  <div className="p-6 bg-background rounded-xl border border-border h-full hover:border-orange-500/50 transition-all hover:shadow-lg">
                     <h4 className="font-display text-xl font-semibold text-foreground mb-2">
                       {t(item.nameRu, item.nameEn)}
                     </h4>
-                    <p className="text-sm text-accent mb-4">
+                    <p className="text-sm text-orange-500 mb-4">
                       {t(item.typeRu, item.typeEn)}
                     </p>
-                    <ul className="space-y-1">
+                    <ul className="space-y-2">
                       {item.specs.map((spec, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
                           {spec}
                         </li>
                       ))}
@@ -292,7 +305,7 @@ export default function ElectricalPage() {
                   </h2>
                 </div>
 
-                <div className="card-enhanced p-8 rounded-2xl">
+                <div className="card-enhanced p-6 md:p-8 rounded-2xl">
                   <h3 className="font-display text-2xl font-semibold text-foreground mb-4">
                     {t(caseStudy.titleRu, caseStudy.titleEn)}
                   </h3>
@@ -301,7 +314,7 @@ export default function ElectricalPage() {
                     <p className="text-sm text-muted-foreground mb-2">{t('Лицензии:', 'Licenses:')}</p>
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.licenses.map((license, idx) => (
-                        <span key={license} className="px-3 py-1 bg-accent/10 text-accent text-sm font-mono rounded-lg">
+                        <span key={license} className="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm font-mono rounded-lg">
                           {license} — {caseStudy.licenseNames[idx]}
                         </span>
                       ))}
@@ -315,12 +328,12 @@ export default function ElectricalPage() {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-accent/5 border border-accent/20 rounded-xl">
+                  <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl">
                     <p className="text-sm text-muted-foreground mb-1">{t('Результат:', 'Result:')}</p>
                     <p className="text-foreground">{t(caseStudy.resultRu, caseStudy.resultEn)}</p>
                   </div>
 
-                  <div className="mt-6 flex gap-4">
+                  <div className="mt-6 flex flex-wrap gap-4">
                     <Button asChild>
                       <Link href="/projects">
                         {t('Все проекты', 'All Projects')}
@@ -328,7 +341,7 @@ export default function ElectricalPage() {
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href="/documents/license-extract.pdf" target="_blank">
+                      <a href="/documents/license-extract.pdf" target="_blank" rel="noopener noreferrer">
                         <Download className="mr-2 w-4 h-4" />
                         {t('Выписка лицензий', 'License Extract')}
                       </a>
