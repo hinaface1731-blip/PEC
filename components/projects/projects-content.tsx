@@ -8,6 +8,7 @@ import { CTAForm } from "@/components/cta-form"
 import { FadeIn } from "@/components/fade-in"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
+import Image from "next/image"  // ← ДОБАВИТЬ ЭТУ СТРОКУ!
 
 interface Project {
   id: number
@@ -30,7 +31,6 @@ interface Project {
   resultsEn: string[]
   image: string
 }
-
 const projects: Project[] = [
   {
     id: 1,
@@ -51,7 +51,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration works for copper mineralization within the Norilsk ore district. A complex of geophysical surveys and exploration drilling has been completed.",
     results: ["Геофизика: АМТЗ, ЗСБ, магнитометрия", "Площадь: 45 км²", "Выявлены перспективные аномалии"],
     resultsEn: ["Geophysics: AMT, TEM, magnetometry", "Area: 45 km²", "Prospective anomalies identified"],
-    image: "images/shirokinskaya.jpg"
+    image: "/images/shirokinskaya.jpg"
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for copper-nickel mineralization. A complex of electrical methods was applied to identify ore-controlling structures.",
     results: ["Электроразведка: ВП, АМТЗ", "Профилей: 120 км", "3D модель рудных тел"],
     resultsEn: ["Electrical survey: IP, AMT", "Profiles: 120 km", "3D ore body model"],
-    image: "images/centr.jpg"
+    image: "/images/centr.jpg"
   },
   {
     id: 3,
@@ -93,7 +93,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for sulfide copper-nickel mineralization using modern geophysical methods.",
     results: ["Комплекс ЗСБ-АМТЗ", "Магнитная съемка", "Рекомендации по бурению"],
     resultsEn: ["TEM-AMT complex", "Magnetic survey", "Drilling recommendations"],
-    image: "images/trisesty.jpg"
+    image: "/images/trisesty.jpg"
   },
   {
     id: 4,
@@ -114,7 +114,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for Norilsk-type copper mineralization. Detailed geophysics and structural mapping.",
     results: ["Детальная электроразведка", "Структурный анализ", "Перспективные участки выделены"],
     resultsEn: ["Detailed electrical survey", "Structural analysis", "Prospective areas identified"],
-    image: "images/dorozh.jpg"
+    image: "/images/dorozh.jpg"
   },
   {
     id: 5,
@@ -135,7 +135,7 @@ const projects: Project[] = [
     descriptionEn: "Copper-nickel exploration in the Norilsk ore district. Comprehensive geophysical surveys.",
     results: ["Комплекс АМТЗ/ЗСБ/ВП", "Площадь: 38 км²", "Бурение по аномалиям"],
     resultsEn: ["AMT/TEM/IP complex", "Area: 38 km²", "Anomaly drilling"],
-    image: "images/sims.jpg"
+    image: "/images/sims.jpg"
   },
   {
     id: 6,
@@ -155,7 +155,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for sulfide copper-nickel mineralization. Regional geophysical surveys.",
     results: ["Региональная геофизика", "Геохимический опробования", "Выделены аномалии"],
     resultsEn: ["Regional geophysics", "Geochemical sampling", "Anomalies identified"],
-    image: "images/pekin.jpg"
+    image: "/images/pekin.jpg"
   },
   {
     id: 7,
@@ -175,7 +175,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration in the extreme north of Taimyr. Complex logistics, Arctic expedition.",
     results: ["Арктическая экспедиция", "Геофизический комплекс", "Первичная оценка"],
     resultsEn: ["Arctic expedition", "Geophysical complex", "Primary assessment"],
-    image: "images/chelus.jpg"
+    image: "/images/chelus.jpg"
   },
   {
     id: 8,
@@ -195,7 +195,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for gold mineralization. Complex of geochemical and geophysical methods.",
     results: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Выделены перспективные зоны"],
     resultsEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Prospective zones identified"],
-    image: "images/bistr.jpg"
+    image: "/images/bistr.jpg"
   },
   {
     id: 9,
@@ -215,7 +215,7 @@ const projects: Project[] = [
     descriptionEn: "Detailed exploration of gold deposit. Drilling, geophysics, laboratory studies.",
     results: ["Бурение: 8 000 п.м.", "Каротаж скважин", "Подсчет запасов"],
     resultsEn: ["Drilling: 8,000 m", "Well logging", "Reserve estimation"],
-    image: "images/mars.jpg"
+    image: "/images/mars.jpg"
   },
   {
     id: 10,
@@ -235,7 +235,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
     results: ["Геофизика: ВП, магнитометрия", "Керновое опробование", "3D моделирование"],
     resultsEn: ["Geophysics: IP, magnetometry", "Core sampling", "3D modeling"],
-    image: "images/oper.jpg"
+    image: "/images/oper.jpg"
   },
   {
     id: 11,
@@ -255,7 +255,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
     results: ["Геофизика: ВП, магнитометрия", "Керновое опробование", "3D моделирование"],
     resultsEn: ["Geophysics: IP, magnetometry", "Core sampling", "3D modeling"],
-    image: "images/neven.jpg"
+    image: "/images/neven.jpg"
   }
 ]
 
@@ -280,33 +280,28 @@ export function ProjectsContent() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-        src="/images/projects3.jpg" 
-        alt="Контакты ПЭК"
-        className="w-full h-f object-cover object-[center_80%]"
-        style={{
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    objectPosition: 'center 53%'  // ← Здесь точно сработает
-  }}
-            />
-         
+          {/* Hero Image с оптимизацией */}
+          <Image
+            src="/images/projects3.jpg"
+            alt="Проекты ПЭК"
+            fill
+            priority  // ← загружаем сразу (LCP)
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center 53%' }}
+          />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                <Link href="/" className="hover:text-primary text-black/90">{t('Главная', 'Home')}</Link>
+                <Link href="/" className="hover:text-primary text-white/90">{t('Главная', 'Home')}</Link>
                 <span>/</span>
-                <span className="text-black/90">{t('Проекты', 'Projects')}</span>
+                <span className="text-white/90">{t('Проекты', 'Projects')}</span>
               </div>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black/90 mb-6">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                 {t('Реализованные проекты', 'Completed Projects')}
               </h1>
               
@@ -411,11 +406,6 @@ export function ProjectsContent() {
                   }`}
                 >
                   {t(cat.label, cat.labelEn)}
-                  {cat.value === "junior" && (
-                    <span className="ml-2 px-1.5 py-0.5 bg-accent/20 text-accent text-xs rounded">
-                     
-                    </span>
-                  )}
                 </button>
               ))}
             </div>
@@ -436,7 +426,7 @@ export function ProjectsContent() {
                 <ChevronDown className={`w-5 h-5 transition-transform ${isFilterOpen ? "rotate-180" : ""}`} />
               </button>
               
-              <AnimatePresence >
+              <AnimatePresence>
                 {isFilterOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -466,85 +456,87 @@ export function ProjectsContent() {
             </div>
           </div>
 
-
-          {/* Projects Grid */}
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <AnimatePresence mode="wait">
-    {filteredProjects.map((project) => (
-      <motion.article
-        key={project.id}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-        className="group card-enhanced p-6 rounded-2xl flex flex-col h-full"
-      >
-        {/* Изображение */}
-        <div className="relative h-48 overflow-hidden rounded-lg mb-4 flex-shrink-0">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute top-3 left-3">
-            <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
-              {t(project.categoryLabel, project.categoryLabelEn)}
-            </span>
+          {/* Projects Grid - с оптимизированными изображениями */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence>
+              {filteredProjects.map((project) => (
+                <motion.article
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="group card-enhanced p-6 rounded-2xl flex flex-col h-full"
+                >
+                  {/* Изображение с next/image */}
+                  <div className="relative h-48 overflow-hidden rounded-lg mb-4 flex-shrink-0">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      loading="lazy"  // ← ленивая загрузка
+                    />
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+                        {t(project.categoryLabel, project.categoryLabelEn)}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Заголовок */}
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                    {t(project.title, project.titleEn)}
+                  </h3>
+                  
+                  {/* Локация и год */}
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      {t(project.location, project.locationEn)}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {project.year}
+                    </span>
+                  </div>
+                  
+                  {/* Клиент (если есть) */}
+                  {project.client && (
+                    <p className="text-sm text-muted-foreground mb-3">
+                      <span className="font-medium text-foreground">{t('Заказчик', 'Client')}:</span>{' '}
+                      {t(project.client, project.clientEn || project.client)}
+                    </p>
+                  )}
+                  
+                  {/* Лицензия (если есть) */}
+                  {project.license && (
+                    <p className="text-xs text-accent mb-3 font-mono">
+                      {project.license}
+                    </p>
+                  )}
+                  
+                  {/* Описание */}
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {t(project.description, project.descriptionEn)}
+                  </p>
+                  
+                  {/* Результаты */}
+                  <div className="space-y-2 mt-auto">
+                    {project.results.map((result, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-sm">
+                        <div className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0" />
+                        <span className="text-muted-foreground">
+                          {t(result, project.resultsEn[idx] ?? result)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
+            </AnimatePresence>
           </div>
-        </div>
-        
-        {/* Заголовок */}
-        <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-          {t(project.title, project.titleEn)}
-        </h3>
-        
-        {/* Локация и год */}
-        <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
-          <span className="flex items-center gap-1">
-            <MapPin className="w-4 h-4" />
-            {t(project.location, project.locationEn)}
-          </span>
-          <span className="flex items-center gap-1">
-            <Calendar className="w-4 h-4" />
-            {project.year}
-          </span>
-        </div>
-        
-        {/* Клиент (если есть) */}
-        {project.client && (
-          <p className="text-sm text-muted-foreground mb-3">
-            <span className="font-medium text-foreground">{t('Заказчик', 'Client')}:</span>{' '}
-            {t(project.client, project.clientEn || project.client)}
-          </p>
-        )}
-        
-        {/* Лицензия (если есть) */}
-        {project.license && (
-          <p className="text-xs style={{ color: '#F97316' }} mb-3 font-mono">
-            {project.license}
-          </p>
-        )}
-        
-        {/* Описание - теперь с auto, не обрезается */}
-        <p className="text-muted-foreground text-sm mb-4">
-          {t(project.description, project.descriptionEn)}
-        </p>
-        
-        {/* Результаты - с отступом снизу */}
-        <div className="space-y-2 mt-auto">
-          {project.results.map((result, idx) => (
-            <div key={idx} className="flex items-center gap-2 text-sm">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0" />
-              <span className="text-muted-foreground">
-                {t(result, project.resultsEn[idx] ?? result)}
-              </span>
-            </div>
-          ))}
-        </div>
-      </motion.article>
-    ))}
-  </AnimatePresence>
-</div>
         </div>
       </section>
 

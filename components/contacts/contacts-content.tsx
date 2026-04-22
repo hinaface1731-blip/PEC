@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Link from "next/link"
+import Image from "next/image"
 
 const offices = [
   {
@@ -20,10 +21,10 @@ const offices = [
 ]
 
 const departments = [
-  { name: "Отдел продаж", email: "info@polar-ec.ru", phone: "+7 (391) 205-15-84" },
-  { name: "Геологический отдел", email: "geo@polar-ec.ru", phone: "+7 (391) 205-15-85" },
-  { name: "Геофизический отдел", email: "geofiz@polar-ec.ru", phone: "+7 (391) 205-15-86" },
-  { name: "Маркшейдерский отдел", email: "mark@polar-ec.ru", phone: "+7 (391) 205-15-87" }
+  { id: 1, name: "Отдел продаж", email: "info@polar-ec.ru", phone: "+7 (391) 205-15-84" },
+  { id: 2, name: "Геологический отдел", email: "geo@polar-ec.ru", phone: "+7 (391) 205-15-85" },
+  { id: 3, name: "Геофизический отдел", email: "geofiz@polar-ec.ru", phone: "+7 (391) 205-15-86" },
+  { id: 4, name: "Маркшейдерский отдел", email: "mark@polar-ec.ru", phone: "+7 (391) 205-15-87" }
 ]
 
 export function ContactsContent() {
@@ -77,51 +78,45 @@ export function ContactsContent() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-        src="/images/hero-contacts2.png" 
-        alt="Контакты ПЭК"
-        className="w-full h-f object-cover object-[center_80%]"
-        style={{
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    objectPosition: 'center 20%'  // ← Здесь точно сработает
-  }}
-            />
-          
+          <Image
+            src="/images/hero-contacts2.png"
+            alt="Контакты ПЭК"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center 20%' }}
+          />
         </div>
         
         <div className="relative z-10 h-full flex items-center">
-    <div className="container mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-3xl"
-      >
-        {/* Хлебные крошки */}
-        <div className="flex items-center gap-2 text-white/70 mb-4">
-          <Link href="/" className="hover:text-white transition-colors">Главная</Link>
-          <span>/</span>
-          <span className="text-white">Контакты</span>
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
+            >
+              {/* Хлебные крошки */}
+              <div className="flex items-center gap-2 text-white/70 mb-4">
+                <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+                <span>/</span>
+                <span className="text-white">Контакты</span>
+              </div>
+              
+              {/* Заголовок */}
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Свяжитесь с нами
+              </h1>
+              
+              {/* Описание */}
+              <p className="text-xl text-white/90 leading-relaxed">
+                Готовы обсудить ваш проект? Наши специалисты ответят на все вопросы 
+                и помогут подобрать оптимальное решение.
+              </p>
+            </motion.div>
+          </div>
         </div>
-        
-        {/* Заголовок */}
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          Свяжитесь с нами
-        </h1>
-        
-        {/* Описание */}
-        <p className="text-xl text-white/90 leading-relaxed">
-          Готовы обсудить ваш проект? Наши специалисты ответят на все вопросы 
-          и помогут подобрать оптимальное решение.
-        </p>
-      </motion.div>
-    </div>
-  </div>
       </section>
 
       {/* Contact Form & Info */}
@@ -331,7 +326,7 @@ export function ContactsContent() {
                 </h3>
                 <div className="space-y-4">
                   {departments.map((dept) => (
-                    <div key={dept.name} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-border last:border-0 last:pb-0">
+                    <div key={dept.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-border last:border-0 last:pb-0">
                       <div className="font-medium text-foreground">{dept.name}</div>
                       <div className="flex flex-col sm:items-end text-sm text-muted-foreground">
                         <a href={`mailto:${dept.email}`} className="hover:text-primary transition-colors">
@@ -365,14 +360,15 @@ export function ContactsContent() {
           </motion.div>
           
           <div className="flex justify-center">
-            {offices.map((office, index) => (
+            {offices.map((office) => (
               <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="bg-background p-6 rounded-2xl border border-border w-full max-w-2xl"
-          >
+                key={office.city}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-background p-6 rounded-2xl border border-border w-full max-w-2xl"
+              >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                     <Building className="w-5 h-5 text-primary" />

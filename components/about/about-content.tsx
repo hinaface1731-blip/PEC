@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Target, Eye, Award, Users, TrendingUp, Shield, MapPin, Calendar } from "lucide-react"
 import { CTAForm } from "@/components/cta-form"
 import Link from "next/link"
+import Image from "next/image"
 
 const milestones = [
   { year: "1998", title: "Основание компании", desc: "Создание ПЭК" },
@@ -20,25 +21,25 @@ const team = [
     name: "Калмыков Иван Валерьевич",
     position: "Генеральный директор",
     experience: "30+ лет",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+    image: "/images/haruhi.jpg"
   },
   {
     name: "Черненко Наталья Ярославовна",
     position: "Главный геолог",
     experience: "25+ лет",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+    image: "/images/haruhi.jpg"
   },
   {
     name: "Петров Андрей Викторович",
     position: "Технический директор",
     experience: "20+ лет",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+    image: "/images/haruhi.jpg"
   },
   {
     name: "Юсупова Дилором Рахимовна",
     position: "Директор по развитию",
     experience: "18+ лет",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
+    image: "/images/haruhi.jpg"
   }
 ]
 
@@ -70,22 +71,16 @@ export function AboutContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0 ">
-          <img 
-        src="/images/compashka.jpg" 
-        alt="Контакты ПЭК"
-        className="w-full h-f object-cover object-[center_80%]"
-        style={{
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    objectPosition: 'center 50%'  // ← Здесь точно сработает
-  }}
-            />
-          
+        <div className="absolute inset-0">
+          <Image
+            src="/images/compashka.jpg"
+            alt="О компании ПЭК"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center 50%' }}
+          />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -136,8 +131,8 @@ export function AboutContent() {
               </p>
             </motion.div>
 
-           <motion.div
-              initial={{ opacity: 0, x: -20 }}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="bg-card p-8 md:p-10 rounded-2xl border border-border"
@@ -286,13 +281,16 @@ export function AboutContent() {
                 className="group bg-background rounded-2xl overflow-hidden border border-border"
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
+                  <div className="absolute bottom-4 left-4 right-4 z-10">
                     <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full">
                       Опыт: {member.experience}
                     </span>

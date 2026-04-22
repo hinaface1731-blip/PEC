@@ -12,12 +12,13 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="w-full h-full object-cover"
-        >
+  autoPlay 
+  muted 
+  loop 
+  playsInline
+  preload="none"  // ← это решает проблему без конвертации
+  className="w-full h-full object-cover"
+>
           <source src="/promo.mp4" type="video/mp4" />
           <source src="/promo.webm" type="video/webm" />
           Ваш браузер не поддерживает видео

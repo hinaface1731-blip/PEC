@@ -65,11 +65,10 @@ export function Header() {
   src="/images/logo.png"
   alt={t('ПЭК', 'PEC')}
   width={150}
-  height={100}
+  height={60}   // ← изменили на 60, чтобы соответствовать пропорциям
   className="object-contain"
   loading="eager"
   priority
-  style={{ width: '150', height: '60px' }}
 />
     
         </Link>
