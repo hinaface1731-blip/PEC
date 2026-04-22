@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useState, useRef, ReactNode } fro
 declare global {
   interface Window {
     ymaps?: any
+    __YANDEX_MAPS_INIT__?: boolean
   }
 }
 
@@ -24,12 +25,7 @@ export function useYandexMapsContext() {
   return useContext(YandexMapsContext)
 }
 
-interface YandexMapLoaderProps {
-  apiKey: string
-  children: ReactNode
-}
-
-export function YandexMapLoader({ apiKey, children }: YandexMapLoaderProps) {
+export function YandexMapLoader({ children }: { children: ReactNode }) {
   const [state, setState] = useState<YandexMapsContextType>({
     isReady: false,
     error: null,
@@ -37,15 +33,17 @@ export function YandexMapLoader({ apiKey, children }: YandexMapLoaderProps) {
   })
 
   const initialized = useRef(false)
+  const apiKey = process.env.NEXT_PUBLIC_YANDEX_MAPS_API_KEY
 
   useEffect(() => {
     if (initialized.current) return
     initialized.current = true
 
-    if (typeof window === 'undefined' || !apiKey) {
-      if (!apiKey) {
-        console.warn('[YandexMapLoader] API key is empty. Set NEXT_PUBLIC_YANDEX_MAPS_KEY in .env.local')
-      }
+    if (typeof window === 'undefined') return
+
+    if (!apiKey) {
+      console.error('[YandexMapLoader] API key is missing! Add NEXT_PUBLIC_YANDEX_MAPS_API_KEY to .env.local')
+      setState({ isReady: false, error: 'API key missing', ymaps: null })
       return
     }
 
@@ -54,16 +52,24 @@ export function YandexMapLoader({ apiKey, children }: YandexMapLoaderProps) {
       return
     }
 
+    let checkInterval: NodeJS.Timeout
+    let timeoutId: NodeJS.Timeout
+
     if ((window as any).__YANDEX_MAPS_INIT__) {
-      const checkReady = setInterval(() => {
+      checkInterval = setInterval(() => {
         if (window.ymaps?.Map) {
-          clearInterval(checkReady)
+          clearInterval(checkInterval)
+          clearTimeout(timeoutId)
           setState({ isReady: true, error: null, ymaps: window.ymaps })
         }
       }, 100)
 
-      setTimeout(() => clearInterval(checkReady), 15000)
-      return () => clearInterval(checkReady)
+      timeoutId = setTimeout(() => clearInterval(checkInterval), 15000)
+      
+      return () => {
+        clearInterval(checkInterval)
+        clearTimeout(timeoutId)
+      }
     }
 
     ;(window as any).__YANDEX_MAPS_INIT__ = true
@@ -78,21 +84,17 @@ export function YandexMapLoader({ apiKey, children }: YandexMapLoaderProps) {
     script.src = `https://api-maps.yandex.ru/2.1/?apikey=${apiKey}&lang=ru_RU`
     script.async = true
 
-    console.log('[YandexMapLoader] Loading:', script.src)
-
     script.onload = () => {
-      console.log('[YandexMapLoader] Script loaded')
       if (window.ymaps) {
         window.ymaps.ready(() => {
-          console.log('[YandexMapLoader] API ready')
           setState({ isReady: true, error: null, ymaps: window.ymaps })
         })
       }
     }
 
     script.onerror = () => {
-      console.error('[YandexMapLoader] Failed to load')
-      setState({ isReady: false, error: 'Failed to load', ymaps: null })
+      console.error('[YandexMapLoader] Failed to load script')
+      setState({ isReady: false, error: 'Failed to load Yandex Maps API', ymaps: null })
     }
 
     document.head.appendChild(script)

@@ -33,15 +33,14 @@ export function Footer() {
           <div className="space-y-1">
             <Link href="/" className="inline-block">
               <Image
-                src="/images/logo.png"
-                alt={t('ПЭК', 'PEC')}
-                width={150}
-                height={100}
-                className="object-contain"
-                loading="eager"
-                priority
-                style={{ width: '150', height: '100px' }}
-              />
+  src="/images/logo.png"
+  alt={t('ПЭК', 'PEC')}
+  width={150}
+  height={60}   // ← изменили на 60, чтобы соответствовать пропорциям
+  className="object-contain"
+  loading="eager"
+  priority
+/>
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
               {t(
