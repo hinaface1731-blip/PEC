@@ -7,7 +7,7 @@ import { FadeIn } from '@/components/fade-in'
 import { Compass, Map, Ruler, Crosshair, LineChart, Globe, FileText } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
-const data = {
+const data: ServicePageData = {
   icon: Compass,
   titleRu: 'Маркшейдерские работы',
   titleEn: 'Survey Works',
@@ -15,7 +15,7 @@ const data = {
   descEn: 'Mining surveying services licensed by Rostechnadzor. High-precision GNSS receivers, electronic total stations, licensed software. Full cycle from planning to documentation delivery.',
   heroImage: '/images/mark.jpg',
   reverse: true,
-  methods: [],  // ← добавляем
+  methods: [],  // пустой массив, так как методы разбиты по группам
   methodsGroups: [
     {
       titleRu: 'Геодезические измерения',
@@ -160,7 +160,7 @@ const data = {
     resultRu: 'Высокоточная привязка всех горных выработок. Оперативный контроль буровых работ. Полный комплект исполнительной документации.',
     resultEn: 'High-precision referencing of all workings. Prompt drilling control. Complete executive documentation package.',
   },
-  caseImage: '/api/placeholder/500/300',
+  caseImage: '/images/mark-case.jpg',
   regions: [
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
     { ru: 'Якутия', en: 'Yakutia' },

@@ -2,8 +2,9 @@
 
 import { ServicePageTemplate } from './service-page-template'
 import { Drill, Droplets, Compass, Thermometer, Ruler, Wrench } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
 
-const data = {
+const data: ServicePageData = {
   icon: Drill,
   titleRu: 'Буровые работы',
   titleEn: 'Drilling Works',
@@ -11,7 +12,20 @@ const data = {
   descEn: 'Full range of drilling services for geological exploration: core drilling with high recovery, rotary drilling, hydrogeological and engineering wells.',
   heroImage: '/images/hero-drilling-image2.jpg',
   reverse: false,
-   methodsGroups: [
+  methods: [
+    { ru: 'Колонковое бурение ССК до 1200 м', en: 'SSK core drilling up to 1200m' },
+    { ru: 'Шарошечное бурение', en: 'Rotary drilling' },
+    { ru: 'Бурение с отбором керна', en: 'Core recovery drilling' },
+    { ru: 'Наклонно-направленное бурение', en: 'Directional drilling' },
+    { ru: 'Гидрогеологические скважины', en: 'Hydrogeological wells' },
+    { ru: 'Инженерно-геологические скважины', en: 'Engineering-geological wells' },
+    { ru: 'ГТНТ (гидротермальные наблюдения)', en: 'Hydrothermal observations' },
+    { ru: 'Термометрия и расходометрия', en: 'Temperature and flow logging' },
+    { ru: 'Отбор монолитов', en: 'Undisturbed sample collection' },
+    { ru: 'Установка обсадных колонн', en: 'Casing installation' },
+    { ru: 'Ликвидационный тампонаж', en: 'Well abandonment cementing' },
+  ],
+  methodsGroups: [
     {
       titleRu: 'Технологии бурения',
       titleEn: 'Drilling Technologies',

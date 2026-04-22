@@ -4,8 +4,7 @@ import { ServicePageTemplate } from './service-page-template'
 import { Leaf, Droplets, Mountain, Recycle, FileCheck, Building } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
-
-const data = {
+const data: ServicePageData = {
   icon: Leaf,
   titleRu: 'Экология и рекультивация',
   titleEn: 'Ecology & Reclamation',
@@ -13,7 +12,23 @@ const data = {
   descEn: 'Full range of environmental services: from surveys and EIA to technical and biological reclamation. Project support at Rosprirodnadzor.',
   heroImage: '/images/ecol.jpg',
   reverse: false,
-   methodsGroups: [
+  methods: [
+    { ru: 'Инженерно-экологические изыскания', en: 'Environmental engineering surveys' },
+    { ru: 'Отбор проб почв, воды, воздуха', en: 'Soil, water, air sampling' },
+    { ru: 'Радиационное обследование', en: 'Radiation survey' },
+    { ru: 'Санитарно-химические исследования', en: 'Sanitary-chemical research' },
+    { ru: 'Фоновый мониторинг недр', en: 'Background subsoil monitoring' },
+    { ru: 'Оценка воздействия на окружающую среду (ОВОС)', en: 'Environmental Impact Assessment (EIA)' },
+    { ru: 'Перечень экологических мероприятий (ПЭМ)', en: 'Environmental measures program' },
+    { ru: 'Проекты рекультивации земель', en: 'Land reclamation projects' },
+    { ru: 'Проекты санитарно-защитных зон (СЗЗ)', en: 'Sanitary protection zone projects' },
+    { ru: 'Паспортизация отходов', en: 'Waste certification' },
+    { ru: 'Техническая рекультивация', en: 'Technical reclamation' },
+    { ru: 'Биологическая рекультивация', en: 'Biological reclamation' },
+    { ru: 'Согласование в Росприроднадзоре', en: 'Rosprirodnadzor approval' },
+    { ru: 'Государственная экологическая экспертиза (ГЭЭ)', en: 'State Environmental Review (SER)' },
+  ],
+  methodsGroups: [
     {
       titleRu: 'Экологические изыскания',
       titleEn: 'Environmental Surveys',
@@ -115,7 +130,7 @@ const data = {
       descEn: 'Technical and biological reclamation, monitoring',
     },
   ],
- stepImages: [
+  stepImages: [
     '/images/one.jpg',
     '/images/two.jpg',
     '/images/three.jpg',
@@ -159,7 +174,7 @@ const data = {
     resultRu: 'Выполнена техническая и биологическая рекультивация. Восстановлено 38 га тундры. Получены положительные заключения приёмочных комиссий.',
     resultEn: 'Completed technical and biological reclamation. Restored 38 ha of tundra. Received positive acceptance commission conclusions.',
   },
-  caseImage: '/api/placeholder/500/300',
+  caseImage: '/images/vankor.jpg',
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Ямал', en: 'Yamal' },

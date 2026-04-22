@@ -2,9 +2,9 @@
 
 import { ServicePageTemplate } from './service-page-template'
 import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
+import type { ServicePageData } from '@/components/services/service-page-template'
 
-
-const data = {
+const data: ServicePageData = {
   icon: Radio,
   titleRu: 'Геофизические работы',
   titleEn: 'Geophysical Works',
@@ -12,7 +12,20 @@ const data = {
   descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
   heroImage: '/images/geophys3.jpg',
   reverse: true,
-   methodsGroups: [
+  methods: [
+    { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
+    { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
+    { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
+    { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
+    { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical survey' },
+    { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
+    { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
+    { ru: 'Гравиразведка', en: 'Gravity survey' },
+    { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
+    { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
+    { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
+  ],
+  methodsGroups: [
     {
       titleRu: 'Скважинная геофизика (ГИС)',
       titleEn: 'Borehole Geophysics',
@@ -46,45 +59,39 @@ const data = {
       ]
     },
   ],
-  methodsImage: '/api/placeholder/500/350',
+  methodsImage: '/images/geophys-methods.jpg',
   equipment: [
-  {
-    titleRu: 'Электроразведка',
-    titleEn: 'Electrical Methods',
-    href: '/services/geophysics/electrical',  // ← ссылка на страницу метода
-    items: ['ЭРА-МАКС (АМТЗ, ВП)', 'Феникс MTU-5A', 'ИМВП-8'],
-  },
-  {
-    titleRu: 'Магниторазведка',
-    titleEn: 'Magnetic Survey',
-    href: '/services/geophysics/magnetic',
-    items: ['MMPOS-2', 'GSM-19 Overhauser', 'Протоновые магнитометры'],
-  },
-  {
-    titleRu: 'Гравиразведка',
-    titleEn: 'Gravity Survey',
-    href: '/services/geophysics/gravity',
-    items: ['Scintrex CG-6', 'Autograv CG-5', 'Лазерные нивелиры'],
-  },
-  {
-    titleRu: 'Сейсморазведка',
-    titleEn: 'Seismic Survey',
-    href: '/services/geophysics/seismic',
-    items: ['Скала-48', 'Сейсмостанции 24-48 каналов', 'Сейсмоприёмники GS-20DX'],
-  },
-  {
-    titleRu: 'Каротаж',
-    titleEn: 'Well Logging',
-    href: '/services/geophysics/logging',
-    items: ['Комплексные каротажные станции', 'Инклинометры', 'Акустические зонды'],
-  },
-  {
-    titleRu: 'ПО для обработки',
-    titleEn: 'Processing Software',
-    href: '/services/geophysics/software',
-    items: ['Oasis Montaj', 'ZondRes2D/3D', 'RadExPro', 'Petrel'],
-  },
-],
+    {
+      titleRu: 'Электроразведка',
+      titleEn: 'Electrical Methods',
+      items: ['ЭРА-МАКС (АМТЗ, ВП)', 'Феникс MTU-5A', 'ИМВП-8'],
+    },
+    {
+      titleRu: 'Магниторазведка',
+      titleEn: 'Magnetic Survey',
+      items: ['MMPOS-2', 'GSM-19 Overhauser', 'Протоновые магнитометры'],
+    },
+    {
+      titleRu: 'Гравиразведка',
+      titleEn: 'Gravity Survey',
+      items: ['Scintrex CG-6', 'Autograv CG-5', 'Лазерные нивелиры'],
+    },
+    {
+      titleRu: 'Сейсморазведка',
+      titleEn: 'Seismic Survey',
+      items: ['Скала-48', 'Сейсмостанции 24-48 каналов', 'Сейсмоприёмники GS-20DX'],
+    },
+    {
+      titleRu: 'Каротаж',
+      titleEn: 'Well Logging',
+      items: ['Комплексные каротажные станции', 'Инклинометры', 'Акустические зонды'],
+    },
+    {
+      titleRu: 'ПО для обработки',
+      titleEn: 'Processing Software',
+      items: ['Oasis Montaj', 'ZondRes2D/3D', 'RadExPro', 'Petrel'],
+    },
+  ],
   steps: [
     {
       numRu: '01',
@@ -183,12 +190,10 @@ const data = {
     { value: '85+', labelRu: 'проектов', labelEn: 'projects' },
     { value: '5 000+ км', labelRu: 'профилей', labelEn: 'of profiles' },
     { value: '200+', labelRu: 'скважин каротажа', labelEn: 'logged wells' },
-    { value: '125 000', labelRu: 'точек отснято', labelEn: 'max IP anomaly' },
+    { value: '12%', labelRu: 'макс. аномалия ВП', labelEn: 'max IP anomaly' },
   ],
 }
 
 export function GeophysicsContent() {
   return <ServicePageTemplate data={data} />
 }
-
-

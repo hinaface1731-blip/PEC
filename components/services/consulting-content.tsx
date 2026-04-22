@@ -4,8 +4,7 @@ import { ServicePageTemplate } from './service-page-template'
 import { FileText, BarChart3, ClipboardCheck, ShieldCheck, TrendingUp, Users } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
-
-const data = {
+const data: ServicePageData = {
   icon: FileText,
   titleRu: 'Проектирование и консалтинг',
   titleEn: 'Design & Consulting',
@@ -13,6 +12,20 @@ const data = {
   descEn: 'Full range of design and consulting services: from feasibility studies to resource approval at GKZ. Experience with Russian and international standards.',
   heroImage: '/images/project.jpg',
   reverse: true,
+  methods: [
+    { ru: 'Проектирование ГРР (геологическое задание)', en: 'GRR project design (geological assignment)' },
+    { ru: 'Разработка инвестиционных программ', en: 'Investment program development' },
+    { ru: 'Сопровождение лицензирования', en: 'Licensing support' },
+    { ru: 'Технико-экономическое обоснование', en: 'Technical and economic assessment' },
+    { ru: 'ГИС-моделирование (Micromine, Surpac)', en: 'GIS modeling (Micromine, Surpac)' },
+    { ru: 'Блочное моделирование месторождений', en: 'Block modeling of deposits' },
+    { ru: 'ТЭО кондиций для подсчёта запасов', en: 'Feasibility study for resource estimation' },
+    { ru: 'Подсчёт запасов ГКЗ/ТКЗ', en: 'GKZ/TKZ resource estimation' },
+    { ru: 'Оценка ресурсов по стандартам JORC', en: 'JORC resource assessment' },
+    { ru: 'Экспертиза геологических отчётов', en: 'Geological report review' },
+    { ru: 'Аудит геологических данных', en: 'Geological data audit' },
+    { ru: 'Due Diligence проектов', en: 'Project Due Diligence' },
+  ],
   methodsGroups: [
     {
       titleRu: 'Проектирование ГРР',
@@ -48,7 +61,7 @@ const data = {
       ]
     },
   ],
-  methodsImage: '/api/placeholder/500/350',
+  methodsImage: '/images/methods-consulting.jpg',
   equipment: [
     {
       titleRu: 'ПО для моделирования',
@@ -157,7 +170,7 @@ const data = {
     resultRu: 'Защищены запасы категорий С1+С2 в объёме 15 тонн золота. Утверждены кондиции для открытой отработки.',
     resultEn: 'Approved C1+C2 resources of 15 tonnes gold. Cutoff grades approved for open-pit mining.',
   },
-  caseImage: '/api/placeholder/500/300',
+  caseImage: '/images/case-study-consulting.jpg',
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Магаданская область', en: 'Magadan Region' },
