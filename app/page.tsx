@@ -17,7 +17,6 @@ export default function HomePage() {
   return (
     <PageLayout>
       <HeroSection />
- 
       <ServicesSection />
       <CycleSection />
       <ProjectsSection />
