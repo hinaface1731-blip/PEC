@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
+import { Radio, Drill, Compass } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
@@ -64,31 +64,37 @@ const data: ServicePageData = {
     {
       titleRu: 'Электроразведка',
       titleEn: 'Electrical Methods',
+      href: '/services/geophysics/electrical',
       items: ['ЭРА-МАКС (АМТЗ, ВП)', 'Феникс MTU-5A', 'ИМВП-8'],
     },
     {
       titleRu: 'Магниторазведка',
       titleEn: 'Magnetic Survey',
+      href: '/services/geophysics/magnetic',
       items: ['MMPOS-2', 'GSM-19 Overhauser', 'Протоновые магнитометры'],
     },
     {
       titleRu: 'Гравиразведка',
       titleEn: 'Gravity Survey',
+      href: '/services/geophysics/gravity',
       items: ['Scintrex CG-6', 'Autograv CG-5', 'Лазерные нивелиры'],
     },
     {
       titleRu: 'Сейсморазведка',
       titleEn: 'Seismic Survey',
+      href: '/services/geophysics/seismic',
       items: ['Скала-48', 'Сейсмостанции 24-48 каналов', 'Сейсмоприёмники GS-20DX'],
     },
     {
       titleRu: 'Каротаж',
       titleEn: 'Well Logging',
+      href: '/services/geophysics/logging',
       items: ['Комплексные каротажные станции', 'Инклинометры', 'Акустические зонды'],
     },
     {
       titleRu: 'ПО для обработки',
       titleEn: 'Processing Software',
+      href: '/services/geophysics/software',
       items: ['Oasis Montaj', 'ZondRes2D/3D', 'RadExPro', 'Petrel'],
     },
   ],

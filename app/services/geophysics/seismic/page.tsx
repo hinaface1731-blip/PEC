@@ -104,7 +104,6 @@ const equipment = [
     typeEn: 'Seismic station',
     qty: 1,
     specs: ['48 каналов', '24-бит АЦП', 'Запись на SSD'],
-    specsEn: ['48 channels', '24-bit ADC', 'SSD recording'],
   },
   {
     nameRu: 'Сейсмоприёмники GS-20DX',
@@ -113,7 +112,6 @@ const equipment = [
     typeEn: 'Geophones',
     qty: 120,
     specs: ['Частота 10 Гц', 'Чувствительность 80 В/м/с', 'Герметичные'],
-    specsEn: ['10 Hz frequency', '80 V/m/s sensitivity', 'Waterproof'],
   },
   {
     nameRu: 'Источник ЭВ-65/105',
@@ -122,7 +120,6 @@ const equipment = [
     typeEn: 'Explosive source',
     qty: 1,
     specs: ['Глубина скважин до 25 м', 'Наработка 3000 скважин', 'Сейсмический патрон'],
-    specsEn: ['Well depth up to 25 m', '3000 wells experience', 'Seismic cartridge'],
   },
   {
     nameRu: 'RadExPro',
@@ -131,7 +128,6 @@ const equipment = [
     typeEn: 'Processing software',
     qty: 1,
     specs: ['2D/3D обработка', 'Миграция Кирхгофа', 'AVO анализ'],
-    specsEn: ['2D/3D processing', 'Kirchhoff migration', 'AVO analysis'],
   },
 ]
 
@@ -174,7 +170,7 @@ export default function SeismicPage() {
 
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-lg">
-                    <Waves className="w-8 h-8 text-white" />
+                    <Waves className="w-8 h-8 text-orange-500" />
                   </div>
                   <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground">
                     {t('Сейсморазведка', 'Seismic Survey')}
@@ -208,12 +204,12 @@ export default function SeismicPage() {
               {subMethods.map((method, index) => (
                 <FadeIn key={method.id} delay={index * 0.1}>
                   <div className="card-enhanced rounded-2xl overflow-hidden group">
-                    <div className="flex flex-col md:flex-row gap-6 p-6">
+                    <div className="flex flex-col md:flex-row">
                       {/* Левая часть - текстовая */}
-                      <div className="flex-1 p-8">
+                      <div className="flex-1 p-6 md:p-8">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center shadow-md shrink-0">
-                            <method.icon className="w-6 h-6 text-white" />
+                          <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+                            <method.icon className="w-6 h-6 text-orange-500" />
                           </div>
                           <h3 className="font-display text-xl lg:text-2xl font-semibold text-foreground">
                             {t(method.titleRu, method.titleEn)}
@@ -228,10 +224,10 @@ export default function SeismicPage() {
                           <h4 className="font-medium text-foreground mb-2 text-sm">
                             {t('Решаемые задачи:', 'Applications:')}
                           </h4>
-                          <ul className="space-y-1">
+                          <ul className="space-y-2">
                             {method.tasksRu.map((task, idx) => (
-                              <li key={idx} className="flex items-center gap-2 text-sm">
-                                <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                              <li key={idx} className="flex items-start gap-2 text-sm">
+                                <CheckCircle className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
                                 <span className="text-muted-foreground">
                                   {t(task, method.tasksEn[idx])}
                                 </span>
@@ -242,14 +238,14 @@ export default function SeismicPage() {
                       </div>
 
                       {/* Правая часть - картинка */}
-                      <div className="relative w-full md:w-80 lg:w-96 rounded-xl overflow-hidden">
+                      <div className="relative w-full md:w-80 lg:w-96 h-64 md:h-auto">
                         <Image
                           src={method.image}
                           alt={t(method.titleRu, method.titleEn)}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 384px"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-l from-black/10 to-transparent md:bg-gradient-to-r" />
                       </div>
                     </div>
                   </div>
@@ -274,23 +270,23 @@ export default function SeismicPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {equipment.map((item, index) => (
                 <FadeIn key={item.nameRu} delay={index * 0.1}>
-                  <div className="p-6 bg-background rounded-xl border border-border h-full hover:border-accent/50 transition-all hover:shadow-lg">
+                  <div className="p-6 bg-background rounded-xl border border-border h-full hover:border-orange-500/50 transition-all hover:shadow-lg">
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-display text-xl font-semibold text-foreground">
                         {t(item.nameRu, item.nameEn)}
                       </h4>
-                      <span className="text-xs bg-accent/10 text-accent px-2 py-1 rounded">
+                      <span className="text-xs bg-orange-500/10 text-orange-500 px-2 py-1 rounded">
                         {item.qty} {t('шт', 'pcs')}
                       </span>
                     </div>
-                    <p className="text-sm text-accent mb-4">
+                    <p className="text-sm text-orange-500 mb-4">
                       {t(item.typeRu, item.typeEn)}
                     </p>
-                    <ul className="space-y-1">
+                    <ul className="space-y-2">
                       {item.specs.map((spec, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-accent rounded-full" />
-                          {t(spec, item.specsEn[idx])}
+                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                          {spec}
                         </li>
                       ))}
                     </ul>
@@ -313,7 +309,7 @@ export default function SeismicPage() {
                   </h2>
                 </div>
 
-                <div className="card-enhanced p-8 rounded-2xl">
+                <div className="card-enhanced p-6 md:p-8 rounded-2xl">
                   <h3 className="font-display text-2xl font-semibold text-foreground mb-4">
                     {t(caseStudy.titleRu, caseStudy.titleEn)}
                   </h3>
@@ -322,7 +318,7 @@ export default function SeismicPage() {
                     <p className="text-sm text-muted-foreground mb-2">{t('Лицензии:', 'Licenses:')}</p>
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.licenses.map((license, idx) => (
-                        <span key={license} className="px-3 py-1 bg-accent/10 text-accent text-sm font-mono rounded-lg">
+                        <span key={license} className="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm font-mono rounded-lg">
                           {license} — {caseStudy.licenseNames[idx]}
                         </span>
                       ))}
@@ -336,12 +332,12 @@ export default function SeismicPage() {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-accent/5 border border-accent/20 rounded-xl">
+                  <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl">
                     <p className="text-sm text-muted-foreground mb-1">{t('Результат:', 'Result:')}</p>
                     <p className="text-foreground">{t(caseStudy.resultRu, caseStudy.resultEn)}</p>
                   </div>
 
-                  <div className="mt-6 flex gap-4">
+                  <div className="mt-6 flex flex-wrap gap-4">
                     <Button asChild>
                       <Link href="/projects">
                         {t('Все проекты', 'All Projects')}
@@ -349,7 +345,7 @@ export default function SeismicPage() {
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href="/documents/license-extract.pdf" target="_blank">
+                      <a href="/documents/license-extract.pdf" target="_blank" rel="noopener noreferrer">
                         <Download className="mr-2 w-4 h-4" />
                         {t('Выписка лицензий', 'License Extract')}
                       </a>
