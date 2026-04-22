@@ -1,44 +1,90 @@
-"use client"
+'use client'
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
-import { MapPin, Phone, Mail, Clock, Send, Building, Globe } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Send, Building, Globe, Upload, FileText, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
+import { useYandexMapsContext } from "@/components/yandex-map-loader"
 
-const offices = [
-  {
-    city: "Красноярск",
-    type: "Головной офис",
-    address: "ул. Ленина, 84",
-    phone: "+7(391)205-15-84",
-    email: "info@polar-ec.ru",
-    hours: "Пн-Пт: 10:00 - 18:00"
-  },
-]
-
-const departments = [
-  { id: 1, name: "Отдел продаж", email: "info@polar-ec.ru", phone: "+7 (391) 205-15-84" },
-  { id: 2, name: "Геологический отдел", email: "geo@polar-ec.ru", phone: "+7 (391) 205-15-85" },
-  { id: 3, name: "Геофизический отдел", email: "geofiz@polar-ec.ru", phone: "+7 (391) 205-15-86" },
-  { id: 4, name: "Маркшейдерский отдел", email: "mark@polar-ec.ru", phone: "+7 (391) 205-15-87" }
-]
+const officeInfo = {
+  city: "Красноярск",
+  type: "Головной офис",
+  address: "ул. Ленина, 84",
+  phone: "+7(391)205-15-84",
+  email: "hr@polar-ec.ru",
+  hours: "Пн-Пт: 10:00 - 18:00",
+  coordinates: [56.0084, 92.8524] as [number, number]
+}
 
 export function ContactsContent() {
   const [formData, setFormData] = useState({
-    name: "",
-    company: "",
+    fullName: "",
     email: "",
     phone: "",
-    subject: "",
+    position: "",
+    experience: "",
     message: ""
   })
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
+  
+  const mapRef = useRef<HTMLDivElement>(null)
+  const { isReady, ymaps } = useYandexMapsContext()
+
+  // Инициализация карты
+  useEffect(() => {
+    if (!isReady || !ymaps || !mapRef.current) return
+
+    let map: any = null
+
+    try {
+      map = new ymaps.Map(mapRef.current, {
+        center: officeInfo.coordinates,
+        zoom: 15,
+        controls: ['zoomControl', 'fullscreenControl'],
+      })
+
+      // Маркер офиса
+      const placemark = new ymaps.Placemark(
+        officeInfo.coordinates,
+        {
+          hintContent: officeInfo.city,
+          balloonContent: `
+            <div style="padding: 10px; font-family: sans-serif;">
+              <strong>🏢 ${officeInfo.city}</strong><br/>
+              📍 ${officeInfo.address}<br/>
+              📞 ${officeInfo.phone}<br/>
+              ✉️ ${officeInfo.email}
+            </div>
+          `,
+        },
+        { preset: 'islands#blueIcon' }
+      )
+      map.geoObjects.add(placemark)
+    } catch (err) {
+      console.error('Ошибка инициализации карты:', err)
+    }
+
+    return () => {
+      if (map) {
+        map.destroy()
+        map = null
+      }
+    }
+  }, [isReady, ymaps])
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0])
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -46,17 +92,20 @@ export function ContactsContent() {
     setError('')
     
     try {
-      const response = await fetch('/api/send-form', {
+      const formDataToSend = new FormData()
+      formDataToSend.append('fullName', formData.fullName)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('position', formData.position)
+      formDataToSend.append('experience', formData.experience)
+      formDataToSend.append('message', formData.message)
+      if (selectedFile) {
+        formDataToSend.append('resume', selectedFile)
+      }
+
+      const response = await fetch('/api/send-resume', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          organization: formData.company,
-          phone: formData.phone,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }),
+        body: formDataToSend,
       })
 
       if (!response.ok) {
@@ -65,7 +114,8 @@ export function ContactsContent() {
 
       setIsSubmitting(false)
       setIsSubmitted(true)
-      setFormData({ name: "", company: "", email: "", phone: "", subject: "", message: "" })
+      setFormData({ fullName: "", email: "", phone: "", position: "", experience: "", message: "" })
+      setSelectedFile(null)
       setTimeout(() => setIsSubmitted(false), 5000)
     } catch (err) {
       setError('Ошибка отправки. Попробуйте позже.')
@@ -87,6 +137,7 @@ export function ContactsContent() {
             sizes="100vw"
             style={{ objectPosition: 'center 20%' }}
           />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
         
         <div className="relative z-10 h-full flex items-center">
@@ -97,31 +148,68 @@ export function ContactsContent() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              {/* Хлебные крошки */}
               <div className="flex items-center gap-2 text-white/70 mb-4">
                 <Link href="/" className="hover:text-white transition-colors">Главная</Link>
                 <span>/</span>
-                <span className="text-white">Контакты</span>
+                <span className="text-white">Карьера</span>
               </div>
               
-              {/* Заголовок */}
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Свяжитесь с нами
+                Работа в ПЭК
               </h1>
               
-              {/* Описание */}
               <p className="text-xl text-white/90 leading-relaxed">
-                Готовы обсудить ваш проект? Наши специалисты ответят на все вопросы 
-                и помогут подобрать оптимальное решение.
+                Присоединяйтесь к команде профессионалов! Отправьте нам своё резюме,
+                и мы свяжемся с вами при открытии подходящей вакансии.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Form & Map */}
       <section className="py-20">
         <div className="container mx-auto px-4">
+          {/* Карточка офиса */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-card p-6 rounded-2xl border border-border mb-8"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <Building className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-foreground">
+                    {officeInfo.city}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{officeInfo.address}</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-6">
+                <div className="flex items-center gap-2 text-sm">
+                  <Phone className="w-4 h-4 text-primary" />
+                  <a href={`tel:${officeInfo.phone.replace(/\s/g, "")}`} className="hover:text-primary transition-colors">
+                    {officeInfo.phone}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Mail className="w-4 h-4 text-primary" />
+                  <a href={`mailto:${officeInfo.email}`} className="hover:text-primary transition-colors">
+                    {officeInfo.email}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Clock className="w-4 h-4 text-primary" />
+                  <span>{officeInfo.hours}</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <motion.div
@@ -131,10 +219,10 @@ export function ContactsContent() {
             >
               <div className="bg-card p-8 md:p-10 rounded-2xl border border-border">
                 <h2 className="font-display text-2xl font-bold text-foreground mb-2">
-                  Отправить заявку
+                  Отправить резюме
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Заполните форму и мы свяжемся с вами в течение 24 часов
+                  Заполните форму и прикрепите файл с резюме. Мы рассмотрим вашу кандидатуру и свяжемся с вами.
                 </p>
 
                 {isSubmitted ? (
@@ -144,62 +232,46 @@ export function ContactsContent() {
                     className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-center"
                   >
                     <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Send className="w-8 h-8 text-green-500" />
+                      <CheckCircle className="w-8 h-8 text-green-500" />
                     </div>
                     <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      Заявка отправлена!
+                      Резюме отправлено!
                     </h3>
                     <p className="text-muted-foreground">
-                      Спасибо за обращение. Наш специалист свяжется с вами в ближайшее время.
+                      Спасибо за интерес к нашей компании. Мы свяжемся с вами при открытии подходящей вакансии.
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Ваше имя *
-                        </label>
-                        <Input
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Иван Иванов"
-                          className="bg-background"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Компания
-                        </label>
-                        <Input
-                          value={formData.company}
-                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                          placeholder="Название компании"
-                          className="bg-background"
-                        />
-                      </div>
+                    <div>
+                      <Label htmlFor="fullName">ФИО *</Label>
+                      <Input
+                        id="fullName"
+                        required
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        placeholder="Иванов Иван Иванович"
+                        className="bg-background"
+                      />
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Email *
-                        </label>
+                        <Label htmlFor="email">Email *</Label>
                         <Input
+                          id="email"
                           type="email"
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="email@company.com"
+                          placeholder="ivanov@example.com"
                           className="bg-background"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Телефон *
-                        </label>
+                        <Label htmlFor="phone">Телефон *</Label>
                         <Input
+                          id="phone"
                           type="tel"
                           required
                           value={formData.phone}
@@ -211,30 +283,52 @@ export function ContactsContent() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Тема обращения
-                      </label>
+                      <Label htmlFor="position">Желаемая должность *</Label>
                       <Input
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder="Запрос коммерческого предложения"
+                        id="position"
+                        required
+                        value={formData.position}
+                        onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                        placeholder="Главный геолог / Геофизик / Инженер-буровик"
                         className="bg-background"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Сообщение *
-                      </label>
+                      <Label htmlFor="experience">Опыт работы</Label>
                       <Textarea
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="Опишите ваш проект или задайте вопрос..."
+                        id="experience"
+                        rows={3}
+                        value={formData.experience}
+                        onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                        placeholder="Кратко опишите ваш опыт работы..."
                         className="bg-background resize-none"
                       />
                     </div>
+
+                    <div>
+                      <Label htmlFor="resume">Прикрепить резюме *</Label>
+                      <div className="mt-2 flex items-center gap-4 flex-wrap">
+                        <Input
+                          id="resume"
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          onChange={handleFileChange}
+                          className="flex-1 bg-background"
+                        />
+                        {selectedFile && (
+                          <span className="text-sm text-muted-foreground flex items-center gap-1">
+                            <FileText className="w-4 h-4" />
+                            {selectedFile.name}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Поддерживаемые форматы: PDF, DOC, DOCX
+                      </p>
+                    </div>
+
+                    
 
                     <Button
                       type="submit"
@@ -250,7 +344,7 @@ export function ContactsContent() {
                       ) : (
                         <>
                           <Send className="w-5 h-5 mr-2" />
-                          Отправить заявку
+                          Отправить резюме
                         </>
                       )}
                     </Button>
@@ -270,74 +364,37 @@ export function ContactsContent() {
               </div>
             </motion.div>
 
-            {/* Contact Info */}
+            {/* Map */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
             >
-              {/* Quick Contacts */}
-              <div className="grid gap-4">
-                <a
-                  href="tel:+7(391)205-15-84"
-                  className="flex items-center gap-4 bg-card p-5 rounded-xl border border-border hover:border-primary/30 transition-colors group"
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">Телефон</div>
-                    <div className="font-medium text-foreground">+7(391)205-15-84</div>
-                  </div>
-                </a>
-                <a
-                  href="mailto:info@polar-ec.ru"
-                  className="flex items-center gap-4 bg-card p-5 rounded-xl border border-border hover:border-primary/30 transition-colors group"
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">Email</div>
-                    <div className="font-medium text-foreground">info@polar-ec.ru</div>
-                  </div>
-                </a>
-                <a
-                  href="https://polar-ec.ru"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 bg-card p-5 rounded-xl border border-border hover:border-primary/30 transition-colors group"
-                >
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Globe className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground">Сайт</div>
-                    <div className="font-medium text-foreground">www.polar-ec.ru</div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Departments */}
-              <div className="bg-card p-6 rounded-xl border border-border">
-                <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-                  Отделы компании
+              <div className="bg-card p-6 rounded-2xl border border-border h-full">
+                <h3 className="font-display text-xl font-semibold text-foreground mb-4">
+                  Мы находимся здесь
                 </h3>
-                <div className="space-y-4">
-                  {departments.map((dept) => (
-                    <div key={dept.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-border last:border-0 last:pb-0">
-                      <div className="font-medium text-foreground">{dept.name}</div>
-                      <div className="flex flex-col sm:items-end text-sm text-muted-foreground">
-                        <a href={`mailto:${dept.email}`} className="hover:text-primary transition-colors">
-                          {dept.email}
-                        </a>
-                        <a href={`tel:${dept.phone.replace(/\s/g, "")}`} className="hover:text-primary transition-colors">
-                          {dept.phone}
-                        </a>
-                      </div>
+                <div
+                  ref={mapRef}
+                  className="rounded-xl overflow-hidden"
+                  style={{ width: '100%', height: '400px' }}
+                >
+                  {!isReady && (
+                    <div className="w-full h-full flex items-center justify-center bg-muted">
+                      <span className="text-muted-foreground">Загрузка карты...</span>
                     </div>
-                  ))}
+                  )}
+                </div>
+                <div className="mt-4 text-center">
+                  <a
+                    href="https://maps.yandex.ru/?text=Красноярск, улица Ленина, 84"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    Открыть в Яндекс.Картах
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -345,72 +402,24 @@ export function ContactsContent() {
         </div>
       </section>
 
-      {/* Offices */}
-      <section className="py-10 bg-card">
+      {/* Open Positions (краткий список) */}
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Наш офис
-            </h2>
-          </motion.div>
-          
-          <div className="flex justify-center">
-            {offices.map((office) => (
-              <motion.div
-                key={office.city}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-background p-6 rounded-2xl border border-border w-full max-w-2xl"
+          <h2 className="text-2xl font-bold text-foreground text-center mb-8">
+            Мы ищем специалистов
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Геологи', 'Геофизики', 'Инженеры-буровики', 'Маркшейдеры', 'Лаборанты', 'Программисты ГИС'].map((position, idx) => (
+              <span
+                key={idx}
+                className="px-4 py-2 bg-background border border-border rounded-full text-sm text-foreground"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Building className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-foreground">
-                      {office.city}
-                    </h3>
-                    <span className="text-xs text-primary">{office.type}</span>
-                  </div>
-                </div>
-
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">{office.address}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                    <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="text-foreground hover:text-primary transition-colors">
-                      {office.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                    <a href={`mailto:${office.email}`} className="text-foreground hover:text-primary transition-colors">
-                      {office.email}
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                    <span className="text-muted-foreground">{office.hours}</span>
-                  </div>
-                </div>
-              </motion.div>
+                {position}
+              </span>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Map Placeholder */}
-      
     </div>
   )
 }

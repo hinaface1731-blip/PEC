@@ -66,7 +66,7 @@ export default function RootLayout({
       <body className={`${unbounded.variable} ${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
-            <YandexMapLoader apiKey={process.env.NEXT_PUBLIC_YANDEX_MAPS_KEY || ''}>
+            <YandexMapLoader>
               {children}
             </YandexMapLoader>
           </LanguageProvider>
