@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
-import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, ArrowUpRight } from 'lucide-react'
+import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, ArrowUpRight, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const services = [
@@ -71,33 +71,37 @@ export function ServicesSection() {
     <section className="section">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
-          <div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl lg:text-4xl font-bold text-(--text) mb-4"
-            >
-              {t('Наши услуги', 'Our Services')}
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-[var(--muted)] max-w-2xl"
-            >
-              {t(
-                'Полный спектр геологоразведочных работ для горнодобывающей отрасли',
-                'Full range of geological exploration services for the mining industry'
-              )}
-            </motion.p>
-          </div>
-          <Link href="/services" className="btn btn-ghost shrink-0">
-            {t('Все услуги', 'All Services')}
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
+  <div>
+    <motion.h2 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-3xl lg:text-4xl font-bold text-foreground mb-4"
+    >
+      {t('Наши услуги', 'Our Services')}
+    </motion.h2>
+    <motion.p 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="text-muted-foreground max-w-2xl"
+    >
+      {t(
+        'Полный спектр геологоразведочных работ для горнодобывающей отрасли',
+        'Full range of geological exploration services for the mining industry'
+      )}
+    </motion.p>
+  </div>
+  
+  <Link 
+  href="/services" 
+  className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
+>
+  {t('Все услуги', 'All Services')}
+  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+</Link>
+</div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (

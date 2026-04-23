@@ -10,7 +10,7 @@ const data: ServicePageData = {
   titleEn: 'Geophysical Works',
   descRu: 'Комплекс наземных и скважинных геофизических исследований для поиска и разведки месторождений полезных ископаемых. Современное оборудование и опытные специалисты.',
   descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
-  heroImage: '/images/geophys3.jpg',
+  heroImage: '/images/geophys5.jpeg',
   reverse: true,
   methods: [
     { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },

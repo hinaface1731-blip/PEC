@@ -32,13 +32,12 @@ export function Footer() {
           {/* Logo & Description - колонка 1 */}
           <div className="space-y-1">
             <Link href="/" className="inline-block">
-              <Image
+<Image
   src="/images/logo.png"
   alt={t('ПЭК', 'PEC')}
   width={150}
-  height={60}   // ← изменили на 60, чтобы соответствовать пропорциям
-  className="object-contain"
-  loading="eager"
+  height={60}
+  className="object-contain dark:brightness-0 dark:invert"
   priority
 />
             </Link>

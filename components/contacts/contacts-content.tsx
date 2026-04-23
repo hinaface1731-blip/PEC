@@ -16,9 +16,9 @@ const officeInfo = {
   type: "Головной офис",
   address: "ул. Ленина, 84",
   phone: "+7(391)205-15-84",
-  email: "hr@polar-ec.ru",
+  email: "ok@polar-ec.ru",
   hours: "Пн-Пт: 10:00 - 18:00",
-  coordinates: [56.0084, 92.8524] as [number, number]
+  coordinates: [56.013528, 92.867583] as [number, number]
 }
 
 export function ContactsContent() {
