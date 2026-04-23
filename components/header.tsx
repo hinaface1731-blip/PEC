@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'  // ← добавляем
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
@@ -19,25 +19,30 @@ const services = [
   { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
 ]
 
+// ✅ Убрали 'О компании' из navItems (она уже есть отдельно)
 const navItems = [
-  { href: '/about', ru: 'О компании', en: 'About' },
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
   { href: '/contacts', ru: 'Контакты', en: 'Contacts' },
 ]
 
 export function Header() {
-  const pathname = usePathname()  // ← текущий путь
+  const pathname = usePathname()
   const { theme, toggleTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const mobileMenuRef = useRef<HTMLDivElement>(null)  // ← для клика вне меню
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // ✅ Закрытие мобильного меню при клике вне его
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === href
+    return pathname.startsWith(href)
+  }
+
+  // Закрытие мобильного меню при клике вне
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
@@ -59,63 +64,49 @@ export function Header() {
     }
   }, [mobileMenuOpen])
 
-  // ✅ Закрытие мобильного меню при смене маршрута
+  // Закрытие при смене роута
   useEffect(() => {
     setMobileMenuOpen(false)
     setMobileServicesOpen(false)
   }, [pathname])
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
     setServicesOpen(true)
   }
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setServicesOpen(false)
-    }, 150)
+    timeoutRef.current = setTimeout(() => setServicesOpen(false), 150)
   }
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [])
-
-  // ✅ Проверка активного пункта
-  const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === href
-    }
-    return pathname.startsWith(href)
-  }
 
   return (
     <header className="sticky top-0 z-50 h-[78px] border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-xl">
       <nav className="h-full max-w-7xl mx-auto px-6 grid grid-cols-[auto_1fr_auto] items-center gap-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors">
-          <Image
-            src="/images/logo.png"
-            alt={t('ПЭК', 'PEC')}
-            width={150}
-            height={60}
-            className="object-contain"
-            loading="eager"
-            priority
-          />
+        <Link href="/" className="flex items-center gap-2">
+        
+<Image
+  src="/images/logo.png"
+  alt={t('ПЭК', 'PEC')}
+  width={150}
+  height={60}
+  className="object-contain dark:brightness-0 dark:invert"
+  priority
+/>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-center gap-1">
-          {/* О компании */}
+          {/* О компании - отдельно, первая */}
           <Link
             href="/about"
-            className={`px-4 py-2 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+            className={`px-4 py-2 rounded-lg transition-colors hover:bg-[var(--bg3)] ${
               isActive('/about')
                 ? 'text-[var(--accent)]'
                 : 'text-[var(--text)] hover:text-[var(--accent)]'
@@ -131,11 +122,13 @@ export function Header() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button className={`flex items-center gap-1 px-4 py-2 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
-              isActive('/services')
-                ? 'text-[var(--accent)]'
-                : 'text-[var(--text)] hover:text-[var(--accent)]'
-            }`}>
+            <button
+              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-colors hover:bg-[var(--bg3)] ${
+                isActive('/services')
+                  ? 'text-[var(--accent)]'
+                  : 'text-[var(--text)] hover:text-[var(--accent)]'
+              }`}
+            >
               {t('Услуги', 'Services')}
               <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
             </button>
@@ -145,7 +138,6 @@ export function Header() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
                 className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden"
               >
                 <div className="py-2">
@@ -175,12 +167,12 @@ export function Header() {
             )}
           </div>
 
-          {/* Остальные пункты */}
+          {/* Остальные пункты (без О компании) */}
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`px-4 py-2 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+              className={`px-4 py-2 rounded-lg transition-colors hover:bg-[var(--bg3)] ${
                 isActive(item.href)
                   ? 'text-[var(--accent)]'
                   : 'text-[var(--text)] hover:text-[var(--accent)]'
@@ -193,23 +185,23 @@ export function Header() {
 
         {/* Right side controls */}
         <div className="flex items-center gap-2">
-          <button onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}>
-  {language === 'ru' ? 'EN' : 'RU'}
-</button>
+          <button
+            onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}
+            className="px-3 py-2 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+          >
+            {language === 'ru' ? 'EN' : 'RU'}
+          </button>
 
           <button
             onClick={toggleTheme}
             className="p-2 text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
-            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -224,18 +216,30 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="lg:hidden absolute top-[78px] left-0 right-0 bg-[var(--bg)]/95 backdrop-blur-xl border-b border-[var(--border)] overflow-hidden"
           >
             <div className="px-6 py-4 space-y-2 max-h-[calc(100vh-78px)] overflow-y-auto">
-              {/* Mobile Services Dropdown */}
+              {/* О компании в мобильном меню */}
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-lg ${
+                  isActive('/about')
+                    ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                    : 'text-[var(--text)] hover:bg-[var(--bg3)]'
+                }`}
+              >
+                {t('О компании', 'About')}
+              </Link>
+
+              {/* Услуги Dropdown в мобильном меню */}
               <div>
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className={`flex items-center justify-between w-full px-4 py-3 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg ${
                     isActive('/services')
-                      ? 'text-[var(--accent)]'
-                      : 'text-[var(--text)] hover:text-[var(--accent)]'
+                      ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                      : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                   }`}
                 >
                   {t('Услуги', 'Services')}
@@ -248,7 +252,6 @@ export function Header() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
                       className="pl-4 overflow-hidden"
                     >
                       <div className="space-y-1 py-2">
@@ -257,7 +260,7 @@ export function Header() {
                             key={service.href}
                             href={service.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`block px-4 py-2 transition-colors rounded-lg ${
+                            className={`block px-4 py-2 rounded-lg ${
                               isActive(service.href)
                                 ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
                                 : 'text-[var(--muted)] hover:text-[var(--accent)]'
@@ -279,15 +282,16 @@ export function Header() {
                 </AnimatePresence>
               </div>
 
+              {/* Остальные пункты мобильного меню */}
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+                  className={`block px-4 py-3 rounded-lg ${
                     isActive(item.href)
                       ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
-                      : 'text-[var(--text)] hover:text-[var(--accent)]'
+                      : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                   }`}
                 >
                   {t(item.ru, item.en)}

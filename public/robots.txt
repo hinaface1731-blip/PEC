@@ -1,6 +1,13 @@
+# robots.txt для ПЭК — Полярная Экспедиционная Компания
+# https://polar-ec.ru/robots.txt
+
 User-agent: *
 Allow: /
-Disallow: /_next/
-Disallow: /api/
 
+# Запрещаем индексацию служебных страниц
+Disallow: /api/
+Disallow: /_next/
+Disallow: /_vercel
+
+# Карта сайта
 Sitemap: https://polar-ec.ru/sitemap.xml
