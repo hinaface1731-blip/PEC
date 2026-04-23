@@ -25,6 +25,7 @@ export function useYandexMapsContext() {
   return useContext(YandexMapsContext)
 }
 
+// ✅ Убираем apiKey из пропсов — читаем напрямую из env
 export function YandexMapLoader({ children }: { children: ReactNode }) {
   const [state, setState] = useState<YandexMapsContextType>({
     isReady: false,
@@ -42,7 +43,7 @@ export function YandexMapLoader({ children }: { children: ReactNode }) {
     if (typeof window === 'undefined') return
 
     if (!apiKey) {
-      console.error('[YandexMapLoader] API key is missing! Check NEXT_PUBLIC_YANDEX_MAPS_API_KEY in .env.local')
+      console.error('[YandexMapLoader] API key is missing! Add NEXT_PUBLIC_YANDEX_MAPS_API_KEY to .env.local')
       setState({ isReady: false, error: 'API key missing', ymaps: null })
       return
     }
@@ -55,7 +56,7 @@ export function YandexMapLoader({ children }: { children: ReactNode }) {
     let checkInterval: NodeJS.Timeout
     let timeoutId: NodeJS.Timeout
 
-    if (window.__YANDEX_MAPS_INIT__) {
+    if ((window as any).__YANDEX_MAPS_INIT__) {
       checkInterval = setInterval(() => {
         if (window.ymaps?.Map) {
           clearInterval(checkInterval)
@@ -72,7 +73,7 @@ export function YandexMapLoader({ children }: { children: ReactNode }) {
       }
     }
 
-    window.__YANDEX_MAPS_INIT__ = true
+    ;(window as any).__YANDEX_MAPS_INIT__ = true
 
     const oldScript = document.querySelector('script[src*="api-maps.yandex.ru"]')
     if (oldScript) {
@@ -81,7 +82,6 @@ export function YandexMapLoader({ children }: { children: ReactNode }) {
     }
 
     const script = document.createElement('script')
-    // ИСПРАВЛЕНО: убран пробел после apikey=
     script.src = `https://api-maps.yandex.ru/2.1/?apikey=${apiKey}&lang=ru_RU`
     script.async = true
 

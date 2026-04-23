@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'  // ← добавляем
 import Image from 'next/image'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
@@ -26,13 +27,43 @@ const navItems = [
 ]
 
 export function Header() {
+  const pathname = usePathname()  // ← текущий путь
   const { theme, toggleTheme } = useTheme()
-  const { language, toggleLanguage, t } = useLanguage()
+  const { language, setLanguage, t } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)  // ← для клика вне меню
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // ✅ Закрытие мобильного меню при клике вне его
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false)
+        setMobileServicesOpen(false)
+      }
+    }
+
+    if (mobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+
+  // ✅ Закрытие мобильного меню при смене маршрута
+  useEffect(() => {
+    setMobileMenuOpen(false)
+    setMobileServicesOpen(false)
+  }, [pathname])
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -55,42 +86,56 @@ export function Header() {
     }
   }, [])
 
+  // ✅ Проверка активного пункта
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === href
+    }
+    return pathname.startsWith(href)
+  }
+
   return (
     <header className="sticky top-0 z-50 h-[78px] border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-xl">
       <nav className="h-full max-w-7xl mx-auto px-6 grid grid-cols-[auto_1fr_auto] items-center gap-8">
-        {/* Logo - с маленьким логотипом вместо снежинки */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors">
-
-            <Image
-  src="/images/logo.png"
-  alt={t('ПЭК', 'PEC')}
-  width={150}
-  height={60}   // ← изменили на 60, чтобы соответствовать пропорциям
-  className="object-contain"
-  loading="eager"
-  priority
-/>
-    
+          <Image
+            src="/images/logo.png"
+            alt={t('ПЭК', 'PEC')}
+            width={150}
+            height={60}
+            className="object-contain"
+            loading="eager"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-center gap-1">
-          {/* О компании - первый */}
+          {/* О компании */}
           <Link
             href="/about"
-            className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+            className={`px-4 py-2 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+              isActive('/about')
+                ? 'text-[var(--accent)]'
+                : 'text-[var(--text)] hover:text-[var(--accent)]'
+            }`}
           >
             {t('О компании', 'About')}
           </Link>
 
-          {/* Услуги Dropdown - второй */}
+          {/* Услуги Dropdown */}
           <div
             ref={dropdownRef}
             className="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button className="flex items-center gap-1 px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]">
+            <button className={`flex items-center gap-1 px-4 py-2 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+              isActive('/services')
+                ? 'text-[var(--accent)]'
+                : 'text-[var(--text)] hover:text-[var(--accent)]'
+            }`}>
               {t('Услуги', 'Services')}
               <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
             </button>
@@ -108,7 +153,11 @@ export function Header() {
                     <Link
                       key={service.href}
                       href={service.href}
-                      className="block px-5 py-3 text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)] transition-all hover:translate-x-1"
+                      className={`block px-5 py-3 transition-all hover:translate-x-1 ${
+                        isActive(service.href)
+                          ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                          : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
+                      }`}
                     >
                       {t(service.ru, service.en)}
                     </Link>
@@ -126,12 +175,16 @@ export function Header() {
             )}
           </div>
 
-          {/* Остальные пункты - Проекты, Техника, Контакты */}
-          {navItems.filter(item => item.href !== '/about').map((item) => (
+          {/* Остальные пункты */}
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="px-4 py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+              className={`px-4 py-2 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+                isActive(item.href)
+                  ? 'text-[var(--accent)]'
+                  : 'text-[var(--text)] hover:text-[var(--accent)]'
+              }`}
             >
               {t(item.ru, item.en)}
             </Link>
@@ -140,12 +193,9 @@ export function Header() {
 
         {/* Right side controls */}
         <div className="flex items-center gap-2">
-          <button
-            onClick={toggleLanguage}
-            className="px-3 py-2 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
-          >
-            {language === 'ru' ? 'EN' : 'RU'}
-          </button>
+          <button onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}>
+  {language === 'ru' ? 'EN' : 'RU'}
+</button>
 
           <button
             onClick={toggleTheme}
@@ -170,6 +220,7 @@ export function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -181,7 +232,11 @@ export function Header() {
               <div>
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="flex items-center justify-between w-full px-4 py-3 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+                  className={`flex items-center justify-between w-full px-4 py-3 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+                    isActive('/services')
+                      ? 'text-[var(--accent)]'
+                      : 'text-[var(--text)] hover:text-[var(--accent)]'
+                  }`}
                 >
                   {t('Услуги', 'Services')}
                   <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
@@ -202,7 +257,11 @@ export function Header() {
                             key={service.href}
                             href={service.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block px-4 py-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors rounded-lg"
+                            className={`block px-4 py-2 transition-colors rounded-lg ${
+                              isActive(service.href)
+                                ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                                : 'text-[var(--muted)] hover:text-[var(--accent)]'
+                            }`}
                           >
                             {t(service.ru, service.en)}
                           </Link>
@@ -225,7 +284,11 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-[var(--text)] hover:text-[var(--accent)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
+                  className={`block px-4 py-3 transition-colors rounded-lg hover:bg-[var(--bg3)] ${
+                    isActive(item.href)
+                      ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                      : 'text-[var(--text)] hover:text-[var(--accent)]'
+                  }`}
                 >
                   {t(item.ru, item.en)}
                 </Link>
