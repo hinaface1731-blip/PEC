@@ -301,7 +301,7 @@ export function ProjectsContent() {
                 <span className="text-white/90">{t('Проекты', 'Projects')}</span>
               </div>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
                 {t('Реализованные проекты', 'Completed Projects')}
               </h1>
               
@@ -317,47 +317,48 @@ export function ProjectsContent() {
       </section>
 
       {/* Junior Projects License Banner */}
-      <section className="py-8 bg-accent/10 border-y border-accent/20">
-        <div className="container mx-auto px-4">
-          <FadeIn>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center text-accent">
-                  <FileText className="w-6 h-6" style={{ color: '#F97316' }} />
-                </div>
-                <div>
-                  <h3 className="font-display font-semibold text-foreground">
-                    {t('Лицензии на юниорные проекты', 'Junior Project Licenses')}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {t('5 лицензий на разведку медно-никелевого оруденения на Таймыре', '5 licenses for copper-nickel exploration in Taimyr')}
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="/documents/documents.rar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium"
-                >
-                  <Download className="w-4 h-4" />
-                  {t('Уведомление о лицензиях', 'License Notification')}
-                </a>
-                <a
-                  href="/documents/license-extract.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium"
-                >
-                  <Download className="w-4 h-4" />
-                  {t('Выписка из реестра', 'Registry Extract')}
-                </a>
-              </div>
-            </div>
-          </FadeIn>
+      {/* Junior Projects License Banner */}
+<section className="py-8 bg-accent/10 border-y border-accent/20">
+  <div className="container mx-auto px-4">
+    <FadeIn>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
+            <FileText className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h3 className="font-display font-semibold text-foreground">
+              {t('Лицензии на юниорные проекты', 'Junior Project Licenses')}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {t('5 лицензий на разведку медно-никелевого оруденения на Таймыре', '5 licenses for copper-nickel exploration in Taimyr')}
+            </p>
+          </div>
         </div>
-      </section>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="/documents/documents.rar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium"
+          >
+            <Download className="w-4 h-4" />
+            {t('Уведомление о лицензиях', 'License Notification')}
+          </a>
+          <a
+            href="/documents/license-extract.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-muted transition-colors text-sm font-medium"
+          >
+            <Download className="w-4 h-4" />
+            {t('Выписка из реестра', 'Registry Extract')}
+          </a>
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</section>
 
       {/* Stats Banner */}
       <section className="py-8 bg-primary">
@@ -512,10 +513,12 @@ export function ProjectsContent() {
                   
                   {/* Лицензия (если есть) */}
                   {project.license && (
-                    <p className="text-xs text-accent mb-3 font-mono">
-                      {project.license}
-                    </p>
-                  )}
+  <div className="mb-3">
+    <span className="inline-block px-2 py-1 bg-orange-500/10 text-orange-500 text-xs font-mono rounded-md">
+       {t('Лицензия:', 'License:')} {project.license}
+    </span>
+  </div>
+)}
                   
                   {/* Описание */}
                   <p className="text-muted-foreground text-sm mb-4">
