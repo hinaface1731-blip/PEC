@@ -1,12 +1,13 @@
+// components/language-provider.tsx
 'use client'
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 
 type Language = 'ru' | 'en'
 
 interface LanguageContextType {
   language: Language
-  toggleLanguage: () => void
+  setLanguage: (lang: Language) => void  // ← должно быть
   t: (ru: string, en: string) => string
 }
 
@@ -14,30 +15,25 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('ru')
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('pek-lang') as Language | null
-      if (stored) {
-        setLanguage(stored)
-      }
+    const saved = localStorage.getItem('language') as Language
+    if (saved && (saved === 'ru' || saved === 'en')) {
+      setLanguage(saved)
     }
   }, [])
 
-  const toggleLanguage = () => {
-    const newLang = language === 'ru' ? 'en' : 'ru'
-    setLanguage(newLang)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('pek-lang', newLang)
-    }
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang)
+    localStorage.setItem('language', lang)
   }
 
-  const t = (ru: string, en: string) => (language === 'ru' ? ru : en)
+  const t = (ru: string, en: string) => {
+    return language === 'ru' ? ru : en
+  }
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   )
@@ -46,7 +42,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext)
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider')
+    throw new Error('useLanguage must be used within LanguageProvider')
   }
   return context
 }

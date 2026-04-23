@@ -20,37 +20,43 @@ const manrope = Manrope({
   weight: ['400', '500', '600', '700'],
 })
 
-export function generateMetadata(): Metadata {
-  return {
+// ✅ Добавляем og:image
+export const metadata: Metadata = {
+  title: 'ПЭК — Полярная Экспедиционная Компания',
+  description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
+  keywords: 'геологоразведка, ГРР, бурение, геофизика, Арктика, Сибирь, геологические работы',
+  openGraph: {
     title: 'ПЭК — Полярная Экспедиционная Компания',
-    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
-    keywords: 'геологоразведка, ГРР, бурение, геофизика, Арктика, Сибирь, геологические работы',
-    openGraph: {
-      title: 'ПЭК — Полярная Экспедиционная Компания',
-      description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
-      type: 'website',
-      locale: 'ru_RU',
-      siteName: 'ПЭК',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'ПЭК — Полярная Экспедиционная Компания',
-      description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
-    },
-    icons: {
-      icon: '/icon.svg',
-      apple: '/apple-icon.png',
-    },
-  }
+    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
+    type: 'website',
+    locale: 'ru_RU',
+    siteName: 'ПЭК',
+    images: [
+      {
+        url: '/logo.png',           // ← путь к картинке
+        width: 1200,                    // ← рекомендуемый размер
+        height: 630,                    // ← стандарт для соцсетей
+        alt: 'ПЭК — Полярная Экспедиционная Компания',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ПЭК — Полярная Экспедиционная Компания',
+    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
+    images: ['/logo.png'],          // ← добавляем картинку для Twitter
+  },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
-export function generateViewport(): Viewport {
-  return {
-    themeColor: [
-      { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
-      { media: '(prefers-color-scheme: dark)', color: '#0a0c0f' },
-    ],
-  }
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0c0f' },
+  ],
 }
 
 export default function RootLayout({
@@ -59,10 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
-      <head>
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api-maps.yandex.ru https://*.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.telegram.org https://api-maps.yandex.ru; frame-src https://api-maps.yandex.ru;" />
-      </head>
+    <html lang="ru" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${unbounded.variable} ${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>

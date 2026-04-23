@@ -1,215 +1,173 @@
 'use client'
 
-import { useState } from 'react'
-import { useLanguage } from './language-provider'
-import { Send, CheckCircle, Loader2 } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { useLanguage } from '@/components/language-provider'
 
-interface CTAFormProps {
-  serviceName?: string
-}
+const STORAGE_KEY = 'cta_form_data'
 
-export function CTAForm({ serviceName }: CTAFormProps) {
+export function CTAForm() {
   const { t } = useLanguage()
-  const [submitted, setSubmitted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
+  
   const [formData, setFormData] = useState({
     name: '',
-    organization: '',
     phone: '',
     email: '',
-    subject: serviceName || '',
     message: '',
   })
+  
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  // ✅ Восстанавливаем данные из localStorage при монтировании
+  useEffect(() => {
+    const savedData = localStorage.getItem(STORAGE_KEY)
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData)
+        setFormData(parsed)
+      } catch (e) {
+        console.error('Failed to restore form data', e)
+      }
+    }
+  }, [])
+
+  // ✅ Сохраняем данные в localStorage при изменении
+  useEffect(() => {
+    if (formData.name || formData.phone || formData.email || formData.message) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
+    }
+  }, [formData])
+
+  // ✅ Сброс формы при успешной отправке
+  useEffect(() => {
+    if (isSuccess) {
+      localStorage.removeItem(STORAGE_KEY)
+      setFormData({ name: '', phone: '', email: '', message: '' })
+      const timer = setTimeout(() => setIsSuccess(false), 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [isSuccess])
+
+  // ✅ Валидация
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/
+    return re.test(email)
+  }
+
+  const validatePhone = (phone: string) => {
+    const re = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/
+    return re.test(phone) || phone.length >= 10
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    setError('')
-
+    
+    const newErrors: Record<string, string> = {}
+    
+    if (!formData.name.trim()) {
+      newErrors.name = t('Введите имя', 'Name is required')
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = t('Введите телефон', 'Phone is required')
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = t('Введите корректный номер телефона', 'Enter a valid phone number')
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = t('Введите email', 'Email is required')
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = t('Введите корректный email', 'Enter a valid email address')
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = t('Введите сообщение', 'Message is required')
+    }
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      return
+    }
+    
+    setErrors({})
+    setIsSubmitting(true)
+    
     try {
       const response = await fetch('/api/send-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-
-      if (!response.ok) {
-        throw new Error('Failed to send')
+      
+      if (response.ok) {
+        setIsSuccess(true)
+        if (formRef.current) {
+          formRef.current.reset()
+        }
       }
-
-      setSubmitted(true)
-    } catch (err) {
-      setError(t('Ошибка отправки. Попробуйте позже.', 'Failed to send. Please try later.'))
+    } catch (error) {
+      console.error('Error:', error)
     } finally {
-      setIsLoading(false)
+      setIsSubmitting(false)
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  if (submitted) {
-    return (
-      <section className="section bg-[var(--bg2)]">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--accent-glow)] flex items-center justify-center">
-              <CheckCircle className="w-8 h-8 text-[var(--accent)]" />
-            </div>
-            <h2 className="text-3xl font-bold text-[var(--text)] mb-4">
-              {t('Заявка отправлена!', 'Request Sent!')}
-            </h2>
-            <p className="text-[var(--muted)]">
-              {t(
-                'Наши специалисты свяжутся с вами в течение рабочего дня.',
-                'Our specialists will contact you within one business day.'
-              )}
-            </p>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   return (
-    <section className="section bg-[var(--bg2)]" id="cta">
-      <div className="container">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
-              {t('Запросить коммерческое предложение', 'Request a Quote')}
-            </h2>
-            <p className="text-[var(--muted)] max-w-2xl mx-auto">
-              {t(
-                'Оставьте заявку, и наши специалисты подготовят индивидуальное предложение для вашего проекта',
-                'Leave a request and our specialists will prepare a customized proposal for your project'
-              )}
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="card p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-[var(--text)] mb-2">
-                  {t('Имя *', 'Name *')}
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[var(--bg3)] border border-[var(--border)] rounded-xl text-[var(--text)] placeholder-[var(--muted2)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-                  placeholder={t('Иван Петров', 'John Smith')}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="organization" className="block text-sm font-medium text-[var(--text)] mb-2">
-                  {t('Организация', 'Organization')}
-                </label>
-                <input
-                  type="text"
-                  id="organization"
-                  name="organization"
-                  value={formData.organization}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[var(--bg3)] border border-[var(--border)] rounded-xl text-[var(--text)] placeholder-[var(--muted2)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-                  placeholder={t('ООО «Компания»', 'Company LLC')}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-[var(--text)] mb-2">
-                  {t('Телефон *', 'Phone *')}
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[var(--bg3)] border border-[var(--border)] rounded-xl text-[var(--text)] placeholder-[var(--muted2)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-                  placeholder="+7 (___) ___-__-__"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[var(--text)] mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[var(--bg3)] border border-[var(--border)] rounded-xl text-[var(--text)] placeholder-[var(--muted2)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-                  placeholder="email@company.ru"
-                />
-              </div>
-
-              {serviceName && (
-                <div className="md:col-span-2">
-                  <label htmlFor="subject" className="block text-sm font-medium text-[var(--text)] mb-2">
-                    {t('Тема', 'Subject')}
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-[var(--bg3)] border border-[var(--border)] rounded-xl text-[var(--text)] placeholder-[var(--muted2)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-                  />
-                </div>
-              )}
-
-              <div className="md:col-span-2">
-                <label htmlFor="message" className="block text-sm font-medium text-[var(--text)] mb-2">
-                  {t('Сообщение', 'Message')}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[var(--bg3)] border border-[var(--border)] rounded-xl text-[var(--text)] placeholder-[var(--muted2)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-none"
-                  placeholder={t('Опишите ваш проект или задачу...', 'Describe your project or task...')}
-                />
-              </div>
-            </div>
-
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-sm text-[var(--muted2)]">
-                {t(
-                  'Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности',
-                  'By clicking the button, you agree to our privacy policy'
-                )}
-              </p>
-              <button type="submit" className="btn btn-primary" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    {t('Отправка...', 'Sending...')}
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    {t('Запросить КП', 'Request Quote')}
-                  </>
-                )}
-              </button>
-            </div>
-            {error && <p className="text-red-500 text-sm mt-4 text-center">{error}</p>}
-          </form>
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+      {isSuccess && (
+        <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 text-center">
+          <p className="text-green-500">✅ {t('Заявка отправлена!', 'Request sent!')}</p>
         </div>
+      )}
+      
+      <div>
+        <Input
+          placeholder={t('Ваше имя *', 'Your name *')}
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          className={errors.name ? 'border-red-500' : ''}
+        />
+        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
       </div>
-    </section>
+      
+      <div>
+        <Input
+          type="tel"
+          placeholder={t('Телефон *', 'Phone *')}
+          value={formData.phone}
+          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          className={errors.phone ? 'border-red-500' : ''}
+        />
+        {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+      </div>
+      
+      <div>
+        <Input
+          type="email"
+          placeholder="Email *"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          className={errors.email ? 'border-red-500' : ''}
+        />
+        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+      </div>
+      
+      <div>
+        <Textarea
+          placeholder={t('Сообщение *', 'Message *')}
+          rows={4}
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          className={errors.message ? 'border-red-500' : ''}
+        />
+        {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+      </div>
+      
+      <Button type="submit" className="w-full" disabled={isSubmitting}>
+        {isSubmitting ? t('Отправка...', 'Sending...') : t('Отправить заявку', 'Send request')}
+      </Button>
+    </form>
   )
 }
