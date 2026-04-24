@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, BarChart3, ClipboardCheck, type LucideIcon } from 'lucide-react'
+import { Mountain, Pickaxe, Map, Microscope, FileCheck, Pencil, type LucideIcon } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
@@ -12,78 +12,72 @@ const data: ServicePageData = {
   descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
   heroImage: '/images/geo.jpg',
   reverse: false,
-  methods: [
-    { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
-    { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
-    { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
-    { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
-    { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография)', en: 'Electrical survey' },
-    { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
-    { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
-    { ru: 'Гравиразведка', en: 'Gravity survey' },
-    { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
-    { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
-    { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
-    { ru: 'Аэромагниторазведка (вертолётная)', en: 'Aeromagnetic survey' },
-  ],
+  methods: [], // пустой, используем groups
+  
   methodsGroups: [
     {
-      titleRu: 'Скважинная геофизика (ГИС)',
-      titleEn: 'Borehole Geophysics',
-      icon: Drill,
+      titleRu: 'Полевые геологические работы',
+      titleEn: 'Field Geological Works',
+      icon: Pickaxe,
       methods: [
-        { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
-        { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
-        { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
-        { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
+        { ru: 'Геологическое картирование масштабов 1:200 000 – 1:10 000', en: 'Geological mapping 1:200,000 – 1:10,000' },
+        { ru: 'Поисковые и рекогносцировочные маршруты', en: 'Reconnaissance and exploration routes' },
+        { ru: 'Документация горных выработок и обнажений', en: 'Mining workings and outcrops documentation' },
+        { ru: 'Шлиховое опробование', en: 'Placer sampling' },
+        { ru: 'Литогеохимическое опробование', en: 'Lithogeochemical sampling' },
+        { ru: 'Поиски по вторичным ореолам рассеяния', en: 'Secondary dispersion halo exploration' },
       ]
     },
     {
-      titleRu: 'Наземная геофизика',
-      titleEn: 'Ground Geophysics',
-      icon: Radio,
+      titleRu: 'Геологическая документация',
+      titleEn: 'Geological Documentation',
+      icon: Pencil,
       methods: [
-        { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография)', en: 'Electrical survey' },
-        { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
-        { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
-        { ru: 'Гравиразведка', en: 'Gravity survey' },
+        { ru: 'Закладка и документация канав и шурфов', en: 'Trenches and pitting documentation' },
+        { ru: 'Керновое опробование и документация керна', en: 'Core logging and sampling' },
+        { ru: 'Составление полевых геологических карт и разрезов', en: 'Field geological maps and sections' },
+        { ru: 'Камеральная обработка полевых материалов', en: 'Field data office processing' },
+        { ru: 'Ведение полевых дневников и планшетов', en: 'Field notebooks and tablets' },
       ]
     },
     {
-      titleRu: 'Воздушная геофизика',
-      titleEn: 'Airborne Geophysics',
-      icon: Compass,
+      titleRu: 'Лабораторные исследования',
+      titleEn: 'Laboratory Studies',
+      icon: Microscope,
       methods: [
-        { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
-        { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
-        { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
-        { ru: 'Аэромагниторазведка (вертолётная)', en: 'Aeromagnetic survey' },
+        { ru: 'Петрографические исследования', en: 'Petrographic studies' },
+        { ru: 'Минералогический анализ', en: 'Mineralogical analysis' },
+        { ru: 'Литологический анализ', en: 'Lithological analysis' },
+        { ru: 'Геохимические анализы проб', en: 'Geochemical assays' },
+        { ru: 'Диагностика полезных ископаемых', en: 'Mineral diagnostics' },
       ]
     },
   ],
   methodsImage: '/images/geo-methods.jpg',
+  
   equipment: [
-    {
-      titleRu: 'Геодезическое оборудование',
-      titleEn: 'Survey Equipment',
-      items: ['GPS Trimble R10', 'Trimble Catalyst', 'Планшеты с QGIS'],
-    },
     {
       titleRu: 'Полевое оборудование',
       titleEn: 'Field Equipment',
-      items: ['Горные компасы', 'Радиометры СРП-68', 'Полевые лупы', 'Молотки геологические'],
+      items: ['Горные компасы', 'GPS-навигаторы Garmin', 'Полевые лупы (10x, 20x)', 'Геологические молотки', 'Радиостанции'],
     },
     {
       titleRu: 'Программное обеспечение',
       titleEn: 'Software',
-      items: ['Micromine', 'QGIS', 'ArcGIS', 'Surpac'],
+      items: ['Micromine', 'QGIS', 'ArcGIS', 'Surpac', 'Petrel'],
     },
     {
-      titleRu: 'Стандарты',
-      titleEn: 'Standards',
-      items: ['ГОСТ 53579-2009', 'СП 47.13330.2016', 'Методические указания Роснедра'],
+      titleRu: 'Лаборатория',
+      titleEn: 'Laboratory',
+      items: ['Петрографические микроскопы', 'Дробилки и истиратели', 'Аналитическое оборудование'],
+    },
+    {
+      titleRu: 'Документация',
+      titleEn: 'Documentation',
+      items: ['Цифровые планшеты с QGIS', 'Фотодокументация', 'Лазерные дальномеры', 'Бланки опробования'],
     },
   ],
+  
   steps: [
     {
       numRu: '01',
@@ -96,34 +90,34 @@ const data: ServicePageData = {
     {
       numRu: '02',
       numEn: '02',
-      titleRu: 'Полевые работы',
-      titleEn: 'Field Work',
-      descRu: 'Геологические маршруты, документация обнажений, отбор проб',
-      descEn: 'Geological routes, outcrop documentation, sampling',
+      titleRu: 'Полевые геологические работы',
+      titleEn: 'Field Geological Work',
+      descRu: 'Геологические маршруты, документация обнажений, отбор проб, закладка горных выработок',
+      descEn: 'Geological routes, outcrop documentation, sampling, mine workings',
     },
     {
       numRu: '03',
       numEn: '03',
-      titleRu: 'Горные работы',
-      titleEn: 'Mining Work',
-      descRu: 'Проходка канав, шурфов, расчисток для изучения коренных пород',
-      descEn: 'Trenching, pitting, clearing for bedrock study',
+      titleRu: 'Лабораторные исследования',
+      titleEn: 'Laboratory Research',
+      descRu: 'Петрография, минералогия, геохимические анализы проб',
+      descEn: 'Petrography, mineralogy, geochemical analysis',
     },
     {
       numRu: '04',
       numEn: '04',
-      titleRu: 'Лабораторные исследования',
-      titleEn: 'Laboratory Research',
-      descRu: 'Аналитические работы, петрография, минералогия',
-      descEn: 'Analytical work, petrography, mineralogy',
+      titleRu: 'Камеральная обработка',
+      titleEn: 'Office Processing',
+      descRu: 'Построение карт, разрезов, 3D-моделей, интерпретация данных',
+      descEn: 'Map construction, cross-sections, 3D models, data interpretation',
     },
     {
       numRu: '05',
       numEn: '05',
-      titleRu: 'Камеральная обработка',
-      titleEn: 'Office Processing',
-      descRu: 'Построение карт, разрезов, 3D-моделей, подготовка отчёта',
-      descEn: 'Map construction, cross-sections, 3D models, report preparation',
+      titleRu: 'Составление отчёта',
+      titleEn: 'Report Preparation',
+      descRu: 'Подготовка геологического отчёта по формам ГКЗ/ТКЗ, сдача отчётности',
+      descEn: 'Geological report preparation per GKZ/TKZ forms, reporting',
     },
   ],
   stepImages: [
@@ -133,6 +127,7 @@ const data: ServicePageData = {
     '/images/four.jpg',
     '/images/five.jpg',
   ],
+  
   results: [
     {
       titleRu: 'Геологические карты',
@@ -147,10 +142,10 @@ const data: ServicePageData = {
       descEn: 'Cross and longitudinal sections with interpretation',
     },
     {
-      titleRu: '3D-модели',
-      titleEn: '3D Models',
-      descRu: 'Блочные модели месторождения в Micromine/Surpac',
-      descEn: 'Block models in Micromine/Surpac',
+      titleRu: 'База данных',
+      titleEn: 'Database',
+      descRu: 'Структурированная база с пробами, описаниями и координатами',
+      descEn: 'Structured database with samples, descriptions and coordinates',
     },
     {
       titleRu: 'Геологический отчёт',
@@ -159,6 +154,7 @@ const data: ServicePageData = {
       descEn: 'Text and graphic parts per GKZ/TKZ forms',
     },
   ],
+  
   caseStudy: {
     titleRu: 'Геологическое доизучение Норильского рудного узла',
     titleEn: 'Geological Study of Norilsk Ore Cluster',
@@ -171,6 +167,7 @@ const data: ServicePageData = {
     resultEn: 'Identified 7 prospective areas for copper-nickel mineralization. Prepared recommendations for further work.',
   },
   caseImage: '/images/geoproject.jpg',
+  
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Якутия', en: 'Yakutia' },
@@ -179,6 +176,7 @@ const data: ServicePageData = {
     { ru: 'Кольский полуостров', en: 'Kola Peninsula' },
     { ru: 'Иркутская область', en: 'Irkutsk Region' },
   ],
+  
   stats: [
     { value: '120+', labelRu: 'проектов', labelEn: 'projects' },
     { value: '4 500 км', labelRu: 'маршрутов', labelEn: 'of routes' },
