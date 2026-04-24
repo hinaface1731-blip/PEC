@@ -166,7 +166,7 @@ const data: ServicePageData = {
     resultRu: 'Выявлено 7 перспективных участков на медно-никелевое оруденение. Подготовлены рекомендации по дальнейшим работам.',
     resultEn: 'Identified 7 prospective areas for copper-nickel mineralization. Prepared recommendations for further work.',
   },
-  caseImage: '/images/geoproject.jpg',
+  caseImage: '/images/geoproject.JPG',
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },

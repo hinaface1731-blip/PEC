@@ -13,7 +13,7 @@ const data: ServicePageData = {
   titleEn: 'Survey Works',
   descRu: 'Маркшейдерское обеспечение горных работ на основании лицензии Ростехнадзора. Высокоточные ГНСС-приемники, электронные тахеометры, лицензионное ПО. Полный цикл от планирования до сдачи документации.',
   descEn: 'Mining surveying services licensed by Rostechnadzor. High-precision GNSS receivers, electronic total stations, licensed software. Full cycle from planning to documentation delivery.',
-  heroImage: '/images/mark.jpg',
+  heroImage: '/images/mark.JPG',
   reverse: true,
   methods: [],  // пустой массив, так как методы разбиты по группам
   methodsGroups: [
@@ -160,7 +160,7 @@ const data: ServicePageData = {
     resultRu: 'Высокоточная привязка всех горных выработок. Оперативный контроль буровых работ. Полный комплект исполнительной документации.',
     resultEn: 'High-precision referencing of all workings. Prompt drilling control. Complete executive documentation package.',
   },
-  caseImage: '/images/mark-case.jpg',
+  caseImage: '/images/mark-case.JPG',
   regions: [
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
     { ru: 'Якутия', en: 'Yakutia' },
