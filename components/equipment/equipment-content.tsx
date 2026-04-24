@@ -412,8 +412,7 @@ export function EquipmentContent() {
         </div>
       </section>
 
-      {/* CTA */}
-      <CTAForm />
+      
     </div>
   )
 }

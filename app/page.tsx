@@ -22,7 +22,6 @@ export default function HomePage() {
       <ProjectsSection />
       <GeographySection />
       <LicensesSection />
-      <CTAForm />
     </PageLayout>
   )
 }

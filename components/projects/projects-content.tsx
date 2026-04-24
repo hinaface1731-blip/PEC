@@ -323,9 +323,11 @@ export function ProjectsContent() {
     <FadeIn>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
-            <FileText className="w-6 h-6 text-white" />
-          </div>
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center"
+     style={{ backgroundColor: '#f97316' }}  // оранжевый
+>
+  <FileText className="w-6 h-6 text-white" />
+</div>
           <div>
             <h3 className="font-display font-semibold text-foreground">
               {t('Лицензии на юниорные проекты', 'Junior Project Licenses')}
@@ -543,8 +545,7 @@ export function ProjectsContent() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <CTAForm />
+      
     </div>
   )
 }

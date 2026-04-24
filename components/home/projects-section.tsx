@@ -74,10 +74,14 @@ export function ProjectsSection() {
               )}
             </p>
           </div>
-          <Link href="/projects" className="btn btn-ghost shrink-0">
-            {t('Все проекты', 'All Projects')}
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          <Link 
+  href="/services" 
+  className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
+>
+  {t('Все проекты', 'All Projects')}
+  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+</Link>
+          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

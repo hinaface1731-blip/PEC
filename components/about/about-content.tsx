@@ -284,8 +284,7 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* CTA */}
-      <CTAForm />
+      
     </div>
   )
 }
