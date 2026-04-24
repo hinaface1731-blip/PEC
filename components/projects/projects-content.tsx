@@ -72,7 +72,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for copper-nickel mineralization. A complex of electrical methods was applied to identify ore-controlling structures.",
     results: ["Электроразведка: ВП, АМТЗ", "Профилей: 120 км", "3D модель рудных тел"],
     resultsEn: ["Electrical survey: IP, AMT", "Profiles: 120 km", "3D ore body model"],
-    image: "/images/centr.jpg"
+    image: "/images/centr.JPG"
   },
   {
     id: 3,
@@ -135,7 +135,7 @@ const projects: Project[] = [
     descriptionEn: "Copper-nickel exploration in the Norilsk ore district. Comprehensive geophysical surveys.",
     results: ["Комплекс АМТЗ/ЗСБ/ВП", "Площадь: 38 км²", "Бурение по аномалиям"],
     resultsEn: ["AMT/TEM/IP complex", "Area: 38 km²", "Anomaly drilling"],
-    image: "/images/sims.jpg"
+    image: "/images/sims.JPG"
   },
   {
     id: 6,
@@ -155,7 +155,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for sulfide copper-nickel mineralization. Regional geophysical surveys.",
     results: ["Региональная геофизика", "Геохимический опробования", "Выделены аномалии"],
     resultsEn: ["Regional geophysics", "Geochemical sampling", "Anomalies identified"],
-    image: "/images/pekin.jpg"
+    image: "/images/pekin.JPG"
   },
   {
     id: 7,
@@ -175,7 +175,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration in the extreme north of Taimyr. Complex logistics, Arctic expedition.",
     results: ["Арктическая экспедиция", "Геофизический комплекс", "Первичная оценка"],
     resultsEn: ["Arctic expedition", "Geophysical complex", "Primary assessment"],
-    image: "/images/chelus.jpg"
+    image: "/images/chelus.JPG"
   },
   {
     id: 8,
@@ -195,7 +195,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration for gold mineralization. Complex of geochemical and geophysical methods.",
     results: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Выделены перспективные зоны"],
     resultsEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Prospective zones identified"],
-    image: "/images/bistr.jpg"
+    image: "/images/bistr.JPG"
   },
   {
     id: 9,
@@ -215,7 +215,7 @@ const projects: Project[] = [
     descriptionEn: "Detailed exploration of gold deposit. Drilling, geophysics, laboratory studies.",
     results: ["Бурение: 8 000 п.м.", "Каротаж скважин", "Подсчет запасов"],
     resultsEn: ["Drilling: 8,000 m", "Well logging", "Reserve estimation"],
-    image: "/images/mars.jpg"
+    image: "/images/Mars.jpg"
   },
   {
     id: 10,
@@ -235,7 +235,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
     results: ["Геофизика: ВП, магнитометрия", "Керновое опробование", "3D моделирование"],
     resultsEn: ["Geophysics: IP, magnetometry", "Core sampling", "3D modeling"],
-    image: "/images/oper.jpg"
+    image: "/images/oper.JPG"
   },
   {
     id: 11,
@@ -255,7 +255,7 @@ const projects: Project[] = [
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
     results: ["Геофизика: ВП, магнитометрия", "Керновое опробование", "3D моделирование"],
     resultsEn: ["Geophysics: IP, magnetometry", "Core sampling", "3D modeling"],
-    image: "/images/neven.jpg"
+    image: "/images/neven.JPG"
   }
 ]
 

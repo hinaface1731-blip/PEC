@@ -19,7 +19,7 @@ const projects = [
     resultEn: 'Geological study of 850 km², 7 prospective areas identified',
   },
   {
-    image: '/images/neven.jpg',
+    image: '/images/neven.JPG',
     titleRu: 'Невенреканская площадь',
     titleEn: 'Nevenrekan Site',
     clientRu: 'Полиметалл',
@@ -31,7 +31,7 @@ const projects = [
     resultEn: 'Geophysical surveys on 120 km², IP anomalies up to 12% identified',
   },
   {
-    image: '/images/oper.jpg',
+    image: '/images/oper.JPG',
     titleRu: 'Участок Оперативный',
     titleEn: 'Operativniy Site',
     clientRu: 'Полюс',
