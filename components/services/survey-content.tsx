@@ -367,8 +367,11 @@ function LicenseSection() {
 export function SurveyContent() {
   return (
     <>
-      <ServicePageTemplate data={data} />
-      <LicenseSection />
+      <ServicePageTemplate 
+        data={data} 
+        topSection={<LicenseSection />}   // 👈 ЛИЦЕНЗИЯ СРАЗУ ПОСЛЕ HERO
+      />
+      {/* LicenseSection убрали отсюда, так как она теперь в topSection */}
     </>
   )
 }

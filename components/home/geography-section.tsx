@@ -5,13 +5,14 @@ import { useLanguage } from '@/components/language-provider'
 import { useYandexMapsContext } from '@/components/yandex-map-loader'
 
 const regions = [
-  { ru: 'Таймыр', en: 'Taimyr', coordinates: [74.0, 98.0] as [number, number], projects: 7 },
+  { ru: 'Таймыр', en: 'Taimyr', coordinates: [76.143144, 109.921747] as [number, number], projects: 7 },
   { ru: 'Якутия', en: 'Yakutia', coordinates: [66.0, 130.0] as [number, number], projects: 2 },
   { ru: 'Чукотка', en: 'Chukotka', coordinates: [66.0, 170.0] as [number, number], projects: 5 },
   { ru: 'Алтай', en: 'Altay', coordinates: [51.0, 86.0] as [number, number], projects: 1 },
   { ru: 'Забайкалье', en: 'Transbaikal', coordinates: [52.0, 115.0] as [number, number], projects: 1 },
-  { ru: 'Кольский полуостров', en: 'Kola Peninsula', coordinates: [68.0, 36.0] as [number, number], projects: 4 },
   { ru: 'Камчатка', en: 'Kamchatka', coordinates: [56.0, 160.0] as [number, number], projects: 2 },
+  { ru: 'Магадан', en: 'Magadan', coordinates: [62.374036, 159.740413] as [number, number], projects: 2 },
+  { ru: 'Красноярский Край', en: 'Krasnoyarsk Kray', coordinates: [67.746315, 86.799120] as [number, number], projects: 2 },
 ]
 
 const bases = [

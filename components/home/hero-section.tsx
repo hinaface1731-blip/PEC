@@ -12,13 +12,14 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video 
-  autoPlay 
-  muted 
-  loop 
-  playsInline
-  preload="none"  // ← это решает проблему без конвертации
-  className="w-full h-full object-cover"
->
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          preload="none"
+          poster="/images/hero-poster.jpg"
+          className="w-full h-full object-cover"
+        >
           <source src="/promo.mp4" type="video/mp4" />
           <source src="/promo.webm" type="video/webm" />
           Ваш браузер не поддерживает видео
@@ -41,11 +42,12 @@ export function HeroSection() {
             )}
           </motion.h1>
 
+          {/* ✅ Первый параграф — основной */}
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-xl md:text-2xl text-white/80 leading-relaxed mb-4"
+            className="text-xl md:text-2xl text-white/90 leading-relaxed mb-4"
           >
             {t(
               'Полный цикл геологоразведочных работ в Арктике и Сибири',
@@ -53,15 +55,16 @@ export function HeroSection() {
             )}
           </motion.p>
 
+          {/* ✅ Второй параграф — мелкий и полупрозрачный (вспомогательный) */}
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-lg text-white/65 leading-relaxed mb-10"
+            className="text-sm md:text-base text-white/60 leading-relaxed mb-10 max-w-2xl"
           >
             {t(
-              'Геологоразведка собственными силами: от проектирования до защиты запасов в ГКЗ',
-              'In-house geological exploration: from design to reserves approval at GKZ'
+              'Собственная геологоразведка: от проектирования до защиты запасов в ГКЗ',
+              'In-house exploration: from design to reserves approval at GKZ'
             )}
           </motion.p>
 

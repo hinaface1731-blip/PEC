@@ -91,6 +91,8 @@ export interface ServicePageData {
 
 interface ServicePageTemplateProps {
   data: ServicePageData
+  topSection?: React.ReactNode   // 👈 ДОБАВИТЬ
+  bottomSection?: React.ReactNode // 👈 ДОБАВИТЬ (опционально)
 }
 
 // Координаты регионов
@@ -110,16 +112,13 @@ const REGIONS_COORDS: Record<string, [number, number]> = {
   'Ямал': [68.0, 73.0],
 }
 
-export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ data, topSection, bottomSection }: ServicePageTemplateProps) {
   const { t } = useLanguage()
   const mapRef = useRef<HTMLDivElement>(null)
 
-  // ✅ Берём уже загруженный API из глобального контекста
-  // Больше не грузим скрипт заново на каждой странице
   const { isReady, ymaps } = useYandexMapsContext()
 
   useEffect(() => {
-    // Ждём пока API готов и DOM-элемент карты существует
     if (!isReady || !ymaps || !mapRef.current) return
 
     let map: any = null
@@ -154,7 +153,6 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       console.error('Ошибка инициализации карты:', err)
     }
 
-    // ✅ Правильно удаляем карту при уходе со страницы
     return () => {
       if (map) {
         map.destroy()
@@ -199,6 +197,9 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
           </div>
         </div>
       </section>
+
+      {/* 👇 ТОП-СЕКЦИЯ (лицензия, сертификаты и т.д.) - СРАЗУ ПОСЛЕ HERO */}
+      {topSection && topSection}
 
       {/* Methods */}
       <section className="section">
@@ -407,14 +408,12 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
             </p>
           </div>
 
-          {/* Карта */}
           <div
             ref={mapRef}
             className="rounded-2xl overflow-hidden mb-8 shadow-xl bg-[var(--bg3)]"
             style={{ width: '100%', height: '500px' }}
           />
 
-          {/* Список регионов */}
           <div className="flex flex-wrap justify-center gap-3">
             {data.regions.map((region, i) => (
               <div
@@ -447,6 +446,9 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       </section>
 
       <CTAForm serviceName={t(data.titleRu, data.titleEn)} />
+
+      {/* 👇 БОТТОМ-СЕКЦИЯ (форма, доп. блоки) - САМЫЙ НИЗ */}
+      {bottomSection && bottomSection}
     </>
   )
 }
