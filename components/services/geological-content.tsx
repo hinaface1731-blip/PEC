@@ -121,9 +121,9 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.jpg',
-    '/images/two.jpg',
-    '/images/three.jpg',
+    '/images/one.JPG',
+    '/images/two.JPG',
+    '/images/three.JPG',
     '/images/four.jpg',
     '/images/five.jpg',
   ],
