@@ -9,7 +9,9 @@ const services = [
   { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
   { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Works' },
   { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Works' },
+  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },  // ← добавить
   { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Survey Works' },
+  { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' },  // ← добавить
   { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
   { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
   { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
@@ -17,6 +19,7 @@ const services = [
 
 const company = [
   { href: '/about', ru: 'О компании', en: 'About Us' },
+  { href: '/investors', ru: 'Инвесторам', en: 'Investors' },  // ← добавить
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
   { href: '/contacts', ru: 'Контакты', en: 'Contacts' },
@@ -32,14 +35,14 @@ export function Footer() {
           {/* Logo & Description - колонка 1 */}
           <div className="space-y-1">
             <Link href="/" className="inline-block">
-<Image
-  src="/images/logo.png"
-  alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
-  width={150}
-  height={60}
-  className="object-contain dark:brightness-0 dark:invert"
-  priority
-/>
+              <Image
+                src="/images/logo.png"
+                alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
+                width={150}
+                height={60}
+                className="object-contain dark:brightness-0 dark:invert"
+                priority
+              />
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
               {t(

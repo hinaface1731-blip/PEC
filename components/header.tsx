@@ -13,11 +13,12 @@ const services = [
   { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
   { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Works' },
   { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Works' },
+  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },           // ← добавить
   { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Survey Works' },
+  { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' }, // ← добавить
   { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
   { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
   { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
-  
 ]
 
 // ✅ Убрали 'О компании' из navItems (она уже есть отдельно)

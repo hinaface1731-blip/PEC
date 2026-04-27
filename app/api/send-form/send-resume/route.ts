@@ -21,37 +21,21 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Настройка транспортера для отправки email
-    // Используйте ваши реальные данные от почтового ящика
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.yandex.ru',  // Для Яндекс.Почты
+      host: process.env.SMTP_HOST || 'smtp.yandex.ru',
       port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: true, // true для 465, false для других портов
+      secure: true,
       auth: {
-        user: process.env.SMTP_USER, // ваш email
-        pass: process.env.SMTP_PASSWORD, // пароль от почты
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
       },
     })
 
-    // Подготовка письма
+    // Письмо с информацией о кандидате
     const mailOptions = {
       from: `"ПЭК - Резюме" <${process.env.SMTP_USER}>`,
-      to: process.env.HR_EMAIL || 'hr@polar-ec.ru', // куда отправлять резюме
+      to: process.env.HR_EMAIL || 'hr@polar-ec.ru',
       subject: `Новое резюме: ${position} - ${fullName}`,
-      text: `
-        📄 НОВОЕ РЕЗЮМЕ
-        
-        👤 ФИО: ${fullName}
-        📧 Email: ${email}
-        📞 Телефон: ${phone}
-        💼 Должность: ${position}
-        
-        📋 Опыт работы:
-        ${experience || 'Не указан'}
-        
-        💬 Дополнительная информация:
-        ${message || 'Не указано'}
-      `,
       html: `
         <h2>📄 Новое резюме</h2>
         
@@ -80,7 +64,7 @@ export async function POST(request: NextRequest) {
             <td style="padding: 8px; border: 1px solid #ddd;"><strong>💬 Дополнительно</strong></td>
             <td style="padding: 8px; border: 1px solid #ddd;">${message || 'Не указано'}</td>
           </tr>
-        </table>
+        杉
         
         <p style="margin-top: 20px; color: #666; font-size: 12px;">
           Письмо сгенерировано автоматически с сайта polar-ec.ru
@@ -88,14 +72,13 @@ export async function POST(request: NextRequest) {
       `,
     }
 
-    // Отправляем письмо
     await transporter.sendMail(mailOptions)
 
-    // Если есть файл резюме, отправляем его вложением
+    // Если есть файл резюме — отправляем отдельным письмом с вложением
     if (resumeFile && resumeFile.size > 0) {
       const fileBuffer = Buffer.from(await resumeFile.arrayBuffer())
       
-      const fileMailOptions = {
+      await transporter.sendMail({
         ...mailOptions,
         subject: `[ФАЙЛ] Резюме: ${position} - ${fullName}`,
         text: `Файл резюме кандидата ${fullName} на должность ${position}`,
@@ -107,32 +90,6 @@ export async function POST(request: NextRequest) {
             contentType: resumeFile.type,
           },
         ],
-      }
-      
-      await transporter.sendMail(fileMailOptions)
-    }
-
-    // Также отправляем уведомление в Telegram (опционально)
-    const botToken = process.env.TELEGRAM_BOT_TOKEN
-    const chatId = process.env.TELEGRAM_CHAT_ID
-
-    if (botToken && chatId) {
-      let telegramMessage = `📄 **НОВОЕ РЕЗЮМЕ**\n\n`
-      telegramMessage += `👤 **ФИО:** ${fullName}\n`
-      telegramMessage += `📧 **Email:** ${email}\n`
-      telegramMessage += `📞 **Телефон:** ${phone}\n`
-      telegramMessage += `💼 **Должность:** ${position}\n`
-      if (experience) telegramMessage += `📋 **Опыт:** ${experience.substring(0, 100)}...\n`
-      if (message) telegramMessage += `💬 **Сообщение:** ${message.substring(0, 100)}...\n`
-
-      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: telegramMessage,
-          parse_mode: 'Markdown',
-        }),
       })
     }
 
