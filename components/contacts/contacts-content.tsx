@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
-import { MapPin, Phone, Mail, Clock, Send, Building, Globe, Upload, FileText, CheckCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Send, Building, Globe, Upload, FileText, CheckCircle, Briefcase, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -16,12 +16,244 @@ const officeInfo = {
   type: "Головной офис",
   address: "ул. Ленина, 84",
   phone: "+7(391)205-15-84",
-  email: "ok@polar-ec.ru",
+  email: "hr@polar-ec.ru",
   hours: "Пн-Пт: 10:00 - 18:00",
   coordinates: [56.013528, 92.867583] as [number, number]
 }
 
-export function ContactsContent() {
+// Вакансии с подробным описанием
+const vacancies = [
+  {
+    id: 1,
+    titleRu: "Главный геолог",
+    titleEn: "Chief Geologist",
+    locationRu: "Красноярск",
+    locationEn: "Krasnoyarsk",
+    experienceRu: "от 5 лет",
+    experienceEn: "5+ years",
+    salary: "от 150 000 ₽",
+    employment: "Полная занятость",
+    schedule: "5/2",
+    requirementsRu: [
+      "Высшее геологическое образование",
+      "Опыт руководства геологическими проектами от 3 лет",
+      "Знание ГКЗ и JORC стандартов",
+      "Уверенное владение Micromine, Surpac",
+      "Опыт работы в Арктике/Сибири приветствуется"
+    ],
+    requirementsEn: [
+      "Higher geological education",
+      "3+ years of experience managing geological projects",
+      "Knowledge of GKZ and JORC standards",
+      "Proficiency in Micromine, Surpac",
+      "Experience in Arctic/Siberia is a plus"
+    ],
+    dutiesRu: [
+      "Руководство геологическими проектами",
+      "Подготовка отчётов ГКЗ/ТКЗ",
+      "Координация полевых работ",
+      "Взаимодействие с недропользователями"
+    ],
+    dutiesEn: [
+      "Management of geological projects",
+      "Preparation of GKZ/TKZ reports",
+      "Coordination of field work",
+      "Interaction with subsoil users"
+    ]
+  },
+  {
+    id: 2,
+    titleRu: "Геофизик",
+    titleEn: "Geophysicist",
+    locationRu: "Красноярск / Вахта",
+    locationEn: "Krasnoyarsk / Rotation",
+    experienceRu: "от 3 лет",
+    experienceEn: "3+ years",
+    salary: "от 120 000 ₽",
+    employment: "Полная занятость",
+    schedule: "Вахта / 5/2",
+    requirementsRu: [
+      "Высшее геофизическое образование",
+      "Опыт полевых работ от 2 лет",
+      "Знание методов АМТЗ, ЗСБ, ВП",
+      "Навыки обработки данных (Oasis Montaj, Zond)",
+      "Готовность к вахтовому методу"
+    ],
+    requirementsEn: [
+      "Higher geophysical education",
+      "2+ years of field work experience",
+      "Knowledge of AMT, TEM, IP methods",
+      "Data processing skills (Oasis Montaj, Zond)",
+      "Ready for rotational work"
+    ],
+    dutiesRu: [
+      "Проведение полевых геофизических работ",
+      "Первичная обработка и интерпретация данных",
+      "Составление отчётной документации",
+      "Настройка и калибровка оборудования"
+    ],
+    dutiesEn: [
+      "Field geophysical surveys",
+      "Data processing and interpretation",
+      "Report documentation preparation",
+      "Equipment setup and calibration"
+    ]
+  },
+  {
+    id: 3,
+    titleRu: "Инженер-буровик",
+    titleEn: "Drilling Engineer",
+    locationRu: "Вахта",
+    locationEn: "Rotation",
+    experienceRu: "от 3 лет",
+    experienceEn: "3+ years",
+    salary: "от 130 000 ₽",
+    employment: "Полная занятость",
+    schedule: "Вахта",
+    requirementsRu: [
+      "Профильное образование",
+      "Опыт колонкового бурения от 3 лет",
+      "Знание технологии ССК",
+      "Навыки руководства буровой бригадой",
+      "Готовность к работе в сложных климатических условиях"
+    ],
+    requirementsEn: [
+      "Specialized education",
+      "3+ years of core drilling experience",
+      "Knowledge of SSK technology",
+      "Drilling crew management skills",
+      "Ready to work in harsh climate conditions"
+    ],
+    dutiesRu: [
+      "Организация и контроль буровых работ",
+      "Ведение буровой документации",
+      "Контроль выхода керна",
+      "Обеспечение соблюдения ТБ"
+    ],
+    dutiesEn: [
+      "Drilling operations organization and control",
+      "Drilling documentation maintenance",
+      "Core recovery control",
+      "Safety compliance ensuring"
+    ]
+  },
+  {
+    id: 4,
+    titleRu: "Маркшейдер",
+    titleEn: "Surveyor",
+    locationRu: "Красноярск / Вахта",
+    locationEn: "Krasnoyarsk / Rotation",
+    experienceRu: "от 3 лет",
+    experienceEn: "3+ years",
+    salary: "от 120 000 ₽",
+    employment: "Полная занятость",
+    schedule: "5/2 / Вахта",
+    requirementsRu: [
+      "Высшее горное образование",
+      "Опыт работы от 3 лет",
+      "Навыки работы с GNSS-оборудованием",
+      "Знание Nanosoft, КРЕДО-Диалог",
+      "Аттестация в Ростехнадзоре приветствуется"
+    ],
+    requirementsEn: [
+      "Higher mining education",
+      "3+ years of experience",
+      "GNSS equipment skills",
+      "Knowledge of Nanosoft, CREDO-Dialog",
+      "Rostechnadzor certification is a plus"
+    ],
+    dutiesRu: [
+      "Геодезическое обеспечение горных работ",
+      "Создание опорных сетей",
+      "Топографическая съёмка",
+      "Подготовка маркшейдерской документации"
+    ],
+    dutiesEn: [
+      "Geodetic support of mining operations",
+      "Control network creation",
+      "Topographic surveying",
+      "Survey documentation preparation"
+    ]
+  },
+  {
+    id: 5,
+    titleRu: "Программист ГИС",
+    titleEn: "GIS Programmer",
+    locationRu: "Красноярск",
+    locationEn: "Krasnoyarsk",
+    experienceRu: "от 2 лет",
+    experienceEn: "2+ years",
+    salary: "от 100 000 ₽",
+    employment: "Полная занятость",
+    schedule: "5/2",
+    requirementsRu: [
+      "Опыт работы с QGIS, ArcGIS от 2 лет",
+      "Знание Python, SQL",
+      "Навыки автоматизации процессов",
+      "Опыт работы с геологическими базами данных",
+      "Понимание геоинформатики"
+    ],
+    requirementsEn: [
+      "2+ years of experience with QGIS, ArcGIS",
+      "Knowledge of Python, SQL",
+      "Process automation skills",
+      "Experience with geological databases",
+      "Understanding of geoinformatics"
+    ],
+    dutiesRu: [
+      "Разработка и поддержка ГИС-проектов",
+      "Автоматизация геологических расчетов",
+      "Создание карт и 3D-моделей",
+      "Интеграция данных из различных источников"
+    ],
+    dutiesEn: [
+      "GIS projects development and support",
+      "Automation of geological calculations",
+      "Creation of maps and 3D models",
+      "Data integration from various sources"
+    ]
+  },
+  {
+    id: 6,
+    titleRu: "Лаборант-аналитик",
+    titleEn: "Laboratory Analyst",
+    locationRu: "Красноярск",
+    locationEn: "Krasnoyarsk",
+    experienceRu: "от 1 года",
+    experienceEn: "1+ year",
+    salary: "от 60 000 ₽",
+    employment: "Полная занятость",
+    schedule: "5/2",
+    requirementsRu: [
+      "Среднее специальное или высшее химическое образование",
+      "Опыт работы в лаборатории от 1 года",
+      "Навыки работы с ICP-MS, XRF",
+      "Аккуратность и внимательность",
+      "Знание методик пробоподготовки"
+    ],
+    requirementsEn: [
+      "Secondary specialized or higher chemical education",
+      "1+ year of laboratory experience",
+      "Skills with ICP-MS, XRF",
+      "Accuracy and attentiveness",
+      "Knowledge of sample preparation methods"
+    ],
+    dutiesRu: [
+      "Проведение химических анализов проб",
+      "Ведение журналов и протоколов",
+      "Подготовка проб к анализу",
+      "Контроль качества результатов"
+    ],
+    dutiesEn: [
+      "Chemical analysis of samples",
+      "Maintenance of logs and protocols",
+      "Sample preparation for analysis",
+      "Quality control of results"
+    ]
+  }
+]
+
+export default function ContactsContent() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -34,6 +266,8 @@ export function ContactsContent() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
+  const [activeVacancy, setActiveVacancy] = useState("")
+  const [openDetails, setOpenDetails] = useState<number | null>(null)
   
   const mapRef = useRef<HTMLDivElement>(null)
   const { isReady, ymaps } = useYandexMapsContext()
@@ -51,7 +285,6 @@ export function ContactsContent() {
         controls: ['zoomControl', 'fullscreenControl'],
       })
 
-      // Маркер офиса
       const placemark = new ymaps.Placemark(
         officeInfo.coordinates,
         {
@@ -86,6 +319,16 @@ export function ContactsContent() {
     }
   }
 
+  const handleVacancyClick = (titleRu: string) => {
+    setActiveVacancy(titleRu)
+    setFormData(prev => ({ ...prev, position: titleRu }))
+    document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const toggleDetails = (id: number) => {
+    setOpenDetails(openDetails === id ? null : id)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -116,6 +359,7 @@ export function ContactsContent() {
       setIsSubmitted(true)
       setFormData({ fullName: "", email: "", phone: "", position: "", experience: "", message: "" })
       setSelectedFile(null)
+      setActiveVacancy("")
       setTimeout(() => setIsSubmitted(false), 5000)
     } catch (err) {
       setError('Ошибка отправки. Попробуйте позже.')
@@ -130,7 +374,7 @@ export function ContactsContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-contacts2.png"
-            alt="Контакты ПЭК"
+            alt="Карьера в ПЭК"
             fill
             priority
             className="object-cover"
@@ -155,12 +399,12 @@ export function ContactsContent() {
               </div>
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Работа в ПЭК
+                Присоединяйтесь к команде ПЭК
               </h1>
               
               <p className="text-xl text-white/90 leading-relaxed">
-                Присоединяйтесь к команде профессионалов! Отправьте нам своё резюме,
-                и мы свяжемся с вами при открытии подходящей вакансии.
+                Мы ищем талантливых специалистов в области геологии, геофизики, бурения и IT.
+                Отправьте нам своё резюме, и мы свяжемся с вами при открытии подходящей вакансии.
               </p>
             </motion.div>
           </div>
@@ -211,13 +455,13 @@ export function ContactsContent() {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+            {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="bg-card p-8 md:p-10 rounded-2xl border border-border">
+              <div id="application-form" className="bg-card p-8 md:p-10 rounded-2xl border border-border">
                 <h2 className="font-display text-2xl font-bold text-foreground mb-2">
                   Отправить резюме
                 </h2>
@@ -328,8 +572,6 @@ export function ContactsContent() {
                       </p>
                     </div>
 
-                    
-
                     <Button
                       type="submit"
                       size="lg"
@@ -402,20 +644,119 @@ export function ContactsContent() {
         </div>
       </section>
 
-      {/* Open Positions (краткий список) */}
-      <section className="py-12 bg-card">
+      {/* Vacancies Section */}
+      <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-8">
-            Мы ищем специалистов
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['Геологи', 'Геофизики', 'Инженеры-буровики', 'Маркшейдеры', 'Лаборанты', 'Программисты ГИС'].map((position, idx) => (
-              <span
-                key={idx}
-                className="px-4 py-2 bg-background border border-border rounded-full text-sm text-foreground"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Briefcase className="w-6 h-6 text-primary" />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Актуальные вакансии
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Присоединяйтесь к команде профессионалов. Мы ждём именно вас!
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {vacancies.map((vacancy, index) => (
+              <motion.div
+                key={vacancy.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-background rounded-2xl border border-border overflow-hidden hover:border-primary/30 transition-all group"
               >
-                {position}
-              </span>
+                <div className="p-6">
+                  {/* Заголовок и зарплата */}
+                  <div className="flex justify-between items-start gap-4 mb-3">
+                    <h3 className="font-display text-xl font-semibold text-foreground">
+                      {vacancy.titleRu}
+                    </h3>
+                    <span className="text-lg font-bold text-primary whitespace-nowrap">
+                      {vacancy.salary}
+                    </span>
+                  </div>
+                  
+                  {/* Информация о работе */}
+                  <div className="space-y-2 mb-4 pb-4 border-b border-border">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <MapPin className="w-4 h-4 text-primary" />
+                      <span>{vacancy.locationRu}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Clock className="w-4 h-4 text-primary" />
+                      <span>Опыт: {vacancy.experienceRu}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                        {vacancy.employment}
+                      </span>
+                      <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                        {vacancy.schedule}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Требования (аккордеон) */}
+                  <div className="mb-4">
+                    <button
+                      onClick={() => toggleDetails(vacancy.id)}
+                      className="w-full flex items-center justify-between text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                    >
+                      <span>Требования</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${openDetails === vacancy.id ? 'rotate-180' : ''}`} />
+                    </button>
+                    {openDetails === vacancy.id && (
+                      <div className="mt-3 space-y-2 pl-2">
+                        {vacancy.requirementsRu.map((req, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
+                            <span>{req}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Обязанности (аккордеон) */}
+                  <div className="mb-5">
+                    <button
+                      onClick={() => toggleDetails(vacancy.id + 100)}
+                      className="w-full flex items-center justify-between text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                    >
+                      <span>Обязанности</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${openDetails === vacancy.id + 100 ? 'rotate-180' : ''}`} />
+                    </button>
+                    {openDetails === vacancy.id + 100 && (
+                      <div className="mt-3 space-y-2 pl-2">
+                        {vacancy.dutiesRu.map((duty, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
+                            <span>{duty}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Кнопка отклика */}
+                  <Button
+                    variant="outline"
+                    className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
+                    onClick={() => handleVacancyClick(vacancy.titleRu)}
+                  >
+                    Откликнуться
+                  </Button>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

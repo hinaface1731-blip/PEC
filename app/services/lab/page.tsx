@@ -2,7 +2,7 @@ import { PageLayout } from '@/components/page-layout'
 import { LabContent } from '@/components/services/lab-content'
 
 export const metadata = {
-  title: 'Лабораторные исследования — ПЭК',
+  title: 'Лабораторные исследования — Полярная Экспедиционная Компания',
   description: 'ICP-MS анализ на 45 элементов, пробирный анализ драгметаллов, минералогия. 25 000 проб/год, аккредитованная лаборатория.',
 }
 

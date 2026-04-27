@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
-import { ArrowRight, Play } from 'lucide-react'
+import { ArrowRight, Briefcase } from 'lucide-react'  // ← Play заменён на Briefcase
 import { motion } from 'framer-motion'
 
 export function HeroSection() {
@@ -42,7 +42,6 @@ export function HeroSection() {
             )}
           </motion.h1>
 
-          {/* ✅ Первый параграф — основной */}
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +54,6 @@ export function HeroSection() {
             )}
           </motion.p>
 
-          {/* ✅ Второй параграф — мелкий и полупрозрачный (вспомогательный) */}
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,7 +77,7 @@ export function HeroSection() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/projects" className="btn btn-ghost">
-              <Play className="w-4 h-4" />
+              <Briefcase className="w-4 h-4" />  {/* ← иконка портфеля проектов */}
               {t('Проекты', 'Projects')}
             </Link>
           </motion.div>

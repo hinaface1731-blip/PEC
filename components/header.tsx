@@ -23,7 +23,7 @@ const services = [
 const navItems = [
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
-  { href: '/contacts', ru: 'Контакты', en: 'Contacts' },
+  { href: '/contacts', ru: 'Вакансии', en: 'Vacancy' },
 ]
 
 export function Header() {
@@ -93,7 +93,7 @@ export function Header() {
         
 <Image
   src="/images/logo.png"
-  alt={t('ПЭК', 'PEC')}
+  alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
   width={150}
   height={60}
   className="object-contain dark:brightness-0 dark:invert"

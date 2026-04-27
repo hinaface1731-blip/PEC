@@ -20,15 +20,15 @@ const projects = [
   },
   {
     image: '/images/neven.JPG',
-    titleRu: 'Невенреканская площадь',
+    titleRu: 'Месторождение Невенрекан',
     titleEn: 'Nevenrekan Site',
     clientRu: 'Полиметалл',
     clientEn: 'Polymetall',
     year: '2023-2025',
     regionRu: 'Магадан',
     regionEn: 'Magadan',
-    resultRu: 'Геофизические исследования на 120 км², выявлены аномалии ВП до 12%',
-    resultEn: 'Geophysical surveys on 120 km², IP anomalies up to 12% identified',
+    resultRu: 'Геофизические исследования на 120 км²',
+    resultEn: 'Geophysical surveys on 120 km²',
   },
   {
     image: '/images/oper.JPG',
