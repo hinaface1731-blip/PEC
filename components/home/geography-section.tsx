@@ -149,9 +149,9 @@ export function GeographySection() {
           className="rounded-2xl overflow-hidden mb-8 shadow-xl bg-[var(--bg3)] relative"
           style={{ width: '100%', height: '550px' }}
         >
-          {/* Плейсхолдер пока карта загружается */}
+          <div className="absolute inset-0 pointer-events-none z-10 mix-blend-multiply bg-black/30 rounded-2xl" />
           {!isReady && (
-            <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg3)] z-10">
+            <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg2)] z-10 bg-orange-500/30 mix-blend-overlay">
               <div className="text-center">
                 <div className="w-10 h-10 border-4 border-[var(--accent)] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
                 <span className="text-[var(--muted)]">Загрузка карты...</span>
