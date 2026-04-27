@@ -17,6 +17,7 @@ const services = [
   { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
   { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
   { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
+  
 ]
 
 // ✅ Убрали 'О компании' из navItems (она уже есть отдельно)
@@ -24,6 +25,7 @@ const navItems = [
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
   { href: '/contacts', ru: 'Вакансии', en: 'Vacancy' },
+  { href: '/investors', ru: 'Инвесторам', en: 'Investors' },  
 ]
 
 export function Header() {
