@@ -1,8 +1,8 @@
-import { PageLayout } from "@/components/page-layout"
-import { ContactsContent } from "@/components/contacts/contacts-content"
+import ContactsContent from '@/components/contacts/contacts-content'
+import { PageLayout } from '@/components/page-layout'
 
 export const metadata = {
-  title: 'Контакты — ПЭК',
+  title: 'Контакты — Полярная Экспедиционная Компания',
   description: 'Контакты Полярной Экспедиционной Компании. Телефон, email, адрес в Красноярске.',
 }
 

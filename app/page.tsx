@@ -9,7 +9,7 @@ import { LicensesSection } from '@/components/home/licenses-section'
 import { CTAForm } from '@/components/cta-form'
 
 export const metadata = {
-  title: 'ПЭК — Полярная Экспедиционная Компания',
+  title: 'Полярная Экспедиционная Компания',
   description: 'Геологоразведка полного цикла в Арктике и Сибири. Геология, геофизика, бурение, маркшейдерия, лаборатория. 17 лет опыта, 30+ проектов.',
 }
 

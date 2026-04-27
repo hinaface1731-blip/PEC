@@ -283,7 +283,7 @@ export function ProjectsContent() {
           {/* Hero Image с оптимизацией */}
           <Image
             src="/images/projects3.jpg"
-            alt="Проекты ПЭК"
+            alt="Проекты Полярной Экспедиционной Компании"
             fill
             priority  // ← загружаем сразу (LCP)
             className="object-cover"

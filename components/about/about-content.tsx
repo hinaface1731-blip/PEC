@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 const milestones = [
-  { year: "2008", title: "Основание компании", desc: "Создание ПЭК" },
+  { year: "2008", title: "Основание компании", desc: "Создание Полярной Экспедиционной Компании" },
   { year: "2009", title: "Первый крупный контракт", desc: "Начало работы на золоторудных месторождениях" },
   { year: "2010", title: "Расширение географии", desc: "Выход на дальний восток и крайний север" },
   { year: "2012", title: "Собственная лаборатория", desc: "Открытие аккредитованной аналитической лаборатории" },
@@ -16,32 +16,6 @@ const milestones = [
   { year: "2024", title: "Лидер отрасли", desc: "Более 200 выполненных проектов, 500+ сотрудников" }
 ]
 
-const team = [
-  {
-    name: "Калмыков Иван Валерьевич",
-    position: "Генеральный директор",
-    experience: "30+ лет",
-    image: "/images/haruhi.jpg"
-  },
-  {
-    name: "Черненко Наталья Ярославовна",
-    position: "Главный геолог",
-    experience: "25+ лет",
-    image: "/images/haruhi.jpg"
-  },
-  {
-    name: "Петров Андрей Викторович",
-    position: "Технический директор",
-    experience: "20+ лет",
-    image: "/images/haruhi.jpg"
-  },
-  {
-    name: "Юсупова Дилором Рахимовна",
-    position: "Директор по развитию",
-    experience: "18+ лет",
-    image: "/images/haruhi.jpg"
-  }
-]
 
 const values = [
   {
@@ -74,7 +48,7 @@ export function AboutContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/compashka.JPG"
-            alt="О компании ПЭК"
+            alt="О компании"
             fill
             priority
             className="object-cover"
@@ -97,7 +71,7 @@ export function AboutContent() {
             </div>
             
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              О компании ПЭК
+              Полярная Экспедиционная Компания
             </h1>
             
             <p className="text-xl text-white leading-relaxed">

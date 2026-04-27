@@ -237,7 +237,7 @@ export function EquipmentContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/projects.jpg"
-            alt="Оборудование ПЭК"
+            alt="Оборудование Полярной Экспедиционной Компании"
             fill
             priority
             className="object-cover"

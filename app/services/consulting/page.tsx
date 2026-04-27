@@ -2,7 +2,7 @@ import { PageLayout } from '@/components/page-layout'
 import { ConsultingContent } from '@/components/services/consulting-content'
 
 export const metadata = {
-  title: 'Проектирование и консалтинг — ПЭК',
+  title: 'Проектирование и консалтинг — Полярная Экспедиционная КомпанияК',
   description: 'ТЭО кондиций, подсчёт запасов ГКЗ/ТКЗ, проектирование ГРР, оценка ресурсов JORC. 15+ проектов ГКЗ, 30+ ТЭО.',
 }
 

@@ -188,10 +188,7 @@ export function ServicePageTemplate({ data, topSection, bottomSection }: Service
               <p className="text-xl text-white/90 leading-relaxed mb-8">
                 {t(data.descRu, data.descEn)}
               </p>
-              <Link href="#cta" className="btn btn-primary">
-                {t('Запросить КП', 'Request Quote')}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              
             </div>
             <div className="flex-1" />
           </div>
@@ -445,7 +442,6 @@ export function ServicePageTemplate({ data, topSection, bottomSection }: Service
         </div>
       </section>
 
-      <CTAForm serviceName={t(data.titleRu, data.titleEn)} />
 
       {/* 👇 БОТТОМ-СЕКЦИЯ (форма, доп. блоки) - САМЫЙ НИЗ */}
       {bottomSection && bottomSection}

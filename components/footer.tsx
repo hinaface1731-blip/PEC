@@ -34,7 +34,7 @@ export function Footer() {
             <Link href="/" className="inline-block">
 <Image
   src="/images/logo.png"
-  alt={t('ПЭК', 'PEC')}
+  alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
   width={150}
   height={60}
   className="object-contain dark:brightness-0 dark:invert"
@@ -120,7 +120,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-[var(--muted2)]">
-            © 2026 {t('ООО «ПЭК». Все права защищены.', 'LLC "PEC". All rights reserved.')}
+            © 2026 {t('ООО «Полярная Экспедиционная Компания». Все права защищены.', 'LLC "Polar Expedition Company". All rights reserved.')}
           </p>
           <div className="flex items-center gap-6 text-sm">
             <Link href="/privacy" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">
