@@ -25,7 +25,7 @@ const services = [
 const navItems = [
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
-  { href: '/contacts', ru: 'Вакансии', en: 'Vacancy' },
+  { href: '/contacts', ru: 'Карьера', en: 'Career' },
   { href: '/investors', ru: 'Инвесторам', en: 'Investors' },  
 ]
 

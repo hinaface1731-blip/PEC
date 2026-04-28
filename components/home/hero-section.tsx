@@ -49,7 +49,7 @@ export function HeroSection() {
             className="text-xl md:text-2xl text-white/90 leading-relaxed mb-4"
           >
             {t(
-              'Полный цикл геологоразведочных работ в Арктике и Сибири',
+              'Полный цикл геологоразведочных работ по всей России',
               'Full-cycle geological exploration in the Arctic and Siberia'
             )}
           </motion.p>

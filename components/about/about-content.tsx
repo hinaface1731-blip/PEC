@@ -47,7 +47,7 @@ export function AboutContent() {
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/compashka.JPG"
+            src="/images/company8.jpg"
             alt="О компании"
             fill
             priority

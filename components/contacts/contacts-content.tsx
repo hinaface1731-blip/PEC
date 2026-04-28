@@ -374,7 +374,7 @@ export default function ContactsContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-contacts2.png"
-            alt="Карьера в ПЭК"
+            alt="Карьера в Полярной ЭК"
             fill
             priority
             className="object-cover"
@@ -399,7 +399,7 @@ export default function ContactsContent() {
               </div>
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Присоединяйтесь к команде ПЭК
+                Присоединяйтесь к нашей команде 
               </h1>
               
               <p className="text-xl text-white/90 leading-relaxed">
