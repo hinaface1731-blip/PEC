@@ -14,209 +14,150 @@ import {
   BarChart3, 
   Shield, 
   ArrowRight,
+  Download,
   CheckCircle,
-  Users,
-  Clock,
   Layers,
+  Zap,
   Ship,
-  Plane,
-  LucideIcon,
-  DollarSign,
-  Globe,
-  Radio,
-  DrillIcon,
-  Crosshair,
-  Award,
-  PieChart,
-  Gift,
-  Building2,
-  Sparkles
+  Truck
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-// Данные по 5 лицензионным участкам из документа
-const licenseProjects = [
+// Данные по юниорным проектам из документов
+const juniorProjects = [
   {
     id: 1,
-    nameRu: 'Симсовская площадь',
-    nameEn: 'Simsovskaya Area',
-    license: 'КРР03707ТП',
-    area: '96.75 км²',
-    locationRu: 'Таймыр, полуостров Челюскин',
-    locationEn: 'Taimyr, Chelyuskin Peninsula',
-    statusRu: 'Поисково-оценочный этап',
-    statusEn: 'Exploration & Evaluation',
-    potentialRu: '4 млн т Cu, 2 млн т Mo, 50 т Au',
-    potentialEn: '4 Mt Cu, 2 Mt Mo, 50 t Au',
-    stageRu: 'Геохимическая съёмка + подготовка к бурению',
-    stageEn: 'Geochemical survey + drilling preparation',
-    image: '/images/sims.jpg',
-    highlightsRu: [
-      'Зона медной минерализации 6 км × 800 м',
-      'Пробы: Cu до 0.64%, Au до 0.29 г/т',
-      'Шток гранит-порфиров — центр ПЭС',
-      'Близость к морю Лаптевых (порт)'
-    ],
-    highlightsEn: [
-      'Copper mineralization zone 6 km × 800 m',
-      'Samples: Cu up to 0.64%, Au up to 0.29 g/t',
-      'Granite-porphyry stock — PES center',
-      'Proximity to Laptev Sea (port)'
-    ],
-    priority: 'high'
+    name: "Симсовская",
+    license: "КРР037??БП",
+    area: "96.75 км²",
+    location: "Таймыр, побережье моря Лаптевых",
+    status: "Активные ГРР",
+    potential: "4 млн т меди, 2 млн т молибдена, 50 т золота",
+    stage: "Поисково-оценочный этап",
+    image: "/images/sims.jpg",
+    description: "Располагается на побережье моря Лаптевых в 21 км западнее глубоководной бухты Зимовочная. Выявлена зона сульфидной минерализации протяженностью 6 км.",
+    highlights: [
+      "96.75 км² — лицензионная площадь",
+      "Выход к морю Лаптевых (логистика)",
+      "6 км зона сульфидной минерализации",
+      "4 зоны березитизации с медной минерализацией"
+    ]
   },
   {
     id: 2,
-    nameRu: 'Пекинская площадь',
-    nameEn: 'Pekinskaya Area',
-    license: 'КРР03708ТП',
-    area: '~90 км²',
-    locationRu: 'Таймыр, полуостров Челюскин',
-    locationEn: 'Taimyr, Chelyuskin Peninsula',
-    statusRu: 'Активное бурение',
-    statusEn: 'Active Drilling',
-    potentialRu: '5 млн т Cu, 3 млн т Mo, 120 т Au',
-    potentialEn: '5 Mt Cu, 3 Mt Mo, 120 t Au',
-    stageRu: 'Поисково-оценочное бурение',
-    stageEn: 'Exploration drilling',
-    image: '/images/pekinskaya.jpg',
-    highlightsRu: [
-      '✅ ВСКРЫТО РУДНОЕ ТЕЛО: 15 м с 0.4% Cu',
-      'Зона сульфидизации 5.8 км × 400 м',
-      'Глубинный батолит на 2-3 км',
-      'Дорожнинский разлом — рудоконтроль'
-    ],
-    highlightsEn: [
-      '✅ ORE BODY DISCOVERED: 15 m @ 0.4% Cu',
-      'Sulfidization zone 5.8 km × 400 m',
-      'Deep batholith 2-3 km depth',
-      'Dorozhninsky fault — ore control'
-    ],
-    priority: 'critical'
+    name: "Дорожнинская",
+    license: "КРР03710БП",
+    area: "52.2 км²",
+    location: "Таймыр, 42 км от бухты Зимовочная",
+    status: "Активные ГРР",
+    potential: "2 млн т меди, 1 млн т молибдена, 50 т золота",
+    stage: "Поисково-оценочный этап",
+    image: "/images/dorozh.jpg",
+    description: "Приурочена к Дорожнинскому разлому. Выявлена зона аргиллизации и сульфидизации протяженностью 5.8 км с содержанием меди до 0.64%.",
+    highlights: [
+      "Содержание Cu: 0.1–0.64%",
+      "Серебро: 1.7–20 г/т",
+      "Золото: 0.29–0.6 г/т",
+      "5.8 км — зона минерализации"
+    ]
   },
   {
     id: 3,
-    nameRu: 'Дорожнинская площадь',
-    nameEn: 'Dorozhninskaya Area',
-    license: 'КРР03709ТП',
-    area: '52.2 км²',
-    locationRu: 'Таймыр, полуостров Челюскин',
-    locationEn: 'Taimyr, Chelyuskin Peninsula',
-    statusRu: 'Геофизика + геохимия',
-    statusEn: 'Geophysics + Geochemistry',
-    potentialRu: '2 млн т Cu, 1 млн т Mo, 50 т Au',
-    potentialEn: '2 Mt Cu, 1 Mt Mo, 50 t Au',
-    stageRu: 'Детальная геофизика',
-    stageEn: 'Detailed geophysics',
-    image: '/images/dorozh.jpg',
-    highlightsRu: [
-      'Зона вторичных кварцитов ("железные шляпы")',
-      'Высококонтрастные аномалии Cu (70-530 ppm)',
-      'Интеграция с Пекинским массивом',
-      'Готовность к бурению'
-    ],
-    highlightsEn: [
-      'Secondary quartzite zone ("iron hats")',
-      'High-contrast Cu anomalies (70-530 ppm)',
-      'Integration with Pekinsky massif',
-      'Ready for drilling'
-    ],
-    priority: 'medium'
+    name: "Пекинская",
+    license: "КРР037??БП",
+    area: "97.07 км²",
+    location: "Таймыр, верховья р. Пека",
+    status: "Активные ГРР",
+    potential: "3 млн т меди, 70 т золота",
+    stage: "Детальная геофизика",
+    image: "/images/pekin.jpg",
+    description: "Наиболее изученная площадь. Вскрыто рудное тело мощностью 15 м со средним содержанием меди 0.4%. Выявлены площадные ореолы меди, молибдена и серебра.",
+    highlights: [
+      "Рудное тело: 15 м (0.4% Cu)",
+      "Максимальное содержание Cu >1%",
+      "Разбурено >5000 м скважин",
+      "Площадные геохимические аномалии"
+    ]
   },
   {
     id: 4,
-    nameRu: 'Широкинская площадь (3 лицензии)',
-    nameEn: 'Shirokinskaya Area (3 licenses)',
-    license: 'КРР03710-712ТП',
-    area: '940 км²',
-    locationRu: 'Таймыр, полуостров Челюскин',
-    locationEn: 'Taimyr, Chelyuskin Peninsula',
-    statusRu: 'Комплексные ГРР',
-    statusEn: 'Complex Exploration',
-    potentialRu: '5.2 млн т Cu + 5.5 млн т Pb + 2.2 млн т Zn + 70 т Au',
-    potentialEn: '5.2 Mt Cu + 5.5 Mt Pb + 2.2 Mt Zn + 70 t Au',
-    stageRu: 'Поиски Cu-порфиры + полиметаллы',
-    stageEn: 'Cu-porphyry + polymetals exploration',
-    image: '/images/shirokinskaya.jpg',
-    highlightsRu: [
-      'Проявление "Порфировое" (Mo до 1%, Cu 0.3-1%)',
-      'Проявление "Незабудка" (Pb до 22%, Ag до 100 г/т)',
-      'Два рудных узла в одной лицензии',
-      'Аналог месторождений Песчанка, Актогай'
-    ],
-    highlightsEn: [
-      '"Porphyry" occurrence (Mo up to 1%, Cu 0.3-1%)',
-      '"Nezabudka" occurrence (Pb up to 22%, Ag up to 100 g/t)',
-      'Two ore nodes in one license',
-      'Analogous to Peschanka, Aktogai deposits'
-    ],
-    priority: 'high'
+    name: "Широкинская",
+    license: "—",
+    area: "~250 км²",
+    location: "Таймыр, бассейны рек Широкая, Гольцовая и Тихая",
+    status: "Прогнозные ресурсы",
+    potential: "5.2 млн т меди, 2.4 млн т молибдена, 70 т золота",
+    stage: "Рекомендована к лицензированию",
+    image: "/images/shirokinskaya.jpg",
+    description: "Включает известные проявления «Порфировое» (медь, молибден) и «Незабудка» (серебро-полиметаллы). Ожидается выявление медно-порфирового и эпитермального оруденения.",
+    highlights: [
+      "5.2 млн т Cu — прогнозные ресурсы",
+      "Проявление «Порфировое» — 660 тыс. т Cu",
+      "Проявление «Незабудка» — 1,933 т Ag",
+      "Перспективы на золото и серебро"
+    ]
+  },
+  {
+    id: 5,
+    name: "Оперативная",
+    license: "—",
+    area: "~150 км²",
+    location: "Таймыр, северная часть Кристифенсенского массива",
+    status: "Прогнозные ресурсы",
+    potential: "250 т золота (P2)",
+    stage: "Подготовлена к бурению",
+    image: "/images/oper.jpg",
+    description: "Вскрыто рудное тело штокверкового типа со средним содержанием 2.3 г/т Au на мощность до 8 м. Прогнозные ресурсы золота — 250 тонн.",
+    highlights: [
+      "250 т Au — прогнозные ресурсы",
+      "2.3 г/т Au — среднее содержание",
+      "70 м золотоносный интервал в канаве",
+      "Рудное тело штокверкового типа"
+    ]
   }
 ]
 
-// Геологоразведочные методы
-const explorationMethods = [
-  { icon: Radio, nameRu: 'АМТЗ / ЗСБ', nameEn: 'AMT / TEM', descRu: 'Глубинное зондирование до 2-3 км', descEn: 'Deep sounding up to 2-3 km' },
-  { icon: BarChart3, nameRu: 'Магниторазведка', nameEn: 'Magnetometry', descRu: 'Сеть 200×20 м, детальная', descEn: '200×20 m grid, detailed' },
-  { icon: Target, nameRu: 'Электроразведка ВП', nameEn: 'IP Survey', descRu: 'Выявление сульфидных зон', descEn: 'Sulfidized zones detection' },
-  { icon: DrillIcon, nameRu: 'Колонковое бурение', nameEn: 'Core Drilling', descRu: 'До 300 м глубины', descEn: 'Up to 300 m depth' },
-]
+// Сводные ресурсы Дорожнинского рудного района
+const totalResources = {
+  copper: "14.2 млн т",
+  molybdenum: "7.4 млн т",
+  gold: "290 т",
+  lead: "5.5 млн т",
+  zinc: "2.2 млн т",
+  silver: "5 000 т"
+}
 
-// Инфраструктурные преимущества (из документа)
-const infrastructure = [
-  { icon: Ship, titleRu: 'Северный морской путь', titleEn: 'Northern Sea Route', descRu: 'Глубоководные бухты Зимовочная и Далекая', descEn: 'Deep-water bays Zimovochnaya and Dalekaya' },
-  { icon: Plane, titleRu: 'Авиасообщение', titleEn: 'Air Service', descRu: 'Аэропорт м. Челюскин (Ан-26, Ми-8)', descEn: 'Chelyuskin airport (An-26, Mi-8)' },
-  { icon: Building2, titleRu: 'База в Хатанге', titleEn: 'Khatanga Base', descRu: '570 км вертолётом, логистический хаб', descEn: '570 km by helicopter, logistics hub' },
-  { icon: Globe, titleRu: 'Энергоресурсы', titleEn: 'Energy Resources', descRu: 'Каменный уголь в регионе', descEn: 'Coal in region' },
-]
-
-// План по монетизации / выходу
-const monetizationSteps = [
-  { 
-    icon: Target, 
-    titleRu: 'Этап 1', titleEn: 'Stage 1',
-    subtitleRu: 'Подтверждение ресурсов', subtitleEn: 'Resource Confirmation',
-    descRu: 'Категории С2 и P1 по каждому участку', 
-    descEn: 'C2 and P1 categories per area'
+const advantages = [
+  {
+    icon: Ship,
+    title: "Близость к Севморпути",
+    description: "Площади расположены в 10-20 км от побережья моря Лаптевых. Наличие глубоководных бухт (Зимовочная, Далекая) для строительства морского порта."
   },
-  { 
-    icon: FileText, 
-    titleRu: 'Этап 2', titleEn: 'Stage 2',
-    subtitleRu: 'ТЭО и оценка', subtitleEn: 'Feasibility Study',
-    descRu: 'ТЭО кондиций, госэкспертиза', 
-    descEn: 'Feasibility study, state review'
+  {
+    icon: Truck,
+    title: "Транспортная доступность",
+    description: "Ближайший аэропорт — п. Челюскин (Ан-2, Ил-14, Ан-26, Ан-12, Ми-8). Перевозка грузов из с. Хатанга (570 км, Ми-8) или морем."
   },
-  { 
-    icon: Users, 
-    titleRu: 'Этап 3', titleEn: 'Stage 3',
-    subtitleRu: 'Стратегический партнёр', subtitleEn: 'Strategic Partner',
-    descRu: 'Продажа проекта / farm-in / СП с майнером', 
-    descEn: 'Project sale / farm-in / JV with miner'
+  {
+    icon: Shield,
+    title: "Геологический потенциал",
+    description: "Позднепалеозойский пекинский комплекс гранитоидов. Петрохимические характеристики типичны для рудоносных порфировых систем (адакитовые метки)."
   },
-  { 
-    icon: DollarSign, 
-    titleRu: 'Этап 4', titleEn: 'Stage 4',
-    subtitleRu: 'IPO или дивиденды', subtitleEn: 'IPO or Dividends',
-    descRu: 'Выход на биржу или распределение роялти', 
-    descEn: 'Listing or royalty distribution'
-  },
+  {
+    icon: Zap,
+    title: "Аналоги",
+    description: "Объекты-аналоги: Аксуг (Тува), Песчанка (Чукотка), Актогай (Казахстан), месторождения центрально-африканского пояса."
+  }
 ]
 
 export function InvestorsContent() {
   const { t } = useLanguage()
-  const [activeTab, setActiveTab] = useState('projects')
-
-  const totalPotential = '14.2 млн т Cu'
-  const totalGold = '290 т Au'
-  const licenseCount = 5
-  const totalMo = '7.4 млн т Mo'
+  const [activeProject, setActiveProject] = useState<number | null>(null)
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Enhanced Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-card to-background overflow-hidden">
         <div className="absolute inset-0">
           <Image
                       src="/images/DSC06216.JPG"
@@ -231,364 +172,194 @@ export function InvestorsContent() {
         
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
-            <div className="max-w-4xl">
+            <div className="max-w-3xl">
               <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm flex-wrap">
-                <Link href="/" className="hover:text-primary transition-colors">
-                  {t('Главная', 'Home')}
-                </Link>
+                <Link href="/" className="hover:text-primary transition-colors">Главная</Link>
                 <span>/</span>
-                <span className="text-foreground font-medium">
-                  {t('Инвесторам', 'Investors')}
-                </span>
+                <span className="text-foreground">Инвесторам</span>
               </div>
 
-              <div className="flex flex-col items-start gap-6 mb-8">
-                <Badge variant="outline" className="bg-orange-500/10 text-orange-500 border-orange-500/30 text-sm py-1 px-3">
-                   {t('Прямые инвестиции в геологоразведку', 'Direct Investment in Exploration')}
-                </Badge>
-                
-                <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground leading-tight">
-                  {t('Пять лицензий на Таймыре', 'Five Licenses in Taimyr')}
-                  <span className="text-orange-500 block mt-2">
-                    11.8+, 14.2 млн тонн меди
-                  </span>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
+                  <TrendingUp className="w-8 h-8 text-orange-500" />
+                </div>
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-background">
+                  Юниорные проекты на Таймыре
                 </h1>
               </div>
               
-              <p className="text-xl text-background foreground leading-relaxed max-w-3xl">
-                {t(
-                  'Полярная Экспедиционная Компания владеет 5 лицензиями на геологоразведку в пределах Дорожнинского рудного района — одного из самых перспективных медно-порфировых поясов Арктики.',
-                  'Polar Expedition Company holds 5 exploration licenses within the Dorozhninsky ore district — one of the most promising copper-porphyry belts in the Arctic.'
-                )}
+              <p className="text-xl text-background leading-relaxed">
+                Инвестируйте в разведку медно-никелевых и золоторудных месторождений на полуострове Челюскин. 
+                5 лицензионных участков с прогнозными ресурсами более 14 млн тонн меди и 290 тонн золота.
               </p>
-
-              <div className="flex flex-wrap gap-4 mt-8">
-                <Button size="lg" asChild>
-                  <Link href="/documents/investor-deck.pdf">
-                     {t('Скачать презентацию', 'Download Presentation')}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/contacts">
-                    {t('Связаться с IR', 'Contact IR')}
-                  </Link>
-                </Button>
-              </div>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Key Metrics Dashboard - 4 columns */}
-      <section className="py-12 bg-card border-b border-border">
+      {/* Total Resources Stats */}
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center p-4 rounded-xl bg-background/50">
-              <div className="text-3xl font-bold text-orange-500 mb-1">{licenseCount}</div>
-              <div className="text-sm text-muted-foreground">{t('Действующих лицензий', 'Active Licenses')}</div>
+          <FadeIn>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-foreground">Суммарный ресурсный потенциал</h2>
+              <p className="text-muted-foreground">Дорожнинский рудный район — новый горнопромышленный кластер на Таймыре</p>
             </div>
-            <div className="text-center p-4 rounded-xl bg-background/50">
-              <div className="text-3xl font-bold text-orange-500 mb-1">{totalPotential}</div>
-              <div className="text-sm text-muted-foreground">{t('Прогнозных ресурсов меди', 'Predicted Copper Resources')}</div>
+          </FadeIn>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="text-center p-4 bg-background rounded-xl border border-border">
+              <div className="text-2xl font-bold text-orange-500">{totalResources.copper}</div>
+              <div className="text-xs text-muted-foreground">Меди</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-background/50">
-              <div className="text-3xl font-bold text-orange-500 mb-1">{totalGold}</div>
-              <div className="text-sm text-muted-foreground">{t('Прогнозных ресурсов золота', 'Predicted Gold Resources')}</div>
+            <div className="text-center p-4 bg-background rounded-xl border border-border">
+              <div className="text-2xl font-bold text-orange-500">{totalResources.molybdenum}</div>
+              <div className="text-xs text-muted-foreground">Молибдена</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-background/50">
-              <div className="text-3xl font-bold text-orange-500 mb-1">~1 200 км²</div>
-              <div className="text-sm text-muted-foreground">{t('Общая лицензионная площадь', 'Total Licensed Area')}</div>
+            <div className="text-center p-4 bg-background rounded-xl border border-border">
+              <div className="text-2xl font-bold text-orange-500">{totalResources.gold}</div>
+              <div className="text-xs text-muted-foreground">Золота</div>
+            </div>
+            <div className="text-center p-4 bg-background rounded-xl border border-border">
+              <div className="text-2xl font-bold text-orange-500">{totalResources.lead}</div>
+              <div className="text-xs text-muted-foreground">Свинца</div>
+            </div>
+            <div className="text-center p-4 bg-background rounded-xl border border-border">
+              <div className="text-2xl font-bold text-orange-500">{totalResources.zinc}</div>
+              <div className="text-xs text-muted-foreground">Цинка</div>
+            </div>
+            <div className="text-center p-4 bg-background rounded-xl border border-border">
+              <div className="text-2xl font-bold text-orange-500">{totalResources.silver}</div>
+              <div className="text-xs text-muted-foreground">Серебра</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content Tabs */}
-      <section className="py-16">
+      {/* Advantages */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="projects" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12">
-              <TabsTrigger value="projects">{t('Проекты', 'Projects')}</TabsTrigger>
-              <TabsTrigger value="geology">{t('Геология', 'Geology')}</TabsTrigger>
-              <TabsTrigger value="monetization">{t('Монетизация', 'Monetization')}</TabsTrigger>
-              <TabsTrigger value="infrastructure">{t('Инфраструктура', 'Infrastructure')}</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="projects" className="space-y-8">
-              {licenseProjects.map((project, index) => (
-                <FadeIn key={project.id} delay={index * 0.1}>
-                  <motion.div 
-                    whileHover={{ y: -4 }}
-                    className="card-enhanced rounded-2xl overflow-hidden border border-border hover:border-orange-500/30 transition-all"
-                  >
-                    <div className="flex flex-col lg:flex-row">
-                      <div className="relative w-full lg:w-80 h-64 lg:h-auto bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
-                        <div className="text-center p-6">
-                          <div className="w-20 h-20 mx-auto bg-orange-500/20 rounded-full flex items-center justify-center mb-4">
-                            <Layers className="w-10 h-10 text-orange-500" />
-                          </div>
-                          <Badge variant={project.priority === 'critical' ? 'default' : 'secondary'} 
-                                 className={project.priority === 'critical' ? 'bg-orange-500' : ''}>
-                            {project.priority === 'critical' ? ' Приоритетный проект' : ''}
-                            {project.priority === 'high' ? ' Перспективный' : ''}
-                          </Badge>
-                        </div>
-                      </div>
-                      
-                      <div className="flex-1 p-6 lg:p-8">
-                        <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                          <div>
-                            <h3 className="font-display text-2xl font-bold text-foreground">
-                              {t(project.nameRu, project.nameEn)}
-                            </h3>
-                            <div className="flex flex-wrap items-center gap-2 mt-2">
-                              <Badge variant="outline" className="text-xs font-mono">
-                                {project.license}
-                              </Badge>
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                <MapPin className="w-3 h-3" />
-                                <span>{t(project.locationRu, project.locationEn)}</span>
-                              </div>
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                <Layers className="w-3 h-3" />
-                                <span>{project.area}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <Badge variant="secondary" className="bg-slate-800 text-slate-300">
-                            {t(project.statusRu, project.statusEn)}
-                          </Badge>
-                        </div>
-
-                        <div className="mb-4 p-4 bg-gradient-to-r from-orange-500/10 to-transparent border-l-4 border-orange-500 rounded-r-lg">
-                          <p className="text-foreground font-semibold">
-                            📊 {t(project.potentialRu, project.potentialEn)}
-                          </p>
-                          <p className="text-sm text-muted-foreground mt-1">
-                             {t(project.stageRu, project.stageEn)}
-                          </p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-3 text-sm">
-                            {t('🔍 Ключевые результаты и преимущества:', '🔍 Key results & highlights:')}
-                          </h4>
-                          <div className="grid md:grid-cols-2 gap-2">
-                            {project.highlightsRu.map((highlight, idx) => (
-                              <div key={idx} className="flex items-start gap-2 text-sm">
-                                <CheckCircle className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                                <span className="text-muted-foreground">
-                                  {t(highlight, project.highlightsEn[idx])}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </FadeIn>
-              ))}
-            </TabsContent>
-
-            <TabsContent value="geology">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <FadeIn>
-                  <div className="card-enhanced p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                      <Radio className="w-5 h-5 text-orange-500" />
-                      {t('Геологическая модель', 'Geological Model')
-                    }</h3>
-                    <p className="text-muted-foreground mb-4">
-                      {t('Дорожнинский рудный район относится к порфировому типу (Porphyry Copper System) с классической зональностью: калишпатизация → березиты → аргиллизиты → пропилиты. Оруденение контролируется Дорожнинским глубинным разломом.','The Dorozhninsky ore district belongs to the porphyry copper system type with classic zonation: potassic alteration → beresites → argillizites → propylites. Mineralization is controlled by the Dorozhninsky deep fault.')}
-                    </p>
-                    <div className="space-y-3">
-                      {explorationMethods.map((method, idx) => (
-                        <div key={idx} className="flex items-center gap-3 p-2 rounded-lg hover:bg-card/50">
-                          <method.icon className="w-5 h-5 text-orange-500" />
-                          <div>
-                            <div className="font-medium text-foreground">{t(method.nameRu, method.nameEn)}</div>
-                            <div className="text-sm text-muted-foreground">{t(method.descRu, method.descEn)}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </FadeIn>
-                <FadeIn delay={0.1}>
-                  <div className="card-enhanced p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                      <Award className="w-5 h-5 text-orange-500" />
-                      {t('Аналоги успешных проектов', 'Successful Project Analogs')}
-                    </h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 p-3 bg-orange-500/5 rounded-lg border border-orange-500/20">
-                        <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                        <div>
-                          <div className="font-semibold text-foreground">Аксуг (Тыва)</div>
-                          <div className="text-sm text-muted-foreground">{t('Cu-Mo-Au порфиры, ~3 млн т меди','Cu-Mo-Au porphyries, ~3 Mt copper')}</div>
-                        </div>
-                      </li>
-                      <li className="flex items-start gap-3 p-3 bg-orange-500/5 rounded-lg border border-orange-500/20">
-                        <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                        <div>
-                          <div className="font-semibold text-foreground">Песчанка (Чукотка)</div>
-                          <div className="text-sm text-muted-foreground">{t('Cu-Mo-Au порфиры, ~8 млн т меди','Cu-Mo-Au porphyries, ~8 Mt copper')}</div>
-                        </div>
-                      </li>
-                      <li className="flex items-start gap-3 p-3 bg-orange-500/5 rounded-lg border border-orange-500/20">
-                        <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5" />
-                        <div>
-                          <div className="font-semibold text-foreground">Актогай (Казахстан)</div>
-                          <div className="text-sm text-muted-foreground">{t('Cu-Mo-Au порфиры, ~5 млн т меди','Cu-Mo-Au porphyries, ~5 Mt copper')}</div>
-                        </div>
-                      </li>
-                    </ul>
-                    <div className="mt-6 p-4 bg-card rounded-lg border border-border">
-                      <p className="text-sm text-muted-foreground">
-                        {t('Вывод: Дорожнинский район обладает всеми признаками крупной рудно-магматической системы, аналогичной мировым медно-порфировым провинциям.', 'Conclusion: The Dorozhninsky district has all the features of a large ore-magmatic system, analogous to world-class copper-porphyry provinces.')}
-                      </p>
-                    </div>
-                  </div>
-                </FadeIn>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="monetization">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <FadeIn>
-                  <div className="card-enhanced p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                      <DollarSign className="w-5 h-5 text-orange-500" />
-                      {t('План монетизации', 'Monetization Plan')}
-                    </h3>
-                    <div className="space-y-4">
-                      {monetizationSteps.map((step, idx) => (
-                        <div key={idx} className="flex items-start gap-4 p-3 rounded-lg bg-card/50">
-                          <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                            <step.icon className="w-5 h-5 text-orange-500" />
-                          </div>
-                          <div>
-                            <div className="font-semibold text-foreground">{t(step.titleRu, step.titleEn)}</div>
-                            <div className="text-sm text-orange-500 font-mono">{t(step.subtitleRu, step.subtitleEn)}</div>
-                            <div className="text-sm text-muted-foreground mt-1">{t(step.descRu, step.descEn)}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </FadeIn>
-                <FadeIn delay={0.1}>
-                  <div className="card-enhanced p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                      <Gift className="w-5 h-5 text-orange-500" />
-                      {t('Структура сделки для инвестора', 'Investment Structure')}
-                    </h3>
-                    <div className="space-y-4">
-                      <div className="p-4 border border-border rounded-lg">
-                        <div className="text-orange-500 font-bold text-lg mb-1">💎 Farm-in / JV</div>
-                        <p className="text-muted-foreground text-sm">{t('Поэтапное финансирование ГРР в обмен на долю в проекте. Возможность обратного выкупа (back-in right).','Phased exploration financing in exchange for project stake. Back-in right option available.')}</p>
-                      </div>
-                      <div className="p-4 border border-border rounded-lg">
-                        <div className="text-orange-500 font-bold text-lg mb-1">📜 Лицензионное соглашение (NSR)</div>
-                        <p className="text-muted-foreground text-sm">{t('Роялти от будущей добычи без операционных затрат.','Royalty from future production with no operating costs.')}</p>
-                      </div>
-                      <div className="p-4 border border-border rounded-lg">
-                        <div className="text-orange-500 font-bold text-lg mb-1">🏗️ Прямая продажа проекта</div>
-                        <p className="text-muted-foreground text-sm">{t('Стратегическому майнеру (Норникель, Полиметалл и др.) после подтверждения ресурсов.','To strategic mining company (Norilsk Nickel, Polymetal, etc.) after resource confirmation.')}</p>
-                      </div>
-                      <div className="p-4 bg-gradient-to-r from-orange-500/10 to-transparent border-l-4 border-orange-500 rounded-lg">
-                        <p className="text-sm font-medium text-foreground">
-                           {t('Потенциальная капитализация проекта при подтверждении 5 млн т Cu:','Projected capitalization with confirmed 5 Mt Cu:')} <span className="text-orange-500 font-bold">$500M – $1B+</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="infrastructure">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <FadeIn>
-                  <div className="card-enhanced p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                      <Ship className="w-5 h-5 text-orange-500" />
-                      {t('Транспортная доступность', 'Transport Accessibility')}
-                    </h3>
-                    <div className="space-y-4">
-                      {infrastructure.map((item, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                            <item.icon className="w-5 h-5 text-orange-500" />
-                          </div>
-                          <div>
-                            <div className="font-semibold text-foreground">{t(item.titleRu, item.titleEn)}</div>
-                            <div className="text-sm text-muted-foreground">{t(item.descRu, item.descEn)}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </FadeIn>
-                <FadeIn delay={0.1}>
-                  <div className="card-enhanced p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-orange-500" />
-                      {t('Логистика работ', 'Works Logistics')}
-                    </h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5" />
-                        <span className="text-muted-foreground">{t('Автозимники от бухты Зимовочная (октябрь–июнь)','Winter roads from Zimovochnaya Bay (October–June)')}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5" />
-                        <span className="text-muted-foreground">{t('Вертолётное сообщение Ми-8 (круглогодично)','Mi-8 helicopter service (year-round)')}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5" />
-                        <span className="text-muted-foreground">{t('Ближайший порт: Хатанга (морской и речной)','Nearest port: Khatanga (sea and river)')}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5" />
-                        <span className="text-muted-foreground">{t('Возможность строительства собственного порта в бухтах Зимовочная/Далекая','Possibility to build own port in Zimovochnaya/Dalekaya bays')}</span>
-                      </li>
-                    </ul>
-                    <div className="mt-6 p-4 bg-card rounded-lg border border-border">
-                      <p className="text-sm text-muted-foreground">
-                        {t('Главное преимущество: удалённость компенсируется логистическим плечом Северного морского пути — прямая доставка в порты Мурманск, Архангельск, Владивосток.', 'Main advantage: remoteness is offset by the Northern Sea Route logistics — direct delivery to Murmansk, Arkhangelsk, Vladivostok ports.')}
-                      </p>
-                    </div>
-                  </div>
-                </FadeIn>
-              </div>
-            </TabsContent>
-          </Tabs>
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                Почему стоит инвестировать
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Уникальное сочетание ресурсного потенциала, инфраструктуры и геологических перспектив
+              </p>
+            </div>
+          </FadeIn>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {advantages.map((adv, idx) => (
+              <FadeIn key={idx} delay={idx * 0.1}>
+                <div className="card-enhanced p-6 h-full">
+                  <adv.icon className="w-10 h-10 text-orange-500 mb-4" />
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{adv.title}</h3>
+                  <p className="text-sm text-muted-foreground">{adv.description}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
-        <div className="container mx-auto px-4 text-center">
+      {/* Junior Projects Section */}
+      <section className="py-20 bg-card">
+        <div className="container mx-auto px-4">
           <FadeIn>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              {t('Готовы обсудить инвестиции?', 'Ready to discuss investment?')}
-            </h2>
-            <p className="text-orange-100 max-w-2xl mx-auto mb-8">
-              {t('Предоставим детальную информацию по лицензиям, геофизике, сметам и юридической структуре сделки.','We provide detailed information on licenses, geophysics, budgets and legal structure.')}
-            </p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                Юниорные проекты Полярной ЭК
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Перспективные площади на полуострове Челюскин, готовые к постановке поисково-оценочных работ
+              </p>
+            </div>
+          </FadeIn>
+          <div className="space-y-8">
+            {juniorProjects.map((project, idx) => (
+              <FadeIn key={project.id} delay={idx * 0.1}>
+                <div className="card-enhanced rounded-2xl overflow-hidden">
+                  <div className="flex flex-col md:flex-row">
+                    <div className="relative w-full md:w-80 lg:w-96 h-64 md:h-auto">
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 p-6 md:p-8">
+                      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground">{project.name}</h3>
+                          <div className="flex flex-wrap gap-2 mt-1">
+                            {project.license !== "—" && (
+                              <span className="px-2 py-0.5 bg-orange-500/10 text-orange-500 text-xs font-mono rounded">
+                                {project.license}
+                              </span>
+                            )}
+                            <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                              <Layers className="w-3 h-3" />
+                              {project.area}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="px-3 py-1 bg-green-500/10 text-green-500 text-sm rounded-full">
+                          {project.status}
+                        </div>
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-4">{project.description}</p>
+                      
+                      <div className="mb-4 p-3 bg-orange-500/5 border border-orange-500/20 rounded-lg">
+                        <p className="text-foreground font-semibold">📈 Прогнозные ресурсы: {project.potential}</p>
+                        <p className="text-sm text-muted-foreground mt-1">🎯 Этап: {project.stage}</p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.highlights.map((highlight, idx) => (
+                          <span key={idx} className="px-2 py-1 bg-background rounded-md text-xs text-muted-foreground border border-border">
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          <div className="mt-8 text-center text-sm text-muted-foreground">
+            * По результатам работ ООО «Полярная Экспедиционная Компания», ФГБУ ВСЕГЕИ (Берзон Е.И., Проскурнин В.Ф., 2020 г.)
+          </div>
+        </div>
+      </section>
+
+      {/* Documents */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <FadeIn>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-foreground">Информация для инвесторов</h2>
+              <p className="text-muted-foreground">По запросу предоставляются следующие материалы:</p>
+            </div>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" variant="secondary" asChild>
-                <Link href="/documents/teo-conditions.pdf">
-                   {t('Скачать ТЭО кондиций', 'Download Feasibility Study')}
+              <Button variant="outline" asChild>
+                <Link href="/documents/geological-report.pdf">
+                  <FileText className="w-4 h-4 mr-2" />
+                  Геологический отчёт
                 </Link>
               </Button>
-              <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100" asChild>
+              <Button variant="outline" asChild>
+                <Link href="/documents/presentation.pdf">
+                  <Download className="w-4 h-4 mr-2" />
+                  Презентация проектов (PDF)
+                </Link>
+              </Button>
+              <Button asChild>
                 <Link href="/contacts">
-                  {t('Запросить встречу с IR', 'Request IR Meeting')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Связаться с IR-отделом
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
             </div>
