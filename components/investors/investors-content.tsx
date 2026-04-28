@@ -219,7 +219,7 @@ export function InvestorsContent() {
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-                      src="/images/projects3.jpg"
+                      src="/images/DSC06216.JPG"
                       alt="Проекты Полярной Экспедиционной Компании"
                       fill
                       priority  // ← загружаем сразу (LCP)
@@ -255,7 +255,7 @@ export function InvestorsContent() {
                 </h1>
               </div>
               
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+              <p className="text-xl text-background foreground leading-relaxed max-w-3xl">
                 {t(
                   'Полярная Экспедиционная Компания владеет 5 лицензиями на геологоразведку в пределах Дорожнинского рудного района — одного из самых перспективных медно-порфировых поясов Арктики.',
                   'Polar Expedition Company holds 5 exploration licenses within the Dorozhninsky ore district — one of the most promising copper-porphyry belts in the Arctic.'

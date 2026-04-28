@@ -178,7 +178,7 @@ export function ProjectsContent() {
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/projects3.jpg"
+            src="/images/DSC09137.jpg"
             alt="Проекты Полярной Экспедиционной Компании"
             fill
             priority
@@ -379,7 +379,7 @@ export function ProjectsContent() {
         </div>
       </section>
 
-      <CTAForm />
+   
     </div>
   )
 }
