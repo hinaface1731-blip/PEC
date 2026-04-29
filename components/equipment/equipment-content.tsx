@@ -27,42 +27,42 @@ const equipmentCategories = [
         specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Привод: дизельный"],
         location: "Игарка",
         count: 1,
-        image: "/images/equipment/boyles-c6.jpg"
+        image: "/images/equipment/boylesC6.jpg"
       },
       {
         name: "EGR-800",
         specs: ["Глубина бурения: до 800 м", "Диаметр: 60-121 мм", "Высокая производительность"],
         location: "Игарка",
         count: 1,
-        image: "/images/equipment/egr-800.jpg"
+        image: "/images/equipment/egr800.png"
       },
       {
         name: "EPC-300",
         specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Компактный"],
         location: "Игарка",
         count: 1,
-        image: "/images/equipment/epc-300.jpg"
+        image: "/images/equipment/epc300.png"
       },
       {
         name: "УРБ-110",
         specs: ["Глубина бурения: до 110 м", "Диаметр: до 450 мм", "Шарошечное бурение"],
         location: "Игарка",
         count: 1,
-        image: "/images/equipment/urb-110.jpg"
+        image: "/images/equipment/urb-110.png"
       },
       {
         name: "УРБ-2Д3",
         specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм", "Универсальный"],
         location: "Игарка",
         count: 1,
-        image: "/images/equipment/urb-2d3.jpg"
+        image: "/images/equipment/urb2d3.jpg"
       },
       {
         name: "RS-90",
         specs: ["Глубина бурения: до 90 м", "Компактный", "Для сложных условий"],
         location: "Гусь",
         count: 2,
-        image: "/images/equipment/rs-90.jpg"
+        image: "/images/equipment/rs-90.png"
       },
       {
         name: "S-15",
@@ -76,7 +76,7 @@ const equipmentCategories = [
         specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
         location: "Лора",
         count: 2,
-        image: "/images/equipment/forward-c6.jpg"
+        image: "/images/equipment/forwardc6.jpg"
       },
       {
         name: "CS-14",
