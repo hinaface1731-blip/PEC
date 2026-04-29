@@ -156,22 +156,22 @@ export function InvestorsContent() {
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
             <div className="max-w-3xl">
-              <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm flex-wrap">
+              <div className="flex items-center gap-2 text-white mb-4 text-sm flex-wrap">
                 <Link href="/" className="hover:text-primary transition-colors">Главная</Link>
                 <span>/</span>
-                <span className="text-foreground">Инвесторам</span>
+                <span className="text-white">Инвесторам</span>
               </div>
 
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
                   <TrendingUp className="w-8 h-8 text-orange-500" />
                 </div>
-                <h1 className="font-display text-4xl md:text-5xl font-bold text-background">
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-white">
                   Юниорные проекты на Таймыре
                 </h1>
               </div>
               
-              <p className="text-xl text-background leading-relaxed">
+              <p className="text-xl text-white leading-relaxed">
                 Инвестируйте в разведку медно-никелевых и золоторудных месторождений на полуострове Челюскин. 
                 5 лицензионных участков с прогнозными ресурсами более 14 млн тонн меди и 290 тонн золота.
               </p>
