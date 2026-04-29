@@ -87,7 +87,7 @@ const projects: Project[] = [
     mineralEn: "Gold",
     client: "Полиметалл",
     clientEn: "Polymetal",
-    description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение.",
+    description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение. В ходе проведения геологоразведочных работ, получен прирост в объеме 350 тысяч тонн руды с запасом 5,4 тонн условного золота.",
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
     results: ["Горнопроходческие работы", "Керновое опробование", ">25 000 пробуренных метров"],
     resultsEn: ["Mine workings", "Core sampling", ">25,000 drilled meters"],

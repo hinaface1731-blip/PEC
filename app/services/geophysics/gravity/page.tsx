@@ -368,8 +368,6 @@ export default function GravityPage() {
             </Button>
           </div>
         </section>
-
-        <CTAForm />
       </div>
     </PageLayout>
   )

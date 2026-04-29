@@ -8,7 +8,7 @@ const data: ServicePageData = {
   icon: FlaskConical,
   titleRu: 'Лабораторные исследования',
   titleEn: 'Laboratory Research',
-  descRu: 'Собственная аккредитованная лаборатория с современным аналитическим оборудованием. Полный спектр геохимических, минералогических и физико-механических исследований.',
+  descRu: 'Собственная полевая лаборатория с современным аналитическим оборудованием. Полный спектр геохимических, минералогических и физико-механических исследований.',
   descEn: 'In-house accredited laboratory with modern analytical equipment. Full range of geochemical, mineralogical and physical-mechanical research.',
   heroImage: '/images/i.jpg',
   reverse: false,

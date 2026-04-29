@@ -368,8 +368,6 @@ export default function MagneticPage() {
             </Button>
           </div>
         </section>
-
-        <CTAForm />
       </div>
     </PageLayout>
   )
