@@ -389,8 +389,6 @@ export default function LoggingPage() {
             </Button>
           </div>
         </section>
-
-        <CTAForm />
       </div>
     </PageLayout>
   )

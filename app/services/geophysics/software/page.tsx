@@ -389,8 +389,6 @@ export default function SoftwarePage() {
             </Button>
           </div>
         </section>
-
-        <CTAForm />
       </div>
     </PageLayout>
   )

@@ -368,8 +368,6 @@ export default function SeismicPage() {
             </Button>
           </div>
         </section>
-
-        <CTAForm />
       </div>
     </PageLayout>
   )

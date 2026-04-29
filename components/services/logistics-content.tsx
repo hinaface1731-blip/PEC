@@ -10,7 +10,7 @@ const data: ServicePageData = {
   titleEn: 'Logistics & Supply',
   descRu: 'Комплексное логистическое обеспечение геологоразведочных и горных проектов в Арктике и Сибири. Доставка грузов, снабжение удалённых объектов, экспедиционное сопровождение.',
   descEn: 'Comprehensive logistics support for exploration and mining projects in the Arctic and Siberia. Cargo delivery, remote site supply, expedition support.',
-  heroImage: '/images/logistics-hero.jpg',
+  heroImage: '/images/two.JPG',
   reverse: true,
   methods: [
     { ru: 'Доставка грузов в Арктику', en: 'Arctic cargo delivery' },

@@ -16,40 +16,102 @@ const equipmentCategories = [
     description: "Современные буровые установки для всех типов бурения",
     items: [
       {
-        name: "Буровой станок Christensen CT20",
-        specs: ["Глубина бурения: до 2500 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
-        image: "/images/ChristensenCT20.jpg",
-        count: 12
+        name: "CS-1000",
+        specs: ["Глубина бурения: до 1000 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
+        location: "Игарка",
+        count: 1,
+        image: "/images/equipment/cs-1000.jpg"
       },
       {
-        name: "Станок колонкового бурения Forward C6",
-        specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
-        image: "/images/forwardC6.jpg",
-        count: 25
-      },
-      {
-        name: "Станок колонкового бурения Boyles C6",
+        name: "Boyles C6",
         specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Привод: дизельный"],
-        image: "/images/boylesC6.jpg",
-        count: 8
+        location: "Игарка",
+        count: 1,
+        image: "/images/equipment/boyles-c6.jpg"
       },
       {
-        name: "Станок колонкового бурения Bulldrill BD1200S",
+        name: "EGR-800",
+        specs: ["Глубина бурения: до 800 м", "Диаметр: 60-121 мм", "Высокая производительность"],
+        location: "Игарка",
+        count: 1,
+        image: "/images/equipment/egr-800.jpg"
+      },
+      {
+        name: "EPC-300",
+        specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Компактный"],
+        location: "Игарка",
+        count: 1,
+        image: "/images/equipment/epc-300.jpg"
+      },
+      {
+        name: "УРБ-110",
+        specs: ["Глубина бурения: до 110 м", "Диаметр: до 450 мм", "Шарошечное бурение"],
+        location: "Игарка",
+        count: 1,
+        image: "/images/equipment/urb-110.jpg"
+      },
+      {
+        name: "УРБ-2Д3",
+        specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм", "Универсальный"],
+        location: "Игарка",
+        count: 1,
+        image: "/images/equipment/urb-2d3.jpg"
+      },
+      {
+        name: "RS-90",
+        specs: ["Глубина бурения: до 90 м", "Компактный", "Для сложных условий"],
+        location: "Гусь",
+        count: 2,
+        image: "/images/equipment/rs-90.jpg"
+      },
+      {
+        name: "S-15",
+        specs: ["Глубина бурения: до 150 м", "Мобильный", "Полуавтоматический"],
+        location: "Встречная площадь / Вилюй",
+        count: 2,
+        image: "/images/equipment/s-15.jpg"
+      },
+      {
+        name: "Forward C6",
+        specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
+        location: "Лора",
+        count: 2,
+        image: "/images/equipment/forward-c6.jpg"
+      },
+      {
+        name: "CS-14",
+        specs: ["Глубина бурения: до 1400 м", "Диаметр: 60-121 мм", "Высокая мощность"],
+        location: "Таймыр",
+        count: 1,
+        image: "/images/equipment/cs-14.jpg"
+      },
+      {
+        name: "BullDril-1200",
         specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Высокая производительность"],
-        image: "/images/bd1200.jpg",
-        count: 8
+        location: "Таймыр",
+        count: 1,
+        image: "/images/equipment/bulldril-1200.jpg"
       },
       {
-        name: "Станок колонкового бурения ПБУ 1200, ПБУ 1200Р",
-        specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Высокая производительность"],
-        image: "/images/pbu1200.jpg",
-        count: 8
+        name: "ST-20",
+        specs: ["Глубина бурения: до 2000 м", "Диаметр: 60-121 мм", "Тяжёлый класс"],
+        location: "Марс",
+        count: 1,
+        image: "/images/equipment/st-20.jpg"
       },
       {
-        name: "Станок колонкового бурения УРБ-2Д3",
-        specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм", "Высокая производительность"],
-        image: "/images/urb2d3.jpg",
-        count: 8
+        name: "Christensen CT20",
+        specs: ["Глубина бурения: до 2500 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
+        location: "Красноярск",
+        count: 1,
+        image: "/images/equipment/christensen-ct20.jpg"
+      },
+      {
+        name: "ПБУ 1200Р",
+        specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Российское производство"],
+        location: "Красноярск",
+        count: 2,
+        image: "/images/equipment/pbu-1200.jpg"
       }
     ]
   },
@@ -92,7 +154,7 @@ const equipmentCategories = [
       {
         name: "Комплект каротажный на поисковые скважины на руду КС, ПС, КМ, ГГК, ВП",
         specs: ["Каротаж", "Глубина исследований: до 500 м", "Автоматическая обработка"],
-        image: "/images/zond.png",
+        image: "/images/pasha.jpg",
         count: 3
       },
       {
@@ -138,31 +200,31 @@ const equipmentCategories = [
       {
         name: "GNSS-приёмник Trimble R12i",
         specs: ["RTK точность: 8 мм + 1 ppm", "GPS/ГЛОНАСС/Galileo/BeiDou", "IMU для измерения наклона"],
-        image: "/images/micro.jpg",
+        image: "/images/Trimble-R12i.png",
         count: 10
       },
       {
         name: "Электронный тахеометр Leica TS16",
         specs: ["Точность: 1\"", "Безотражательный дальномер: 1000 м", "Автофокус и сканер"],
-        image: "/images/micro.jpg",
+        image: "/images/leica_ts16_1.png",
         count: 8
       },
       {
         name: "GNSS приемник SOUTH Galaxy G9",
         specs: ["Высокая интегрированность", "Дальность: 130 м", "HDR камера"],
-        image: "/images/south9.jpg",
+        image: "/images/g9.jpg",
         count: 3
       },
       {
         name: "GNSS приемник SOUTH Galaxy G1",
         specs: ["Точность: 0.3 мм/км", "Автоматическая запись", "Работа при -20°C"],
-        image: "/images/south-g1.jpg",
+        image: "/images/south-galaxy-g1-001.jpg",
         count: 6
       },
       {
         name: "БПЛА для аэрофотосъёмки",
         specs: ["Размах крыла: 1.3 м", "Время полёта: 90 мин", "Камера 42 МП"],
-        image: "/images/drone.jpg",
+        image: "/images/5DM47866_2x.jpg",
         count: 4
       }
     ]
@@ -236,7 +298,7 @@ export function EquipmentContent() {
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/projects.jpg"
+            src="/images/403783_original.jpg"
             alt="Оборудование Полярной Экспедиционной Компании"
             fill
             priority

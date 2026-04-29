@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'  // ← добавляем
 import Image from 'next/image'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
@@ -13,24 +13,24 @@ const services = [
   { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
   { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Works' },
   { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Works' },
-  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },           // ← добавить
+  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },
   { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Survey Works' },
-  { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' }, // ← добавить
+  { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' },
   { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
   { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
   { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
 ]
 
-// ✅ Убрали 'О компании' из navItems (она уже есть отдельно)
 const navItems = [
+
+  { href: '/investors', ru: 'Инвесторам', en: 'Investors' },
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
-  { href: '/contacts', ru: 'Карьера', en: 'Career' },
-  { href: '/investors', ru: 'Инвесторам', en: 'Investors' },  
+  { href: '/contacts', ru: 'Контакты', en: 'Contacts' },
 ]
 
 export function Header() {
-  const pathname = usePathname()
+  const pathname = usePathname()  // ← текущий путь
   const { theme, toggleTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -40,9 +40,17 @@ export function Header() {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
+  // ✅ Проверка активного пункта
   const isActive = (href: string) => {
-    if (href === '/') return pathname === href
-    return pathname.startsWith(href)
+    if (href === '/') {
+      return pathname === href
+    }
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
+
+  // ✅ Проверка для дропдауна услуг
+  const isServicesActive = () => {
+    return pathname.startsWith('/services')
   }
 
   // Закрытие мобильного меню при клике вне
@@ -93,26 +101,25 @@ export function Header() {
       <nav className="h-full max-w-7xl mx-auto px-6 grid grid-cols-[auto_1fr_auto] items-center gap-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-        
-<Image
-  src="/images/logo.png"
-  alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
-  width={150}
-  height={60}
-  className="object-contain dark:brightness-0 dark:invert"
-  priority
-/>
+          <Image
+            src="/images/logo.png"
+            alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
+            width={150}
+            height={60}
+            className="object-contain dark:brightness-0 dark:invert"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-center gap-1">
-          {/* О компании - отдельно, первая */}
+          {/* О компании */}
           <Link
             href="/about"
-            className={`px-4 py-2 rounded-lg transition-colors hover:bg-[var(--bg3)] ${
+            className={`px-4 py-2 rounded-lg transition-all duration-200 ${
               isActive('/about')
-                ? 'text-[var(--accent)]'
-                : 'text-[var(--text)] hover:text-[var(--accent)]'
+                ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
+                : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
             }`}
           >
             {t('О компании', 'About')}
@@ -126,10 +133,10 @@ export function Header() {
             onMouseLeave={handleMouseLeave}
           >
             <button
-              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-colors hover:bg-[var(--bg3)] ${
-                isActive('/services')
-                  ? 'text-[var(--accent)]'
-                  : 'text-[var(--text)] hover:text-[var(--accent)]'
+              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 ${
+                isServicesActive()
+                  ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
+                  : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
               }`}
             >
               {t('Услуги', 'Services')}
@@ -141,7 +148,7 @@ export function Header() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden"
+                className="absolute top-full left-0 mt-2 min-w-[280px] bg-[var(--bg2)]/95 backdrop-blur-xl border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden z-50"
               >
                 <div className="py-2">
                   {services.map((service) => (
@@ -160,7 +167,11 @@ export function Header() {
                   <div className="border-t border-[var(--border)] mt-2 pt-2">
                     <Link
                       href="/services"
-                      className="block px-5 py-3 font-semibold text-[var(--accent)] hover:bg-[var(--accent-glow)] transition-all"
+                      className={`block px-5 py-3 font-semibold transition-all ${
+                        isActive('/services')
+                          ? 'text-[var(--accent)]'
+                          : 'text-[var(--accent)] hover:bg-[var(--accent-glow)]'
+                      }`}
                     >
                       {t('Все услуги →', 'All Services →')}
                     </Link>
@@ -170,15 +181,15 @@ export function Header() {
             )}
           </div>
 
-          {/* Остальные пункты (без О компании) */}
+          {/* Остальные пункты */}
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`px-4 py-2 rounded-lg transition-colors hover:bg-[var(--bg3)] ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                 isActive(item.href)
-                  ? 'text-[var(--accent)]'
-                  : 'text-[var(--text)] hover:text-[var(--accent)]'
+                  ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
+                  : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
               }`}
             >
               {t(item.ru, item.en)}
@@ -219,16 +230,16 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-[78px] left-0 right-0 bg-[var(--bg)]/95 backdrop-blur-xl border-b border-[var(--border)] overflow-hidden"
+            className="lg:hidden absolute top-[78px] left-0 right-0 bg-[var(--bg)]/95 backdrop-blur-xl border-b border-[var(--border)] overflow-hidden z-50"
           >
             <div className="px-6 py-4 space-y-2 max-h-[calc(100vh-78px)] overflow-y-auto">
-              {/* О компании в мобильном меню */}
+              {/* О компании */}
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg ${
+                className={`block px-4 py-3 rounded-lg transition-all ${
                   isActive('/about')
-                    ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                    ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
                     : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                 }`}
               >
@@ -239,9 +250,9 @@ export function Header() {
               <div>
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg ${
-                    isActive('/services')
-                      ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all ${
+                    isServicesActive()
+                      ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
                       : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                   }`}
                 >
@@ -263,7 +274,7 @@ export function Header() {
                             key={service.href}
                             href={service.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`block px-4 py-2 rounded-lg ${
+                            className={`block px-4 py-2 rounded-lg transition-all ${
                               isActive(service.href)
                                 ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
                                 : 'text-[var(--muted)] hover:text-[var(--accent)]'
@@ -285,15 +296,15 @@ export function Header() {
                 </AnimatePresence>
               </div>
 
-              {/* Остальные пункты мобильного меню */}
+              {/* Остальные пункты */}
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg ${
+                  className={`block px-4 py-3 rounded-lg transition-all ${
                     isActive(item.href)
-                      ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
+                      ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
                       : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                   }`}
                 >
