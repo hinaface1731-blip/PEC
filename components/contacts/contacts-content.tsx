@@ -10,14 +10,19 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
 import { useYandexMapsContext } from "@/components/yandex-map-loader"
+import { useLanguage } from "@/components/language-provider"
 
 const officeInfo = {
   city: "Красноярск",
+  cityEn: "Krasnoyarsk",
   type: "Головной офис",
+  typeEn: "Headquarters",
   address: "ул. Ленина, 84",
+  addressEn: "84 Lenina St.",
   phone: "+7(391)205-15-84",
   email: "hr@polar-ec.ru",
   hours: "Пн-Пт: 10:00 - 18:00",
+  hoursEn: "Mon-Fri: 10:00 - 18:00",
   coordinates: [56.013528, 92.867583] as [number, number]
 }
 
@@ -33,7 +38,9 @@ const vacancies = [
     experienceEn: "5+ years",
     salary: "от 150 000 ₽",
     employment: "Полная занятость",
+    employmentEn: "Full-time",
     schedule: "5/2",
+    scheduleEn: "5/2",
     requirementsRu: [
       "Высшее геологическое образование",
       "Опыт руководства геологическими проектами от 3 лет",
@@ -71,7 +78,9 @@ const vacancies = [
     experienceEn: "3+ years",
     salary: "от 120 000 ₽",
     employment: "Полная занятость",
+    employmentEn: "Full-time",
     schedule: "Вахта / 5/2",
+    scheduleEn: "Rotation / 5/2",
     requirementsRu: [
       "Высшее геофизическое образование",
       "Опыт полевых работ от 2 лет",
@@ -109,7 +118,9 @@ const vacancies = [
     experienceEn: "3+ years",
     salary: "от 130 000 ₽",
     employment: "Полная занятость",
+    employmentEn: "Full-time",
     schedule: "Вахта",
+    scheduleEn: "Rotation",
     requirementsRu: [
       "Профильное образование",
       "Опыт колонкового бурения от 3 лет",
@@ -147,7 +158,9 @@ const vacancies = [
     experienceEn: "3+ years",
     salary: "от 120 000 ₽",
     employment: "Полная занятость",
+    employmentEn: "Full-time",
     schedule: "5/2 / Вахта",
+    scheduleEn: "5/2 / Rotation",
     requirementsRu: [
       "Высшее горное образование",
       "Опыт работы от 3 лет",
@@ -185,7 +198,9 @@ const vacancies = [
     experienceEn: "2+ years",
     salary: "от 100 000 ₽",
     employment: "Полная занятость",
+    employmentEn: "Full-time",
     schedule: "5/2",
+    scheduleEn: "5/2",
     requirementsRu: [
       "Опыт работы с QGIS, ArcGIS от 2 лет",
       "Знание Python, SQL",
@@ -223,7 +238,9 @@ const vacancies = [
     experienceEn: "1+ year",
     salary: "от 60 000 ₽",
     employment: "Полная занятость",
+    employmentEn: "Full-time",
     schedule: "5/2",
+    scheduleEn: "5/2",
     requirementsRu: [
       "Среднее специальное или высшее химическое образование",
       "Опыт работы в лаборатории от 1 года",
@@ -254,6 +271,7 @@ const vacancies = [
 ]
 
 export default function ContactsContent() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -288,11 +306,11 @@ export default function ContactsContent() {
       const placemark = new ymaps.Placemark(
         officeInfo.coordinates,
         {
-          hintContent: officeInfo.city,
+          hintContent: t(officeInfo.city, officeInfo.cityEn),
           balloonContent: `
             <div style="padding: 10px; font-family: sans-serif;">
-              <strong>🏢 ${officeInfo.city}</strong><br/>
-              📍 ${officeInfo.address}<br/>
+              <strong>🏢 ${t(officeInfo.city, officeInfo.cityEn)}</strong><br/>
+              📍 ${t(officeInfo.address, officeInfo.addressEn)}<br/>
               📞 ${officeInfo.phone}<br/>
               ✉️ ${officeInfo.email}
             </div>
@@ -311,7 +329,7 @@ export default function ContactsContent() {
         map = null
       }
     }
-  }, [isReady, ymaps])
+  }, [isReady, ymaps, t])
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -374,7 +392,7 @@ export default function ContactsContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-contacts2.png"
-            alt="Карьера в Полярной ЭК"
+            alt={t("Карьера в Полярной ЭК", "Career at Polar EC")}
             fill
             priority
             className="object-cover"
@@ -392,19 +410,25 @@ export default function ContactsContent() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="flex items-center gap-2 text-white mb-4">
-                <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+              <div className="flex items-center gap-2 text-white/80 mb-4">
+                <Link href="/" className="hover:text-white transition-colors">
+                  {t('Главная', 'Home')}
+                </Link>
                 <span>/</span>
-                <span className="text-white">Карьера</span>
+                <span className="text-white">
+                  {t('Карьера', 'Career')}
+                </span>
               </div>
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Присоединяйтесь к нашей команде 
+                {t('Присоединяйтесь к нашей команде', 'Join Our Team')}
               </h1>
               
-              <p className="text-xl text-white leading-relaxed">
-                Мы ищем талантливых специалистов в области геологии, геофизики, бурения и IT.
-                Отправьте нам своё резюме, и мы свяжемся с вами при открытии подходящей вакансии.
+              <p className="text-xl text-white/90 leading-relaxed">
+                {t(
+                  'Мы ищем талантливых специалистов в области геологии, геофизики, бурения и IT. Отправьте нам своё резюме, и мы свяжемся с вами при открытии подходящей вакансии.',
+                  'We are looking for talented specialists in geology, geophysics, drilling and IT. Send us your resume and we will contact you when a suitable vacancy opens.'
+                )}
               </p>
             </motion.div>
           </div>
@@ -428,9 +452,9 @@ export default function ContactsContent() {
                 </div>
                 <div>
                   <h3 className="font-display text-lg font-semibold text-foreground">
-                    {officeInfo.city}
+                    {t(officeInfo.city, officeInfo.cityEn)}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{officeInfo.address}</p>
+                  <p className="text-sm text-muted-foreground">{t(officeInfo.address, officeInfo.addressEn)}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-6">
@@ -448,7 +472,7 @@ export default function ContactsContent() {
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <Clock className="w-4 h-4 text-primary" />
-                  <span>{officeInfo.hours}</span>
+                  <span>{t(officeInfo.hours, officeInfo.hoursEn)}</span>
                 </div>
               </div>
             </div>
@@ -463,10 +487,13 @@ export default function ContactsContent() {
             >
               <div id="application-form" className="bg-card p-8 md:p-10 rounded-2xl border border-border">
                 <h2 className="font-display text-2xl font-bold text-foreground mb-2">
-                  Отправить резюме
+                  {t('Отправить резюме', 'Send Resume')}
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Заполните форму и прикрепите файл с резюме. Мы рассмотрим вашу кандидатуру и свяжемся с вами.
+                  {t(
+                    'Заполните форму и прикрепите файл с резюме. Мы рассмотрим вашу кандидатуру и свяжемся с вами.',
+                    'Fill out the form and attach your resume. We will review your application and contact you.'
+                  )}
                 </p>
 
                 {isSubmitted ? (
@@ -479,22 +506,25 @@ export default function ContactsContent() {
                       <CheckCircle className="w-8 h-8 text-green-500" />
                     </div>
                     <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      Резюме отправлено!
+                      {t('Резюме отправлено!', 'Resume Sent!')}
                     </h3>
                     <p className="text-muted-foreground">
-                      Спасибо за интерес к нашей компании. Мы свяжемся с вами при открытии подходящей вакансии.
+                      {t(
+                        'Спасибо за интерес к нашей компании. Мы свяжемся с вами при открытии подходящей вакансии.',
+                        'Thank you for your interest in our company. We will contact you when a suitable vacancy opens.'
+                      )}
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <Label htmlFor="fullName">ФИО *</Label>
+                      <Label htmlFor="fullName">{t('ФИО *', 'Full Name *')}</Label>
                       <Input
                         id="fullName"
                         required
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="Иванов Иван Иванович"
+                        placeholder={t('Иванов Иван Иванович', 'Ivan Ivanov')}
                         className="bg-background"
                       />
                     </div>
@@ -513,7 +543,7 @@ export default function ContactsContent() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="phone">Телефон *</Label>
+                        <Label htmlFor="phone">{t('Телефон *', 'Phone *')}</Label>
                         <Input
                           id="phone"
                           type="tel"
@@ -527,31 +557,31 @@ export default function ContactsContent() {
                     </div>
 
                     <div>
-                      <Label htmlFor="position">Желаемая должность *</Label>
+                      <Label htmlFor="position">{t('Желаемая должность *', 'Desired Position *')}</Label>
                       <Input
                         id="position"
                         required
                         value={formData.position}
                         onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                        placeholder="Главный геолог / Геофизик / Инженер-буровик"
+                        placeholder={t('Главный геолог / Геофизик / Инженер-буровик', 'Chief Geologist / Geophysicist / Drilling Engineer')}
                         className="bg-background"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="experience">Опыт работы</Label>
+                      <Label htmlFor="experience">{t('Опыт работы', 'Work Experience')}</Label>
                       <Textarea
                         id="experience"
                         rows={3}
                         value={formData.experience}
                         onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                        placeholder="Кратко опишите ваш опыт работы..."
+                        placeholder={t('Кратко опишите ваш опыт работы...', 'Briefly describe your work experience...')}
                         className="bg-background resize-none"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="resume">Прикрепить резюме *</Label>
+                      <Label htmlFor="resume">{t('Прикрепить резюме *', 'Attach Resume *')}</Label>
                       <div className="mt-2 flex items-center gap-4 flex-wrap">
                         <Input
                           id="resume"
@@ -568,7 +598,7 @@ export default function ContactsContent() {
                         )}
                       </div>
                       <p className="text-xs text-muted-foreground mt-1">
-                        Поддерживаемые форматы: PDF, DOC, DOCX
+                        {t('Поддерживаемые форматы: PDF, DOC, DOCX', 'Supported formats: PDF, DOC, DOCX')}
                       </p>
                     </div>
 
@@ -581,12 +611,12 @@ export default function ContactsContent() {
                       {isSubmitting ? (
                         <>
                           <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />
-                          Отправка...
+                          {t('Отправка...', 'Sending...')}
                         </>
                       ) : (
                         <>
                           <Send className="w-5 h-5 mr-2" />
-                          Отправить резюме
+                          {t('Отправить резюме', 'Send Resume')}
                         </>
                       )}
                     </Button>
@@ -596,9 +626,9 @@ export default function ContactsContent() {
                     )}
 
                     <p className="text-xs text-muted-foreground text-center">
-                      Нажимая кнопку, вы соглашаетесь с{" "}
+                      {t('Нажимая кнопку, вы соглашаетесь с', 'By clicking the button, you agree to the')}{" "}
                       <Link href="/privacy" className="text-primary hover:underline">
-                        политикой конфиденциальности
+                        {t('политикой конфиденциальности', 'privacy policy')}
                       </Link>
                     </p>
                   </form>
@@ -614,7 +644,7 @@ export default function ContactsContent() {
             >
               <div className="bg-card p-6 rounded-2xl border border-border h-full">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-4">
-                  Мы находимся здесь
+                  {t('Мы находимся здесь', 'We Are Located Here')}
                 </h3>
                 <div
                   ref={mapRef}
@@ -623,7 +653,7 @@ export default function ContactsContent() {
                 >
                   {!isReady && (
                     <div className="w-full h-full flex items-center justify-center bg-muted">
-                      <span className="text-muted-foreground">Загрузка карты...</span>
+                      <span className="text-muted-foreground">{t('Загрузка карты...', 'Loading map...')}</span>
                     </div>
                   )}
                 </div>
@@ -635,7 +665,7 @@ export default function ContactsContent() {
                     className="text-sm text-primary hover:underline inline-flex items-center gap-1"
                   >
                     <MapPin className="w-4 h-4" />
-                    Открыть в Яндекс.Картах
+                    {t('Открыть в Яндекс.Картах', 'Open in Yandex.Maps')}
                   </a>
                 </div>
               </div>
@@ -657,10 +687,10 @@ export default function ContactsContent() {
               <Briefcase className="w-6 h-6 text-primary" />
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Актуальные вакансии
+              {t('Актуальные вакансии', 'Current Openings')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Присоединяйтесь к команде профессионалов. Мы ждём именно вас!
+              {t('Присоединяйтесь к команде профессионалов. Мы ждём именно вас!', 'Join our team of professionals. We are waiting for you!')}
             </p>
           </motion.div>
 
@@ -678,7 +708,7 @@ export default function ContactsContent() {
                   {/* Заголовок и зарплата */}
                   <div className="flex justify-between items-start gap-4 mb-3">
                     <h3 className="font-display text-xl font-semibold text-foreground">
-                      {vacancy.titleRu}
+                      {t(vacancy.titleRu, vacancy.titleEn)}
                     </h3>
                     <span className="text-lg font-bold text-primary whitespace-nowrap">
                       {vacancy.salary}
@@ -689,18 +719,18 @@ export default function ContactsContent() {
                   <div className="space-y-2 mb-4 pb-4 border-b border-border">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <MapPin className="w-4 h-4 text-primary" />
-                      <span>{vacancy.locationRu}</span>
+                      <span>{t(vacancy.locationRu, vacancy.locationEn)}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4 text-primary" />
-                      <span>Опыт: {vacancy.experienceRu}</span>
+                      <span>{t('Опыт:', 'Experience:')} {t(vacancy.experienceRu, vacancy.experienceEn)}</span>
                     </div>
                     <div className="flex flex-wrap gap-2 pt-2">
                       <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
-                        {vacancy.employment}
+                        {t(vacancy.employment, vacancy.employmentEn)}
                       </span>
                       <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
-                        {vacancy.schedule}
+                        {t(vacancy.schedule, vacancy.scheduleEn)}
                       </span>
                     </div>
                   </div>
@@ -711,7 +741,7 @@ export default function ContactsContent() {
                       onClick={() => toggleDetails(vacancy.id)}
                       className="w-full flex items-center justify-between text-sm font-semibold text-foreground hover:text-primary transition-colors"
                     >
-                      <span>Требования</span>
+                      <span>{t('Требования', 'Requirements')}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform ${openDetails === vacancy.id ? 'rotate-180' : ''}`} />
                     </button>
                     {openDetails === vacancy.id && (
@@ -719,7 +749,7 @@ export default function ContactsContent() {
                         {vacancy.requirementsRu.map((req, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
                             <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
-                            <span>{req}</span>
+                            <span>{t(req, vacancy.requirementsEn[idx])}</span>
                           </div>
                         ))}
                       </div>
@@ -732,7 +762,7 @@ export default function ContactsContent() {
                       onClick={() => toggleDetails(vacancy.id + 100)}
                       className="w-full flex items-center justify-between text-sm font-semibold text-foreground hover:text-primary transition-colors"
                     >
-                      <span>Обязанности</span>
+                      <span>{t('Обязанности', 'Responsibilities')}</span>
                       <ChevronDown className={`w-4 h-4 transition-transform ${openDetails === vacancy.id + 100 ? 'rotate-180' : ''}`} />
                     </button>
                     {openDetails === vacancy.id + 100 && (
@@ -740,7 +770,7 @@ export default function ContactsContent() {
                         {vacancy.dutiesRu.map((duty, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
                             <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0" />
-                            <span>{duty}</span>
+                            <span>{t(duty, vacancy.dutiesEn[idx])}</span>
                           </div>
                         ))}
                       </div>
@@ -753,7 +783,7 @@ export default function ContactsContent() {
                     className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
                     onClick={() => handleVacancyClick(vacancy.titleRu)}
                   >
-                    Откликнуться
+                    {t('Откликнуться', 'Apply Now')}
                   </Button>
                 </div>
               </motion.div>
