@@ -26,7 +26,7 @@ const navItems = [
   { href: '/investors', ru: 'Инвесторам', en: 'Investors' },
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
-  { href: '/contacts', ru: 'Контакты', en: 'Contacts' },
+  { href: '/contacts', ru: 'Карьера', en: 'Career' },
 ]
 
 export function Header() {
@@ -164,18 +164,7 @@ export function Header() {
                       {t(service.ru, service.en)}
                     </Link>
                   ))}
-                  <div className="border-t border-[var(--border)] mt-2 pt-2">
-                    <Link
-                      href="/services"
-                      className={`block px-5 py-3 font-semibold transition-all ${
-                        isActive('/services')
-                          ? 'text-[var(--accent)]'
-                          : 'text-[var(--accent)] hover:bg-[var(--accent-glow)]'
-                      }`}
-                    >
-                      {t('Все услуги →', 'All Services →')}
-                    </Link>
-                  </div>
+                 
                 </div>
               </motion.div>
             )}

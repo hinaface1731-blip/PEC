@@ -3,44 +3,54 @@
 import { motion } from "framer-motion"
 import { Target, Eye, Award, Users, TrendingUp, Shield, MapPin, Calendar } from "lucide-react"
 import { CTAForm } from "@/components/cta-form"
+import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
 
 const milestones = [
-  { year: "2008", title: "Основание компании", desc: "Создание Полярной Экспедиционной Компании" },
-  { year: "2009", title: "Первый крупный контракт", desc: "Начало работы на золоторудных месторождениях" },
-  { year: "2010", title: "Расширение географии", desc: "Выход на дальний восток и крайний север" },
-  { year: "2012", title: "Собственная лаборатория", desc: "Открытие аккредитованной аналитической лаборатории" },
-  { year: "2016", title: "Международные стандарты", desc: "Сертификация по ISO 9001 и JORC" },
-  { year: "2020", title: "Цифровизация", desc: "Внедрение цифровых технологий и 3D-моделирования" },
-  { year: "2024", title: "Лидер отрасли", desc: "Более 200 выполненных проектов, 500+ сотрудников" }
+  { year: "2008", titleRu: "Основание компании", titleEn: "Company Foundation", descRu: "Создание Полярной Экспедиционной Компании", descEn: "Establishment of Polar Expedition Company" },
+  { year: "2009", titleRu: "Первый крупный контракт", titleEn: "First Major Contract", descRu: "Начало работы на золоторудных месторождениях", descEn: "Start of work at gold deposits" },
+  { year: "2010", titleRu: "Расширение географии", titleEn: "Geographic Expansion", descRu: "Выход на дальний восток и крайний север", descEn: "Expansion to Far East and Far North" },
+  { year: "2012", titleRu: "Собственная лаборатория", titleEn: "Own Laboratory", descRu: "Открытие аккредитованной аналитической лаборатории", descEn: "Opening of accredited analytical laboratory" },
+  { year: "2016", titleRu: "Международные стандарты", titleEn: "International Standards", descRu: "Сертификация по ISO 9001 и JORC", descEn: "ISO 9001 and JORC certification" },
+  { year: "2020", titleRu: "Цифровизация", titleEn: "Digitalization", descRu: "Внедрение цифровых технологий и 3D-моделирования", descEn: "Implementation of digital technologies and 3D modeling" },
+  { year: "2024", titleRu: "Лидер отрасли", titleEn: "Industry Leader", descRu: "Более 200 выполненных проектов, 500+ сотрудников", descEn: "200+ completed projects, 500+ employees" }
 ]
-
 
 const values = [
   {
     icon: Shield,
-    title: "Надежность",
-    description: "Гарантируем качество работ и соблюдение сроков на каждом проекте"
+    titleRu: "Надежность",
+    titleEn: "Reliability",
+    descriptionRu: "Гарантируем качество работ и соблюдение сроков на каждом проекте",
+    descriptionEn: "We guarantee work quality and deadlines on every project"
   },
   {
     icon: TrendingUp,
-    title: "Инновации",
-    description: "Постоянно внедряем новые технологии и методы исследований"
+    titleRu: "Инновации",
+    titleEn: "Innovation",
+    descriptionRu: "Постоянно внедряем новые технологии и методы исследований",
+    descriptionEn: "Constantly implementing new technologies and research methods"
   },
   {
     icon: Users,
-    title: "Профессионализм",
-    description: "Команда опытных специалистов с международной квалификацией"
+    titleRu: "Профессионализм",
+    titleEn: "Professionalism",
+    descriptionRu: "Команда опытных специалистов с международной квалификацией",
+    descriptionEn: "Team of experienced specialists with international qualifications"
   },
   {
     icon: Award,
-    title: "Качество",
-    description: "Работа по международным стандартам JORC и NI 43-101"
+    titleRu: "Качество",
+    titleEn: "Quality",
+    descriptionRu: "Работа по международным стандартам JORC и NI 43-101",
+    descriptionEn: "Work in compliance with JORC and NI 43-101 international standards"
   }
 ]
 
 export function AboutContent() {
+  const { t } = useLanguage()
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -55,6 +65,7 @@ export function AboutContent() {
             sizes="100vw"
             style={{ objectPosition: 'center 50%' }}
           />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -64,19 +75,25 @@ export function AboutContent() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <div className="flex items-center gap-2 text-white mb-4">
-              <Link href="/" className="hover:text-primary text-white">Главная</Link>
-              <span>/</span>
-              <span className="text-white">О компании</span>
-            </div>
+            <div className="flex items-center gap-2 text-white/80 mb-4">
+  <Link href="/" className="hover:text-white transition-colors">
+    {t('Главная', 'Home')}
+  </Link>
+  <span>/</span>
+  <span className="text-white">
+    {t('О компании', 'About')}
+  </span>
+</div>
             
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Полярная Экспедиционная Компания
+              {t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
             </h1>
             
-            <p className="text-xl text-white leading-relaxed">
-              Более 15 лет мы помогаем недропользователям открывать и осваивать 
-              месторождения полезных ископаемых в России и за её пределами.
+            <p className="text-xl text-white/90 leading-relaxed">
+              {t(
+                'Более 15 лет мы помогаем недропользователям открывать и осваивать месторождения полезных ископаемых в России и за её пределами.',
+                'For over 15 years, we have been helping subsoil users discover and develop mineral deposits in Russia and beyond.'
+              )}
             </p>
           </motion.div>
         </div>
@@ -96,12 +113,13 @@ export function AboutContent() {
                 <Target className="w-7 h-7 text-primary" />
               </div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Наша миссия
+                {t('Наша миссия', 'Our Mission')}
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Обеспечивать недропользователей достоверной геологической информацией 
-                для принятия обоснованных инвестиционных решений, применяя передовые 
-                технологии и международные стандарты качества.
+                {t(
+                  'Обеспечивать недропользователей достоверной геологической информацией для принятия обоснованных инвестиционных решений, применяя передовые технологии и международные стандарты качества.',
+                  'To provide subsoil users with reliable geological information for making informed investment decisions, applying advanced technologies and international quality standards.'
+                )}
               </p>
             </motion.div>
 
@@ -115,12 +133,13 @@ export function AboutContent() {
                 <Eye className="w-7 h-7 text-primary" />
               </div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                Наше видение
+                {t('Наше видение', 'Our Vision')}
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Стать ведущей геологоразведочной компанией России, 
-                признанной за инновационный подход, высокое качество работ 
-                и вклад в устойчивое развитие минерально-сырьевой базы региона.
+                {t(
+                  'Стать ведущей геологоразведочной компанией России, признанной за инновационный подход, высокое качество работ и вклад в устойчивое развитие минерально-сырьевой базы региона.',
+                  'To become a leading exploration company in Russia, recognized for its innovative approach, high quality of work and contribution to the sustainable development of the region\'s mineral resource base.'
+                )}
               </p>
             </motion.div>
           </div>
@@ -137,10 +156,13 @@ export function AboutContent() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Наши ценности
+              {t('Наши ценности', 'Our Values')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Принципы, которыми мы руководствуемся в каждом проекте
+              {t(
+                'Принципы, которыми мы руководствуемся в каждом проекте',
+                'The principles we follow in every project'
+              )}
             </p>
           </motion.div>
 
@@ -160,9 +182,11 @@ export function AboutContent() {
                     <Icon className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                    {value.title}
+                    {t(value.titleRu, value.titleEn)}
                   </h3>
-                  <p className="text-muted-foreground text-sm">{value.description}</p>
+                  <p className="text-muted-foreground text-sm">
+                    {t(value.descriptionRu, value.descriptionEn)}
+                  </p>
                 </motion.div>
               )
             })}
@@ -180,10 +204,13 @@ export function AboutContent() {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              История компании
+              {t('История компании', 'Company History')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Путь от небольшой команды энтузиастов до лидера отрасли
+              {t(
+                'Путь от небольшой команды энтузиастов до лидера отрасли',
+                'The journey from a small team of enthusiasts to an industry leader'
+              )}
             </p>
           </motion.div>
 
@@ -210,9 +237,11 @@ export function AboutContent() {
                         <span className="text-primary font-semibold">{milestone.year}</span>
                       </div>
                       <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                        {milestone.title}
+                        {t(milestone.titleRu, milestone.titleEn)}
                       </h3>
-                      <p className="text-muted-foreground text-sm">{milestone.desc}</p>
+                      <p className="text-muted-foreground text-sm">
+                        {t(milestone.descRu, milestone.descEn)}
+                      </p>
                     </div>
                   </div>
 
@@ -227,18 +256,15 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* Team */}
-      
-
       {/* Stats */}
       <section className="py-16 bg-primary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "15+", label: "Лет опыта" },
-              { value: "500+", label: "Сотрудников" },
-              { value: "200+", label: "Проектов" },
-              { value: "15+", label: "Регионов работы" }
+              { value: "15+", labelRu: "Лет опыта", labelEn: "Years of experience" },
+              { value: "500+", labelRu: "Сотрудников", labelEn: "Employees" },
+              { value: "200+", labelRu: "Проектов", labelEn: "Projects" },
+              { value: "15+", labelRu: "Регионов работы", labelEn: "Regions of operation" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -251,14 +277,16 @@ export function AboutContent() {
                 <div className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-2">
                   {stat.value}
                 </div>
-                <div className="text-primary-foreground/80">{stat.label}</div>
+                <div className="text-primary-foreground/80">
+                  {t(stat.labelRu, stat.labelEn)}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      
+    
     </div>
   )
 }
