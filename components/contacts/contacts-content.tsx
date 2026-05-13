@@ -392,7 +392,7 @@ export default function ContactsContent() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="flex items-center gap-2 text-white/70 mb-4">
+              <div className="flex items-center gap-2 text-white mb-4">
                 <Link href="/" className="hover:text-white transition-colors">Главная</Link>
                 <span>/</span>
                 <span className="text-white">Карьера</span>
@@ -402,7 +402,7 @@ export default function ContactsContent() {
                 Присоединяйтесь к нашей команде 
               </h1>
               
-              <p className="text-xl text-white/90 leading-relaxed">
+              <p className="text-xl text-white leading-relaxed">
                 Мы ищем талантливых специалистов в области геологии, геофизики, бурения и IT.
                 Отправьте нам своё резюме, и мы свяжемся с вами при открытии подходящей вакансии.
               </p>
