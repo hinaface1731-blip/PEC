@@ -193,7 +193,7 @@ export function ProjectsContent() {
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 text-muted-foreground mb-4">
                 <Link href="/" className="hover:text-primary text-white/90">{t('Главная', 'Home')}</Link>
-                <span>/</span>
+                <span className="text-white/90">/</span>
                 <span className="text-white/90">{t('Проекты', 'Projects')}</span>
               </div>
               
