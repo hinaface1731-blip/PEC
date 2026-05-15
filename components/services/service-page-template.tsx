@@ -78,7 +78,7 @@ export interface ServicePageData {
   methods: ServiceMethod[]
   methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
-  reverse?: boolean
+  reverse?: boolean  // теперь не влияет на hero, только на секцию методов
   equipment: ServiceEquipment[]
   steps: ServiceStep[]
   stepImages: string[]
@@ -91,8 +91,6 @@ export interface ServicePageData {
 
 interface ServicePageTemplateProps {
   data: ServicePageData
-  topSection?: React.ReactNode   // 👈 ДОБАВИТЬ
-  bottomSection?: React.ReactNode // 👈 ДОБАВИТЬ (опционально)
 }
 
 // Координаты регионов
@@ -112,10 +110,9 @@ const REGIONS_COORDS: Record<string, [number, number]> = {
   'Ямал': [68.0, 73.0],
 }
 
-export function ServicePageTemplate({ data, topSection, bottomSection }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
   const { t } = useLanguage()
   const mapRef = useRef<HTMLDivElement>(null)
-
   const { isReady, ymaps } = useYandexMapsContext()
 
   useEffect(() => {
@@ -163,7 +160,7 @@ export function ServicePageTemplate({ data, topSection, bottomSection }: Service
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero — текст всегда слева */}
       <section className="relative section bg-[var(--bg2)] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -177,26 +174,19 @@ export function ServicePageTemplate({ data, topSection, bottomSection }: Service
         </div>
 
         <div className="relative z-10 container mx-auto">
-          <div className={`flex flex-col ${data.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center py-16 md:py-20`}>
-            <div className="flex-1">
-              <div className="w-14 h-14 rounded-xl bg-[var(--accent-glow)] flex items-center justify-center mb-6">
-                <data.icon className="w-7 h-7 text-[var(--accent)]" />
-              </div>
+          <div className="flex flex-col lg:flex-row gap-12 items-center py-16 md:py-20">
+            <div className="flex-1 max-w-3xl">
               <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 {t(data.titleRu, data.titleEn)}
               </h1>
               <p className="text-xl text-white/90 leading-relaxed mb-8">
                 {t(data.descRu, data.descEn)}
               </p>
-              
             </div>
             <div className="flex-1" />
           </div>
         </div>
       </section>
-
-      {/* 👇 ТОП-СЕКЦИЯ (лицензия, сертификаты и т.д.) - СРАЗУ ПОСЛЕ HERO */}
-      {topSection && topSection}
 
       {/* Methods */}
       <section className="section">
@@ -443,8 +433,6 @@ export function ServicePageTemplate({ data, topSection, bottomSection }: Service
       </section>
 
 
-      {/* 👇 БОТТОМ-СЕКЦИЯ (форма, доп. блоки) - САМЫЙ НИЗ */}
-      {bottomSection && bottomSection}
     </>
   )
 }

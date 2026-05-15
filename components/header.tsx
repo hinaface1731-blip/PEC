@@ -27,6 +27,7 @@ const navItems = [
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
   { href: '/contacts', ru: 'Карьера', en: 'Career' },
+  
 ]
 
 export function Header() {

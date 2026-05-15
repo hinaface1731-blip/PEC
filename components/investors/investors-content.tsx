@@ -39,7 +39,7 @@ const juniorProjects = [
     potentialEn: "4 Mt copper, 2 Mt molybdenum, 50 t gold",
     stageRu: "Поисково-оценочный этап",
     stageEn: "Exploration stage",
-    image: "/images/sims.jpg",
+    image: "/images/sims.JPG",
     descriptionRu: "Располагается на побережье моря Лаптевых в 21 км западнее глубоководной бухты Зимовочная. Выявлена зона сульфидной минерализации протяженностью 6 км.",
     descriptionEn: "Located on the Laptev Sea coast, 21 km west of Zimovochnaya Bay. A 6 km sulfide mineralization zone has been identified.",
     highlightsRu: [
@@ -99,7 +99,7 @@ const juniorProjects = [
     potentialEn: "3 Mt copper, 70 t gold",
     stageRu: "Детальная геофизика",
     stageEn: "Detailed Geophysics",
-    image: "/images/pekin.jpg",
+    image: "/images/pekin.JPG",
     descriptionRu: "Наиболее изученная площадь. Вскрыто рудное тело мощностью 15 м со средним содержанием меди 0.4%. Выявлены площадные ореолы меди, молибдена и серебра.",
     descriptionEn: "The most explored area. A 15 m thick ore body with average copper grade 0.4% has been discovered. Area-wide halos of copper, molybdenum and silver have been identified.",
     highlightsRu: [
