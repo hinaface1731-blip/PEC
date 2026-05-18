@@ -27,8 +27,8 @@ const projects = [
     year: '2023-2025',
     regionRu: 'Магадан',
     regionEn: 'Magadan',
-    resultRu: 'Геофизические исследования на 120 км²',
-    resultEn: 'Geophysical surveys on 120 km²',
+    resultRu: 'Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение. В ходе проведения геологоразведочных работ, получен прирост в объеме 350 тысяч тонн руды с запасом 5,4 тонн условного золота.',
+    resultEn: 'Evaluation of prospecting works at the gold ore object. Trenches and core drilling. During the geological exploration, an increase in the volume of 350 thousand tons of ore with a reserve of 5.4 tons of conventional gold was obtained.',
   },
   {
     image: '/images/oper.JPG',

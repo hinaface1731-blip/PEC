@@ -2,11 +2,19 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
-import { ArrowRight, Briefcase } from 'lucide-react'  // ← Play заменён на Briefcase
+import { ArrowRight, Briefcase } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export function HeroSection() {
   const { t } = useLanguage()
+
+  const scrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const servicesSection = document.getElementById('services')
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -72,12 +80,16 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex flex-wrap gap-4"
           >
-            <Link href="/services" className="btn btn-primary">
+            <a 
+              href="#services" 
+              onClick={scrollToServices}
+              className="btn btn-primary"
+            >
               {t('Наши услуги', 'Our Services')}
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
             <Link href="/projects" className="btn btn-ghost">
-              <Briefcase className="w-4 h-4" />  {/* ← иконка портфеля проектов */}
+              <Briefcase className="w-4 h-4" />
               {t('Проекты', 'Projects')}
             </Link>
           </motion.div>

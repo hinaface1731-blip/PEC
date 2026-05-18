@@ -78,7 +78,7 @@ export interface ServicePageData {
   methods: ServiceMethod[]
   methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
-  reverse?: boolean  // теперь не влияет на hero, только на секцию методов
+  reverse?: boolean
   equipment: ServiceEquipment[]
   steps: ServiceStep[]
   stepImages: string[]
@@ -91,6 +91,7 @@ export interface ServicePageData {
 
 interface ServicePageTemplateProps {
   data: ServicePageData
+  topSection?: React.ReactNode
 }
 
 // Координаты регионов
@@ -99,18 +100,15 @@ const REGIONS_COORDS: Record<string, [number, number]> = {
   'Якутия': [66.0, 130.0],
   'Чукотка': [66.0, 170.0],
   'Алтай': [51.0, 86.0],
-  'ХМАО': [61.0, 70.0],
   'Забайкалье': [52.0, 115.0],
-  'Кольский полуостров': [68.0, 36.0],
   'Камчатка': [56.0, 160.0],
   'Иркутская область': [53.0, 103.0],
   'Магаданская область': [63.0, 153.0],
   'Красноярский край': [64.0, 96.0],
   'Крайний Север': [72.0, 102.0],
-  'Ямал': [68.0, 73.0],
 }
 
-export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ data, topSection }: ServicePageTemplateProps) {
   const { t } = useLanguage()
   const mapRef = useRef<HTMLDivElement>(null)
   const { isReady, ymaps } = useYandexMapsContext()
@@ -160,33 +158,46 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
 
   return (
     <>
-      {/* Hero — текст всегда слева */}
-      <section className="relative section bg-[var(--bg2)] overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 bg-card overflow-hidden">
+        <div className="absolute inset-0">
           <Image
             src={data.heroImage}
             alt={t(data.titleRu, data.titleEn)}
             fill
-            className="object-cover"
             priority
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center 50%' }}
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-
-        <div className="relative z-10 container mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-center py-16 md:py-20">
-            <div className="flex-1 max-w-3xl">
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 text-white/80 mb-4">
+              <Link href="/" className="hover:text-white transition-colors">
+                {t('Главная', 'Home')}
+              </Link>
+              <span>/</span>
+              <span className="text-white">
                 {t(data.titleRu, data.titleEn)}
-              </h1>
-              <p className="text-xl text-white/90 leading-relaxed mb-8">
-                {t(data.descRu, data.descEn)}
-              </p>
+              </span>
             </div>
-            <div className="flex-1" />
+            
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              {t(data.titleRu, data.titleEn)}
+            </h1>
+            
+            <p className="text-xl text-white/90 leading-relaxed">
+              {t(data.descRu, data.descEn)}
+            </p>
           </div>
         </div>
       </section>
+
+      {/* Top Section (например, лицензия) */}
+      {topSection && topSection}
 
       {/* Methods */}
       <section className="section">
@@ -258,7 +269,7 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
 
       {/* Equipment */}
       <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 text-center mb-12">
           <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
             {t('Применяемые методики и оборудование', 'Methods & Equipment')}
           </h2>
@@ -300,7 +311,7 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
 
       {/* Process Steps */}
       <section className="section bg-gradient-to-b from-[var(--bg)] to-[var(--bg2)]">
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
               {t('Процесс выполнения', 'Work Process')}
@@ -322,7 +333,7 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
 
       {/* Results */}
       <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto">
+        <div className="container mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
             {t('Результаты работ', 'Work Results')}
           </h2>
@@ -431,8 +442,6 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
           </div>
         </div>
       </section>
-
-
     </>
   )
 }

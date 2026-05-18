@@ -96,7 +96,7 @@ const equipmentCategories = [
         specs: ["Глубина бурения: до 1400 м", "Диаметр: 60-121 мм", "Высокая мощность"],
         specsEn: ["Drilling depth: up to 1400 m", "Diameter: 60-121 mm", "High power"],
         count: 1,
-        image: "/images/equipment/cs-14.jpg"
+        image: "/images/equipment/Christensen-CS14.jpg"
       },
       {
         name: "BullDril-1200",
@@ -559,8 +559,7 @@ export function EquipmentContent() {
         </div>
       </section>
 
-      {/* CTA */}
-      <CTAForm />
+  
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Mountain, Pickaxe, Map, Microscope, FileCheck, Pencil, type LucideIcon } from 'lucide-react'
+import { Mountain, Pickaxe, Pencil, Microscope } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {

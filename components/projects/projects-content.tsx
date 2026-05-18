@@ -88,7 +88,7 @@ const projects: Project[] = [
     client: "Полиметалл",
     clientEn: "Polymetal",
     description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение. В ходе проведения геологоразведочных работ, получен прирост в объеме 350 тысяч тонн руды с запасом 5,4 тонн условного золота.",
-    descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
+    descriptionEn: "Evaluation of prospecting works at the gold ore object. Trenches and core drilling. During the geological exploration, an increase in the volume of 350 thousand tons of ore with a reserve of 5.4 tons of conventional gold was obtained.",
     results: ["Горнопроходческие работы", "Керновое опробование", ">25 000 пробуренных метров"],
     resultsEn: ["Mine workings", "Core sampling", ">25,000 drilled meters"],
     image: "/images/neven.JPG"
@@ -316,7 +316,7 @@ export function ProjectsContent() {
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/DSC09137.jpg"
+            src="/images/DSC09137.JPG"
             alt="Проекты Полярной Экспедиционной Компании"
             fill
             priority
@@ -329,11 +329,15 @@ export function ProjectsContent() {
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
             <div className="max-w-3xl">
-              <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                <Link href="/" className="hover:text-primary text-white/90">{t('Главная', 'Home')}</Link>
-                <span className="text-white/90">/</span>
-                <span className="text-white/90">{t('Проекты', 'Projects')}</span>
-              </div>
+              <div className="flex items-center gap-2 text-white/80 mb-4">
+              <Link href="/" className="hover:text-white transition-colors">
+                {t('Главная', 'Home')}
+              </Link>
+              <span>/</span>
+              <span className="text-white">
+                {t('Техника', 'Equipment')}
+              </span>
+            </div>
               
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                 {t('Проекты для заказчиков', 'Client Projects')}
