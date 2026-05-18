@@ -84,7 +84,7 @@ export function ServicesSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="section">
+    <section id="services" className="section">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
           <div>

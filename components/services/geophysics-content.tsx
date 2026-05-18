@@ -20,10 +20,6 @@ const data: ServicePageData = {
     { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical survey' },
     { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
     { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
-    { ru: 'Гравиразведка', en: 'Gravity survey' },
-    { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
-    { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
-    { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
   ],
   methodsGroups: [
     {
@@ -45,17 +41,6 @@ const data: ServicePageData = {
         { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical survey' },
         { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
         { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
-        { ru: 'Гравиразведка', en: 'Gravity survey' },
-      ]
-    },
-    {
-      titleRu: 'Воздушная геофизика',
-      titleEn: 'Airborne Geophysics',
-      icon: Compass,
-      methods: [
-        { ru: 'Магнитная съёмка с БПЛА (MiniMag, MaxiMag, AeroQuantumMag)', en: 'UAV magnetic survey' },
-        { ru: 'Гамма-спектрометрия с БПЛА', en: 'UAV gamma spectrometry' },
-        { ru: 'Аэрогравиметрия', en: 'Aerogravimetry' },
       ]
     },
   ],
@@ -65,25 +50,13 @@ const data: ServicePageData = {
       titleRu: 'Электроразведка',
       titleEn: 'Electrical Methods',
       href: '/services/geophysics/electrical',
-      items: ['ЭРА-МАКС (АМТЗ, ВП)', 'Феникс MTU-5A', 'ИМВП-8'],
+      items: ['NORD (АМТЗ)', 'ЦИКЛ', 'Медуза'],
     },
     {
       titleRu: 'Магниторазведка',
       titleEn: 'Magnetic Survey',
       href: '/services/geophysics/magnetic',
-      items: ['MMPOS-2', 'GSM-19 Overhauser', 'Протоновые магнитометры'],
-    },
-    {
-      titleRu: 'Гравиразведка',
-      titleEn: 'Gravity Survey',
-      href: '/services/geophysics/gravity',
-      items: ['Scintrex CG-6', 'Autograv CG-5', 'Лазерные нивелиры'],
-    },
-    {
-      titleRu: 'Сейсморазведка',
-      titleEn: 'Seismic Survey',
-      href: '/services/geophysics/seismic',
-      items: ['Скала-48', 'Сейсмостанции 24-48 каналов', 'Сейсмоприёмники GS-20DX'],
+      items: ['MiniMag', 'SmartMag', 'IMS-050'],
     },
     {
       titleRu: 'Каротаж',
@@ -95,7 +68,7 @@ const data: ServicePageData = {
       titleRu: 'ПО для обработки',
       titleEn: 'Processing Software',
       href: '/services/geophysics/software',
-      items: ['Oasis Montaj', 'ZondRes2D/3D', 'RadExPro', 'Petrel'],
+      items: ['Oasis Montaj', 'ZondRes2D/3D', 'Epi-Kit', 'Проба'],
     },
   ],
   steps: [
@@ -189,14 +162,13 @@ const data: ServicePageData = {
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Чукотка', en: 'Chukotka' },
-    { ru: 'ХМАО', en: 'KhMAO' },
+    { ru: 'Магаданская область', en: 'Magadanskaya oblast' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
   ],
   stats: [
-    { value: '85+', labelRu: 'проектов', labelEn: 'projects' },
-    { value: '5 000+ км', labelRu: 'профилей', labelEn: 'of profiles' },
-    { value: '200+', labelRu: 'скважин каротажа', labelEn: 'logged wells' },
-    { value: '12%', labelRu: 'макс. аномалия ВП', labelEn: 'max IP anomaly' },
+    { value: '15+', labelRu: 'проектов', labelEn: 'projects' },
+    { value: '1000 + км', labelRu: 'профилей', labelEn: 'of profiles' },
+    { value: '400 +', labelRu: 'скважин каротажа', labelEn: 'logged wells' },
   ],
 }
 
