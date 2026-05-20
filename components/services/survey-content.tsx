@@ -64,11 +64,6 @@ const data: ServicePageData = {
       items: ['Электронные тахеометры', 'Нивелиры', 'Отражатели и вешки'],
     },
     {
-      titleRu: 'Метрология',
-      titleEn: 'Metrology',
-      items: ['Все СИ проходят поверку', 'Сертификаты калибровки', 'Метрологический контроль'],
-    },
-    {
       titleRu: 'Программное обеспечение',
       titleEn: 'Software',
       items: ['Nanosoft (лицензия)', 'КРЕДО-Диалог (лицензия)', 'AutoCAD Civil 3D'],
@@ -169,8 +164,8 @@ const data: ServicePageData = {
     { ru: 'Крайний Север', en: 'Far North' },
   ],
   stats: [
-    { value: '50+', labelRu: 'проектов', labelEn: 'projects' },
-    { value: '2005', labelRu: 'год основания', labelEn: 'founded' },
+    { value: '10+', labelRu: 'проектов', labelEn: 'projects' },
+    { value: '2008', labelRu: 'год основания', labelEn: 'founded' },
     { value: '3 см', labelRu: 'точность съёмки', labelEn: 'survey accuracy' },
     { value: '∞', labelRu: 'срок лицензии', labelEn: 'license term' },
   ],
