@@ -160,41 +160,42 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
     <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={data.heroImage}
-            alt={t(data.titleRu, data.titleEn)}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-            style={{ objectPosition: 'center 50%' }}
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-white/80 mb-4">
-              <Link href="/" className="hover:text-white transition-colors">
-                {t('Главная', 'Home')}
-              </Link>
-              <span>/</span>
-              <span className="text-white">
-                {t(data.titleRu, data.titleEn)}
-              </span>
-            </div>
-            
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {t(data.titleRu, data.titleEn)}
-            </h1>
-            
-            <p className="text-xl text-white/90 leading-relaxed">
-              {t(data.descRu, data.descEn)}
-            </p>
-          </div>
-        </div>
-      </section>
+  {/* min-h-[500px] — фиксированная минимальная высота */}
+  <div className="absolute inset-0">
+    <Image
+      src={data.heroImage}
+      alt={t(data.titleRu, data.titleEn)}
+      fill
+      priority
+      className="object-cover"
+      sizes="100vw"
+      style={{ objectPosition: 'center 50%' }}
+    />
+    <div className="absolute inset-0 bg-black/50" />
+  </div>
+  
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="max-w-3xl py-12">
+      <div className="flex items-center gap-2 text-white/80 mb-4">
+        <Link href="/" className="hover:text-white transition-colors">
+          {t('Главная', 'Home')}
+        </Link>
+        <span>/</span>
+        <span className="text-white">
+          {t(data.titleRu, data.titleEn)}
+        </span>
+      </div>
+      
+      <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {t(data.titleRu, data.titleEn)}
+      </h1>
+      
+      <p className="text-xl text-white/90 leading-relaxed">
+        {t(data.descRu, data.descEn)}
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* Top Section (например, лицензия) */}
       {topSection && topSection}
