@@ -9,10 +9,10 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 
 const data: ServicePageData = {
   icon: Compass,
-  titleRu: 'Маркшейдерские работы',
-  titleEn: 'Survey Works',
-  descRu: 'Маркшейдерское обеспечение горных работ на основании лицензии Ростехнадзора. Высокоточные ГНСС-приемники, электронные тахеометры, лицензионное ПО. Полный цикл от планирования до сдачи документации.',
-  descEn: 'Mining surveying services licensed by Rostechnadzor. High-precision GNSS receivers, electronic total stations, licensed software. Full cycle from planning to documentation delivery.',
+  titleRu: 'Маркшейдерские, геодезические, топографические работы.',
+  titleEn: 'Mine surveying, geodetic, and topographic work.',
+  descRu: 'Маркшейдерское обеспечение горных и буровых работ выполняется на основании лицензии на осуществление деятельности по производству маркшейдерских работ, выданной Федеральной Службой по экологическому, технологическому и атомному надзору (Ростехнадзором).',
+  descEn: 'Mine and drilling surveying is carried out on the basis of a license for mine surveying issued by the Federal Service for Environmental, Technological, and Nuclear Supervision (Rostekhnadzor).',
   heroImage: '/images/mark.JPG',
   reverse: true,
   methods: [],  // пустой массив, так как методы разбиты по группам
@@ -313,12 +313,12 @@ function LicenseSection() {
                 <Award className="w-5 h-5 text-[var(--accent)]" />
               </div>
               <h4 className="font-semibold text-[var(--fg)] mb-2">
-                {t('Квалификация', 'Qualification')}
+                {t('Специалисты:', 'Specialists:')}
               </h4>
               <p className="text-sm text-[var(--fg2)]">
                 {t(
-                  'Сотрудники имеют профильное образование, регулярно проходят повышение квалификации и аттестации по промышленной безопасности',
-                  'Employees have specialized education, regularly undergo advanced training and industrial safety certifications'
+                  'Сотрудники маркшейдерской службы имеют профессиональное образование, проходят обязательное повышение квалификации, имеют необходимые аттестации по промышленной безопасности для безопасной работы на объектах горных, буровых работ, опасных производственных объектах.',
+                  'Employees of the mine surveying service have professional education, undergo mandatory advanced training, and have the necessary industrial safety certifications for safe work at mining, drilling, and hazardous production facilities.'
                 )}
               </p>
             </div>
@@ -328,12 +328,12 @@ function LicenseSection() {
                 <Shield className="w-5 h-5 text-[var(--accent)]" />
               </div>
               <h4 className="font-semibold text-[var(--fg)] mb-2">
-                {t('Соответствие требованиям', 'Compliance')}
+                {t('Высокие стандарты', 'High standards')}
               </h4>
               <p className="text-sm text-[var(--fg2)]">
                 {t(
-                  'Работы выполняются в соответствии с требованиями законодательства РФ и локальными нормативными актами компании',
-                  'Work is performed in accordance with Russian legislation and company regulatory documents'
+                  'Работы выполняются в соответствии с требованиями законодательства РФ и локальными нормативными актами компании. Осуществляется регулярный внутренний контроль за качеством работ.',
+                  'Work is performed in accordance with Russian legislation and company regulatory documents. Regular internal quality control is carried out.'
                 )}
               </p>
             </div>
@@ -343,12 +343,12 @@ function LicenseSection() {
                 <Compass className="w-5 h-5 text-[var(--accent)]" />
               </div>
               <h4 className="font-semibold text-[var(--fg)] mb-2">
-                {t('Метрология', 'Metrology')}
+                {t('Оборудование:', 'Equipment:')}
               </h4>
               <p className="text-sm text-[var(--fg2)]">
                 {t(
-                  'Все средства измерения проходят обязательные метрологические поверки для обеспечения высокой точности',
-                  'All measuring instruments undergo mandatory metrological verification to ensure high accuracy'
+                  'Парк оборудования состоит из высокоточных, точных и технических средств измерений. Все оборудование проходит обязательные метрологические поверки.',
+                  'The equipment park consists of high-precision, accurate, and technical measuring instruments. All equipment undergoes mandatory metrological inspections.'
                 )}
               </p>
             </div>

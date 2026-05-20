@@ -10,7 +10,7 @@ const data: ServicePageData = {
   titleEn: 'Mining Works',
   descRu: 'Полный комплекс горных работ: от вскрышных до добычных. Проходка канав и шурфов, вскрышные работы, добыча полезных ископаемых, взрывные работы, отработка россыпей.',
   descEn: 'Full range of mining operations: from overburden to extraction. Trenching and pitting, overburden removal, mineral extraction, blasting, placer mining.',
-  heroImage: '/images/mining-hero.jpg',
+  heroImage: '/images/field_trenching.jpg',
   reverse: false,
   methods: [
     { ru: 'Проходка канав', en: 'Trenching' },
@@ -178,7 +178,7 @@ const data: ServicePageData = {
     { value: '1 500 000 м³', labelRu: 'вскрыто породы', labelEn: 'rock exposed' },
     { value: '500 000 м³', labelRu: 'добыто', labelEn: 'extracted' },
     { value: '15+', labelRu: 'экскаваторов', labelEn: 'excavators' },
-    { value: '25+', labelRu: 'самосвалов', labelEn: 'dump trucks' },
+    { value: '20+', labelRu: 'бульдозеров', labelEn: 'bulldozers' },
   ],
 }
 
