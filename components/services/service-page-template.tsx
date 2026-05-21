@@ -87,6 +87,10 @@ export interface ServicePageData {
   caseImage: string
   regions: ServiceRegion[]
   stats: ServiceStat[]
+  sectionTitleRu: string      // Заголовок секции "Что входит в услугу"
+  sectionTitleEn: string
+  sectionDescRu: string        // Описание под заголовком
+  sectionDescEn: string
 }
 
 interface ServicePageTemplateProps {
@@ -204,16 +208,13 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
       <section className="section">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
-              {t('Что входит в услугу', 'What the Service Includes')}
-            </h2>
-            <p className="text-[var(--muted)] max-w-2xl mx-auto">
-              {t(
-                'Полный комплекс геологоразведочных работ — от проектирования до защиты запасов',
-                'Full range of exploration services — from design to reserve approval'
-              )}
-            </p>
-          </div>
+      <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
+        {t(data.sectionTitleRu, data.sectionTitleEn)}
+      </h2>
+      <p className="text-[var(--muted)] max-w-2xl mx-auto">
+        {t(data.sectionDescRu, data.sectionDescEn)}
+      </p>
+    </div>
 
           {data.methodsGroups ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
