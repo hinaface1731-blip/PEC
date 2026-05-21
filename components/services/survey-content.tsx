@@ -15,17 +15,20 @@ const data: ServicePageData = {
   descEn: 'Mine and drilling surveying is carried out on the basis of a license for mine surveying issued by the Federal Service for Environmental, Technological, and Nuclear Supervision (Rostekhnadzor).',
   heroImage: '/images/mark.JPG',
   reverse: true,
+  sectionTitleRu: 'Что входит в услугу',
+  sectionTitleEn: 'What is included in the service',
+  sectionDescRu: 'Полный комплекс маркшейдерско-геодезических и топографических работ для обеспечения геологоразведочных работ',
+  sectionDescEn: 'A full range of mine surveying, geodetic, and topographic works to support geological exploration',
   methods: [],  // пустой массив, так как методы разбиты по группам
   methodsGroups: [
     {
-      titleRu: 'Геодезические измерения',
-      titleEn: 'Geodetic Measurements',
+      titleRu: 'Маркшейдерско-геодезические',
+      titleEn: 'Mine Surveying and Geodesy',
       icon: Globe,
       methods: [
-        { ru: 'Статические спутниковые измерения от пунктов ГГС', en: 'Static satellite measurements from state geodetic network' },
-        { ru: 'Развитие опорной маркшейдерской сети (ОМС)', en: 'Mine surveying control network development' },
-        { ru: 'Топографическая съемка исходной поверхности', en: 'Initial surface topographic survey' },
-        { ru: 'Вынос проектируемых горных выработок', en: 'Project mine workings staking' },
+        { ru: 'Развитие опорной маркшейдерской сети (ОМС) от пунктов ГГС', en: 'Development of the Reference Mine Surveying Network (RMS) from GGS points' },
+        { ru: 'Топографические съемки исходных поверхностей наземным и воздушным методами', en: 'topographic surveys of the initial surfaces using ground-based and aerial methods' },
+        { ru: 'Вынос на местности проектируемых горных выработок', en: 'Location of the projected mine workings on the ground' },
       ]
     },
     {
@@ -50,6 +53,28 @@ const data: ServicePageData = {
         { ru: '3D-моделирование горных выработок', en: '3D mine workings modeling' },
       ]
     },
+    {
+      titleRu: 'Взаимодействие с государственными органами',
+      titleEn: 'Interaction with government agencies',
+      icon: LineChart,
+      methods: [
+        { ru: 'Получение сведений от Роскадастра и Росреестра о пунктах государственных геодезических сетях (ГГС)', en: 'Obtaining information from Roskadastr and Rosreestr about state geodetic networks (SGN)' },
+        { ru: '---', en: '---' },
+        { ru: '---', en: '---' },
+        { ru: '---', en: '---' },
+      ]
+    },
+    {
+      titleRu: 'Проектирование и планирование работ',
+      titleEn: 'Design and planning of works',
+      icon: LineChart,
+      methods: [
+        { ru: 'Построение рельефа местности района работ, проектирование подъездных путей, выдача рекомендаций по оптимизации работ.', en: 'Construction of the terrain in the work area, design of access roads, and recommendations for optimizing the work.' },
+        { ru: '---', en: '---' },
+        { ru: '---', en: '---' },
+        { ru: '---', en: '---' },
+      ]
+    },
   ],
   methodsImage: '/images/mark_obor.jpg',
   equipment: [
@@ -64,9 +89,14 @@ const data: ServicePageData = {
       items: ['Электронные тахеометры', 'Нивелиры', 'Отражатели и вешки'],
     },
     {
+      titleRu: 'Беспилотные технологии',
+      titleEn: 'Unmanned technologies',
+      items: ['Квадрокоптеры', '---', '---'],
+    },
+    {
       titleRu: 'Программное обеспечение',
       titleEn: 'Software',
-      items: ['Nanosoft (лицензия)', 'КРЕДО-Диалог (лицензия)', 'AutoCAD Civil 3D'],
+      items: ['nanoCAD GeoniCS', 'КРЕДО-Диалог', 'AutoCAD Civil 3D'],
     },
   ],
   steps: [
