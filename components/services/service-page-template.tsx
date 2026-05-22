@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
 import { CTAForm } from '@/components/cta-form'
-import { ArrowRight, MapPin, CheckCircle2, type LucideIcon } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { ArrowRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
 import { useYandexMapsContext } from '@/components/yandex-map-loader'
 
@@ -14,11 +14,17 @@ interface ServiceMethod {
   en: string
 }
 
+interface ServiceEquipmentItem {
+  name: string
+  specs: string[]
+  image?: string
+}
+
 interface ServiceEquipment {
   titleRu: string
   titleEn: string
-  items: string[]
   href?: string
+  items: ServiceEquipmentItem[]
 }
 
 interface ServiceStep {
@@ -35,6 +41,7 @@ interface ServiceResult {
   titleEn: string
   descRu: string
   descEn: string
+  image: string
 }
 
 interface ServiceCase {
@@ -87,15 +94,15 @@ export interface ServicePageData {
   caseImage: string
   regions: ServiceRegion[]
   stats: ServiceStat[]
-  sectionTitleRu: string      // Заголовок секции "Что входит в услугу"
-  sectionTitleEn: string
-  sectionDescRu: string        // Описание под заголовком
-  sectionDescEn: string
+  sectionTitleRu?: string
+  sectionTitleEn?: string
+  sectionDescRu?: string
+  sectionDescEn?: string
+  resultsImage?: string
 }
 
 interface ServicePageTemplateProps {
   data: ServicePageData
-  topSection?: React.ReactNode
 }
 
 // Координаты регионов
@@ -104,18 +111,51 @@ const REGIONS_COORDS: Record<string, [number, number]> = {
   'Якутия': [66.0, 130.0],
   'Чукотка': [66.0, 170.0],
   'Алтай': [51.0, 86.0],
+  'ХМАО': [61.0, 70.0],
   'Забайкалье': [52.0, 115.0],
+  'Кольский полуостров': [68.0, 36.0],
   'Камчатка': [56.0, 160.0],
   'Иркутская область': [53.0, 103.0],
   'Магаданская область': [63.0, 153.0],
   'Красноярский край': [64.0, 96.0],
   'Крайний Север': [72.0, 102.0],
+  'Ямал': [68.0, 73.0],
 }
 
-export function ServicePageTemplate({ data, topSection }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
   const { t } = useLanguage()
   const mapRef = useRef<HTMLDivElement>(null)
   const { isReady, ymaps } = useYandexMapsContext()
+  
+  // Состояния для карусели оборудования
+  const [equipmentCategoryIndex, setEquipmentCategoryIndex] = useState(0)
+  const [equipmentItemIndex, setEquipmentItemIndex] = useState(0)
+
+  // Текущая категория и текущий элемент
+  const currentCategory = data.equipment[equipmentCategoryIndex]
+  const currentItems = currentCategory?.items || []
+  const currentItem = currentItems[equipmentItemIndex]
+
+  const handleCategoryChange = (index: number) => {
+    setEquipmentCategoryIndex(index)
+    setEquipmentItemIndex(0)
+  }
+
+  const nextEquipmentItem = () => {
+    if (equipmentItemIndex < currentItems.length - 1) {
+      setEquipmentItemIndex(equipmentItemIndex + 1)
+    } else {
+      setEquipmentItemIndex(0)
+    }
+  }
+
+  const prevEquipmentItem = () => {
+    if (equipmentItemIndex > 0) {
+      setEquipmentItemIndex(equipmentItemIndex - 1)
+    } else {
+      setEquipmentItemIndex(currentItems.length - 1)
+    }
+  }
 
   useEffect(() => {
     if (!isReady || !ymaps || !mapRef.current) return
@@ -164,57 +204,53 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
     <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-  {/* min-h-[500px] — фиксированная минимальная высота */}
-  <div className="absolute inset-0">
-    <Image
-      src={data.heroImage}
-      alt={t(data.titleRu, data.titleEn)}
-      fill
-      priority
-      className="object-cover"
-      sizes="100vw"
-      style={{ objectPosition: 'center 50%' }}
-    />
-    <div className="absolute inset-0 bg-black/50" />
-  </div>
-  
-  <div className="container mx-auto px-4 relative z-10">
-    <div className="max-w-3xl py-12">
-      <div className="flex items-center gap-2 text-white/80 mb-4">
-        <Link href="/" className="hover:text-white transition-colors">
-          {t('Главная', 'Home')}
-        </Link>
-        <span>/</span>
-        <span className="text-white">
-          {t(data.titleRu, data.titleEn)}
-        </span>
-      </div>
-      
-      <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-        {t(data.titleRu, data.titleEn)}
-      </h1>
-      
-      <p className="text-xl text-white/90 leading-relaxed">
-        {t(data.descRu, data.descEn)}
-      </p>
-    </div>
-  </div>
-</section>
-
-      {/* Top Section (например, лицензия) */}
-      {topSection && topSection}
+        <div className="absolute inset-0">
+          <Image
+            src={data.heroImage}
+            alt={t(data.titleRu, data.titleEn)}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center 50%' }}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 text-white/80 mb-4">
+              <Link href="/" className="hover:text-white transition-colors">
+                {t('Главная', 'Home')}
+              </Link>
+              <span>/</span>
+              <span className="text-white">
+                {t(data.titleRu, data.titleEn)}
+              </span>
+            </div>
+            
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              {t(data.titleRu, data.titleEn)}
+            </h1>
+            
+            <p className="text-xl text-white/90 leading-relaxed">
+              {t(data.descRu, data.descEn)}
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Methods */}
       <section className="section">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-      <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
-        {t(data.sectionTitleRu, data.sectionTitleEn)}
-      </h2>
-      <p className="text-[var(--muted)] max-w-2xl mx-auto">
-        {t(data.sectionDescRu, data.sectionDescEn)}
-      </p>
-    </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
+              {t(data.sectionTitleRu || 'Что входит в услугу', data.sectionTitleEn || 'What the Service Includes')}
+            </h2>
+            <p className="text-[var(--muted)] max-w-2xl mx-auto">
+              {t(data.sectionDescRu || 'Полный комплекс геологоразведочных работ — от проектирования до защиты запасов', data.sectionDescEn || 'Full range of exploration services — from design to reserve approval')}
+            </p>
+          </div>
 
           {data.methodsGroups ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -269,51 +305,119 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
-      {/* Equipment */}
+      {/* Equipment — карусель с переключателем категорий */}
       <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto px-6 text-center mb-12">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
             {t('Применяемые методики и оборудование', 'Methods & Equipment')}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.equipment.map((eq, i) => (
-              <div key={i} className="card group">
-                {eq.href ? (
-                  <Link href={eq.href}>
-                    <h3 className="text-lg font-semibold text-[var(--text)] mb-4 group-hover:text-[var(--accent)] transition-colors">
-                      {t(eq.titleRu, eq.titleEn)}
-                    </h3>
-                  </Link>
-                ) : (
-                  <h3 className="text-lg font-semibold text-[var(--text)] mb-4">
-                    {t(eq.titleRu, eq.titleEn)}
-                  </h3>
-                )}
-                <ul className="space-y-2">
-                  {eq.items.map((item, j) => (
-                    <li key={j} className="text-sm text-[var(--muted)] flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                {eq.href && (
-                  <Link
-                    href={eq.href}
-                    className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--accent)] hover:gap-3 transition-all"
-                  >
-                    {t('Подробнее →', 'Learn more →')}
-                  </Link>
-                )}
-              </div>
+
+          {/* Переключатель категорий (табы) */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {data.equipment.map((eq, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleCategoryChange(idx)}
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                  equipmentCategoryIndex === idx
+                    ? 'bg-[var(--accent)] text-white shadow-md'
+                    : 'bg-[var(--bg3)] text-[var(--muted)] hover:bg-[var(--accent-glow)] hover:text-[var(--accent)]'
+                }`}
+              >
+                {t(eq.titleRu, eq.titleEn)}
+              </button>
             ))}
           </div>
+
+          {/* Карусель для выбранной категории */}
+          {currentCategory && currentItem && (
+            <div className="relative max-w-5xl mx-auto">
+              <div className="card-enhanced overflow-hidden">
+                <div className="flex flex-col md:flex-row">
+                  {/* Левая часть — текст */}
+                  <div className="flex-1 p-6 md:p-8">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1 h-6 bg-[var(--accent)] rounded-full" />
+                      <span className="text-sm text-[var(--accent)] font-medium">
+                        {t('Оборудование', 'Equipment')}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">
+                      {currentItem.name}
+                    </h3>
+                    <ul className="space-y-3">
+                      {currentItem.specs.map((spec, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <CheckCircle2 className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
+                          <span>{spec}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {currentCategory.href && (
+                      <Link
+                        href={currentCategory.href}
+                        className="inline-flex items-center gap-2 mt-6 text-sm text-[var(--accent)] hover:gap-3 transition-all"
+                      >
+                        {t('Подробнее →', 'Learn more →')}
+                      </Link>
+                    )}
+                  </div>
+
+                  {/* Правая часть — изображение */}
+                  <div className="relative md:w-80 lg:w-96 h-64 md:h-auto flex items-center justify-center  p-4">
+  <div className="relative w-full h-full">
+    <Image
+      src={currentItem.image || '/images/equipment-placeholder.jpg'}
+      alt={currentItem.name}
+      fill
+      className="object-contain"
+      sizes="(max-width: 768px) 100vw, 384px"
+    />
+  </div>
+</div>
+                </div>
+              </div>
+
+              {/* Стрелки навигации */}
+              {currentItems.length > 1 && (
+                <>
+                  <button
+                    onClick={prevEquipmentItem}
+                    className="absolute left-0 top-1/2 -translate-x-4 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={nextEquipmentItem}
+                    className="absolute right-0 top-1/2 translate-x-4 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </>
+              )}
+
+              {/* Индикаторы (точки) */}
+              {currentItems.length > 1 && (
+                <div className="flex justify-center gap-2 mt-6">
+                  {currentItems.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setEquipmentItemIndex(idx)}
+                      className={`h-2 rounded-full transition-all ${
+                        equipmentItemIndex === idx ? 'w-6 bg-[var(--accent)]' : 'w-2 bg-[var(--muted2)]'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
       {/* Process Steps */}
       <section className="section bg-gradient-to-b from-[var(--bg)] to-[var(--bg2)]">
-        <div className="container mx-auto ">
+        <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
               {t('Процесс выполнения', 'Work Process')}
@@ -335,19 +439,30 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
 
       {/* Results */}
       <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
             {t('Результаты работ', 'Work Results')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.results.map((result, i) => (
-              <div key={i} className="card">
-                <h3 className="font-semibold text-[var(--text)] mb-2">
-                  {t(result.titleRu, result.titleEn)}
-                </h3>
-                <p className="text-sm text-[var(--muted)]">
-                  {t(result.descRu, result.descEn)}
-                </p>
+              <div key={i} className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-[var(--accent)]/30 transition-all flex flex-col">
+                <div className="p-5 flex-1">
+                  <h3 className="font-semibold text-[var(--text)] mb-2 text-lg">
+                    {t(result.titleRu, result.titleEn)}
+                  </h3>
+                  <p className="text-sm text-[var(--muted)]">
+                    {t(result.descRu, result.descEn)}
+                  </p>
+                </div>
+                <div className="relative w-full h-48 overflow-hidden bg-[var(--bg3)]">
+                  <Image
+                    src={result.image}
+                    alt={t(result.titleRu, result.titleEn)}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -444,6 +559,9 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           </div>
         </div>
       </section>
+
+      
+     
     </>
   )
 }
