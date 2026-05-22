@@ -12,6 +12,10 @@ const data: ServicePageData = {
   descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
   heroImage: '/images/geophys5.jpeg',
   reverse: true,
+  sectionTitleRu: 'Полный комплекс геологических работ',
+  sectionTitleEn: 'Full range of geological works',
+  sectionDescRu: 'От региональных съёмок до детальной разведки месторождений с подсчётом запасов',
+  sectionDescEn: 'From regional surveys to detailed deposit exploration with resource estimation',
   methods: [
     { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
     { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
@@ -45,32 +49,47 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/geophys-methods.jpg',
-  equipment: [
-    {
-      titleRu: 'Электроразведка',
-      titleEn: 'Electrical Methods',
-      href: '/services/geophysics/electrical',
-      items: ['NORD (АМТЗ)', 'ЦИКЛ', 'Медуза'],
-    },
-    {
-      titleRu: 'Магниторазведка',
-      titleEn: 'Magnetic Survey',
-      href: '/services/geophysics/magnetic',
-      items: ['MiniMag', 'SmartMag', 'IMS-050'],
-    },
-    {
-      titleRu: 'Каротаж',
-      titleEn: 'Well Logging',
-      href: '/services/geophysics/logging',
-      items: ['Комплексные каротажные станции', 'Инклинометры', 'Акустические зонды'],
-    },
-    {
-      titleRu: 'ПО для обработки',
-      titleEn: 'Processing Software',
-      href: '/services/geophysics/software',
-      items: ['Oasis Montaj', 'ZondRes2D/3D', 'Epi-Kit', 'Проба'],
-    },
-  ],
+ equipment: [
+  {
+    titleRu: 'Электроразведка',
+    titleEn: 'Electrical Methods',
+    href: '/services/geophysics/electrical',
+    items: [
+      {
+        name: 'NORD',
+        specs: ['32-бит АЦП', '0.001-20000 Hz', 'Wi-Fi управление', 'Вес 1.8 кг'],
+        image: '/images/equipment/nord.png'
+      },
+      {
+        name: 'ЦИКЛ',
+        specs: ['Цифровая передача информации', 'Без калибровки перед записью', 'Сопряжение с каротажем'],
+        image: '/images/equipment/cikl8.png'
+      },
+      {
+        name: 'Медуза',
+        specs: ['Электротомография', '2D/3D моделирование', 'Автоматическая обработка'],
+        image: '/images/equipment/tomography.png'
+      }
+    ]
+  },
+  {
+    titleRu: 'Магниторазведка',
+    titleEn: 'Magnetic Survey',
+    href: '/services/geophysics/magnetic',
+    items: [
+      {
+        name: 'MiniMag',
+        specs: ['Точность: 0.01 нТл', 'Частота измерений: до 5 Гц', 'GPS синхронизация'],
+        image: '/images/equipment/minimag.png'
+      },
+      {
+        name: 'SmartMag',
+        specs: ['Компактный дизайн', 'Высокая стабильность', 'Вес 3.1 кг'],
+        image: '/images/equipment/smartmag.jpg'
+      }
+    ]
+  }
+],
   steps: [
     {
       numRu: '01',
@@ -126,24 +145,28 @@ const data: ServicePageData = {
       titleEn: 'Anomaly Maps',
       descRu: 'Карты магнитного поля, гравитационных аномалий, ВП',
       descEn: 'Maps of magnetic field, gravity anomalies, IP',
+      image: '/images/results/geomap.jpg',
     },
     {
       titleRu: 'Геофизические разрезы',
       titleEn: 'Geophysical Sections',
       descRu: '2D разрезы удельного сопротивления, плотности',
       descEn: '2D resistivity and density sections',
+      image: '/images/results/geomap.jpg',
     },
     {
       titleRu: '3D-модели',
       titleEn: '3D Models',
       descRu: 'Объёмные модели распределения физических свойств',
       descEn: 'Volume models of physical property distribution',
+      image: '/images/results/geomap.jpg',
     },
     {
       titleRu: 'Рекомендации',
       titleEn: 'Recommendations',
       descRu: 'Точки заложения скважин, направления дальнейших работ',
       descEn: 'Drill site locations, further work directions',
+      image: '/images/results/geomap.jpg',
     },
   ],
   caseStudy: {

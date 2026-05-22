@@ -13,7 +13,11 @@ const data: ServicePageData = {
   heroImage: '/images/geo.jpg',
   reverse: false,
   methods: [], // пустой, используем groups
-  
+    // ✅ Добавьте эти поля
+  sectionTitleRu: 'Полный комплекс геологических работ',
+  sectionTitleEn: 'Full range of geological works',
+  sectionDescRu: 'От региональных съёмок до детальной разведки месторождений с подсчётом запасов',
+  sectionDescEn: 'From regional surveys to detailed deposit exploration with resource estimation',
   methodsGroups: [
     {
       titleRu: 'Полевые геологические работы',
@@ -55,28 +59,117 @@ const data: ServicePageData = {
   ],
   methodsImage: '/images/geo-methods.jpg',
   
-  equipment: [
-    {
-      titleRu: 'Полевое оборудование',
-      titleEn: 'Field Equipment',
-      items: ['Горные компасы', 'GPS-навигаторы Garmin', 'Полевые лупы (10x, 20x)', 'Геологические молотки', 'Радиостанции'],
-    },
-    {
-      titleRu: 'Программное обеспечение',
-      titleEn: 'Software',
-      items: ['Micromine', 'QGIS', 'ArcGIS', 'Surpac', 'Petrel'],
-    },
-    {
-      titleRu: 'Лаборатория',
-      titleEn: 'Laboratory',
-      items: ['Петрографические микроскопы', 'Дробилки и истиратели', 'Аналитическое оборудование'],
-    },
-    {
-      titleRu: 'Документация',
-      titleEn: 'Documentation',
-      items: ['Цифровые планшеты с QGIS', 'Фотодокументация', 'Лазерные дальномеры', 'Бланки опробования'],
-    },
-  ],
+ equipment: [
+  {
+    titleRu: 'Полевое оборудование',
+    titleEn: 'Field Equipment',
+    items: [
+      {
+        name: 'Горные компасы',
+        specs: ['Точность ориентирования', 'Противоударный корпус', 'Влагозащита'],
+        image: '/images/equipment/compass.jpg'
+      },
+      {
+        name: 'GPS-навигаторы Garmin',
+        specs: ['Высокая точность позиционирования', 'Работа при -30°C', 'Водонепроницаемый корпус'],
+        image: '/images/equipment/garmin.jpg'
+      },
+      {
+        name: 'Полевые лупы (10x, 20x)',
+        specs: ['Увеличение 10x и 20x', 'Подсветка', 'Шкала измерения'],
+        image: '/images/equipment/loupe.jpg'
+      },
+      {
+        name: 'Геологические молотки',
+        specs: ['Закалённая сталь', 'Прорезиненная рукоятка', 'Вес 600-800 г'],
+        image: '/images/equipment/hammer.jpg'
+      },
+      {
+        name: 'Радиостанции',
+        specs: ['Дальность до 10 км', 'Защита от пыли и влаги', 'Аккумулятор на 12 часов'],
+        image: '/images/equipment/radio.jpg'
+      }
+    ]
+  },
+  {
+    titleRu: 'Программное обеспечение',
+    titleEn: 'Software',
+    items: [
+      {
+        name: 'Micromine',
+        specs: ['3D моделирование', 'Подсчёт запасов', 'Геологическое моделирование'],
+        image: '/images/software/micromine.jpg'
+      },
+      {
+        name: 'QGIS',
+        specs: ['Работа с геопространственными данными', 'Создание карт', 'Бесплатное ПО'],
+        image: '/images/software/qgis.jpg'
+      },
+      {
+        name: 'ArcGIS',
+        specs: ['Профессиональная ГИС', '3D анализ', 'Пространственное моделирование'],
+        image: '/images/software/arcgis.jpg'
+      },
+      {
+        name: 'Surpac',
+        specs: ['Горно-геологическое моделирование', 'Планирование карьера', 'Оценка ресурсов'],
+        image: '/images/software/surpac.jpg'
+      },
+      {
+        name: 'Petrel',
+        specs: ['Сейсмическая интерпретация', '3D моделирование', 'Подсчёт запасов углеводородов'],
+        image: '/images/software/petrel.jpg'
+      }
+    ]
+  },
+  {
+    titleRu: 'Лаборатория',
+    titleEn: 'Laboratory',
+    items: [
+      {
+        name: 'Петрографические микроскопы',
+        specs: ['Увеличение до 1000x', 'Поляризация', 'Встроенная камера'],
+        image: '/images/equipment/microscope.jpg'
+      },
+      {
+        name: 'Дробилки и истиратели',
+        specs: ['Дробление до 1 мм', 'Истирание до 0.05 мм', 'Производительность до 2 кг/час'],
+        image: '/images/equipment/crusher.jpg'
+      },
+      {
+        name: 'Аналитическое оборудование',
+        specs: ['ICP-MS', 'XRF', 'Атомно-абсорбционный спектрометр'],
+        image: '/images/equipment/analytical.jpg'
+      }
+    ]
+  },
+  {
+    titleRu: 'Документация',
+    titleEn: 'Documentation',
+    items: [
+      {
+        name: 'Цифровые планшеты с QGIS',
+        specs: ['Экран 10"', 'Защита IP68', 'Аккумулятор на 12 часов'],
+        image: '/images/equipment/tablet.jpg'
+      },
+      {
+        name: 'Фотодокументация',
+        specs: ['Камеры высокого разрешения', 'GPS-геотегирование', 'Подводная съёмка'],
+        image: '/images/equipment/camera.jpg'
+      },
+      {
+        name: 'Лазерные дальномеры',
+        specs: ['Дальность до 1000 м', 'Точность ±1 м', 'Встроенный компас'],
+        image: '/images/equipment/laser.jpg'
+      },
+      {
+        name: 'Бланки опробования',
+        specs: ['ГОСТ', 'Защита от подделок', 'Термостойкие'],
+        image: '/images/equipment/forms.jpg'
+      }
+    ]
+  }
+],
   
   steps: [
     {
@@ -128,32 +221,36 @@ const data: ServicePageData = {
     '/images/five.jpg',
   ],
   
-  results: [
-    {
-      titleRu: 'Геологические карты',
-      titleEn: 'Geological Maps',
-      descRu: 'Комплект карт заданного масштаба с условными обозначениями',
-      descEn: 'Set of maps at specified scale with legend',
-    },
-    {
-      titleRu: 'Геологические разрезы',
-      titleEn: 'Geological Sections',
-      descRu: 'Поперечные и продольные разрезы с интерпретацией',
-      descEn: 'Cross and longitudinal sections with interpretation',
-    },
-    {
-      titleRu: 'База данных',
-      titleEn: 'Database',
-      descRu: 'Структурированная база с пробами, описаниями и координатами',
-      descEn: 'Structured database with samples, descriptions and coordinates',
-    },
-    {
-      titleRu: 'Геологический отчёт',
-      titleEn: 'Geological Report',
-      descRu: 'Текстовая и графическая части по формам ГКЗ/ТКЗ',
-      descEn: 'Text and graphic parts per GKZ/TKZ forms',
-    },
-  ],
+results: [
+  {
+    titleRu: 'Геологические карты',
+    titleEn: 'Geological Maps',
+    descRu: 'Комплект карт заданного масштаба с условными обозначениями',
+    descEn: 'Set of maps at specified scale with legend',
+    image: '/images/results/geomap.jpg',
+  },
+  {
+    titleRu: 'Геологические разрезы',
+    titleEn: 'Geological Sections',
+    descRu: 'Поперечные и продольные разрезы с интерпретацией',
+    descEn: 'Cross and longitudinal sections with interpretation',
+    image: '/images/results/georazrez.jpg',
+  },
+  {
+    titleRu: 'База данных',
+    titleEn: 'Database',
+    descRu: 'Структурированная база с пробами, описаниями и координатами',
+    descEn: 'Structured database with samples, descriptions and coordinates',
+    image: '/images/results/geobaza.jpg',
+  },
+  {
+    titleRu: 'Геологический отчёт',
+    titleEn: 'Geological Report',
+    descRu: 'Текстовая и графическая части по формам ГКЗ/ТКЗ',
+    descEn: 'Text and graphic parts per GKZ/TKZ forms',
+    image: '/images/results/geootchet.jpg',
+  },
+],
   
   caseStudy: {
     titleRu: 'Геологическое доизучение Норильского рудного узла',
