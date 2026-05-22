@@ -10,8 +10,15 @@ const data: ServicePageData = {
   titleEn: 'Mining Works',
   descRu: 'Полный комплекс горных работ: от вскрышных до добычных. Проходка канав и шурфов, вскрышные работы, добыча полезных ископаемых, взрывные работы, отработка россыпей.',
   descEn: 'Full range of mining operations: from overburden to extraction. Trenching and pitting, overburden removal, mineral extraction, blasting, placer mining.',
-  heroImage: '/images/field_trenching.jpg',
+  heroImage: '/images/mining-hero.jpg',
   reverse: false,
+  
+  // ✅ Добавьте эти поля
+  sectionTitleRu: 'Полный комплекс горных работ',
+  sectionTitleEn: 'Full range of mining works',
+  sectionDescRu: 'От вскрышных работ до добычи полезных ископаемых',
+  sectionDescEn: 'From overburden to mineral extraction',
+  
   methods: [
     { ru: 'Проходка канав', en: 'Trenching' },
     { ru: 'Проходка шурфов', en: 'Pitting' },
