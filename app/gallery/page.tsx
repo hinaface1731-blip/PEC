@@ -124,8 +124,8 @@ export default function GalleryPage() {
               
               <p className="text-xl text-white/90 leading-relaxed">
                 {t(
-                  '86 фотографий из экспедиций: работа оборудования, команда ПЭК и уникальная природа Таймыра',
-                  '86 photos from expeditions: equipment, PEC team and the unique nature of Taimyr'
+                  '86 фотографий из экспедиций: работа оборудования, команда Полярной ЭК и уникальная природа Таймыра',
+                  '86 photos from expeditions: equipment, Polar EC team and the unique nature of Taimyr'
                 )}
               </p>
             </div>
