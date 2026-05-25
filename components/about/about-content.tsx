@@ -263,7 +263,7 @@ export function AboutContent() {
             {[
               { value: "15+", labelRu: "Лет опыта", labelEn: "Years of experience" },
               { value: "500+", labelRu: "Сотрудников", labelEn: "Employees" },
-              { value: "200+", labelRu: "Проектов", labelEn: "Projects" },
+              { value: "20+", labelRu: "Проектов", labelEn: "Projects" },
               { value: "15+", labelRu: "Регионов работы", labelEn: "Regions of operation" }
             ].map((stat, index) => (
               <motion.div

@@ -85,7 +85,24 @@ const data: ServicePageData = {
       {
         name: 'SmartMag',
         specs: ['Компактный дизайн', 'Высокая стабильность', 'Вес 3.1 кг'],
-        image: '/images/equipment/smartmag.jpg'
+        image: '/images/equipment/smart_mag.png'
+      }
+    ]
+  },
+  {
+    titleRu: 'Каротаж',
+    titleEn: 'Well Logging',
+    href: '/services/geophysics/logging',
+    items: [
+      {
+        name: 'Каротажная станция',
+        specs: ['Полный комплект ГИС на рудные месторождения', 'Частота измерений: до 5 Гц', 'GPS синхронизация'],
+        image: '/images/equipment/karotazh.png'
+      },
+      {
+        name: '***',
+        specs: ['***', '***', '***'],
+        image: '/images/equipment/smart_mag.png'
       }
     ]
   }
