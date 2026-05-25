@@ -8,6 +8,7 @@ import { ArrowRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, Chevron
 import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
 import { useYandexMapsContext } from '@/components/yandex-map-loader'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface ServiceMethod {
   ru: string
@@ -306,6 +307,7 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       </section>
 
       {/* Equipment — карусель с переключателем категорий */}
+       {/* Equipment — карусель с переключателем категорий */}
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
@@ -332,14 +334,21 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
           {/* Карусель для выбранной категории */}
           {currentCategory && currentItem && (
             <div className="relative max-w-5xl mx-auto">
-              <div className="card-enhanced overflow-hidden">
+              <motion.div
+                key={`${equipmentCategoryIndex}-${equipmentItemIndex}`}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="card-enhanced overflow-hidden"
+              >
                 <div className="flex flex-col md:flex-row">
                   {/* Левая часть — текст */}
                   <div className="flex-1 p-6 md:p-8">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-1 h-6 bg-[var(--accent)] rounded-full" />
                       <span className="text-sm text-[var(--accent)] font-medium">
-                        {t('Оборудование', 'Equipment')}
+                        {t(currentCategory.titleRu, currentCategory.titleEn)}
                       </span>
                     </div>
                     <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -364,19 +373,19 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
                   </div>
 
                   {/* Правая часть — изображение */}
-                  <div className="relative md:w-80 lg:w-96 h-64 md:h-auto flex items-center justify-center  p-4">
-  <div className="relative w-full h-full">
-    <Image
-      src={currentItem.image || '/images/equipment-placeholder.jpg'}
-      alt={currentItem.name}
-      fill
-      className="object-contain"
-      sizes="(max-width: 768px) 100vw, 384px"
-    />
-  </div>
-</div>
+                  <div className="flex justify-center items-center md:w-80 lg:w-96 h-64 ">
+                    <div className="relative w-56 h-48">
+                      <Image
+                        src={currentItem.image || '/images/equipment-placeholder.jpg'}
+                        alt={currentItem.name}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, 224px"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Стрелки навигации */}
               {currentItems.length > 1 && (
@@ -384,12 +393,14 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
                   <button
                     onClick={prevEquipmentItem}
                     className="absolute left-0 top-1/2 -translate-x-4 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg"
+                    aria-label="Предыдущий"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <button
                     onClick={nextEquipmentItem}
                     className="absolute right-0 top-1/2 translate-x-4 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg"
+                    aria-label="Следующий"
                   >
                     <ChevronRight className="w-5 h-5" />
                   </button>
@@ -403,9 +414,12 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
                     <button
                       key={idx}
                       onClick={() => setEquipmentItemIndex(idx)}
-                      className={`h-2 rounded-full transition-all ${
-                        equipmentItemIndex === idx ? 'w-6 bg-[var(--accent)]' : 'w-2 bg-[var(--muted2)]'
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        equipmentItemIndex === idx
+                          ? 'w-6 bg-[var(--accent)]'
+                          : 'w-2 bg-[var(--muted2)] hover:bg-[var(--accent)]/50'
                       }`}
+                      aria-label={`Перейти к слайду ${idx + 1}`}
                     />
                   ))}
                 </div>
