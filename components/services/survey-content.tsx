@@ -1,10 +1,8 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Download, Shield, Award } from 'lucide-react'
-import { useLanguage } from '@/components/language-provider'
-import { FadeIn } from '@/components/fade-in'
-import { Compass, Map, Ruler, Crosshair, LineChart, Globe, FileText } from 'lucide-react'
+import { LicenseSection } from './license-section'
+import { Compass, Crosshair, LineChart, Globe } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
@@ -19,7 +17,7 @@ const data: ServicePageData = {
   sectionTitleEn: 'What is included in the service',
   sectionDescRu: 'Полный комплекс маркшейдерско-геодезических и топографических работ для обеспечения геологоразведочных работ',
   sectionDescEn: 'A full range of mine surveying, geodetic, and topographic works to support geological exploration',
-  methods: [],  // пустой массив, так как методы разбиты по группам
+  methods: [],
   methodsGroups: [
     {
       titleRu: 'Маркшейдерско-геодезические',
@@ -27,7 +25,7 @@ const data: ServicePageData = {
       icon: Globe,
       methods: [
         { ru: 'Развитие опорной маркшейдерской сети (ОМС) от пунктов ГГС', en: 'Development of the Reference Mine Surveying Network (RMS) from GGS points' },
-        { ru: 'Топографические съемки исходных поверхностей наземным и воздушным методами', en: 'topographic surveys of the initial surfaces using ground-based and aerial methods' },
+        { ru: 'Топографические съемки исходных поверхностей наземным и воздушным методами', en: 'Topographic surveys of the initial surfaces using ground-based and aerial methods' },
         { ru: 'Вынос на местности проектируемых горных выработок', en: 'Location of the projected mine workings on the ground' },
       ]
     },
@@ -59,9 +57,6 @@ const data: ServicePageData = {
       icon: LineChart,
       methods: [
         { ru: 'Получение сведений от Роскадастра и Росреестра о пунктах государственных геодезических сетях (ГГС)', en: 'Obtaining information from Roskadastr and Rosreestr about state geodetic networks (SGN)' },
-        { ru: '---', en: '---' },
-        { ru: '---', en: '---' },
-        { ru: '---', en: '---' },
       ]
     },
     {
@@ -70,9 +65,6 @@ const data: ServicePageData = {
       icon: LineChart,
       methods: [
         { ru: 'Построение рельефа местности района работ, проектирование подъездных путей, выдача рекомендаций по оптимизации работ.', en: 'Construction of the terrain in the work area, design of access roads, and recommendations for optimizing the work.' },
-        { ru: '---', en: '---' },
-        { ru: '---', en: '---' },
-        { ru: '---', en: '---' },
       ]
     },
   ],
@@ -81,22 +73,36 @@ const data: ServicePageData = {
     {
       titleRu: 'ГНСС-оборудование',
       titleEn: 'GNSS Equipment',
-      items: ['Высокоточные ГНСС-приемники', 'RTK-системы сантиметровой точности', 'Базовые станции'],
+      items: [
+        { name: 'Высокоточные ГНСС-приемники', specs: ['Двухчастотный GPS/ГЛОНАСС', 'Точность 2-5 мм + 0.5 ppm', 'RTK режим'], image: '/images/equipment/gnss-receiver.jpg' },
+        { name: 'RTK-системы сантиметровой точности', specs: ['Базовая станция + ровер', 'Радиомодем 1 Вт', 'Дальность до 10 км'], image: '/images/equipment/rtk-system.jpg' },
+        { name: 'Базовые станции', specs: ['Непрерывная запись 24/7', '48 каналов', 'Память 4 ГБ'], image: '/images/equipment/base-station.jpg' },
+      ]
     },
     {
       titleRu: 'Геодезические приборы',
       titleEn: 'Geodetic Instruments',
-      items: ['Электронные тахеометры', 'Нивелиры', 'Отражатели и вешки'],
+      items: [
+        { name: 'Электронные тахеометры', specs: ['Точность измерения углов 2"', 'Безотражательная дальность 500 м', 'Память 50000 точек'], image: '/images/equipment/total-station.jpg' },
+        { name: 'Нивелиры', specs: ['Точность 0.3 мм/км', 'Компенсатор ±15\'', 'Увеличение 32x'], image: '/images/equipment/level.jpg' },
+        { name: 'Отражатели и вешки', specs: ['Призма L1', 'Штатив алюминиевый', 'Высота до 2.5 м'], image: '/images/equipment/prism.jpg' },
+      ]
     },
     {
       titleRu: 'Беспилотные технологии',
       titleEn: 'Unmanned technologies',
-      items: ['Квадрокоптеры', '---', '---'],
+      items: [
+        { name: 'Квадрокоптер DJI Matrice 350 RTK', specs: ['Аэрофотосъемка', 'Время полета 45 мин', 'RTK модуль', 'Помехоустойчивый приемник'], image: '/images/equipment/drone.jpg' },
+      ]
     },
     {
       titleRu: 'Программное обеспечение',
       titleEn: 'Software',
-      items: ['nanoCAD GeoniCS', 'КРЕДО-Диалог', 'AutoCAD Civil 3D'],
+      items: [
+        { name: 'nanoCAD GeoniCS', specs: ['Топоплан 1:500', 'Цифровая модель рельефа', 'Расчет объемов'], image: '/images/equipment/nanocad.jpg' },
+        { name: 'КРЕДО-Диалог', specs: ['Камеральная обработка', 'Создание маркшейдерских планов', 'Экспорт в DXF/DWG'], image: '/images/equipment/kredo.jpg' },
+        { name: 'AutoCAD Civil 3D', specs: ['3D моделирование', 'Проектирование трасс', 'Подсчет объемов работ'], image: '/images/equipment/civil3d.jpg' },
+      ]
     },
   ],
   steps: [
@@ -154,24 +160,28 @@ const data: ServicePageData = {
       titleEn: 'Survey Plans',
       descRu: '2D и 3D форматы участков работ',
       descEn: '2D and 3D work area formats',
+      image: '/images/results/survey-plans.jpg',
     },
     {
       titleRu: 'Акты замеров',
       titleEn: 'Measurement Acts',
       descRu: 'Координатная привязка и объемы горных работ',
       descEn: 'Coordinate referencing and mining volumes',
+      image: '/images/results/measurement-acts.jpg',
     },
     {
       titleRu: 'Картограммы объемов',
       titleEn: 'Volume Cartograms',
       descRu: 'Сравнение проектных и фактических показателей',
       descEn: 'Project vs actual comparison',
+      image: '/images/results/volume-cartograms.jpg',
     },
     {
       titleRu: 'Часть отчета ГРР',
       titleEn: 'GRR Report Section',
       descRu: 'Маркшейдерская документация для отчета',
       descEn: 'Survey documentation for report',
+      image: '/images/results/grr-report.jpg',
     },
   ],
   caseStudy: {
@@ -201,196 +211,6 @@ const data: ServicePageData = {
   ],
 }
 
-// License data
-const licenseInfo = {
-  numberRu: 'Л037-00109-24/03737982',
-  numberEn: 'L037-00109-24/03737982',
-  dateRu: '13 ноября 2025 г.',
-  dateEn: 'November 13, 2025',
-  authorityRu: 'Енисейское управление Ростехнадзора',
-  authorityEn: 'Yenisei Office of Rostechnadzor',
-  termRu: 'Бессрочно',
-  termEn: 'Unlimited',
-  activityRu: 'Производство маркшейдерских работ',
-  activityEn: 'Mining surveying operations',
-  documents: [
-    {
-      titleRu: 'Уведомление о предоставлении лицензии',
-      titleEn: 'License Grant Notification',
-      url: '/docs/license-marksheyderskie-raboty.pdf',
-    },
-    {
-      titleRu: 'Выписка из реестра лицензий',
-      titleEn: 'License Registry Extract',
-      url: '/docs/vypiska-reestr-license.pdf',
-    },
-  ],
-  works: [
-    { ru: 'Пространственно-геометрические измерения горных разработок', en: 'Spatial-geometric measurements of mining operations' },
-    { ru: 'Учет и обоснование объемов горных разработок', en: 'Accounting and justification of mining volumes' },
-    { ru: 'Создание маркшейдерских опорных и съемочных сетей', en: 'Mine survey control and shooting networks creation' },
-    { ru: 'Обоснование границ горных отводов', en: 'Mining allotment boundaries justification' },
-    { ru: 'Определение опасных зон горных разработок', en: 'Mining hazardous zones identification' },
-    { ru: 'Проектирование маркшейдерских работ', en: 'Mine surveying design' },
-    { ru: 'Ведение горной графической документации', en: 'Mining graphic documentation maintenance' },
-    { ru: 'Наблюдения за сдвижением земной поверхности', en: 'Earth surface displacement monitoring' },
-  ],
-}
-
-function LicenseSection() {
-  const { t } = useLanguage()
-
-  return (
-    <section className="py-20 bg-[var(--bg2)]">
-      <div className="container mx-auto px-4">
-        <FadeIn>
-          <div className="text-center mb-12">
-            <span className="section-eyebrow">
-              <Shield className="w-4 h-4" />
-              {t('Лицензия', 'License')}
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--fg)] mb-4">
-              {t('Лицензия Ростехнадзора', 'Rostechnadzor License')}
-            </h2>
-            <p className="text-[var(--fg2)] max-w-2xl mx-auto">
-              {t(
-                'Маркшейдерское обеспечение выполняемых работ осуществляется на основании лицензии Федеральной службы по экологическому, технологическому и атомному надзору',
-                'Mining surveying support is provided under the license of the Federal Service for Ecological, Technological and Nuclear Supervision'
-              )}
-            </p>
-          </div>
-        </FadeIn>
-
-        <FadeIn delay={0.1}>
-          <div className="card-enhanced p-8 mb-8">
-            <div className="flex flex-col lg:flex-row gap-8">
-              {/* License Info */}
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-[var(--accent)]" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-[var(--fg)]">
-                      {t(licenseInfo.activityRu, licenseInfo.activityEn)}
-                    </h3>
-                    <p className="text-sm text-[var(--fg2)]">
-                      {t(licenseInfo.authorityRu, licenseInfo.authorityEn)}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                  <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Регистрационный номер', 'Registration Number')}</p>
-                    <p className="font-mono text-sm font-semibold text-[var(--fg)]">{t(licenseInfo.numberRu, licenseInfo.numberEn)}</p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Дата выдачи', 'Issue Date')}</p>
-                    <p className="font-semibold text-[var(--fg)]">{t(licenseInfo.dateRu, licenseInfo.dateEn)}</p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Срок действия', 'Validity')}</p>
-                    <p className="font-semibold text-[var(--accent)]">{t(licenseInfo.termRu, licenseInfo.termEn)}</p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Статус', 'Status')}</p>
-                    <p className="font-semibold text-green-500">{t('Действующая', 'Active')}</p>
-                  </div>
-                </div>
-
-                {/* Download Documents */}
-                <div className="flex flex-wrap gap-3">
-                  {licenseInfo.documents.map((doc, idx) => (
-                    <a
-                      key={idx}
-                      href={doc.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 text-[var(--accent)] text-sm font-medium transition-colors"
-                    >
-                      <Download className="w-4 h-4" />
-                      {t(doc.titleRu, doc.titleEn)}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Licensed Works */}
-              <div className="flex-1">
-                <h4 className="font-semibold text-[var(--fg)] mb-4 flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[var(--accent)]" />
-                  {t('Лицензируемые виды работ', 'Licensed Work Types')}
-                </h4>
-                <ul className="space-y-2">
-                  {licenseInfo.works.map((work, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-[var(--fg2)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
-                      {t(work.ru, work.en)}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Team Info */}
-        <FadeIn delay={0.2}>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="card-enhanced p-6">
-              <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
-                <Award className="w-5 h-5 text-[var(--accent)]" />
-              </div>
-              <h4 className="font-semibold text-[var(--fg)] mb-2">
-                {t('Специалисты:', 'Specialists:')}
-              </h4>
-              <p className="text-sm text-[var(--fg2)]">
-                {t(
-                  'Сотрудники маркшейдерской службы имеют профессиональное образование, проходят обязательное повышение квалификации, имеют необходимые аттестации по промышленной безопасности для безопасной работы на объектах горных, буровых работ, опасных производственных объектах.',
-                  'Employees of the mine surveying service have professional education, undergo mandatory advanced training, and have the necessary industrial safety certifications for safe work at mining, drilling, and hazardous production facilities.'
-                )}
-              </p>
-            </div>
-
-            <div className="card-enhanced p-6">
-              <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
-                <Shield className="w-5 h-5 text-[var(--accent)]" />
-              </div>
-              <h4 className="font-semibold text-[var(--fg)] mb-2">
-                {t('Высокие стандарты', 'High standards')}
-              </h4>
-              <p className="text-sm text-[var(--fg2)]">
-                {t(
-                  'Работы выполняются в соответствии с требованиями законодательства РФ и локальными нормативными актами компании. Осуществляется регулярный внутренний контроль за качеством работ.',
-                  'Work is performed in accordance with Russian legislation and company regulatory documents. Regular internal quality control is carried out.'
-                )}
-              </p>
-            </div>
-
-            <div className="card-enhanced p-6">
-              <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
-                <Compass className="w-5 h-5 text-[var(--accent)]" />
-              </div>
-              <h4 className="font-semibold text-[var(--fg)] mb-2">
-                {t('Оборудование:', 'Equipment:')}
-              </h4>
-              <p className="text-sm text-[var(--fg2)]">
-                {t(
-                  'Парк оборудования состоит из высокоточных, точных и технических средств измерений. Все оборудование проходит обязательные метрологические поверки.',
-                  'The equipment park consists of high-precision, accurate, and technical measuring instruments. All equipment undergoes mandatory metrological inspections.'
-                )}
-              </p>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  )
-}
-
 export function SurveyContent() {
-  return (
-    <ServicePageTemplate data={data} topSection={<LicenseSection />} />
-  )
+  return <ServicePageTemplate data={data} topSection={<LicenseSection />} />
 }

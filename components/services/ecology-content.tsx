@@ -12,6 +12,12 @@ const data: ServicePageData = {
   descEn: 'Full range of environmental services: from surveys and EIA to technical and biological reclamation. Project support at Rosprirodnadzor.',
   heroImage: '/images/ecol.jpg',
   reverse: false,
+  
+  sectionTitleRu: 'Полный комплекс экологических услуг',
+  sectionTitleEn: 'Full range of environmental services',
+  sectionDescRu: 'От изысканий и ОВОС до технической и биологической рекультивации',
+  sectionDescEn: 'From surveys and EIA to technical and biological reclamation',
+  
   methods: [
     { ru: 'Инженерно-экологические изыскания', en: 'Environmental engineering surveys' },
     { ru: 'Отбор проб почв, воды, воздуха', en: 'Soil, water, air sampling' },
@@ -66,28 +72,51 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/recul.jpg',
+  
+  // ✅ Новая структура оборудования
   equipment: [
     {
       titleRu: 'Пробоотбор',
       titleEn: 'Sampling',
-      items: ['Пробоотборники почв', 'Батометры', 'Аспираторы', 'Дозиметры'],
+      items: [
+        { name: 'Пробоотборники почв', specs: ['Нержавеющая сталь', 'Объём 100-500 см³', 'ГОСТ 17.4.4.02'], image: '/images/equipment/soil-sampler.jpg' },
+        { name: 'Батометры', specs: ['Объём 1-5 л', 'Нержавеющая сталь', 'Глубина до 50 м'], image: '/images/equipment/bathometer.jpg' },
+        { name: 'Аспираторы', specs: ['Производительность 20 л/мин', 'Аккумулятор 12 ч', 'Погрешность ±5%'], image: '/images/equipment/aspirator.jpg' },
+        { name: 'Дозиметры', specs: ['Диапазон 0.01-1000 мкЗв/ч', 'Погрешность ±15%', 'Температура -20..+50°C'], image: '/images/equipment/dosimeter.jpg' },
+      ]
     },
     {
       titleRu: 'Лабораторный анализ',
       titleEn: 'Laboratory Analysis',
-      items: ['Хроматографы', 'Спектрофотометры', 'pH-метры', 'Кондуктометры'],
+      items: [
+        { name: 'Хроматографы', specs: ['Газовый хроматограф', 'Предел обнаружения 0.1 мг/м³', 'Автопробоотборник'], image: '/images/equipment/chromatograph.jpg' },
+        { name: 'Спектрофотометры', specs: ['Диапазон 190-1100 нм', 'Ширина щели 2 нм', 'Двухлучевой'], image: '/images/equipment/spectrophotometer.jpg' },
+        { name: 'pH-метры', specs: ['Диапазон 0-14 pH', 'Точность ±0.01 pH', 'Автокалибровка'], image: '/images/equipment/ph-meter.jpg' },
+        { name: 'Кондуктометры', specs: ['Диапазон 0-200 мСм/см', 'Точность ±1%', 'Компенсация температуры'], image: '/images/equipment/conductometer.jpg' },
+      ]
     },
     {
       titleRu: 'Нормативы',
       titleEn: 'Standards',
-      items: ['ГОСТ 17.4.3.02-85', 'ГОСТ 17.5.3.04-83', 'СанПиН 2.1.3684-21', 'Приказ Минприроды № 525'],
+      items: [
+        { name: 'ГОСТ 17.4.3.02-85', specs: ['Охрана природы', 'Почвы. Требования к отбору проб', 'Дата введения: 1986-01-01'], image: '/images/equipment/gost.jpg' },
+        { name: 'ГОСТ 17.5.3.04-83', specs: ['Охрана природы', 'Земли. Рекультивация', 'Технические требования'], image: '/images/equipment/gost.jpg' },
+        { name: 'СанПиН 2.1.3684-21', specs: ['Санитарные правила', 'ПДК в почвах, воде, воздухе', 'Актуальная редакция'], image: '/images/equipment/sanpin.jpg' },
+        { name: 'Приказ Минприроды № 525', specs: ['Порядок рекультивации', 'Согласование отчёта', 'Формы документов'], image: '/images/equipment/document.jpg' },
+      ]
     },
     {
       titleRu: 'Рекультивация',
       titleEn: 'Reclamation',
-      items: ['Бульдозеры', 'Экскаваторы', 'Сеялки', 'Семена местных трав'],
+      items: [
+        { name: 'Бульдозеры', specs: ['Мощность 300 л.с.', 'Глубина подъема отвала 1.5 м', 'Работа при -50°C'], image: '/images/equipment/bulldozer.jpg' },
+        { name: 'Экскаваторы', specs: ['Вместимость ковша 2.5 м³', 'Глубина копания 5 м', 'Полный привод'], image: '/images/equipment/excavator.jpg' },
+        { name: 'Сеялки', specs: ['Ширина захвата 3 м', 'Емкость бункера 500 кг', 'Регулировка глубины'], image: '/images/equipment/seeder.jpg' },
+        { name: 'Семена местных трав', specs: ['Сорта: овсяница, мятлик', 'Всхожесть > 80%', 'Адаптированы к северу'], image: '/images/equipment/seeds.jpg' },
+      ]
     },
   ],
+  
   steps: [
     {
       numRu: '01',
@@ -137,32 +166,38 @@ const data: ServicePageData = {
     '/images/four.jpg',
     '/images/five.jpg',
   ],
+  
   results: [
     {
       titleRu: 'Отчёт по ИЭИ',
       titleEn: 'EES Report',
       descRu: 'Технический отчёт по инженерно-экологическим изысканиям',
       descEn: 'Technical report on environmental engineering surveys',
+      image: '/images/results/ies-report.jpg',
     },
     {
       titleRu: 'Материалы ОВОС',
       titleEn: 'EIA Materials',
       descRu: 'Полный комплект документации для ГЭЭ',
       descEn: 'Complete documentation package for SER',
+      image: '/images/results/eia-materials.jpg',
     },
     {
       titleRu: 'Проект рекультивации',
       titleEn: 'Reclamation Project',
       descRu: 'Согласованный проект восстановления земель',
       descEn: 'Approved land restoration project',
+      image: '/images/results/reclamation-project.jpg',
     },
     {
       titleRu: 'Акт рекультивации',
       titleEn: 'Reclamation Act',
       descRu: 'Документ о завершении работ по восстановлению',
       descEn: 'Document on completion of restoration works',
+      image: '/images/results/reclamation-act.jpg',
     },
   ],
+  
   caseStudy: {
     titleRu: 'Рекультивация буровых площадок на Ванкорском месторождении',
     titleEn: 'Reclamation of Drilling Sites at Vankor Field',
@@ -175,6 +210,7 @@ const data: ServicePageData = {
     resultEn: 'Completed technical and biological reclamation. Restored 38 ha of tundra. Received positive acceptance commission conclusions.',
   },
   caseImage: '/images/vankor.jpg',
+  
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Ямал', en: 'Yamal' },
@@ -182,6 +218,7 @@ const data: ServicePageData = {
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
   ],
+  
   stats: [
     { value: '30+', labelRu: 'проектов ОВОС', labelEn: 'EIA projects' },
     { value: '250+ га', labelRu: 'рекультивации', labelEn: 'reclamation' },

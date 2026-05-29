@@ -3,7 +3,7 @@ import { Unbounded, Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
-import { YandexMapLoader } from '@/components/yandex-map-loader'
+import { YandexMapScript } from '@/components/yandex-map-script'  // ← импортируем API 3.0
 import './globals.css'
 
 const unbounded = Unbounded({
@@ -20,7 +20,6 @@ const manrope = Manrope({
   weight: ['400', '500', '600', '700'],
 })
 
-// ✅ Добавляем og:image
 export const metadata: Metadata = {
   title: 'Полярная Экспедиционная Компания',
   description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
@@ -33,9 +32,9 @@ export const metadata: Metadata = {
     siteName: 'Полярная Экспедиционная Компания',
     images: [
       {
-        url: '/logo.png',           // ← путь к картинке
-        width: 1200,                    // ← рекомендуемый размер
-        height: 630,                    // ← стандарт для соцсетей
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
         alt: 'Полярная Экспедиционная Компания',
       },
     ],
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Полярная Экспедиционная Компания',
     description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
-    images: ['/logo.png'],          // ← добавляем картинку для Twitter
+    images: ['/logo.png'],
   },
   icons: {
     icon: '/logo3.png',
@@ -70,9 +69,8 @@ export default function RootLayout({
       <body className={`${unbounded.variable} ${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
-            <YandexMapLoader>
-              {children}
-            </YandexMapLoader>
+            <YandexMapScript />  {/* ← заменено на API 3.0 */}
+            {children}
           </LanguageProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

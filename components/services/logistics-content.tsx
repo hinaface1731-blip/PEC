@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Truck, Plane, Ship } from 'lucide-react'
+import { Truck, Plane, Ship, Warehouse, Fuel, Package, Map, Clock, CheckCircle2 } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
@@ -12,6 +12,12 @@ const data: ServicePageData = {
   descEn: 'Comprehensive logistics support for exploration and mining projects in the Arctic and Siberia. Cargo delivery, remote site supply, expedition support.',
   heroImage: '/images/two.JPG',
   reverse: true,
+  
+  sectionTitleRu: 'Полный комплекс логистических услуг',
+  sectionTitleEn: 'Full range of logistics services',
+  sectionDescRu: 'Доставка грузов в Арктику и Сибирь, снабжение удалённых объектов',
+  sectionDescEn: 'Cargo delivery to Arctic and Siberia, remote site supply',
+  
   methods: [
     { ru: 'Доставка грузов в Арктику', en: 'Arctic cargo delivery' },
     { ru: 'Северный завоз', en: 'Northern supply' },
@@ -58,28 +64,52 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/logistics-methods.jpg',
+  
+  // ✅ Новая структура оборудования
   equipment: [
     {
       titleRu: 'Автопарк',
       titleEn: 'Vehicle Fleet',
-      items: ['КАМАЗ (различные модификации)', 'УРАЛ (высокая проходимость)', 'Тягачи с полуприцепами', 'Бензовозы', 'Вахтовые автобусы'],
+      items: [
+        { name: 'КАМАЗ', specs: ['Грузоподъемность 10 т', 'Полный привод', 'Работа при -40°C'], image: '/images/equipment/kamaz.jpg' },
+        { name: 'УРАЛ', specs: ['Высокая проходимость', 'Грузоподъемность 8 т', 'Шины низкого давления'], image: '/images/equipment/ural.jpg' },
+        { name: 'Тягачи с полуприцепами', specs: ['Грузоподъемность 20 т', 'Евро-5', 'Дальность 1000 км'], image: '/images/equipment/tractor.jpg' },
+        { name: 'Бензовозы', specs: ['Объём 15 м³', 'Дизельное топливо', 'Подогрев'], image: '/images/equipment/fuel-truck.jpg' },
+        { name: 'Вахтовые автобусы', specs: ['Вместимость 20 чел', 'Обогрев', 'Багажное отделение'], image: '/images/equipment/bus.jpg' },
+      ]
     },
     {
       titleRu: 'Вездеходная техника',
       titleEn: 'All-terrain Vehicles',
-      items: ['ТРЭКОЛ (широкопрофильные)', 'GMC Sierra', 'Снегоболотоходы', 'Гусеничные транспорты'],
+      items: [
+        { name: 'ТРЭКОЛ', specs: ['Грузоподъемность 600 кг', 'Широкопрофильные шины', 'Работа при -50°C'], image: '/images/equipment/trekol.jpg' },
+        { name: 'GMC Sierra', specs: ['Полный привод', 'Грузоподъемность 1.5 т', 'Кунг для оборудования'], image: '/images/equipment/gmc.jpg' },
+        { name: 'Снегоболотоходы', specs: ['Гусеничный', 'Грузоподъемность 300 кг', 'Проходимость'], image: '/images/equipment/snowmobile.jpg' },
+        { name: 'Гусеничные транспорты', specs: ['Грузоподъемность 5 т', 'Низкое давление', 'Арктическое исполнение'], image: '/images/equipment/tracked.jpg' },
+      ]
     },
     {
       titleRu: 'Складское оборудование',
       titleEn: 'Warehouse Equipment',
-      items: ['Погрузчики (вилочные)', 'Краны-манипуляторы', 'Контейнерные площадки', 'Складские модули'],
+      items: [
+        { name: 'Погрузчики (вилочные)', specs: ['Грузоподъемность 2 т', 'Высота подъёма 4 м', 'Дизель'], image: '/images/equipment/forklift.jpg' },
+        { name: 'Краны-манипуляторы', specs: ['Грузоподъемность 3 т', 'Вылет стрелы 8 м', 'На шасси КАМАЗ'], image: '/images/equipment/crane.jpg' },
+        { name: 'Контейнерные площадки', specs: ['Вместимость 20 контейнеров', 'Охраняемая территория', 'Освещение'], image: '/images/equipment/container-yard.jpg' },
+        { name: 'Складские модули', specs: ['Отапливаемые', 'Площадь 100-500 м²', 'Быстровозводимые'], image: '/images/equipment/warehouse-module.jpg' },
+      ]
     },
     {
-      titleRu: 'Дополнительно',
-      titleEn: 'Additional',
-      items: ['Тепловые пушки для прогрева', 'Обогреваемые контейнеры', 'Дизель-генераторы', 'Системы ГЛОНАСС/GPS'],
+      titleRu: 'Дополнительное оборудование',
+      titleEn: 'Additional Equipment',
+      items: [
+        { name: 'Тепловые пушки', specs: ['Мощность 30 кВт', 'Дизельные', 'Для прогрева техники'], image: '/images/equipment/heat-gun.jpg' },
+        { name: 'Обогреваемые контейнеры', specs: ['Температура до +20°C', 'Объём 20 футов', 'Автономные'], image: '/images/equipment/heated-container.jpg' },
+        { name: 'Дизель-генераторы', specs: ['Мощность 50 кВт', '380 В', 'Расход 10 л/ч'], image: '/images/equipment/generator.jpg' },
+        { name: 'Системы ГЛОНАСС/GPS', specs: ['Отслеживание в реальном времени', 'Контроль топлива', 'Температурный мониторинг'], image: '/images/equipment/gps.jpg' },
+      ]
     },
   ],
+  
   steps: [
     {
       numRu: '01',
@@ -123,38 +153,44 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/logistics-step1.jpg',
-    '/images/logistics-step2.jpg',
-    '/images/logistics-step3.jpg',
-    '/images/logistics-step4.jpg',
-    '/images/logistics-step5.jpg',
+    '/images/one.JPG',
+    '/images/two.JPG',
+    '/images/three.JPG',
+    '/images/four.jpg',
+    '/images/five.jpg',
   ],
+  
   results: [
     {
       titleRu: 'Доставленные грузы',
       titleEn: 'Delivered Cargo',
       descRu: 'Своевременная доставка материалов и оборудования на объекты',
       descEn: 'Timely delivery of materials and equipment to sites',
+      image: '/images/results/delivered-cargo.jpg',
     },
     {
       titleRu: 'Снабжение объектов',
       titleEn: 'Site Supply',
       descRu: 'Бесперебойное обеспечение ГСМ, продуктами, запчастями',
       descEn: 'Uninterrupted supply of fuel, food, spare parts',
+      image: '/images/results/site-supply.jpg',
     },
     {
       titleRu: 'Складской учёт',
       titleEn: 'Warehouse Accounting',
       descRu: 'Полная отчётность по движению товарно-материальных ценностей',
       descEn: 'Complete reporting on inventory movement',
+      image: '/images/results/warehouse-accounting.jpg',
     },
     {
       titleRu: 'Транспортная документация',
       titleEn: 'Transport Documentation',
       descRu: 'Оформление всех разрешений, накладных, путевых листов',
       descEn: 'Permits, waybills, travel sheets preparation',
+      image: '/images/results/transport-docs.jpg',
     },
   ],
+  
   caseStudy: {
     titleRu: 'Северный завоз на Таймыр',
     titleEn: 'Northern Supply to Taimyr',
@@ -167,6 +203,7 @@ const data: ServicePageData = {
     resultEn: 'All cargo delivered on schedule. Operations of 15 remote sites supported. Transportation loss less than 1%.',
   },
   caseImage: '/images/logistics-case.jpg',
+  
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Якутия', en: 'Yakutia' },
@@ -174,6 +211,7 @@ const data: ServicePageData = {
     { ru: 'Эвенкия', en: 'Evenkia' },
     { ru: 'Крайний Север', en: 'Far North' },
   ],
+  
   stats: [
     { value: '5 000+ т', labelRu: 'грузов доставлено', labelEn: 'cargo delivered' },
     { value: '15+', labelRu: 'удалённых объектов', labelEn: 'remote sites' },

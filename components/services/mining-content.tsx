@@ -1,7 +1,7 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Pickaxe, Truck, HardHat, AlertTriangle } from 'lucide-react'
+import { Pickaxe, Truck, HardHat, AlertTriangle, Drill, Zap, Shield, Wrench } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
@@ -13,7 +13,6 @@ const data: ServicePageData = {
   heroImage: '/images/mining-hero.jpg',
   reverse: false,
   
-  // ✅ Добавьте эти поля
   sectionTitleRu: 'Полный комплекс горных работ',
   sectionTitleEn: 'Full range of mining works',
   sectionDescRu: 'От вскрышных работ до добычи полезных ископаемых',
@@ -65,28 +64,52 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/mining-methods.jpg',
+  
+  // ✅ Новая структура оборудования
   equipment: [
     {
       titleRu: 'Землеройная техника',
       titleEn: 'Earthmoving Equipment',
-      items: ['Экскаваторы (Hitachi, Komatsu)', 'Бульдозеры (Komatsu, Shantui)', 'Погрузчики (XCMG, LiuGong)', 'Автосамосвалы (Shacman, HOWO)'],
+      items: [
+        { name: 'Экскаватор Hitachi ZX870', specs: ['Вместимость ковша 5 м³', 'Глубина копания 7 м', 'Мощность 500 л.с.'], image: '/images/equipment/excavator.jpg' },
+        { name: 'Экскаватор Komatsu PC400', specs: ['Вместимость ковша 2.5 м³', 'Глубина копания 6 м', 'Масса 42 т'], image: '/images/equipment/komatsu.jpg' },
+        { name: 'Бульдозер Komatsu D375A', specs: ['Мощность 600 л.с.', 'Отвал 5 м³', 'Глубина подъема 1.5 м'], image: '/images/equipment/bulldozer.jpg' },
+        { name: 'Погрузчик XCMG LW600K', specs: ['Вместимость ковша 3.5 м³', 'Грузоподъемность 6 т', 'Полный привод'], image: '/images/equipment/loader.jpg' },
+        { name: 'Автосамосвал Shacman', specs: ['Грузоподъемность 25 т', 'Двигатель 400 л.с.', 'Работа при -40°C'], image: '/images/equipment/dump-truck.jpg' },
+      ]
     },
     {
       titleRu: 'Буровое оборудование',
       titleEn: 'Drilling Equipment',
-      items: ['Буровые станки СБШ-250', 'Перфораторы ПП-63', 'Буровые установки на гусеничном ходу', 'Компрессорное оборудование'],
+      items: [
+        { name: 'Буровой станок СБШ-250', specs: ['Диаметр скважин 200-250 мм', 'Глубина до 30 м', 'Шарошечное бурение'], image: '/images/equipment/sbsh-250.jpg' },
+        { name: 'Перфоратор ПП-63', specs: ['Диаметр шпуров 40-60 мм', 'Глубина до 20 м', 'Пневматический'], image: '/images/equipment/perforator.jpg' },
+        { name: 'Буровая установка на гусеницах', specs: ['Диаметр 76-150 мм', 'Глубина до 50 м', 'Угол наклона 0-30°'], image: '/images/equipment/track-drill.jpg' },
+        { name: 'Компрессорная станция', specs: ['Производительность 30 м³/мин', 'Давление 12 атм', 'Дизельная'], image: '/images/equipment/compressor-station.jpg' },
+      ]
     },
     {
       titleRu: 'Вспомогательная техника',
       titleEn: 'Support Equipment',
-      items: ['Автогрейдеры', 'Поливомоечные машины', 'Топливозаправщики', 'Ремонтные мастерские на базе КАМАЗ'],
+      items: [
+        { name: 'Автогрейдер', specs: ['Ширина отвала 4 м', 'Угол резания 30-70°', 'Мощность 200 л.с.'], image: '/images/equipment/motor-grader.jpg' },
+        { name: 'Поливомоечная машина', specs: ['Объём бака 10 м³', 'Ширина полива 15 м', 'Пылеподавление'], image: '/images/equipment/water-truck.jpg' },
+        { name: 'Топливозаправщик', specs: ['Объём 15 м³', 'Дизельное топливо', 'Производительность 500 л/мин'], image: '/images/equipment/fuel-truck.jpg' },
+        { name: 'Ремонтная мастерская', specs: ['На базе КАМАЗ', 'Сварочный аппарат', 'Подъёмник 5 т'], image: '/images/equipment/workshop.jpg' },
+      ]
     },
     {
       titleRu: 'Безопасность',
       titleEn: 'Safety Equipment',
-      items: ['Системы видеонаблюдения', 'Датчики загазованности', 'Средства индивидуальной защиты', 'Системы оповещения'],
+      items: [
+        { name: 'Системы видеонаблюдения', specs: ['IP-камеры', 'Запись 24/7', 'Удалённый доступ'], image: '/images/equipment/cctv.jpg' },
+        { name: 'Датчики загазованности', specs: ['CH4, CO, H2S', 'Звуковая сигнализация', 'Автоматическое отключение'], image: '/images/equipment/gas-sensor.jpg' },
+        { name: 'СИЗ', specs: ['Каски, спецобувь', 'Респираторы', 'Сигнальные жилеты'], image: '/images/equipment/ppe.jpg' },
+        { name: 'Системы оповещения', specs: ['Громкоговорители', 'Сирены', 'Радиосвязь'], image: '/images/equipment/alarm.jpg' },
+      ]
     },
   ],
+  
   steps: [
     {
       numRu: '01',
@@ -130,38 +153,44 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/mining-step1.jpg',
-    '/images/mining-step2.jpg',
-    '/images/mining-step3.jpg',
-    '/images/mining-step4.jpg',
-    '/images/mining-step5.jpg',
+    '/images/one.JPG',
+    '/images/two.JPG',
+    '/images/three.JPG',
+    '/images/four.jpg',
+    '/images/five.jpg',
   ],
+  
   results: [
     {
       titleRu: 'Вскрытые запасы',
       titleEn: 'Exposed Reserves',
       descRu: 'Подготовка запасов к добыче, вскрытие продуктивных горизонтов',
       descEn: 'Reserve preparation for mining, productive horizon exposure',
+      image: '/images/results/exposed-reserves.jpg',
     },
     {
       titleRu: 'Добытое сырьё',
       titleEn: 'Extracted Minerals',
       descRu: 'Полезное ископаемое, подготовленное к переработке или отгрузке',
       descEn: 'Mineral ready for processing or shipping',
+      image: '/images/results/extracted-minerals.jpg',
     },
     {
       titleRu: 'Горная документация',
       titleEn: 'Mining Documentation',
       descRu: 'Планы горных работ, акты на списание, маркшейдерские планы',
       descEn: 'Mining plans, write-off acts, survey plans',
+      image: '/images/results/mining-docs.jpg',
     },
     {
       titleRu: 'Рекультивация',
       titleEn: 'Reclamation',
       descRu: 'Восстановление нарушенных земель, возврат исходного ландшафта',
       descEn: 'Land restoration, original landscape return',
+      image: '/images/results/reclamation-area.jpg',
     },
   ],
+  
   caseStudy: {
     titleRu: 'Отработка россыпного месторождения в Якутии',
     titleEn: 'Placer Mining in Yakutia',
@@ -174,6 +203,7 @@ const data: ServicePageData = {
     resultEn: 'Deposit mining completed 15% ahead of schedule. Seasonal rock thawing technology reduced preparation costs.',
   },
   caseImage: '/images/mining-case.jpg',
+  
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Таймыр', en: 'Taimyr' },
@@ -181,6 +211,7 @@ const data: ServicePageData = {
     { ru: 'Магаданская область', en: 'Magadan Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
   ],
+  
   stats: [
     { value: '1 500 000 м³', labelRu: 'вскрыто породы', labelEn: 'rock exposed' },
     { value: '500 000 м³', labelRu: 'добыто', labelEn: 'extracted' },

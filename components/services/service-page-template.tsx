@@ -3,12 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
-import { CTAForm } from '@/components/cta-form'
-import { ArrowRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
+import { MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
-import { useYandexMapsContext } from '@/components/yandex-map-loader'
-import { motion, AnimatePresence } from 'framer-motion'
+import { YandexMapV3 } from '@/components/yandex-map-v3'
+import { motion } from 'framer-motion'
 
 interface ServiceMethod {
   ru: string
@@ -102,31 +101,13 @@ export interface ServicePageData {
   resultsImage?: string
 }
 
-interface ServicePageTemplateProps {
+export interface ServicePageTemplateProps {
   data: ServicePageData
+  topSection?: React.ReactNode
 }
 
-// Координаты регионов
-const REGIONS_COORDS: Record<string, [number, number]> = {
-  'Таймыр': [74.0, 98.0],
-  'Якутия': [66.0, 130.0],
-  'Чукотка': [66.0, 170.0],
-  'Алтай': [51.0, 86.0],
-  'ХМАО': [61.0, 70.0],
-  'Забайкалье': [52.0, 115.0],
-  'Кольский полуостров': [68.0, 36.0],
-  'Камчатка': [56.0, 160.0],
-  'Иркутская область': [53.0, 103.0],
-  'Магаданская область': [63.0, 153.0],
-  'Красноярский край': [64.0, 96.0],
-  'Крайний Север': [72.0, 102.0],
-  'Ямал': [68.0, 73.0],
-}
-
-export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ data, topSection }: ServicePageTemplateProps) {
   const { t } = useLanguage()
-  const mapRef = useRef<HTMLDivElement>(null)
-  const { isReady, ymaps } = useYandexMapsContext()
   
   // Состояния для карусели оборудования
   const [equipmentCategoryIndex, setEquipmentCategoryIndex] = useState(0)
@@ -157,49 +138,6 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       setEquipmentItemIndex(currentItems.length - 1)
     }
   }
-
-  useEffect(() => {
-    if (!isReady || !ymaps || !mapRef.current) return
-
-    let map: any = null
-
-    try {
-      map = new ymaps.Map(mapRef.current, {
-        center: [65.0, 100.0],
-        zoom: 4,
-        controls: ['zoomControl', 'fullscreenControl'],
-      })
-
-      data.regions.forEach(region => {
-        const coords = REGIONS_COORDS[region.ru]
-        if (!coords) return
-
-        const placemark = new ymaps.Placemark(
-          coords,
-          {
-            hintContent: t(region.ru, region.en),
-            balloonContent: `
-              <div style="padding: 10px; font-family: sans-serif;">
-                <strong>${t(region.ru, region.en)}</strong><br/>
-                Активные геологоразведочные работы
-              </div>
-            `,
-          },
-          { preset: 'islands#redIcon' }
-        )
-        map.geoObjects.add(placemark)
-      })
-    } catch (err) {
-      console.error('Ошибка инициализации карты:', err)
-    }
-
-    return () => {
-      if (map) {
-        map.destroy()
-        map = null
-      }
-    }
-  }, [isReady, ymaps, data.regions, t])
 
   return (
     <>
@@ -240,6 +178,9 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
           </div>
         </div>
       </section>
+
+      {/* TOP SECTION (лицензия, сертификаты и т.д.) */}
+      {topSection && topSection}
 
       {/* Methods */}
       <section className="section">
@@ -307,7 +248,6 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       </section>
 
       {/* Equipment — карусель с переключателем категорий */}
-       {/* Equipment — карусель с переключателем категорий */}
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
@@ -373,7 +313,7 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
                   </div>
 
                   {/* Правая часть — изображение */}
-                  <div className="flex justify-center items-center md:w-80 lg:w-96 h-64 ">
+                  <div className="flex justify-center items-center md:w-80 lg:w-96 h-64">
                     <div className="relative w-56 h-48">
                       <Image
                         src={currentItem.image || '/images/equipment-placeholder.jpg'}
@@ -523,6 +463,7 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
       </section>
 
       {/* Geography */}
+        {/* Geography */}
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
@@ -537,13 +478,10 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
             </p>
           </div>
 
-          <div
-            ref={mapRef}
-            className="rounded-2xl overflow-hidden mb-8 shadow-xl bg-[var(--bg3)]"
-            style={{ width: '100%', height: '500px' }}
-          />
+          {/* Добавляем карту */}
+          <YandexMapV3 regions={data.regions} />
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
             {data.regions.map((region, i) => (
               <div
                 key={i}
@@ -573,9 +511,6 @@ export function ServicePageTemplate({ data }: ServicePageTemplateProps) {
           </div>
         </div>
       </section>
-
-      
-     
     </>
   )
 }
