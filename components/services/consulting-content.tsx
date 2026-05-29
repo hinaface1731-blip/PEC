@@ -12,6 +12,12 @@ const data: ServicePageData = {
   descEn: 'Full range of design and consulting services: from feasibility studies to resource approval at GKZ. Experience with Russian and international standards.',
   heroImage: '/images/project.jpg',
   reverse: true,
+  
+  sectionTitleRu: 'Полный комплекс проектных и консультационных услуг',
+  sectionTitleEn: 'Full range of design and consulting services',
+  sectionDescRu: 'От ТЭО кондиций до защиты запасов в ГКЗ',
+  sectionDescEn: 'From feasibility studies to reserve approval at GKZ',
+  
   methods: [
     { ru: 'Проектирование ГРР (геологическое задание)', en: 'GRR project design (geological assignment)' },
     { ru: 'Разработка инвестиционных программ', en: 'Investment program development' },
@@ -62,28 +68,50 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/methods-consulting.jpg',
+  
+  // ✅ Новая структура оборудования
   equipment: [
     {
       titleRu: 'ПО для моделирования',
       titleEn: 'Modeling Software',
-      items: ['Micromine', 'Surpac (GEOVIA)', 'Datamine', 'Leapfrog'],
+      items: [
+        { name: 'Micromine', specs: ['3D моделирование', 'Подсчёт запасов', 'Геологическое моделирование'], image: '/images/software/micromine.jpg' },
+        { name: 'Surpac (GEOVIA)', specs: ['Горно-геологическое моделирование', 'Планирование карьера', 'Оценка ресурсов'], image: '/images/software/surpac.jpg' },
+        { name: 'Datamine', specs: ['Геологическое моделирование', 'Оценка ресурсов', 'Планирование горных работ'], image: '/images/software/datamine.jpg' },
+        { name: 'Leapfrog', specs: ['3D геологическое моделирование', 'Интерполяция', 'Визуализация'], image: '/images/software/leapfrog.jpg' },
+      ]
     },
     {
       titleRu: 'ГИС-системы',
       titleEn: 'GIS Systems',
-      items: ['ArcGIS Pro', 'QGIS', 'MapInfo', 'Global Mapper'],
+      items: [
+        { name: 'ArcGIS Pro', specs: ['Пространственный анализ', '3D визуализация', 'Создание карт'], image: '/images/software/arcgis.jpg' },
+        { name: 'QGIS', specs: ['Бесплатная ГИС', 'Работа с геоданными', 'Плагины'], image: '/images/software/qgis.jpg' },
+        { name: 'MapInfo', specs: ['Географический анализ', 'Картография', 'Пространственная статистика'], image: '/images/software/mapinfo.jpg' },
+        { name: 'Global Mapper', specs: ['3D анализ', 'Обработка LiDAR', 'Создание ЦМР'], image: '/images/software/global-mapper.jpg' },
+      ]
     },
     {
       titleRu: 'Расчётное ПО',
       titleEn: 'Calculation Software',
-      items: ['Whittle', 'NPV Scheduler', 'MineSched'],
+      items: [
+        { name: 'Whittle', specs: ['Оптимизация карьера', 'Стратегическое планирование', 'Оценка NPV'], image: '/images/software/whittle.jpg' },
+        { name: 'NPV Scheduler', specs: ['Планирование горных работ', 'Оптимизация потоков', 'Финансовое моделирование'], image: '/images/software/npv-scheduler.jpg' },
+        { name: 'MineSched', specs: ['Детальное планирование', 'Производственные графики', 'Ресурсное планирование'], image: '/images/software/minesched.jpg' },
+      ]
     },
     {
       titleRu: 'Нормативная база',
       titleEn: 'Regulatory Framework',
-      items: ['Классификация ГКЗ 2022', 'JORC Code 2012', 'NI 43-101', 'CRIRSCO'],
+      items: [
+        { name: 'Классификация ГКЗ 2022', specs: ['Российские стандарты', 'Подсчёт запасов', 'Протоколы ГКЗ'], image: '/images/software/gkz.jpg' },
+        { name: 'JORC Code 2012', specs: ['Международные стандарты', 'Прозрачность отчётов', 'Компетентные лица'], image: '/images/software/jorc.jpg' },
+        { name: 'NI 43-101', specs: ['Канадские стандарты', 'Технические отчёты', 'Раскрытие информации'], image: '/images/software/ni43-101.jpg' },
+        { name: 'CRIRSCO', specs: ['Международный комитет', 'Гармонизация стандартов', 'Отчётность по ресурсам'], image: '/images/software/crirsco.jpg' },
+      ]
     },
   ],
+  
   steps: [
     {
       numRu: '01',
@@ -133,32 +161,38 @@ const data: ServicePageData = {
     '/images/four.jpg',
     '/images/five.jpg',
   ],
+  
   results: [
     {
       titleRu: 'Отчёт ГКЗ',
       titleEn: 'GKZ Report',
       descRu: 'Полный комплект материалов для защиты запасов',
       descEn: 'Complete documentation for resource approval',
+      image: '/images/results/gkz-report.jpg',
     },
     {
       titleRu: 'JORC-отчёт',
       titleEn: 'JORC Report',
       descRu: 'Технический отчёт по международным стандартам',
       descEn: 'Technical report per international standards',
+      image: '/images/results/jorc-report.jpg',
     },
     {
       titleRu: '3D-модели',
       titleEn: '3D Models',
       descRu: 'Геологические и блочные модели в Micromine/Surpac',
       descEn: 'Geological and block models in Micromine/Surpac',
+      image: '/images/results/3d-models.jpg',
     },
     {
       titleRu: 'ТЭО',
       titleEn: 'Feasibility Study',
       descRu: 'Технико-экономическое обоснование проекта',
       descEn: 'Project feasibility study',
+      image: '/images/results/feasibility-study.jpg',
     },
   ],
+  
   caseStudy: {
     titleRu: 'Подготовка ТЭО и защита запасов в ГКЗ',
     titleEn: 'Feasibility Study and GKZ Resource Approval',
@@ -171,6 +205,7 @@ const data: ServicePageData = {
     resultEn: 'Approved C1+C2 resources of 15 tonnes gold. Cutoff grades approved for open-pit mining.',
   },
   caseImage: '/images/case-study-consulting.jpg',
+  
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Магаданская область', en: 'Magadan Region' },
@@ -178,6 +213,7 @@ const data: ServicePageData = {
     { ru: 'Забайкалье', en: 'Transbaikal' },
     { ru: 'Таймыр', en: 'Taimyr' },
   ],
+  
   stats: [
     { value: '15+', labelRu: 'проектов ГКЗ', labelEn: 'GKZ projects' },
     { value: '30+', labelRu: 'ТЭО', labelEn: 'feasibility studies' },
