@@ -150,11 +150,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/stages/geophys1.webp',
+    '/images/stages/geophys2.jpg',
+    '/images/stages/geophys3.PNG',
+    '/images/stages/geophys4.PNG',
+    '/images/stages/geophys5.jpg',
   ],
   results: [
     {

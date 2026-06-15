@@ -75,13 +75,12 @@ export function ProjectsSection() {
             </p>
           </div>
           <Link 
-  href="/services" 
-  className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
->
-  {t('Все проекты', 'All Projects')}
-  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-</Link>
-          
+            href="/services" 
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
+          >
+            {t('Все проекты', 'All Projects')}
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -92,6 +91,7 @@ export function ProjectsSection() {
                   src={project.image}
                   alt={t(project.titleRu, project.titleEn)}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg1)] to-transparent" />
