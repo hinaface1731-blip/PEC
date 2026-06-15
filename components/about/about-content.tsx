@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Target, Eye, Award, Users, TrendingUp, Shield, MapPin, Calendar } from "lucide-react"
-import { CTAForm } from "@/components/cta-form"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,10 +10,10 @@ const milestones = [
   { year: "2008", titleRu: "Основание компании", titleEn: "Company Foundation", descRu: "Создание Полярной Экспедиционной Компании", descEn: "Establishment of Polar Expedition Company" },
   { year: "2009", titleRu: "Первый крупный контракт", titleEn: "First Major Contract", descRu: "Начало работы на золоторудных месторождениях", descEn: "Start of work at gold deposits" },
   { year: "2010", titleRu: "Расширение географии", titleEn: "Geographic Expansion", descRu: "Выход на дальний восток и крайний север", descEn: "Expansion to Far East and Far North" },
-  { year: "2012", titleRu: "Собственная лаборатория", titleEn: "Own Laboratory", descRu: "Открытие аккредитованной аналитической лаборатории", descEn: "Opening of accredited analytical laboratory" },
+  { year: "2012", titleRu: "Собственная лаборатория", titleEn: "Own Laboratory", descRu: "Открытие аналитической лаборатории", descEn: "Opening of accredited analytical laboratory" },
   { year: "2016", titleRu: "Международные стандарты", titleEn: "International Standards", descRu: "Сертификация по ISO 9001 и JORC", descEn: "ISO 9001 and JORC certification" },
   { year: "2020", titleRu: "Цифровизация", titleEn: "Digitalization", descRu: "Внедрение цифровых технологий и 3D-моделирования", descEn: "Implementation of digital technologies and 3D modeling" },
-  { year: "2024", titleRu: "Лидер отрасли", titleEn: "Industry Leader", descRu: "Более 200 выполненных проектов, 500+ сотрудников", descEn: "200+ completed projects, 500+ employees" }
+  { year: "2024", titleRu: "Лидер отрасли", titleEn: "Industry Leader", descRu: "Более 20 выполненных проектов, 200+ сотрудников", descEn: "200+ completed projects, 500+ employees" }
 ]
 
 const values = [
@@ -262,7 +261,7 @@ export function AboutContent() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: "15+", labelRu: "Лет опыта", labelEn: "Years of experience" },
-              { value: "500+", labelRu: "Сотрудников", labelEn: "Employees" },
+              { value: "200+", labelRu: "Сотрудников", labelEn: "Employees" },
               { value: "20+", labelRu: "Проектов", labelEn: "Projects" },
               { value: "15+", labelRu: "Регионов работы", labelEn: "Regions of operation" }
             ].map((stat, index) => (

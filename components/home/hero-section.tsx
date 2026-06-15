@@ -4,9 +4,21 @@ import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
 import { ArrowRight, Briefcase } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export function HeroSection() {
   const { t } = useLanguage()
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const [isFadingOut, setIsFadingOut] = useState(false)
+
+  useEffect(() => {
+    // Небольшая задержка перед началом фейда видео
+    const fadeTimer = setTimeout(() => {
+      setIsFadingOut(true)
+    }, 200)
+    
+    return () => clearTimeout(fadeTimer)
+  }, [])
 
   const scrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -18,15 +30,24 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
+      {/* Чёрный фон до загрузки видео */}
+      <div className="absolute inset-0 z-0 bg-black" />
+      
+      {/* Видео с плавным появлением */}
+      <div 
+        className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${
+          isFadingOut ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
         <video 
           autoPlay 
           muted 
           loop 
           playsInline
-          preload="none"
-          poster="/images/hero-poster.jpg"
+          preload="auto"
           className="w-full h-full object-cover"
+          onLoadedData={() => setIsVideoLoaded(true)}
+          onCanPlay={() => setIsVideoLoaded(true)}
         >
           <source src="/promo.mp4" type="video/mp4" />
           <source src="/promo.webm" type="video/webm" />

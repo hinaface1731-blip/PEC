@@ -67,27 +67,22 @@ const data: ServicePageData = {
       {
         name: 'Горные компасы',
         specs: ['Точность ориентирования', 'Противоударный корпус', 'Влагозащита'],
-        image: '/images/equipment/compass.jpg'
+        image: '/images/equipment/compass.png'
       },
       {
         name: 'GPS-навигаторы Garmin',
         specs: ['Высокая точность позиционирования', 'Работа при -30°C', 'Водонепроницаемый корпус'],
-        image: '/images/equipment/garmin.jpg'
-      },
-      {
-        name: 'Полевые лупы (10x, 20x)',
-        specs: ['Увеличение 10x и 20x', 'Подсветка', 'Шкала измерения'],
-        image: '/images/equipment/loupe.jpg'
+        image: '/images/equipment/garmin.png'
       },
       {
         name: 'Геологические молотки',
         specs: ['Закалённая сталь', 'Прорезиненная рукоятка', 'Вес 600-800 г'],
-        image: '/images/equipment/hammer.jpg'
+        image: '/images/equipment/hammer.png'
       },
       {
         name: 'Радиостанции',
         specs: ['Дальность до 10 км', 'Защита от пыли и влаги', 'Аккумулятор на 12 часов'],
-        image: '/images/equipment/radio.jpg'
+        image: '/images/equipment/radio.png'
       }
     ]
   },
@@ -98,28 +93,18 @@ const data: ServicePageData = {
       {
         name: 'Micromine',
         specs: ['3D моделирование', 'Подсчёт запасов', 'Геологическое моделирование'],
-        image: '/images/software/micromine.jpg'
+        image: '/images/software/Micromine_Beyond_Mint_RGB.png'
       },
       {
         name: 'QGIS',
         specs: ['Работа с геопространственными данными', 'Создание карт', 'Бесплатное ПО'],
-        image: '/images/software/qgis.jpg'
+        image: '/images/software/qgis-logo.png'
       },
       {
         name: 'ArcGIS',
         specs: ['Профессиональная ГИС', '3D анализ', 'Пространственное моделирование'],
-        image: '/images/software/arcgis.jpg'
+        image: '/images/software/ArcGIS_logo.png'
       },
-      {
-        name: 'Surpac',
-        specs: ['Горно-геологическое моделирование', 'Планирование карьера', 'Оценка ресурсов'],
-        image: '/images/software/surpac.jpg'
-      },
-      {
-        name: 'Petrel',
-        specs: ['Сейсмическая интерпретация', '3D моделирование', 'Подсчёт запасов углеводородов'],
-        image: '/images/software/petrel.jpg'
-      }
     ]
   },
   {
@@ -129,7 +114,7 @@ const data: ServicePageData = {
       {
         name: 'Петрографические микроскопы',
         specs: ['Увеличение до 1000x', 'Поляризация', 'Встроенная камера'],
-        image: '/images/equipment/microscope.jpg'
+        image: '/images/equipment/mircoscope.png'
       },
       {
         name: 'Дробилки и истиратели',
