@@ -215,8 +215,6 @@ const data: ServicePageData = {
   stats: [
     { value: '1 500 000 м³', labelRu: 'вскрыто породы', labelEn: 'rock exposed' },
     { value: '500 000 м³', labelRu: 'добыто', labelEn: 'extracted' },
-    { value: '15+', labelRu: 'экскаваторов', labelEn: 'excavators' },
-    { value: '20+', labelRu: 'бульдозеров', labelEn: 'bulldozers' },
   ],
 }
 

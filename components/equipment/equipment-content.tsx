@@ -23,7 +23,6 @@ const equipmentCategories = [
         nameEn: "CS-1000 Drilling Rig",
         specs: ["Глубина бурения: до 1000 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
         specsEn: ["Drilling depth: up to 1000 m", "Drilling diameter: 60-121 mm", "Drive: diesel"],
-        count: 1,
         image: "/images/equipment/cs-1000.jpg"
       },
       {
@@ -31,7 +30,6 @@ const equipmentCategories = [
         nameEn: "Boyles C6 Drill Rig",
         specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Привод: дизельный"],
         specsEn: ["Drilling depth: up to 300 m", "Diameter: up to 190 mm", "Drive: diesel"],
-        count: 1,
         image: "/images/equipment/boylesC6.jpg"
       },
       {
@@ -39,7 +37,6 @@ const equipmentCategories = [
         nameEn: "EGR-800 Drill Rig",
         specs: ["Глубина бурения: до 800 м", "Диаметр: 60-121 мм", "Высокая производительность"],
         specsEn: ["Drilling depth: up to 800 m", "Diameter: 60-121 mm", "High performance"],
-        count: 1,
         image: "/images/equipment/egr800.png"
       },
       {
@@ -47,7 +44,6 @@ const equipmentCategories = [
         nameEn: "EPC-300 Drill Rig",
         specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Компактный"],
         specsEn: ["Drilling depth: up to 300 m", "Diameter: up to 190 mm", "Compact"],
-        count: 1,
         image: "/images/equipment/epc300.png"
       },
       {
@@ -55,7 +51,6 @@ const equipmentCategories = [
         nameEn: "URB-110 Drill Rig",
         specs: ["Глубина бурения: до 110 м", "Диаметр: до 450 мм", "Шарошечное бурение"],
         specsEn: ["Drilling depth: up to 110 m", "Diameter: up to 450 mm", "Rotary drilling"],
-        count: 1,
         image: "/images/equipment/urb-110.png"
       },
       {
@@ -63,7 +58,6 @@ const equipmentCategories = [
         nameEn: "URB-2D3 Drill Rig",
         specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм", "Универсальный"],
         specsEn: ["Drilling depth: up to 350 m", "Diameter: up to 450 mm", "Universal"],
-        count: 1,
         image: "/images/equipment/urb2d3.jpg"
       },
       {
@@ -71,7 +65,6 @@ const equipmentCategories = [
         nameEn: "RS-90 Drill Rig",
         specs: ["Глубина бурения: до 90 м", "Компактный", "Для сложных условий"],
         specsEn: ["Drilling depth: up to 90 m", "Compact", "For difficult conditions"],
-        count: 2,
         image: "/images/equipment/rs-90.png"
       },
       {
@@ -79,7 +72,6 @@ const equipmentCategories = [
         nameEn: "S-15 Drill Rig",
         specs: ["Глубина бурения: до 150 м", "Мобильный", "Полуавтоматический"],
         specsEn: ["Drilling depth: up to 150 m", "Mobile", "Semi-automatic"],
-        count: 2,
         image: "/images/equipment/s-15.jpg"
       },
       {
@@ -87,7 +79,6 @@ const equipmentCategories = [
         nameEn: "Forward C6 Drill Rig",
         specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
         specsEn: ["Drilling depth: up to 600 m", "Drilling diameter: 60-121 mm", "Drive: diesel"],
-        count: 2,
         image: "/images/equipment/forwardc6.jpg"
       },
       {
@@ -95,7 +86,6 @@ const equipmentCategories = [
         nameEn: "CS-14 Drill Rig",
         specs: ["Глубина бурения: до 1400 м", "Диаметр: 60-121 мм", "Высокая мощность"],
         specsEn: ["Drilling depth: up to 1400 m", "Diameter: 60-121 mm", "High power"],
-        count: 1,
         image: "/images/equipment/Christensen-CS14.jpg"
       },
       {
@@ -103,7 +93,6 @@ const equipmentCategories = [
         nameEn: "BullDril-1200 Drill Rig",
         specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Высокая производительность"],
         specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm", "High performance"],
-        count: 1,
         image: "/images/equipment/bulldril-1200.jpg"
       },
       {
@@ -111,7 +100,6 @@ const equipmentCategories = [
         nameEn: "ST-20 Drill Rig",
         specs: ["Глубина бурения: до 2000 м", "Диаметр: 60-121 мм", "Тяжёлый класс"],
         specsEn: ["Drilling depth: up to 2000 m", "Diameter: 60-121 mm", "Heavy duty"],
-        count: 1,
         image: "/images/equipment/st-20.jpg"
       },
       {
@@ -119,7 +107,6 @@ const equipmentCategories = [
         nameEn: "Christensen CT20 Drill Rig",
         specs: ["Глубина бурения: до 2500 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
         specsEn: ["Drilling depth: up to 2500 m", "Drilling diameter: 60-121 mm", "Drive: diesel"],
-        count: 1,
         image: "/images/equipment/christensen-ct20.jpg"
       },
       {
@@ -127,7 +114,6 @@ const equipmentCategories = [
         nameEn: "PBU 1200R Drill Rig",
         specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Российское производство"],
         specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm", "Russian made"],
-        count: 2,
         image: "/images/equipment/pbu-1200.jpg"
       }
     ]
@@ -145,7 +131,6 @@ const equipmentCategories = [
         nameEn: "MiniMag Magnetometer",
         specs: ["Точность: 0.1 нТл", "Частота измерений: до 5 Гц", "GPS синхронизация"],
         specsEn: ["Accuracy: 0.1 nT", "Sampling rate: up to 5 Hz", "GPS synchronization"],
-        count: 4,
         image: "/images/minimag.jpg"
       },
       {
@@ -153,7 +138,6 @@ const equipmentCategories = [
         nameEn: "TEM System CYKL",
         specs: ["Метод ЗСБ", "До 10000 каналов", "Телеметрическая система"],
         specsEn: ["TEM method", "Up to 10000 channels", "Telemetry system"],
-        count: 1,
         image: "/images/cikl8.jpg"
       },
       {
@@ -161,7 +145,6 @@ const equipmentCategories = [
         nameEn: "AMT System NORD",
         specs: ["Метод АМТЗ", "Глубина исследований: до 500 м", "Автоматическая обработка"],
         specsEn: ["AMT method", "Survey depth: up to 500 m", "Automatic processing"],
-        count: 5,
         image: "/images/nord.jpg"
       },
       {
@@ -169,7 +152,6 @@ const equipmentCategories = [
         nameEn: "Electrical Survey System VES, IP",
         specs: ["Метод ВЭЗ, СГ-ВП", "Глубина исследований: до 500 м", "Автоматическая обработка"],
         specsEn: ["VES, IP methods", "Survey depth: up to 500 m", "Automatic processing"],
-        count: 2,
         image: "/images/vp1000.jpg"
       },
       {
@@ -177,7 +159,6 @@ const equipmentCategories = [
         nameEn: "ERT System",
         specs: ["Метод томографии", "Глубина исследований: до 250 м", "Автоматическая обработка"],
         specsEn: ["ERT method", "Survey depth: up to 250 m", "Automatic processing"],
-        count: 1,
         image: "/images/tomography.jpg"
       },
       {
@@ -185,7 +166,7 @@ const equipmentCategories = [
         nameEn: "Well Logging System",
         specs: ["Каротаж", "Глубина исследований: до 500 м", "Автоматическая обработка"],
         specsEn: ["Well logging", "Survey depth: up to 500 m", "Automatic processing"],
-        count: 3,
+
         image: "/images/pasha.jpg"
       },
       {
@@ -193,7 +174,7 @@ const equipmentCategories = [
         nameEn: "High-precision Inclinometers",
         specs: ["Гироскопические и магнитные", "Глубина исследований: до 500 м", "Автоматическая обработка"],
         specsEn: ["Gyroscopic and magnetic", "Survey depth: up to 500 m", "Automatic processing"],
-        count: 12,
+
         image: "/images/gyro.jpg"
       }
     ]
@@ -211,7 +192,7 @@ const equipmentCategories = [
         nameEn: "Atomic Absorption Spectrometer",
         specs: ["Определение: Au, Ag, Cu, Pb, Zn", "Точность: до 0.001 г/т", "Автосамплер на 60 проб"],
         specsEn: ["Determination: Au, Ag, Cu, Pb, Zn", "Accuracy: up to 0.001 g/t", "60-sample autosampler"],
-        count: 1,
+
         image: "/images/HGA.png"
       },
       {
@@ -219,7 +200,7 @@ const equipmentCategories = [
         nameEn: "XRF Analyzer",
         specs: ["Элементы: от Na до U", "Время анализа: 2-5 мин", "Портативный вариант"],
         specsEn: ["Elements: from Na to U", "Analysis time: 2-5 min", "Portable version"],
-        count: 6,
+
         image: "/images/vanta.jpg"
       },
       {
@@ -227,7 +208,7 @@ const equipmentCategories = [
         nameEn: "Polarizing Trinocular Microscope",
         specs: ["Мультиэлементный анализ", "Оптическое увеличение 40-400 крат", "До 70 элементов"],
         specsEn: ["Multi-element analysis", "Optical magnification 40-400x", "Up to 70 elements"],
-        count: 2,
+
         image: "/images/micro.jpg"
       }
     ]
@@ -245,7 +226,7 @@ const equipmentCategories = [
         nameEn: "Trimble R12i GNSS Receiver",
         specs: ["RTK точность: 8 мм + 1 ppm", "GPS/ГЛОНАСС/Galileo/BeiDou", "IMU для измерения наклона"],
         specsEn: ["RTK accuracy: 8 mm + 1 ppm", "GPS/GLONASS/Galileo/BeiDou", "Tilt compensation IMU"],
-        count: 10,
+
         image: "/images/Trimble-R12i.png"
       },
       {
@@ -253,7 +234,7 @@ const equipmentCategories = [
         nameEn: "Leica TS16 Total Station",
         specs: ["Точность: 1\"", "Безотражательный дальномер: 1000 м", "Автофокус и сканер"],
         specsEn: ["Accuracy: 1\"", "Reflectorless range: 1000 m", "Autofocus and scanner"],
-        count: 8,
+  
         image: "/images/leica_ts16_1.png"
       },
       {
@@ -261,7 +242,7 @@ const equipmentCategories = [
         nameEn: "SOUTH Galaxy G9 GNSS Receiver",
         specs: ["Высокая интегрированность", "Дальность: 130 м", "HDR камера"],
         specsEn: ["High integration", "Range: 130 m", "HDR camera"],
-        count: 3,
+  
         image: "/images/g9.jpg"
       },
       {
@@ -269,7 +250,7 @@ const equipmentCategories = [
         nameEn: "SOUTH Galaxy G1 GNSS Receiver",
         specs: ["Точность: 0.3 мм/км", "Автоматическая запись", "Работа при -20°C"],
         specsEn: ["Accuracy: 0.3 mm/km", "Automatic recording", "Operation at -20°C"],
-        count: 6,
+
         image: "/images/south-galaxy-g1-001.jpg"
       },
       {
@@ -277,7 +258,7 @@ const equipmentCategories = [
         nameEn: "UAV for Aerial Photography",
         specs: ["Размах крыла: 1.3 м", "Время полёта: 90 мин", "Камера 42 МП"],
         specsEn: ["Wingspan: 1.3 m", "Flight time: 90 min", "42 MP camera"],
-        count: 4,
+
         image: "/images/5DM47866_2x.jpg"
       }
     ]
@@ -295,7 +276,7 @@ const equipmentCategories = [
         nameEn: "TREKOL-39294 All-terrain Vehicle",
         specs: ["Грузоподъемность: 600 кг", "Колеса низкого давления", "Работа при -50°C"],
         specsEn: ["Load capacity: 600 kg", "Low-pressure tires", "Operation at -50°C"],
-        count: 8,
+
         image: "/images/trekol.png"
       },
       {
@@ -303,7 +284,7 @@ const equipmentCategories = [
         nameEn: "Off-road Vehicle",
         specs: ["Полный привод", "Грузоподъемность: 1.5 т", "Кунг для оборудования"],
         specsEn: ["4WD", "Load capacity: 1.5 t", "Equipment box body"],
-        count: 20,
+
         image: "/images/offroad.jpg"
       },
       {
@@ -311,7 +292,7 @@ const equipmentCategories = [
         nameEn: "Mobile Camp",
         specs: ["Вместимость: 20 человек", "Автономность: 30 дней", "Отопление/кондиционер"],
         specsEn: ["Capacity: 20 people", "Autonomy: 30 days", "Heating/AC"],
-        count: 5,
+
         image: "/images/camp.jpg"
       },
       {
@@ -319,7 +300,7 @@ const equipmentCategories = [
         nameEn: "Kamaz Truck",
         specs: ["Грузоподъемность: 10 т", "Полный привод", "Работа при -40°C"],
         specsEn: ["Load capacity: 10 t", "4WD", "Operation at -40°C"],
-        count: 5,
+
         image: "/images/kamaz.jpg"
       },
       {
@@ -327,7 +308,7 @@ const equipmentCategories = [
         nameEn: "Logging Unit",
         specs: ["Каротаж скважин", "Автономность: 14 дней", "Лаборатория на борту"],
         specsEn: ["Well logging", "Autonomy: 14 days", "Onboard laboratory"],
-        count: 5,
+
         image: "/images/logging-station.jpg"
       },
       {
@@ -335,7 +316,7 @@ const equipmentCategories = [
         nameEn: "Bulldozer",
         specs: ["Мощность: 300 л.с.", "Глубина подъема отвала: 1.5 м", "Работа при -50°C"],
         specsEn: ["Power: 300 HP", "Blade lift depth: 1.5 m", "Operation at -50°C"],
-        count: 5,
+
         image: "/images/bulldozer.jpg"
       },
       {
@@ -343,7 +324,7 @@ const equipmentCategories = [
         nameEn: "Excavator",
         specs: ["Вместимость ковша: 2.5 м³", "Глубина копания: 5 м", "Дизельный двигатель"],
         specsEn: ["Bucket capacity: 2.5 m³", "Digging depth: 5 m", "Diesel engine"],
-        count: 5,
+
         image: "/images/excavator.jpg"
       },
       {
@@ -351,7 +332,7 @@ const equipmentCategories = [
         nameEn: "Loader",
         specs: ["Грузоподъемность: 3.5 т", "Ковш 2 м³", "Полный привод"],
         specsEn: ["Load capacity: 3.5 t", "Bucket 2 m³", "4WD"],
-        count: 5,
+
         image: "/images/loader.jpg"
       }
     ]
@@ -481,7 +462,7 @@ export function EquipmentContent() {
                               loading="lazy"
                             />
                             <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
-                              {item.count} {t('ед.', 'pcs')}
+
                             </div>
                           </div>
                           

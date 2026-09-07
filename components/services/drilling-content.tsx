@@ -15,14 +15,12 @@ const data: ServicePageData = {
   
   sectionTitleRu: 'Полный комплекс буровых работ',
   sectionTitleEn: 'Full range of drilling works',
-  sectionDescRu: 'Колонковое бурение, шарошечное бурение, гидрогеологические и инженерные скважины',
+  sectionDescRu: 'Колонковое бурение, гидрогеологические и инженерные скважины',
   sectionDescEn: 'Core drilling, rotary drilling, hydrogeological and engineering wells',
   
   methods: [
     { ru: 'Колонковое бурение ССК до 1200 м', en: 'SSK core drilling up to 1200m' },
-    { ru: 'Шарошечное бурение', en: 'Rotary drilling' },
     { ru: 'Бурение с отбором керна', en: 'Core recovery drilling' },
-    { ru: 'Наклонно-направленное бурение', en: 'Directional drilling' },
     { ru: 'Гидрогеологические скважины', en: 'Hydrogeological wells' },
     { ru: 'Инженерно-геологические скважины', en: 'Engineering-geological wells' },
     { ru: 'ГТНТ (гидротермальные наблюдения)', en: 'Hydrothermal observations' },
@@ -102,7 +100,7 @@ const data: ServicePageData = {
       titleRu: 'Контроль качества',
       titleEn: 'Quality Control',
       items: [
-        { name: 'Инклинометры', specs: ['Точность ±0.1°', 'Зенитный угол 0-180°', 'Магнитный'], image: '/images/equipment/inclinometer.jpg' },
+        { name: 'Инклинометры', specs: ['Точность ±0.1°', 'Зенитный угол 0-180°', 'Гироскопические'], image: '/images/equipment/inclinometer.jpg' },
         { name: 'Каверномеры', specs: ['Диапазон 60-300 мм', 'Точность ±2 мм', '4-рукавный'], image: '/images/equipment/caliper.jpg' },
         { name: 'Системы мониторинга параметров', specs: ['Осевая нагрузка', 'Частота вращения', 'Расход промывочной жидкости'], image: '/images/equipment/monitoring.jpg' },
       ]
@@ -197,7 +195,7 @@ const data: ServicePageData = {
     clientEn: 'Polyus',
     year: '2025',
     volumeRu: '78 скважин, общий метраж 12 500 м, глубина до 550 м',
-    volumeEn: '78 wells, total footage 12,500m, depth up to 550m',
+    volumeEn: '78 wells, total footage 12 500m, depth up to 550m',
     resultRu: 'Средний выход керна 96%. Подтверждено продолжение золоторудных зон на глубину. Прирост запасов категории С1.',
     resultEn: 'Average core recovery 96%. Confirmed gold zone extension at depth. C1 category resource increase.',
   },
@@ -213,9 +211,8 @@ const data: ServicePageData = {
   
   stats: [
     { value: '40 000 м', labelRu: 'в год', labelEn: 'per year' },
-    { value: '17', labelRu: 'буровых станков', labelEn: 'drilling rigs' },
-    { value: '94%', labelRu: 'выход керна', labelEn: 'core recovery' },
-    { value: '1 200 м', labelRu: 'макс. глубина', labelEn: 'max depth' },
+    { value: '98%', labelRu: 'выход керна', labelEn: 'core recovery' },
+    { value: '650 м', labelRu: 'макс. глубина', labelEn: 'max depth' },
   ],
 }
 

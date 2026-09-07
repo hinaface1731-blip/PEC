@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
             <td style="padding: 8px; border: 1px solid #ddd;"><strong>💬 Дополнительно</strong></td>
             <td style="padding: 8px; border: 1px solid #ddd;">${message || 'Не указано'}</td>
           </tr>
-        杉
+        
         
         <p style="margin-top: 20px; color: #666; font-size: 12px;">
           Письмо сгенерировано автоматически с сайта polar-ec.ru
