@@ -3,7 +3,7 @@ import { DrillingContent } from '@/components/services/drilling-content'
 
 export const metadata = {
   title: 'Буровые работы — Полярная Экспедиционная Компания',
-  description: 'Колонковое бурение до 1200 м, шарошечное бурение, гидрогеологические скважины. 40 000 м/год, 17 станков, 94% выход керна.',
+  description: 'Колонковое бурение, шарошечное бурение, гидрогеологические скважины.',
 }
 
 export default function DrillingPage() {
