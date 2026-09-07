@@ -90,8 +90,8 @@ export function AboutContent() {
             
             <p className="text-xl text-white/90 leading-relaxed">
               {t(
-                'Более 15 лет мы помогаем недропользователям открывать и осваивать месторождения полезных ископаемых в России и за её пределами.',
-                'For over 15 years, we have been helping subsoil users discover and develop mineral deposits in Russia and beyond.'
+                'Более 18 лет мы помогаем недропользователям открывать и осваивать месторождения полезных ископаемых в России и за её пределами.',
+                'For over 18 years, we have been helping subsoil users discover and develop mineral deposits in Russia and beyond.'
               )}
             </p>
           </motion.div>
@@ -260,10 +260,10 @@ export function AboutContent() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "15+", labelRu: "Лет опыта", labelEn: "Years of experience" },
+              { value: "18+", labelRu: "Лет опыта", labelEn: "Years of experience" },
               { value: "200+", labelRu: "Сотрудников", labelEn: "Employees" },
               { value: "20+", labelRu: "Проектов", labelEn: "Projects" },
-              { value: "15+", labelRu: "Регионов работы", labelEn: "Regions of operation" }
+              { value: "8", labelRu: "Регионов работы", labelEn: "Regions of operation" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
