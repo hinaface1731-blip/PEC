@@ -3,7 +3,7 @@ import { LabContent } from '@/components/services/lab-content'
 
 export const metadata = {
   title: 'Лабораторные исследования — Полярная Экспедиционная Компания',
-  description: 'ICP-MS анализ на 45 элементов, пробирный анализ драгметаллов, минералогия. 25 000 проб/год, аккредитованная лаборатория.',
+  description: 'ICP-MS анализ на 45 элементов, пробирный анализ драгметаллов, минералогия.',
 }
 
 export default function LabPage() {

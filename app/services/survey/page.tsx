@@ -3,7 +3,7 @@ import { SurveyContent } from '@/components/services/survey-content'
 
 export const metadata = {
   title: 'Маркшейдерские работы — ПЭК',
-  description: 'GNSS-съёмка RTK, тахеометрия, лазерное сканирование, аэрофотосъёмка с БПЛА. 50+ проектов, 3 000+ га топопланов.',
+  description: 'GNSS-съёмка RTK, тахеометрия, лазерное сканирование, аэрофотосъёмка с БПЛА.',
 }
 
 export default function SurveyPage() {
