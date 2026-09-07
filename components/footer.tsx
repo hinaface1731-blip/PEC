@@ -46,8 +46,8 @@ export function Footer() {
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
               {t(
-                'Полярная Экспедиционная Компания — геологоразведка полного цикла в Арктике и Сибири с 2009 года.',
-                'Polar Expedition Company — full-cycle geological exploration in the Arctic and Siberia since 2009.'
+                'Полярная Экспедиционная Компания — геологоразведка полного цикла в Арктике и Сибири с 2008 года.',
+                'Polar Expedition Company — full-cycle geological exploration in the Arctic and Siberia since 2008.'
               )}
             </p>
             <div className="space-y-2 text-sm">
