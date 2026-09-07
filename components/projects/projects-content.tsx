@@ -3,8 +3,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MapPin, Calendar, ArrowRight, Filter, ChevronDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { CTAForm } from "@/components/cta-form"
 import { FadeIn } from "@/components/fade-in"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
@@ -49,8 +47,8 @@ const projects: Project[] = [
     clientEn: "Polyus",
     description: "Детальная разведка золоторудного месторождения. Бурение, геофизика, лабораторные исследования.",
     descriptionEn: "Detailed exploration of gold deposit. Drilling, geophysics, laboratory studies.",
-    results: ["Бурение: 8 000 п.м.", "Каротаж скважин", "Подсчет запасов"],
-    resultsEn: ["Drilling: 8,000 m", "Well logging", "Reserve estimation"],
+    results: ["Бурение", "Каротаж скважин", "Подсчет запасов"],
+    resultsEn: ["Drilling", "Well logging", "Reserve estimation"],
     image: "/images/Mars.jpg"
   },
   {
@@ -69,8 +67,8 @@ const projects: Project[] = [
     clientEn: "Highland Gold",
     description: "Геологоразведочные работы на золоторудном объекте. Комплексные исследования керна и геофизика.",
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
-    results: ["Геофизика: ВП, магнитометрия", "Керновое опробование", "3D моделирование"],
-    resultsEn: ["Geophysics: IP, magnetometry", "Core sampling", "3D modeling"],
+    results: ["Бурение", "Геофизика: ВП, магнитометрия", "Керновое опробование"],
+    resultsEn: ["Drilling", "Geophysics: IP, magnetometry", "Core sampling"],
     image: "/images/oper.JPG"
   },
   {
@@ -89,8 +87,8 @@ const projects: Project[] = [
     clientEn: "Polymetal",
     description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение. В ходе проведения геологоразведочных работ, получен прирост в объеме 350 тысяч тонн руды с запасом 5,4 тонн условного золота.",
     descriptionEn: "Evaluation of prospecting works at the gold ore object. Trenches and core drilling. During the geological exploration, an increase in the volume of 350 thousand tons of ore with a reserve of 5.4 tons of conventional gold was obtained.",
-    results: ["Горнопроходческие работы", "Керновое опробование", ">25 000 пробуренных метров"],
-    resultsEn: ["Mine workings", "Core sampling", ">25,000 drilled meters"],
+    results: ["Горнопроходческие работы", "Керновое опробование", "Бурение",],
+    resultsEn: ["Mine workings", "Core sampling", "Drilling",],
     image: "/images/neven.JPG"
   },
   {
@@ -109,8 +107,8 @@ const projects: Project[] = [
     clientEn: "Polyus",
     description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение.",
     descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
-    results: ["Горнопроходческие работы", "Керновое опробование", "Перспективные зоны выделены"],
-    resultsEn: ["Mine workings", "Core sampling", "Prospective zones identified"],
+    results: ["Горнопроходческие работы", "Керновое опробование", "Бурение"],
+    resultsEn: ["Mine workings", "Core sampling", "Drilling"],
     image: "/images/zerk.JPG"
   },
   {
@@ -139,7 +137,7 @@ const projects: Project[] = [
     titleEn: "Vstrechnaya",
     location: "Забайкальский край",
     locationEn: "Zabaykalsky Krai",
-    year: "2023-2024",
+    year: "2024-2026",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
@@ -248,9 +246,9 @@ const projects: Project[] = [
     client: "Полиметалл",
     clientEn: "Polymetal",
     description: "Буровые работы, горнопроходческие работы",
-    descriptionEn: "Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Prospective zones identified"],
+    descriptionEn: "Drilling work. Lithogeochemical testing based on secondary dispersion halos.",
+    results: ["Буровые работы", "Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
+    resultsEn: ["Drilling", "Secondary halo geochemistry", "Prospective zones identified"],
     image: "/images/prognoz.jpg"
   },
   {
@@ -258,8 +256,8 @@ const projects: Project[] = [
     title: "Игарка",
     titleEn: "Igarka",
     location: "Красноярский Край",
-    locationEn: "Красноярский Край",
-    year: "2024 - 2027",
+    locationEn: "Krasnoyarsk Krai",
+    year: "2024 - 2026",
     category: "copper",
     categoryLabel: "Медь",
     categoryLabelEn: "Copper",
@@ -268,9 +266,9 @@ const projects: Project[] = [
     client: "Полиметалл",
     clientEn: "Polymetal",
     description: "Буровые работы",
-    descriptionEn: "Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Prospective zones identified"],
+    descriptionEn: "Drilling",
+    results: ["Буровые работы", "Выделены перспективные зоны"],
+    resultsEn: ["Drilling", "Prospective zones identified"],
     image: "/images/igarka.jpg"
   },
   {
@@ -288,9 +286,9 @@ const projects: Project[] = [
     client: "Полюс",
     clientEn: "Polyus",
     description: "Буровые работы",
-    descriptionEn: "Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Prospective zones identified"],
+    descriptionEn: "Drilling",
+    results: ["Буровые работы", "Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
+    resultsEn: ["Drilling", "Secondary halo geochemistry", "Prospective zones identified"],
     image: "/images/kekura.jpg"
   },
 ]
@@ -335,7 +333,7 @@ export function ProjectsContent() {
               </Link>
               <span>/</span>
               <span className="text-white">
-                {t('Техника', 'Equipment')}
+                {t('Проекты', 'Projects')}
               </span>
             </div>
               
