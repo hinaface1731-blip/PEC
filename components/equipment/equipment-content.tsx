@@ -28,92 +28,92 @@ const equipmentCategories = [
       {
         name: "Boyles C6",
         nameEn: "Boyles C6 Drill Rig",
-        specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Привод: дизельный"],
-        specsEn: ["Drilling depth: up to 300 m", "Diameter: up to 190 mm", "Drive: diesel"],
+        specs: ["Глубина бурения: до 1200 м", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН", "Бурение под углом 45–90°"],
+        specsEn: ["Drilling depth: up to 1,200 m", "Torque: 7,600 Nm", "Pull force: 138 kN", "Drilling angle 45–90°"],
         image: "/images/equipment/boylesC6.jpg"
       },
       {
         name: "EGR-800",
         nameEn: "EGR-800 Drill Rig",
-        specs: ["Глубина бурения: до 800 м", "Диаметр: 60-121 мм", "Высокая производительность"],
-        specsEn: ["Drilling depth: up to 800 m", "Diameter: 60-121 mm", "High performance"],
+        specs: ["Глубина бурения: до 800 м", "Диаметр: 60-121 мм"],
+        specsEn: ["Drilling depth: up to 800 m", "Diameter: 60-121 mm"],
         image: "/images/equipment/egr800.png"
       },
       {
         name: "EPC-300",
         nameEn: "EPC-300 Drill Rig",
-        specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм", "Компактный"],
-        specsEn: ["Drilling depth: up to 300 m", "Diameter: up to 190 mm", "Compact"],
+        specs: ["Глубина бурения: до 300 м", "Диаметр: до 190 мм"],
+        specsEn: ["Drilling depth: up to 300 m", "Diameter: up to 190 mm"],
         image: "/images/equipment/epc300.png"
       },
       {
         name: "УРБ-110",
         nameEn: "URB-110 Drill Rig",
-        specs: ["Глубина бурения: до 110 м", "Диаметр: до 450 мм", "Шарошечное бурение"],
-        specsEn: ["Drilling depth: up to 110 m", "Diameter: up to 450 mm", "Rotary drilling"],
+        specs: ["Глубина бурения: до 110 м", "Диаметр: до 450 мм"],
+        specsEn: ["Drilling depth: up to 110 m", "Diameter: up to 450 mm"],
         image: "/images/equipment/urb-110.png"
       },
       {
         name: "УРБ-2Д3",
         nameEn: "URB-2D3 Drill Rig",
-        specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм", "Универсальный"],
-        specsEn: ["Drilling depth: up to 350 m", "Diameter: up to 450 mm", "Universal"],
+        specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм"],
+        specsEn: ["Drilling depth: up to 350 m", "Diameter: up to 450 mm"],
         image: "/images/equipment/urb2d3.jpg"
       },
       {
         name: "RS-90",
         nameEn: "RS-90 Drill Rig",
-        specs: ["Глубина бурения: до 90 м", "Компактный", "Для сложных условий"],
-        specsEn: ["Drilling depth: up to 90 m", "Compact", "For difficult conditions"],
+        specs: ["Глубина бурения: до 90 м", "Компактный" ],
+        specsEn: ["Drilling depth: up to 90 m", "Compact"],
         image: "/images/equipment/rs-90.png"
       },
       {
         name: "S-15",
         nameEn: "S-15 Drill Rig",
-        specs: ["Глубина бурения: до 150 м", "Мобильный", "Полуавтоматический"],
-        specsEn: ["Drilling depth: up to 150 m", "Mobile", "Semi-automatic"],
+        specs: ["Глубина бурения: до 150 м", "Мобильный"],
+        specsEn: ["Drilling depth: up to 150 m", "Mobile"],
         image: "/images/equipment/s-15.jpg"
       },
       {
         name: "Forward C6",
         nameEn: "Forward C6 Drill Rig",
-        specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
-        specsEn: ["Drilling depth: up to 600 m", "Drilling diameter: 60-121 mm", "Drive: diesel"],
+        specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм"],
+        specsEn: ["Drilling depth: up to 600 m", "Drilling diameter: 60-121 mm"],
         image: "/images/equipment/forwardc6.jpg"
       },
       {
-        name: "CS-14",
-        nameEn: "CS-14 Drill Rig",
-        specs: ["Глубина бурения: до 1400 м", "Диаметр: 60-121 мм", "Высокая мощность"],
-        specsEn: ["Drilling depth: up to 1400 m", "Diameter: 60-121 mm", "High power"],
+        name: "Christensen CS14",
+        nameEn: "Christensen CS14 Drill Rig",
+        specs: ["Глубина бурения: до 1200 м (N), до 1540 м (B)", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН"],
+        specsEn: ["Drilling depth: up to 1,200 m (N), 1,540 m (B)", "Torque: 7,600 Nm", "Pull force: 138 kN"],
         image: "/images/equipment/Christensen-CS14.jpg"
       },
       {
         name: "BullDril-1200",
         nameEn: "BullDril-1200 Drill Rig",
-        specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Высокая производительность"],
-        specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm", "High performance"],
+        specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм"],
+        specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm"],
         image: "/images/equipment/bulldril-1200.jpg"
       },
       {
         name: "ST-20",
         nameEn: "ST-20 Drill Rig",
-        specs: ["Глубина бурения: до 2000 м", "Диаметр: 60-121 мм", "Тяжёлый класс"],
-        specsEn: ["Drilling depth: up to 2000 m", "Diameter: 60-121 mm", "Heavy duty"],
+        specs: ["Глубина бурения: до 2000 м", "Диаметр: 60-121 мм"],
+        specsEn: ["Drilling depth: up to 2000 m", "Diameter: 60-121 mm"],
         image: "/images/equipment/st-20.jpg"
       },
       {
         name: "Christensen CT20",
         nameEn: "Christensen CT20 Drill Rig",
-        specs: ["Глубина бурения: до 2500 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
-        specsEn: ["Drilling depth: up to 2500 m", "Drilling diameter: 60-121 mm", "Drive: diesel"],
+        specs: ["Глубина бурения: до 2500 м", "Диаметр бурения: 60-121 мм"],
+        specsEn: ["Drilling depth: up to 2500 m", "Drilling diameter: 60-121 mm"],
         image: "/images/equipment/christensen-ct20.jpg"
       },
       {
         name: "ПБУ 1200Р",
         nameEn: "PBU 1200R Drill Rig",
-        specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм", "Российское производство"],
-        specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm", "Russian made"],
+        specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм"],
+        specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm"],
         image: "/images/equipment/pbu-1200.jpg"
       }
     ]
@@ -274,9 +274,8 @@ const equipmentCategories = [
       {
         name: "Вездеход ТРЭКОЛ-39294",
         nameEn: "TREKOL-39294 All-terrain Vehicle",
-        specs: ["Грузоподъемность: 600 кг", "Колеса низкого давления", "Работа при -50°C"],
-        specsEn: ["Load capacity: 600 kg", "Low-pressure tires", "Operation at -50°C"],
-
+        specs: ["Колёсная формула 6×6", "Грузоподъёмность: 700 кг (твёрдый грунт), 400 кг (болото, вода)", "Эксплуатация от −45 °C до +45 °C"],
+        specsEn: ["6×6 drive", "Load capacity: 700 kg (solid ground), 400 kg (swamp, water)", "Operating range −45 °C to +45 °C"],
         image: "/images/trekol.png"
       },
       {
