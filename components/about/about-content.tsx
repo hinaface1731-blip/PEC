@@ -90,8 +90,8 @@ export function AboutContent() {
             
             <p className="text-xl text-white/90 leading-relaxed">
               {t(
-                'Более 18 лет мы помогаем недропользователям открывать и осваивать месторождения полезных ископаемых в России и за её пределами.',
-                'For over 18 years, we have been helping subsoil users discover and develop mineral deposits in Russia and beyond.'
+                'С 2008 года мы помогаем недропользователям открывать и осваивать месторождения полезных ископаемых в России.',
+                'Since 2008, we have been helping subsoil users discover and develop mineral deposits in Russia.'
               )}
             </p>
           </motion.div>
