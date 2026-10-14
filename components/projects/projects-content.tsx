@@ -2,12 +2,21 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MapPin, Calendar, ArrowRight, Filter, ChevronDown } from "lucide-react"
+import { MapPin, Calendar, Filter, ChevronDown, Pencil } from "lucide-react"
 import { FadeIn } from "@/components/fade-in"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
 
+/**
+ * Структура карточки проекта: Задача → Виды работ → Объём → Результат.
+ *
+ * КАК ДОПОЛНЯТЬ:
+ *  - Пустые поля (volume / result) на сайте НЕ показываются — в продакшене строки просто скрыты.
+ *  - В режиме разработки (npm run dev) вместо них виден пунктирный блок с подсказкой из `todo`.
+ *  - Когда появились данные: впиши volume + volumeEn (и/или result + resultEn) и удали `todo`.
+ *  - Поиск всех незаполненных мест: Ctrl+F по "todo:".
+ */
 interface Project {
   id: number
   title: string
@@ -15,21 +24,27 @@ interface Project {
   location: string
   locationEn: string
   year: string
-  category: string
+  status: "completed" | "inProgress"
+  category: "gold" | "copper"
   categoryLabel: string
   categoryLabelEn: string
-  mineral: string
-  mineralEn: string
-  client?: string
-  clientEn?: string
-  description: string
-  descriptionEn: string
-  results: string[]
-  resultsEn: string[]
+  client: string
+  clientEn: string
+  task: string
+  taskEn: string
+  works: string[]
+  worksEn: string[]
+  volume?: string        // метраж, площадь, кол-во проб и т.п.
+  volumeEn?: string
+  result?: string        // итог работ, по возможности с цифрой
+  resultEn?: string
+  todo?: string          // подсказка себе: что дописать (видна только в dev)
   image: string
 }
 
-// Только проекты для заказчиков (без юниорных) — исправленные ID
+const IS_DEV = process.env.NODE_ENV !== "production"
+
+// Только проекты для заказчиков (без юниорных)
 const projects: Project[] = [
   {
     id: 1,
@@ -38,18 +53,20 @@ const projects: Project[] = [
     location: "Чукотка",
     locationEn: "Chukotka",
     year: "2023",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Полюс",
     clientEn: "Polyus",
-    description: "Детальная разведка золоторудного месторождения. Бурение, геофизика, лабораторные исследования.",
-    descriptionEn: "Detailed exploration of gold deposit. Drilling, geophysics, laboratory studies.",
-    results: ["Бурение", "Каротаж скважин", "Подсчет запасов"],
-    resultsEn: ["Drilling", "Well logging", "Reserve estimation"],
-    image: "/images/Mars.jpg"
+    task: "Детальная разведка золоторудного месторождения",
+    taskEn: "Detailed exploration of a gold deposit",
+    works: ["Бурение", "Каротаж скважин", "Геофизика", "Лабораторные исследования"],
+    worksEn: ["Drilling", "Well logging", "Geophysics", "Laboratory studies"],
+    result: "Выполнен подсчёт запасов",
+    resultEn: "Reserve estimation completed",
+    todo: "метраж бурения / кол-во скважин; прирост запасов (т Au), категория",
+    image: "/images/Mars.jpg",
   },
   {
     id: 2,
@@ -58,18 +75,18 @@ const projects: Project[] = [
     location: "Таймыр",
     locationEn: "Taimyr",
     year: "2023",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Highland Gold",
     clientEn: "Highland Gold",
-    description: "Геологоразведочные работы на золоторудном объекте. Комплексные исследования керна и геофизика.",
-    descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
-    results: ["Бурение", "Геофизика: ВП, магнитометрия", "Керновое опробование"],
-    resultsEn: ["Drilling", "Geophysics: IP, magnetometry", "Core sampling"],
-    image: "/images/oper.JPG"
+    task: "Геологоразведочные работы на золоторудном объекте",
+    taskEn: "Exploration at a gold prospect",
+    works: ["Бурение", "Геофизика: ВП, магнитометрия", "Керновое опробование"],
+    worksEn: ["Drilling", "Geophysics: IP, magnetometry", "Core sampling"],
+    todo: "метраж бурения; км профилей ВП и площадь магнитки; итог (аномалии, зоны, рекомендации)",
+    image: "/images/oper.JPG",
   },
   {
     id: 3,
@@ -77,19 +94,21 @@ const projects: Project[] = [
     titleEn: "Nevenrekan",
     location: "Магадан",
     locationEn: "Magadan",
-    year: "2023 - 2026",
+    year: "2023 – 2026",
+    status: "inProgress",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Полиметалл",
     clientEn: "Polymetal",
-    description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение. В ходе проведения геологоразведочных работ, получен прирост в объеме 350 тысяч тонн руды с запасом 5,4 тонн условного золота.",
-    descriptionEn: "Evaluation of prospecting works at the gold ore object. Trenches and core drilling. During the geological exploration, an increase in the volume of 350 thousand tons of ore with a reserve of 5.4 tons of conventional gold was obtained.",
-    results: ["Горнопроходческие работы", "Керновое опробование", "Бурение",],
-    resultsEn: ["Mine workings", "Core sampling", "Drilling",],
-    image: "/images/neven.JPG"
+    task: "Оценочные поисковые работы на золоторудном объекте",
+    taskEn: "Evaluation and prospecting works at a gold ore site",
+    works: ["Горнопроходческие работы (канавы)", "Колонковое бурение", "Керновое опробование"],
+    worksEn: ["Mine workings (trenches)", "Core drilling", "Core sampling"],
+    result: "Прирост 350 тыс. тонн руды, запасы 5,4 т условного золота",
+    resultEn: "Increase of 350 thousand tons of ore, reserves of 5.4 tons of conventional gold",
+    todo: "метраж бурения и объём канав",
+    image: "/images/neven.JPG",
   },
   {
     id: 4,
@@ -98,18 +117,18 @@ const projects: Project[] = [
     location: "Чукотка",
     locationEn: "Chukotka",
     year: "2025",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Полюс",
     clientEn: "Polyus",
-    description: "Оценочные поисковые работы на золоторудном объекте. Канавы и колонковое бурение.",
-    descriptionEn: "Exploration at gold prospect. Comprehensive core studies and geophysics.",
-    results: ["Горнопроходческие работы", "Керновое опробование", "Бурение"],
-    resultsEn: ["Mine workings", "Core sampling", "Drilling"],
-    image: "/images/zerk.JPG"
+    task: "Оценочные поисковые работы на золоторудном объекте",
+    taskEn: "Evaluation and prospecting works at a gold ore site",
+    works: ["Горнопроходческие работы (канавы)", "Колонковое бурение", "Керновое опробование"],
+    worksEn: ["Mine workings (trenches)", "Core drilling", "Core sampling"],
+    todo: "метраж бурения, объём канав, кол-во проб; итог (рудные интервалы, прирост)",
+    image: "/images/zerk.JPG",
   },
   {
     id: 5,
@@ -117,19 +136,21 @@ const projects: Project[] = [
     titleEn: "Bystrinskoe",
     location: "Забайкальский край",
     locationEn: "Zabaykalsky Krai",
-    year: "2023-2024",
+    year: "2023 – 2024",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Норникель",
     clientEn: "Nornickel",
-    description: "Поисковые работы на золоторудное оруденение. Комплекс геохимических и геофизических методов.",
-    descriptionEn: "Exploration for gold mineralization. Complex of geochemical and geophysical methods.",
-    results: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Prospective zones identified"],
-    image: "/images/bistr.JPG"
+    task: "Поисковые работы на золоторудное оруденение",
+    taskEn: "Exploration for gold mineralization",
+    works: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Геофизика"],
+    worksEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Geophysics"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "площадь работ, кол-во проб, сколько зон выделено",
+    image: "/images/bistr.JPG",
   },
   {
     id: 6,
@@ -137,19 +158,21 @@ const projects: Project[] = [
     titleEn: "Vstrechnaya",
     location: "Забайкальский край",
     locationEn: "Zabaykalsky Krai",
-    year: "2024-2026",
+    year: "2024 – 2026",
+    status: "inProgress",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Норникель",
     clientEn: "Nornickel",
-    description: "Поисковые работы на золоторудное оруденение. Комплекс геохимических и геофизических методов.",
-    descriptionEn: "Exploration for gold mineralization. Complex of geochemical and geophysical methods.",
-    results: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Prospective zones identified"],
-    image: "/images/vsterch.JPG"
+    task: "Поисковые работы на золоторудное оруденение",
+    taskEn: "Exploration for gold mineralization",
+    works: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Геофизика"],
+    worksEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Geophysics"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "площадь работ, кол-во проб, сколько зон выделено",
+    image: "/images/vsterch.JPG",
   },
   {
     id: 7,
@@ -158,18 +181,20 @@ const projects: Project[] = [
     location: "Якутия",
     locationEn: "Yakutia",
     year: "2022",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Норникель",
     clientEn: "Nornickel",
-    description: "Поисковые работы на золоторудное оруденение. Комплекс геохимических методов.",
-    descriptionEn: "Exploration for gold mineralization. Complex of geochemical methods.",
-    results: ["Геохимия по вторичным ореолам", "Шлиховое опробование", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Heavy mineral sampling", "Prospective zones identified"],
-    image: "/images/agyndzha-overview.webp"
+    task: "Поисковые работы на золоторудное оруденение",
+    taskEn: "Exploration for gold mineralization",
+    works: ["Геохимия по вторичным ореолам", "Шлиховое опробование"],
+    worksEn: ["Secondary halo geochemistry", "Heavy mineral sampling"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "площадь работ, кол-во проб, сколько зон выделено",
+    image: "/images/agyndzha-overview.webp",
   },
   {
     id: 8,
@@ -178,18 +203,20 @@ const projects: Project[] = [
     location: "Чукотка",
     locationEn: "Chukotka",
     year: "2024",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Майское",
     clientEn: "Mayskoe",
-    description: "Площадные геохимические работы. Литогеохимическое опробование по вторичным ореолам рассеяния",
-    descriptionEn: "Area geochemical work. Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Prospective zones identified"],
-    image: "/images/maynickaya.jpg"
+    task: "Площадные геохимические работы",
+    taskEn: "Area geochemical survey",
+    works: ["Литогеохимическое опробование по вторичным ореолам рассеяния"],
+    worksEn: ["Lithogeochemical sampling over secondary dispersion halos"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "площадь (км²), кол-во проб, сколько зон выделено",
+    image: "/images/maynickaya.jpg",
   },
   {
     id: 9,
@@ -198,18 +225,20 @@ const projects: Project[] = [
     location: "Чукотка",
     locationEn: "Chukotka",
     year: "2024",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Полюс",
     clientEn: "Polyus",
-    description: "Буровые работы. Литогеохимическое опробование по вторичным ореолам рассеяния",
-    descriptionEn: "Drilling work. Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Prospective zones identified"],
-    image: "/images/vilyui.jpg"
+    task: "Буровые работы и геохимическое опробование",
+    taskEn: "Drilling and geochemical sampling",
+    works: ["Бурение", "Литогеохимическое опробование по вторичным ореолам рассеяния"],
+    worksEn: ["Drilling", "Lithogeochemical sampling over secondary dispersion halos"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "метраж бурения, кол-во проб, сколько зон выделено",
+    image: "/images/vilyui.jpg",
   },
   {
     id: 10,
@@ -218,18 +247,20 @@ const projects: Project[] = [
     location: "Камчатка",
     locationEn: "Kamchatka",
     year: "2024",
+    status: "completed",
     category: "copper",
     categoryLabel: "Медь",
     categoryLabelEn: "Copper",
-    mineral: "Медь",
-    mineralEn: "Copper",
     client: "Полиметалл",
     clientEn: "Polymetal",
-    description: "Литогеохимическое опробование по вторичным ореолам рассеяния",
-    descriptionEn: "Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Secondary halo geochemistry", "Prospective zones identified"],
-    image: "/images/ozer.jpg"
+    task: "Литогеохимические поиски медного оруденения",
+    taskEn: "Lithogeochemical exploration for copper mineralization",
+    works: ["Литогеохимическое опробование по вторичным ореолам рассеяния"],
+    worksEn: ["Lithogeochemical sampling over secondary dispersion halos"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "площадь (км²), кол-во проб, сколько зон выделено",
+    image: "/images/ozer.jpg",
   },
   {
     id: 11,
@@ -238,38 +269,42 @@ const projects: Project[] = [
     location: "Магадан",
     locationEn: "Magadan",
     year: "2024",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Полиметалл",
     clientEn: "Polymetal",
-    description: "Буровые работы, горнопроходческие работы",
-    descriptionEn: "Drilling work. Lithogeochemical testing based on secondary dispersion halos.",
-    results: ["Буровые работы", "Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Drilling", "Secondary halo geochemistry", "Prospective zones identified"],
-    image: "/images/prognoz.jpg"
+    task: "Буровые и горнопроходческие работы",
+    taskEn: "Drilling and mine workings",
+    works: ["Буровые работы", "Горнопроходческие работы", "Геохимия по вторичным ореолам"],
+    worksEn: ["Drilling", "Mine workings", "Secondary halo geochemistry"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "метраж бурения, объём выработок; проверить, что геохимия реально входила в объём",
+    image: "/images/prognoz.jpg",
   },
   {
     id: 12,
     title: "Игарка",
     titleEn: "Igarka",
-    location: "Красноярский Край",
+    location: "Красноярский край",
     locationEn: "Krasnoyarsk Krai",
-    year: "2024 - 2026",
+    year: "2024 – 2026",
+    status: "inProgress",
     category: "copper",
     categoryLabel: "Медь",
     categoryLabelEn: "Copper",
-    mineral: "Медь",
-    mineralEn: "Copper",
     client: "Полиметалл",
     clientEn: "Polymetal",
-    description: "Буровые работы",
-    descriptionEn: "Drilling",
-    results: ["Буровые работы", "Выделены перспективные зоны"],
-    resultsEn: ["Drilling", "Prospective zones identified"],
-    image: "/images/igarka.jpg"
+    task: "Буровые работы на медном объекте",
+    taskEn: "Drilling at a copper site",
+    works: ["Буровые работы"],
+    worksEn: ["Drilling"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "метраж бурения, кол-во скважин, промежуточные результаты",
+    image: "/images/igarka.jpg",
   },
   {
     id: 13,
@@ -278,18 +313,20 @@ const projects: Project[] = [
     location: "Чукотка",
     locationEn: "Chukotka",
     year: "2025",
+    status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    mineral: "Золото",
-    mineralEn: "Gold",
     client: "Полюс",
     clientEn: "Polyus",
-    description: "Буровые работы",
-    descriptionEn: "Drilling",
-    results: ["Буровые работы", "Геохимия по вторичным ореолам", "Выделены перспективные зоны"],
-    resultsEn: ["Drilling", "Secondary halo geochemistry", "Prospective zones identified"],
-    image: "/images/kekura.jpg"
+    task: "Буровые работы на золоторудном объекте",
+    taskEn: "Drilling at a gold site",
+    works: ["Буровые работы", "Геохимия по вторичным ореолам"],
+    worksEn: ["Drilling", "Secondary halo geochemistry"],
+    result: "Выделены перспективные зоны",
+    resultEn: "Prospective zones identified",
+    todo: "метраж бурения, кол-во скважин, сколько зон выделено",
+    image: "/images/kekura.jpg",
   },
 ]
 
@@ -299,14 +336,24 @@ const categories = [
   { value: "copper", label: "Медь", labelEn: "Copper" },
 ]
 
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="grid grid-cols-[6.5rem_1fr] gap-3 py-2.5 border-t border-border first:border-t-0">
+      <dt className="text-xs text-muted-foreground pt-0.5">{label}</dt>
+      <dd className="text-sm text-foreground">{children}</dd>
+    </div>
+  )
+}
+
 export function ProjectsContent() {
   const [activeCategory, setActiveCategory] = useState("all")
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const { t } = useLanguage()
 
-  const filteredProjects = activeCategory === "all" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory)
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory)
 
   return (
     <div className="min-h-screen bg-background">
@@ -320,31 +367,29 @@ export function ProjectsContent() {
             priority
             className="object-cover"
             sizes="100vw"
-            style={{ objectPosition: 'center 53%' }}
+            style={{ objectPosition: "center 53%" }}
           />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 text-white/80 mb-4">
-              <Link href="/" className="hover:text-white transition-colors">
-                {t('Главная', 'Home')}
-              </Link>
-              <span>/</span>
-              <span className="text-white">
-                {t('Проекты', 'Projects')}
-              </span>
-            </div>
-              
+                <Link href="/" className="hover:text-white transition-colors">
+                  {t("Главная", "Home")}
+                </Link>
+                <span>/</span>
+                <span className="text-white">{t("Проекты", "Projects")}</span>
+              </div>
+
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                {t('Проекты для заказчиков', 'Client Projects')}
+                {t("Проекты для заказчиков", "Client Projects")}
               </h1>
-              
+
               <p className="text-xl text-white/90 leading-relaxed">
                 {t(
-                  'Успешно реализованные проекты геологоразведки для ведущих горнодобывающих компаний России.',
-                  'Successfully completed exploration projects for leading mining companies in Russia.'
+                  "Проекты геологоразведки для ведущих горнодобывающих компаний России.",
+                  "Exploration projects for leading mining companies in Russia."
                 )}
               </p>
             </div>
@@ -357,10 +402,10 @@ export function ProjectsContent() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "20+", label: t('Проектов выполнено', 'Projects completed') },
-              { value: "8", label: t('Регионов работы', 'Working regions') },
-              { value: "6", label: t('Крупных заказчиков', 'Major clients') },
-              { value: "100%", label: t('Выполнение в срок', 'On-time delivery') }
+              { value: "20+", label: t("Проектов выполнено", "Projects completed") },
+              { value: "8", label: t("Регионов работы", "Working regions") },
+              { value: "6", label: t("Крупных заказчиков", "Major clients") },
+              { value: "100%", label: t("Выполнение в срок", "On-time delivery") },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -411,13 +456,15 @@ export function ProjectsContent() {
                 <span className="flex items-center gap-2">
                   <Filter className="w-5 h-5" />
                   {t(
-                    categories.find(c => c.value === activeCategory)?.label || '',
-                    categories.find(c => c.value === activeCategory)?.labelEn || ''
+                    categories.find((c) => c.value === activeCategory)?.label || "",
+                    categories.find((c) => c.value === activeCategory)?.labelEn || ""
                   )}
                 </span>
-                <ChevronDown className={`w-5 h-5 transition-transform ${isFilterOpen ? "rotate-180" : ""}`} />
+                <ChevronDown
+                  className={`w-5 h-5 transition-transform ${isFilterOpen ? "rotate-180" : ""}`}
+                />
               </button>
-              
+
               <AnimatePresence>
                 {isFilterOpen && (
                   <motion.div
@@ -469,18 +516,23 @@ export function ProjectsContent() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 left-3 z-10">
+                    <div className="absolute top-3 left-3 z-10 flex gap-2">
                       <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                         {t(project.categoryLabel, project.categoryLabelEn)}
                       </span>
+                      {project.status === "inProgress" && (
+                        <span className="px-3 py-1 bg-black/60 backdrop-blur text-white text-xs font-medium rounded-full">
+                          {t("В работе", "In progress")}
+                        </span>
+                      )}
                     </div>
                   </div>
-                  
+
                   <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                     {t(project.title, project.titleEn)}
                   </h3>
-                  
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
+
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
                     <span className="flex items-center gap-1">
                       <MapPin className="w-4 h-4" />
                       {t(project.location, project.locationEn)}
@@ -490,36 +542,51 @@ export function ProjectsContent() {
                       {project.year}
                     </span>
                   </div>
-                  
-                  {project.client && (
-                    <p className="text-sm text-muted-foreground mb-3">
-                      <span className="font-medium text-foreground">{t('Заказчик', 'Client')}:</span>{' '}
-                      {t(project.client, project.clientEn || project.client)}
-                    </p>
-                  )}
-                  
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {t(project.description, project.descriptionEn)}
-                  </p>
-                  
-                  <div className="space-y-2 mt-auto">
-                    {project.results.map((result, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm">
-                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          {t(result, project.resultsEn[idx] ?? result)}
+
+                  <dl className="mt-auto">
+                    <Row label={t("Заказчик", "Client")}>
+                      {t(project.client, project.clientEn)}
+                    </Row>
+                    <Row label={t("Задача", "Task")}>
+                      {t(project.task, project.taskEn)}
+                    </Row>
+                    <Row label={t("Виды работ", "Scope")}>
+                      <ul className="space-y-1.5">
+                        {project.works.map((work, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 bg-orange-500 rounded-full flex-shrink-0 mt-1.5" />
+                            <span className="text-muted-foreground">
+                              {t(work, project.worksEn[idx] ?? work)}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </Row>
+                    {project.volume && (
+                      <Row label={t("Объём", "Volume")}>
+                        {t(project.volume, project.volumeEn ?? project.volume)}
+                      </Row>
+                    )}
+                    {project.result && (
+                      <Row label={t("Результат", "Result")}>
+                        <span className="font-medium">
+                          {t(project.result, project.resultEn ?? project.result)}
                         </span>
+                      </Row>
+                    )}
+                    {IS_DEV && project.todo && (
+                      <div className="mt-2 flex items-start gap-2 rounded-lg border border-dashed border-orange-500/50 px-3 py-2 text-xs text-orange-500">
+                        <Pencil className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
+                        <span>Дополнить: {project.todo}</span>
                       </div>
-                    ))}
-                  </div>
+                    )}
+                  </dl>
                 </motion.article>
               ))}
             </AnimatePresence>
           </div>
         </div>
       </section>
-
-   
     </div>
   )
 }

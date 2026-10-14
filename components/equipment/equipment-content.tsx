@@ -131,49 +131,49 @@ const equipmentCategories = [
         nameEn: "MiniMag Magnetometer",
         specs: ["Точность: 0.1 нТл", "Частота измерений: до 5 Гц", "GPS синхронизация"],
         specsEn: ["Accuracy: 0.1 nT", "Sampling rate: up to 5 Hz", "GPS synchronization"],
-        image: "/images/minimag.jpg"
+        image: "/images/minimag.png"
       },
       {
         name: "ЗСБ комплект ЦИКЛ",
         nameEn: "TEM System CYKL",
         specs: ["Метод ЗСБ", "До 10000 каналов", "Телеметрическая система"],
         specsEn: ["TEM method", "Up to 10000 channels", "Telemetry system"],
-        image: "/images/cikl8.jpg"
+        image: "/images/cikl8.png"
       },
       {
         name: "Электроразведочная станция АМТЗ NORD",
         nameEn: "AMT System NORD",
-        specs: ["Метод АМТЗ", "Глубина исследований: до 500 м", "Автоматическая обработка"],
-        specsEn: ["AMT method", "Survey depth: up to 500 m", "Automatic processing"],
-        image: "/images/nord.jpg"
+        specs: ["Метод АМТЗ", "Глубина исследований: до 500 м"],
+        specsEn: ["AMT method", "Survey depth: up to 500 m"],
+        image: "/images/nord.png"
       },
       {
-        name: "Электроразведочный комплект выполнения ВЭЗ, СГ-ВП и т.д.",
-        nameEn: "Electrical Survey System VES, IP",
-        specs: ["Метод ВЭЗ, СГ-ВП", "Глубина исследований: до 500 м", "Автоматическая обработка"],
-        specsEn: ["VES, IP methods", "Survey depth: up to 500 m", "Automatic processing"],
+        name: "Электроразведочный комплект выполнения ВЭЗ, СГ-ВП.",
+        nameEn: "Electrical Survey Systems",
+        specs: ["Метод ВЭЗ, СГ-ВП", "Глубина исследований: до 500 м"],
+        specsEn: ["VES, IP methods", "Survey depth: up to 500 m"],
         image: "/images/vp1000.jpg"
       },
       {
         name: "Электроразведочный комплект электротомографии",
         nameEn: "ERT System",
-        specs: ["Метод томографии", "Глубина исследований: до 250 м", "Автоматическая обработка"],
-        specsEn: ["ERT method", "Survey depth: up to 250 m", "Automatic processing"],
+        specs: ["Метод томографии", "Глубина исследований: до 250 м"],
+        specsEn: ["ERT method", "Survey depth: up to 250 m"],
         image: "/images/tomography.jpg"
       },
       {
         name: "Комплект каротажный на поисковые скважины на руду КС, ПС, КМ, ГГК, ВП",
         nameEn: "Well Logging System",
-        specs: ["Каротаж", "Глубина исследований: до 500 м", "Автоматическая обработка"],
-        specsEn: ["Well logging", "Survey depth: up to 500 m", "Automatic processing"],
+        specs: ["Каротаж", "Глубина исследований: до 500 м"],
+        specsEn: ["Well logging", "Survey depth: up to 500 m"],
 
         image: "/images/pasha.jpg"
       },
       {
         name: "Высокоточные инклинометры для контроля проходки скважин",
         nameEn: "High-precision Inclinometers",
-        specs: ["Гироскопические и магнитные", "Глубина исследований: до 500 м", "Автоматическая обработка"],
-        specsEn: ["Gyroscopic and magnetic", "Survey depth: up to 500 m", "Automatic processing"],
+        specs: ["Гироскопические и магнитные", "Глубина исследований: до 500 м"],
+        specsEn: ["Gyroscopic and magnetic", "Survey depth: up to 500 m"],
 
         image: "/images/gyro.jpg"
       }
@@ -349,18 +349,17 @@ export function EquipmentContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/403783_original.jpg"
-            alt={t("Оборудование Полярной Экспедиционной Компании", "Equipment of Polar Expedition Company")}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-            style={{ objectPosition: 'center 50%' }}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
+        <div className="absolute inset-0 flex items-center justify-center">
+      <Image
+        src="/images/403783_original.jpg"
+        alt={t("Оборудование", "Equipment")}
+        fill
+        priority
+        className="object-contain"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-black/40" />
+    </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
