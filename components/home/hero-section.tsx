@@ -49,8 +49,8 @@ export function HeroSection() {
           onLoadedData={() => setIsVideoLoaded(true)}
           onCanPlay={() => setIsVideoLoaded(true)}
         >
-          <source src="/promo.mp4" type="video/mp4" />
-          <source src="/promo.webm" type="video/webm" />
+          <source src="/promo2.mp4" type="video/mp4" />
+          <source src="/Promo2(1).webm" type="video/webm" />
           Ваш браузер не поддерживает видео
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
