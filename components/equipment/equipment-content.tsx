@@ -23,14 +23,14 @@ const equipmentCategories = [
         nameEn: "CS-1000 Drilling Rig",
         specs: ["Глубина бурения: до 1000 м", "Диаметр бурения: 60-121 мм", "Привод: дизельный"],
         specsEn: ["Drilling depth: up to 1000 m", "Drilling diameter: 60-121 mm", "Drive: diesel"],
-        image: "/images/equipment/cs-1000.jpg"
+        image: "/images/equipment/cs-1000.png"
       },
       {
         name: "Boyles C6",
         nameEn: "Boyles C6 Drill Rig",
-        specs: ["Глубина бурения: до 1200 м", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН", "Бурение под углом 45–90°"],
-        specsEn: ["Drilling depth: up to 1,200 m", "Torque: 7,600 Nm", "Pull force: 138 kN", "Drilling angle 45–90°"],
-        image: "/images/equipment/boylesC6.jpg"
+        specs: ["Глубина бурения: до 1824 м", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН", "Бурение под углом 45–90°"],
+        specsEn: ["Drilling depth: up to 1,824 m", "Torque: 7,600 Nm", "Pull force: 138 kN", "Drilling angle 45–90°"],
+        image: "/images/equipment/boylesC6.png"
       },
       {
         name: "EGR-800",
@@ -58,13 +58,13 @@ const equipmentCategories = [
         nameEn: "URB-2D3 Drill Rig",
         specs: ["Глубина бурения: до 350 м", "Диаметр: до 450 мм"],
         specsEn: ["Drilling depth: up to 350 m", "Diameter: up to 450 mm"],
-        image: "/images/equipment/urb2d3.jpg"
+        image: "/images/equipment/urb2d3.png"
       },
       {
         name: "RS-90",
         nameEn: "RS-90 Drill Rig",
-        specs: ["Глубина бурения: до 90 м", "Компактный" ],
-        specsEn: ["Drilling depth: up to 90 m", "Compact"],
+        specs: ["Глубина бурения: до 480 м", "Компактный" ],
+        specsEn: ["Drilling depth: up to 480 m", "Compact"],
         image: "/images/equipment/rs-90.png"
       },
       {
@@ -72,7 +72,7 @@ const equipmentCategories = [
         nameEn: "S-15 Drill Rig",
         specs: ["Глубина бурения: до 150 м", "Мобильный"],
         specsEn: ["Drilling depth: up to 150 m", "Mobile"],
-        image: "/images/equipment/s-15.jpg"
+        image: "/images/equipment/s-15.png"
       },
       {
         name: "Forward C6",
@@ -86,35 +86,35 @@ const equipmentCategories = [
         nameEn: "Christensen CS14 Drill Rig",
         specs: ["Глубина бурения: до 1200 м (N), до 1540 м (B)", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН"],
         specsEn: ["Drilling depth: up to 1,200 m (N), 1,540 m (B)", "Torque: 7,600 Nm", "Pull force: 138 kN"],
-        image: "/images/equipment/Christensen-CS14.jpg"
+        image: "/images/equipment/Christensen-CS14.png"
       },
       {
         name: "BullDril-1200",
         nameEn: "BullDril-1200 Drill Rig",
         specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм"],
         specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm"],
-        image: "/images/equipment/bulldril-1200.jpg"
+        image: "/images/equipment/bulldril-1200.png"
       },
       {
         name: "ST-20",
         nameEn: "ST-20 Drill Rig",
         specs: ["Глубина бурения: до 2000 м", "Диаметр: 60-121 мм"],
         specsEn: ["Drilling depth: up to 2000 m", "Diameter: 60-121 mm"],
-        image: "/images/equipment/st-20.jpg"
+        image: "/images/equipment/st-20.png"
       },
       {
         name: "Christensen CT20",
         nameEn: "Christensen CT20 Drill Rig",
-        specs: ["Глубина бурения: до 2500 м", "Диаметр бурения: 60-121 мм"],
+        specs: ["Глубина бурения: до 	4059 м", "Диаметр бурения: 60-121 мм"],
         specsEn: ["Drilling depth: up to 2500 m", "Drilling diameter: 60-121 mm"],
-        image: "/images/equipment/christensen-ct20.jpg"
+        image: "/images/equipment/christensen-ct20.png"
       },
       {
         name: "ПБУ 1200Р",
         nameEn: "PBU 1200R Drill Rig",
         specs: ["Глубина бурения: до 1200 м", "Диаметр: до 190 мм"],
         specsEn: ["Drilling depth: up to 1200 m", "Diameter: up to 190 mm"],
-        image: "/images/equipment/pbu-1200.jpg"
+        image: "/images/equipment/pbu-1200.png"
       }
     ]
   },
@@ -131,35 +131,35 @@ const equipmentCategories = [
         nameEn: "MiniMag Magnetometer",
         specs: ["Точность: 0.1 нТл", "Частота измерений: до 5 Гц", "GPS синхронизация"],
         specsEn: ["Accuracy: 0.1 nT", "Sampling rate: up to 5 Hz", "GPS synchronization"],
-        image: "/images/minimag.png"
+        image: "/images/equipment/minimag.png"
       },
       {
         name: "ЗСБ комплект ЦИКЛ",
         nameEn: "TEM System CYKL",
         specs: ["Метод ЗСБ", "До 10000 каналов", "Телеметрическая система"],
         specsEn: ["TEM method", "Up to 10000 channels", "Telemetry system"],
-        image: "/images/cikl8.png"
+        image: "/images/equipment/cikl8.png"
       },
       {
         name: "Электроразведочная станция АМТЗ NORD",
         nameEn: "AMT System NORD",
         specs: ["Метод АМТЗ", "Глубина исследований: до 500 м"],
         specsEn: ["AMT method", "Survey depth: up to 500 m"],
-        image: "/images/nord.png"
+        image: "/images/equipment/nord.png"
       },
       {
         name: "Электроразведочный комплект выполнения ВЭЗ, СГ-ВП.",
         nameEn: "Electrical Survey Systems",
         specs: ["Метод ВЭЗ, СГ-ВП", "Глубина исследований: до 500 м"],
         specsEn: ["VES, IP methods", "Survey depth: up to 500 m"],
-        image: "/images/vp1000.jpg"
+        image: "/images/equipment/vp1000.jpg"
       },
       {
         name: "Электроразведочный комплект электротомографии",
         nameEn: "ERT System",
         specs: ["Метод томографии", "Глубина исследований: до 250 м"],
         specsEn: ["ERT method", "Survey depth: up to 250 m"],
-        image: "/images/tomography.jpg"
+        image: "/images/equipment/tomography.png"
       },
       {
         name: "Комплект каротажный на поисковые скважины на руду КС, ПС, КМ, ГГК, ВП",
@@ -348,16 +348,17 @@ export function EquipmentContent() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-      <Image
-        src="/images/403783_original.jpg"
-        alt={t("Оборудование", "Equipment")}
-        fill
-        priority
-        className="object-contain"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/403783_original.jpg"
+            alt={t("Оборудование Полярной Экспедиционной Компании", "Equipment of Polar Expedition Company")}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            style={{ objectPosition: 'center 50%' }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
     </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -451,18 +452,17 @@ export function EquipmentContent() {
                           className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all"
                         >
                           <div className="relative h-48 overflow-hidden">
-                            <Image
-                              src={item.image}
-                              alt={t(item.name, item.nameEn || item.name)}
-                              fill
-                              className="object-cover transition-transform duration-500 group-hover:scale-110"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              loading="lazy"
-                            />
-                            <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
-
-                            </div>
-                          </div>
+  <Image
+    src={item.image}
+    alt={t(item.name, item.nameEn || item.name)}
+    fill
+    className="object-contain transition-transform duration-500 group-hover:scale-110"
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    loading="lazy"
+  />
+  <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
+  </div>
+</div>
                           
                           <div className="p-5">
                             <h3 className="font-display text-lg font-semibold text-foreground mb-3">
