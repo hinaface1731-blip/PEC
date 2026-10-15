@@ -79,7 +79,7 @@ const equipmentCategories = [
         nameEn: "Forward C6 Drill Rig",
         specs: ["Глубина бурения: до 600 м", "Диаметр бурения: 60-121 мм"],
         specsEn: ["Drilling depth: up to 600 m", "Drilling diameter: 60-121 mm"],
-        image: "/images/equipment/forwardc6.jpg"
+        image: "/images/equipment/forwardC6.jpg"
       },
       {
         name: "Christensen CS14",
