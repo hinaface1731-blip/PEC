@@ -1,11 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useLanguage } from './language-provider'
 import { Send, CheckCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
-
-const STORAGE_KEY = 'cta_form_data'
 
 interface CTAFormProps {
   serviceName?: string
@@ -25,32 +23,6 @@ export function CTAForm({ serviceName }: CTAFormProps) {
     message: '',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
-
-  // Восстанавливаем данные из localStorage
-  useEffect(() => {
-    const savedData = localStorage.getItem(STORAGE_KEY)
-    if (savedData) {
-      try {
-        const parsed = JSON.parse(savedData)
-        setFormData(prev => ({ ...prev, ...parsed }))
-      } catch (e) {
-        console.error('Failed to restore form data', e)
-      }
-    }
-  }, [])
-
-  // Сохраняем данные в localStorage
-  useEffect(() => {
-    if (formData.name || formData.organization || formData.phone || formData.email || formData.message) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        name: formData.name,
-        organization: formData.organization,
-        phone: formData.phone,
-        email: formData.email,
-        message: formData.message,
-      }))
-    }
-  }, [formData])
 
   // Валидация email
   const validateEmail = (email: string) => {
@@ -117,7 +89,6 @@ export function CTAForm({ serviceName }: CTAFormProps) {
       }
 
       setSubmitted(true)
-      localStorage.removeItem(STORAGE_KEY)
     } catch (err) {
       setError(t('Ошибка отправки. Попробуйте позже.', 'Failed to send. Please try later.'))
     } finally {
