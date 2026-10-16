@@ -1,39 +1,20 @@
 
 import type { Metadata, Viewport } from 'next'
-import { Unbounded, Manrope } from 'next/font/google'
-import { ClientLayout } from '@/components/clientlayout'
 import './globals.css'
 import { HeroSection } from '@/components/home/hero-section'
 import { ServicesSection } from '@/components/home/services-section'
-import { ProjectsSection } from '@/components/home/projects-section'
 import { GeographySection } from '@/components/home/geography-section'
-import { LicensesSection } from '@/components/home/licenses-section'
-import { StatsSection } from '@/components/home/stats-section'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 
 
-const unbounded = Unbounded({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-unbounded',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-})
-
-const manrope = Manrope({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-manrope',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-})
-
 export const metadata: Metadata = {
   title: 'Полярная Экспедиционная Компания',
-  description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
+  description: 'Геологические, геофизические и буровые работы в Арктике и Сибири.',
   keywords: 'геологоразведка, ГРР, бурение, геофизика, Арктика, Сибирь, геологические работы',
   openGraph: {
     title: 'Полярная Экспедиционная Компания',
-    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
+    description: 'Геологические, геофизические и буровые работы в Арктике и Сибири.',
     type: 'website',
     locale: 'ru_RU',
     siteName: 'Полярная Экспедиционная Компания',
@@ -72,9 +53,7 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <ServicesSection />
-      <ProjectsSection />
       <GeographySection />
-      <LicensesSection />
       <Footer />
     </main>
   )
