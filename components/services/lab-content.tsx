@@ -11,6 +11,10 @@ const data: ServicePageData = {
   descRu: 'Собственная полевая лаборатория с современным аналитическим оборудованием. Полный спектр геохимических, минералогических и физико-механических исследований.',
   descEn: 'In-house accredited laboratory with modern analytical equipment. Full range of geochemical, mineralogical and physical-mechanical research.',
   heroImage: '/images/i.jpg',
+   introRu:
+    'Сопровождаем пробу на всём пути: приёмка, сушка, дробление, истирание, квартование, подготовка навесок и анализ. Контроль качества встроен в процесс: дубликаты, холостые пробы, стандартные образцы. Результаты выдаём протоколами и цифровыми данными, готовыми для загрузки в базу и использования при подсчёте запасов.',
+  introEn:
+    'We handle the sample along its whole path: reception, drying, crushing, grinding, splitting, aliquot preparation and analysis. Quality control is built into the process: duplicates, blanks and certified reference materials. Results are issued as protocols and digital data ready for loading into a database and use in resource estimation.',
   reverse: false,
   
   sectionTitleRu: 'Полный комплекс лабораторных исследований',

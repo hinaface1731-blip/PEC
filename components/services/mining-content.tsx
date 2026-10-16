@@ -11,6 +11,10 @@ const data: ServicePageData = {
   descRu: 'Полный комплекс горных работ: от вскрышных до добычных. Проходка канав и шурфов, вскрышные работы, добыча полезных ископаемых, взрывные работы, отработка россыпей.',
   descEn: 'Full range of mining operations: from overburden to extraction. Trenching and pitting, overburden removal, mineral extraction, blasting, placer mining.',
   heroImage: '/images/mining-hero.jpg',
+  introRu:
+    'Проходим горные выработки для поисков, оценки и разведки: канавы, траншеи и шурфы, вскрышные работы, подготовка и отработка россыпных объектов, буровзрывные работы. Выработки документируются и опробуются геологами, привязываются маркшейдерами, а объёмы подтверждаются замерами. Это снимает разрыв между «прошли» и «можно использовать в подсчёте запасов».',
+  introEn:
+    'We excavate workings for prospecting, appraisal and exploration: trenches, test pits, overburden removal, preparation and mining of placer deposits, and drilling and blasting. Workings are logged and sampled by geologists, tied in by mine surveyors, and volumes are confirmed by measurements. This closes the gap between "excavated" and "usable in a resource estimate".',
   reverse: false,
   
   sectionTitleRu: 'Полный комплекс горных работ',
