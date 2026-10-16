@@ -8,16 +8,16 @@ const data: ServicePageData = {
   icon: Mountain,
   titleRu: 'Геологические работы',
   titleEn: 'Geological Works',
-  descRu: 'Комплекс полевых и камеральных работ по геологическому изучению недр. От региональных съёмок до детальной разведки месторождений с подсчётом запасов.',
-  descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
+  descRu: 'Полевые и камеральные геологические работы: картирование, поисковые маршруты, опробование, документация выработок и обработка геологических данных. Состав и глубина работ определяются задачами проекта.',
+  descEn: 'Field and office geology: mapping, exploration traverses, sampling, workings documentation and geological data processing. Scope and level of detail are defined by project requirements.',
   heroImage: '/images/geo.jpg',
   reverse: false,
   methods: [], // пустой, используем groups
     // ✅ Добавьте эти поля
   sectionTitleRu: 'Полный комплекс геологических работ',
   sectionTitleEn: 'Full range of geological works',
-  sectionDescRu: 'От региональных съёмок до детальной разведки месторождений с подсчётом запасов',
-  sectionDescEn: 'From regional surveys to detailed deposit exploration with resource estimation',
+  sectionDescRu: 'Состав работ формируется под геологические задачи, исходные данные и техническое задание проекта.',
+  sectionDescEn: 'The scope is tailored to the geological objectives, available data and project brief.',
   methodsGroups: [
     {
       titleRu: 'Полевые геологические работы',
@@ -37,16 +37,16 @@ const data: ServicePageData = {
       titleEn: 'Geological Documentation',
       icon: Pencil,
       methods: [
-        { ru: 'Закладка и документация канав и шурфов', en: 'Trenches and pitting documentation' },
+        { ru: 'Документация канав, шурфов и других горных выработок', en: 'Documentation of trenches, pits and other workings' },
         { ru: 'Керновое опробование и документация керна', en: 'Core logging and sampling' },
         { ru: 'Составление полевых геологических карт и разрезов', en: 'Field geological maps and sections' },
         { ru: 'Камеральная обработка полевых материалов', en: 'Field data office processing' },
-        { ru: 'Ведение полевых дневников и планшетов', en: 'Field notebooks and tablets' },
+        { ru: 'Ведение полевых журналов и систематизация первичных материалов', en: 'Field logging and organization of primary data' },
       ]
     },
     {
-      titleRu: 'Лабораторные исследования',
-      titleEn: 'Laboratory Studies',
+      titleRu: 'Лабораторные исследования по программе работ',
+      titleEn: 'Laboratory Studies as Specified by the Work Programme',
       icon: Microscope,
       methods: [
         { ru: 'Петрографические исследования', en: 'Petrographic studies' },
@@ -61,101 +61,39 @@ const data: ServicePageData = {
   
  equipment: [
   {
-    titleRu: 'Полевое оборудование',
-    titleEn: 'Field Equipment',
+    titleRu: 'Полевое оборудование', titleEn: 'Field Equipment',
     items: [
-      {
-        name: 'Горные компасы',
-        specs: ['Точность ориентирования', 'Противоударный корпус', 'Влагозащита'],
-        image: '/images/equipment/compass.png'
-      },
-      {
-        name: 'GPS-навигаторы Garmin',
-        specs: ['Высокая точность позиционирования', 'Работа при -30°C', 'Водонепроницаемый корпус'],
-        image: '/images/equipment/garmin.png'
-      },
-      {
-        name: 'Геологические молотки',
-        specs: ['Закалённая сталь', 'Прорезиненная рукоятка', 'Вес 600-800 г'],
-        image: '/images/equipment/hammer.png'
-      },
-      {
-        name: 'Радиостанции',
-        specs: ['Дальность до 10 км', 'Защита от пыли и влаги', 'Аккумулятор на 12 часов'],
-        image: '/images/equipment/radio.png'
-      }
+      { name: 'Горные компасы', specs: ['Ориентирование геологических наблюдений', 'Измерение элементов залегания'], image: '/images/equipment/compass.png' },
+      { name: 'GPS-навигаторы', specs: ['Привязка маршрутов и точек наблюдения', 'Запись координат полевых объектов'], image: '/images/equipment/garmin.png' },
+      { name: 'Геологические молотки', specs: ['Отбор свежих сколов пород', 'Полевое описание образцов'], image: '/images/equipment/hammer.png' },
+      { name: 'Средства полевой связи', specs: ['Координация полевых групп', 'Средства выбираются с учётом условий объекта'], image: '/images/equipment/radio.png' }
     ]
   },
   {
-    titleRu: 'Программное обеспечение',
-    titleEn: 'Software',
+    titleRu: 'Геоинформационное и горно-геологическое ПО', titleEn: 'GIS and Geological Software',
     items: [
-      {
-        name: 'Micromine',
-        specs: ['3D моделирование', 'Подсчёт запасов', 'Геологическое моделирование'],
-        image: '/images/software/Micromine_Beyond_Mint_RGB.png'
-      },
-      {
-        name: 'QGIS',
-        specs: ['Работа с геопространственными данными', 'Создание карт', 'Бесплатное ПО'],
-        image: '/images/software/qgis-logo.png'
-      },
-      {
-        name: 'ArcGIS',
-        specs: ['Профессиональная ГИС', '3D анализ', 'Пространственное моделирование'],
-        image: '/images/software/ArcGIS_logo.png'
-      },
+      { name: 'Micromine', specs: ['Работа с геологическими данными и моделями в рамках лицензии и задач проекта'], image: '/images/software/Micromine_Beyond_Mint_RGB.png' },
+      { name: 'QGIS', specs: ['Подготовка и анализ геопространственных данных', 'Создание тематических карт'], image: '/images/software/qgis-logo.png' },
+      { name: 'ArcGIS', specs: ['Работа с геоданными и картографическими материалами при наличии соответствующей лицензии'], image: '/images/software/ArcGIS_logo.png' }
     ]
   },
   {
-    titleRu: 'Лаборатория',
-    titleEn: 'Laboratory',
+    titleRu: 'Лабораторные исследования', titleEn: 'Laboratory Studies',
     items: [
-      {
-        name: 'Петрографические микроскопы',
-        specs: ['Увеличение до 1000x', 'Поляризация', 'Встроенная камера'],
-        image: '/images/equipment/mircoscope.png'
-      },
-      {
-        name: 'Дробилки и истиратели',
-        specs: ['Дробление до 1 мм', 'Истирание до 0.05 мм', 'Производительность до 2 кг/час'],
-        image: '/images/equipment/crusher.jpg'
-      },
-      {
-        name: 'Аналитическое оборудование',
-        specs: ['ICP-MS', 'XRF', 'Атомно-абсорбционный спектрометр'],
-        image: '/images/equipment/analytical.jpg'
-      }
+      { name: 'Петрография и минералогия', specs: ['Исследования по программе работ', 'Исполнитель и методики определяются проектом'], image: '/images/equipment/mircoscope.png' },
+      { name: 'Подготовка проб', specs: ['Подготовка материала для назначенных анализов', 'Требования к подготовке задаются методикой'], image: '/images/equipment/crusher.jpg' },
+      { name: 'Геохимические анализы', specs: ['Набор элементов и методы анализа определяются задачами проекта', 'Результаты оформляются в согласованном формате'], image: '/images/equipment/analytical.jpg' }
     ]
   },
   {
-    titleRu: 'Документация',
-    titleEn: 'Documentation',
+    titleRu: 'Полевые материалы и документация', titleEn: 'Field Data and Documentation',
     items: [
-      {
-        name: 'Цифровые планшеты с QGIS',
-        specs: ['Экран 10"', 'Защита IP68', 'Аккумулятор на 12 часов'],
-        image: '/images/equipment/tablet.jpg'
-      },
-      {
-        name: 'Фотодокументация',
-        specs: ['Камеры высокого разрешения', 'GPS-геотегирование', 'Подводная съёмка'],
-        image: '/images/equipment/camera.jpg'
-      },
-      {
-        name: 'Лазерные дальномеры',
-        specs: ['Дальность до 1000 м', 'Точность ±1 м', 'Встроенный компас'],
-        image: '/images/equipment/laser.jpg'
-      },
-      {
-        name: 'Бланки опробования',
-        specs: ['ГОСТ', 'Защита от подделок', 'Термостойкие'],
-        image: '/images/equipment/forms.jpg'
-      }
+      { name: 'Цифровая полевая документация', specs: ['Сбор и систематизация координат, описаний и проб', 'Используемые устройства зависят от условий проекта'], image: '/images/equipment/tablet.jpg' },
+      { name: 'Фотодокументация', specs: ['Фиксация обнажений, выработок и образцов', 'Привязка материалов к полевым записям'], image: '/images/equipment/camera.jpg' },
+      { name: 'Материалы опробования', specs: ['Маркировка и учёт проб', 'Документирование передачи проб на исследования'], image: '/images/equipment/forms.jpg' }
     ]
   }
-],
-  
+],  
   steps: [
     {
       numRu: '01',
@@ -194,8 +132,8 @@ const data: ServicePageData = {
       numEn: '05',
       titleRu: 'Составление отчёта',
       titleEn: 'Report Preparation',
-      descRu: 'Подготовка геологического отчёта по формам ГКЗ/ТКЗ, сдача отчётности',
-      descEn: 'Geological report preparation per GKZ/TKZ forms, reporting',
+      descRu: 'Подготовка геологического отчёта и графических приложений в составе и формате, предусмотренных техническим заданием и требованиями к конкретному виду работ',
+      descEn: 'Preparation of a geological report and figures in the scope and format specified by the project brief and requirements for the relevant work type',
     },
   ],
   stepImages: [
@@ -210,7 +148,7 @@ results: [
   {
     titleRu: 'Геологические карты',
     titleEn: 'Geological Maps',
-    descRu: 'Комплект карт заданного масштаба с условными обозначениями',
+    descRu: 'Карты и графические материалы в согласованном масштабе с легендой и исходными данными в составе, предусмотренном заданием',
     descEn: 'Set of maps at specified scale with legend',
     image: '/images/results/geomap.jpg',
   },
@@ -231,22 +169,22 @@ results: [
   {
     titleRu: 'Геологический отчёт',
     titleEn: 'Geological Report',
-    descRu: 'Текстовая и графическая части по формам ГКЗ/ТКЗ',
+    descRu: 'Текстовая и графическая части отчёта в соответствии с требованиями конкретного проекта',
     descEn: 'Text and graphic parts per GKZ/TKZ forms',
     image: '/images/results/geootchet.jpg',
   },
 ],
   
   caseStudy: {
-    titleRu: 'Геологическое доизучение Норильского рудного узла',
-    titleEn: 'Geological Study of Norilsk Ore Cluster',
-    clientRu: 'Норникель',
-    clientEn: 'Nornickel',
-    year: '2023-2024',
-    volumeRu: '3 планшета масштаба 1:50 000, площадь 850 км², 1 200 км маршрутов, 3 500 проб',
-    volumeEn: '3 map sheets at 1:50,000 scale, 850 km² area, 1,200 km routes, 3,500 samples',
-    resultRu: 'Выявлено 7 перспективных участков на медно-никелевое оруденение. Подготовлены рекомендации по дальнейшим работам.',
-    resultEn: 'Identified 7 prospective areas for copper-nickel mineralization. Prepared recommendations for further work.',
+    titleRu: 'Пример структуры геологического проекта',
+    titleEn: 'Example of a Geological Project Structure',
+    clientRu: 'Обезличенный пример',
+    clientEn: 'Anonymized example',
+    year: 'После подтверждения данных',
+    volumeRu: 'Площадь работ, протяжённость маршрутов, количество проб и масштаб карт указываются после подтверждения исходных данных и разрешения на публикацию.',
+    volumeEn: 'Survey area, traverse length, sample count and map scale should be published only after the source data and permission to disclose them have been confirmed.',
+    resultRu: 'Результаты и выводы включаются в описание только на основании утверждённых материалов проекта.',
+    resultEn: 'Results and conclusions should be described only on the basis of approved project materials.',
   },
   caseImage: '/images/geoproject.JPG',
   
@@ -259,12 +197,7 @@ results: [
     { ru: 'Иркутская область', en: 'Irkutsk Region' },
   ],
   
-  stats: [
-    { value: '120+', labelRu: 'проектов', labelEn: 'projects' },
-    { value: '4 500 км', labelRu: 'маршрутов', labelEn: 'of routes' },
-    { value: '15 000+', labelRu: 'проб отобрано', labelEn: 'samples collected' },
-    { value: '850 км²', labelRu: 'макс. площадь', labelEn: 'max area' },
-  ],
+  stats: [],
 }
 
 export function GeologicalContent() {
