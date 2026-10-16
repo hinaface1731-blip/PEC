@@ -4,14 +4,11 @@ import nodemailer from 'nodemailer'
 export const runtime = 'nodejs'
 
 const MAX_FILE_SIZE = 8 * 1024 * 1024
-const ALLOWED_EXTENSIONS = new Set(['.pdf', '.doc', '.docx', '.rtf', '.odt'])
+const ALLOWED_EXTENSIONS = new Set(['.pdf', '.doc', '.docx'])
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf',
   'application/msword',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-  'application/rtf',
-  'text/rtf',
-  'application/vnd.oasis.opendocument.text',
   'application/octet-stream',
 ])
 
@@ -57,6 +54,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Проверьте адрес электронной почты.' }, { status: 400 })
     }
 
+    if (!(resume instanceof File) || resume.size === 0) {
+      return NextResponse.json({ error: 'Прикрепите файл резюме.' }, { status: 400 })
+    }
+
     const attachments: { filename: string; content: Buffer; contentType?: string }[] = []
     if (resume instanceof File && resume.size > 0) {
       const filename = resume.name.replace(/\\/g, '/').split('/').pop() ?? 'resume'
@@ -74,9 +75,6 @@ export async function POST(request: NextRequest) {
         content: Buffer.from(await resume.arrayBuffer()),
         contentType: resume.type || undefined,
       })
-    } else if (resume && !(resume instanceof File)) {
-      return NextResponse.json({ error: 'Некорректный файл резюме.' }, { status: 400 })
-    }
 
     if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
       console.error('Resume form: SMTP credentials are not configured')
