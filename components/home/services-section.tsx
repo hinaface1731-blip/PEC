@@ -110,13 +110,6 @@ export function ServicesSection() {
             </motion.p>
           </div>
           
-          <Link 
-            href="/services" 
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
-          >
-            {t('Все услуги', 'All Services')}
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
