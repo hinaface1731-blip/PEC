@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 
 export const runtime = 'nodejs'
 
-const MAX_FILE_SIZE = 8 * 1024 * 1024
+const MAX_FILE_SIZE = 4 * 1024 * 1024
 const ALLOWED_EXTENSIONS = new Set(['.pdf', '.doc', '.docx'])
 const ALLOWED_MIME_TYPES = new Set([
   'application/pdf',
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       const extension = filename.includes('.') ? filename.slice(filename.lastIndexOf('.')).toLowerCase() : ''
 
       if (resume.size > MAX_FILE_SIZE) {
-        return NextResponse.json({ error: 'Файл резюме должен быть не больше 8 МБ.' }, { status: 400 })
+        return NextResponse.json({ error: 'Файл резюме должен быть не больше 4 МБ.' }, { status: 400 })
       }
       if (!ALLOWED_EXTENSIONS.has(extension) || !ALLOWED_MIME_TYPES.has(resume.type || 'application/octet-stream')) {
         return NextResponse.json({ error: 'Поддерживаются файлы PDF, DOC и DOCX.' }, { status: 400 })
