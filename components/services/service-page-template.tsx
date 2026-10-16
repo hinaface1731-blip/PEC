@@ -230,13 +230,8 @@ export function ServicePageTemplate({
                 {t('Главная', 'Home')}
               </Link>
               <span aria-hidden>/</span>
-              <Link
-                href="/services"
-                className={`hover:text-white transition-colors ${focusRing}`}
-              >
-                {t('Услуги', 'Services')}
-              </Link>
-              <span aria-hidden>/</span>
+    
+  
               <span className="text-white" aria-current="page">
                 {t(data.titleRu, data.titleEn)}
               </span>
