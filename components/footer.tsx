@@ -31,7 +31,7 @@ export function Footer() {
   return (
     <footer className="bg-[var(--bg2)] border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Logo & Description - колонка 1 */}
           <div className="space-y-1">
             <Link href="/" className="inline-block">
@@ -104,20 +104,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Licenses - колонка 4 */}
-          <div>
-            <h4 className="font-semibold text-[var(--text)] mb-4">
-              {t('Лицензии', 'Licenses')}
-            </h4>
-            <ul className="space-y-2">
-              <li className="text-sm text-[var(--muted)]">
-                {t('Лицензия Роснедр № КРР 03707 БП', 'Rosnedra License No. КРР 03707 BP')}
-              </li>
-              <li className="text-sm text-[var(--muted)]">
-                {t('Свидетельство СРО № 1234-2024', 'SRO Certificate No. 1234-2024')}
-              </li>
-            </ul>
-          </div>
+
         </div>
 
         {/* Bottom */}
@@ -128,9 +115,6 @@ export function Footer() {
           <div className="flex items-center gap-6 text-sm">
             <Link href="/privacy" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">
               {t('Политика конфиденциальности', 'Privacy Policy')}
-            </Link>
-            <Link href="/sitemap" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">
-              {t('Карта сайта', 'Sitemap')}
             </Link>
           </div>
         </div>
