@@ -75,7 +75,7 @@ export function ProjectsSection() {
             </p>
           </div>
           <Link 
-            href="/services" 
+            href="/projects" 
             className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
           >
             {t('Все проекты', 'All Projects')}
