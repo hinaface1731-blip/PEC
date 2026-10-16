@@ -124,6 +124,7 @@ export interface ServicePageData {
   regions?: ServiceMethod[]
   stats?: { value: string; labelRu: string; labelEn: string }[]
   resultsImage?: string
+  showCaseStudy?: boolean
 }
 
 export interface ServicePageTemplateProps {
@@ -558,6 +559,9 @@ export function ServicePageTemplate({
       {/* Допуски и лицензии (необязательный блок) */}
       {permits}
 
+      {data.showCaseStudy !== false && (
+        <>
+      {/* Case Study */}
       {/* Пример проекта */}
       <section className="section">
         <div className="container mx-auto">
@@ -607,6 +611,60 @@ export function ServicePageTemplate({
         </div>
       </section>
 
+        </>
+      )}
+
+      {/* Geography */}
+        {/* Geography */}
+      <section className="section bg-[var(--bg2)]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
+              {t('География работ', 'Work Geography')}
+            </h2>
+            <p className="text-[var(--muted)] max-w-2xl mx-auto">
+              {t(
+                'Проекты в ключевых горнодобывающих регионах России',
+                'Projects in key mining regions of Russia'
+              )}
+            </p>
+          </div>
+
+          {/* Добавляем карту */}
+          <YandexMapV3 regions={data.regions} />
+
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            {data.regions.map((region, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg3)] border border-[var(--border)] hover:border-[var(--accent)] transition-all cursor-pointer"
+              >
+                <MapPin className="w-4 h-4 text-[var(--accent)]" />
+                <span className="text-sm text-[var(--text)]">{t(region.ru, region.en)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {data.stats.length > 0 && (
+        <>
+      {/* Stats */}
+      <section className="section">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-[var(--text)] text-center mb-10">
+            {t('Ключевые цифры', 'Key Figures')}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.stats.map((stat, i) => (
+              <div key={i} className="card text-center">
+                <div className="stat-num">{stat.value}</div>
+                <div className="stat-label">{t(stat.labelRu, stat.labelEn)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>        </>
       {/* Смежные услуги */}
       {data.related && data.related.length > 0 && (
         <section className="section bg-[var(--bg2)]">
