@@ -99,6 +99,7 @@ export interface ServicePageData {
   sectionDescRu?: string
   sectionDescEn?: string
   resultsImage?: string
+  showCaseStudy?: boolean
 }
 
 export interface ServicePageTemplateProps {
@@ -423,6 +424,8 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
+      {data.showCaseStudy !== false && (
+        <>
       {/* Case Study */}
       <section className="section">
         <div className="container mx-auto">
@@ -462,6 +465,9 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
+        </>
+      )}
+
       {/* Geography */}
         {/* Geography */}
       <section className="section bg-[var(--bg2)]">
@@ -495,6 +501,8 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
+      {data.stats.length > 0 && (
+        <>
       {/* Stats */}
       <section className="section">
         <div className="container mx-auto">
@@ -510,7 +518,8 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
             ))}
           </div>
         </div>
-      </section>
+      </section>        </>
+      )}
     </>
   )
 }
