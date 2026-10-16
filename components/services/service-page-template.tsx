@@ -125,6 +125,8 @@ export interface ServicePageData {
   stats?: { value: string; labelRu: string; labelEn: string }[]
   resultsImage?: string
   showCaseStudy?: boolean
+  /** Enable only after the case study has been reviewed and approved for publication. */
+  showStats?: boolean
 }
 
 export interface ServicePageTemplateProps {
@@ -554,7 +556,7 @@ export function ServicePageTemplate({
       {/* Допуски и лицензии (необязательный блок) */}
       {permits}
 
-      {data.showCaseStudy !== false && (
+      {data.showCaseStudy === true && (
         <>
       {/* Case Study */}
       {/* Пример проекта */}
@@ -642,7 +644,7 @@ export function ServicePageTemplate({
         </div>
       </section>
 
-      {data.stats.length > 0 && (
+      {data.showStats === true && (data.stats?.length ?? 0) > 0 && (
         <>
       {/* Stats */}
       <section className="section">
