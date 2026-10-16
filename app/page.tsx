@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Полярная Экспедиционная Компания',
-    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
+    description: 'Геологические, геофизические и буровые работы в Арктике и Сибири.',
     images: ['/logo.png'],
   },
   icons: {
