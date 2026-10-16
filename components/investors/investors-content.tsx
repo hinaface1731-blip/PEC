@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
-import Link from 'next/link'
 import Image from 'next/image'
 import { 
   TrendingUp, 
@@ -13,15 +12,12 @@ import {
   Target, 
   BarChart3, 
   Shield, 
-  ArrowRight,
-  Download,
   CheckCircle,
   Layers,
   Zap,
   Ship,
   Truck
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 
 // Данные по юниорным проектам из документов
 const juniorProjects = [
@@ -396,38 +392,15 @@ export function InvestorsContent() {
         </div>
       </section>
 
-      {/* Documents */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-3xl">
+      <section className="py-16">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
           <FadeIn>
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-foreground">
-                {t('Информация для инвесторов', 'Information for Investors')}
-              </h2>
-              <p className="text-muted-foreground">
-                {t('По запросу предоставляются следующие материалы:', 'The following materials are available upon request:')}
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="outline" asChild>
-                <Link href="/documents/geological-report.pdf">
-                  <FileText className="w-4 h-4 mr-2" />
-                  {t('Геологический отчёт', 'Geological Report')}
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/documents/presentation.pdf">
-                  <Download className="w-4 h-4 mr-2" />
-                  {t('Презентация проектов (PDF)', 'Project Presentation (PDF)')}
-                </Link>
-              </Button>
-              <Button asChild>
-                <Link href="/contacts">
-                  {t('Связаться с IR-отделом', 'Contact IR Department')}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </div>
+            <h2 className="text-2xl font-bold text-foreground mb-3">
+              {t('Материалы для инвесторов', 'Investor materials')}
+            </h2>
+            <p className="text-muted-foreground">
+              {t('Материалы готовятся к публикации.', 'Investor materials are being prepared for publication.')}
+            </p>
           </FadeIn>
         </div>
       </section>
