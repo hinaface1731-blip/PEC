@@ -12,6 +12,11 @@ const data: ServicePageData = {
   descRu: 'Маркшейдерское обеспечение горных и буровых работ выполняется на основании лицензии на осуществление деятельности по производству маркшейдерских работ, выданной Федеральной Службой по экологическому, технологическому и атомному надзору (Ростехнадзором).',
   descEn: 'Mine and drilling surveying is carried out on the basis of a license for mine surveying issued by the Federal Service for Environmental, Technological, and Nuclear Supervision (Rostekhnadzor).',
   heroImage: '/images/mark.JPG',
+  introRu:
+    'Маркшейдерско-геодезическое обеспечение работ выполняется на основании лицензии Ростехнадзора. Развиваем опорную маркшейдерскую сеть от пунктов государственной геодезической сети, выполняем топографические съёмки наземными методами и с БПЛА, выносим в натуру проектные выработки и скважины, контролируем их положение и считаем объёмы горных работ. Итог: планы, картограммы и исполнительная документация, пригодная для отчёта и подсчёта запасов.',
+  introEn:
+    'Mine surveying and geodetic support is carried out under a Rostechnadzor license. We develop the reference mine survey network from state geodetic network points, perform topographic surveys by ground methods and with UAVs, stake out designed workings and boreholes, monitor their position and calculate mining volumes. The result: plans, volume cartograms and as-built documentation suitable for reporting and resource estimation.',
+
   reverse: true,
   sectionTitleRu: 'Что входит в услугу',
   sectionTitleEn: 'What is included in the service',

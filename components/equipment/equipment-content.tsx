@@ -188,14 +188,6 @@ const equipmentCategories = [
     descriptionEn: "Analytical instruments for sample analysis",
     items: [
       {
-        name: "Атомно-абсорбционный спектрометр",
-        nameEn: "Atomic Absorption Spectrometer",
-        specs: ["Определение: Au, Ag, Cu, Pb, Zn", "Точность: до 0.001 г/т", "Автосамплер на 60 проб"],
-        specsEn: ["Determination: Au, Ag, Cu, Pb, Zn", "Accuracy: up to 0.001 g/t", "60-sample autosampler"],
-
-        image: "/images/HGA.png"
-      },
-      {
         name: "Рентгенофлуоресцентный анализатор",
         nameEn: "XRF Analyzer",
         specs: ["Элементы: от Na до U", "Время анализа: 2-5 мин", "Портативный вариант"],
@@ -230,14 +222,6 @@ const equipmentCategories = [
         image: "/images/Trimble-R12i.png"
       },
       {
-        name: "Электронный тахеометр Leica TS16",
-        nameEn: "Leica TS16 Total Station",
-        specs: ["Точность: 1\"", "Безотражательный дальномер: 1000 м", "Автофокус и сканер"],
-        specsEn: ["Accuracy: 1\"", "Reflectorless range: 1000 m", "Autofocus and scanner"],
-  
-        image: "/images/leica_ts16_1.png"
-      },
-      {
         name: "GNSS приемник SOUTH Galaxy G9",
         nameEn: "SOUTH Galaxy G9 GNSS Receiver",
         specs: ["Высокая интегрированность", "Дальность: 130 м", "HDR камера"],
@@ -259,7 +243,7 @@ const equipmentCategories = [
         specs: ["Размах крыла: 1.3 м", "Время полёта: 90 мин", "Камера 42 МП"],
         specsEn: ["Wingspan: 1.3 m", "Flight time: 90 min", "42 MP camera"],
 
-        image: "/images/5DM47866_2x.jpg"
+        image: "/images/equipment/dji.png"
       }
     ]
   },
@@ -272,67 +256,67 @@ const equipmentCategories = [
     descriptionEn: "Equipment for harsh environment operations",
     items: [
       {
-        name: "Вездеход ТРЭКОЛ-39294",
+        name: "Вездеходы ТРЭКОЛ-39294",
         nameEn: "TREKOL-39294 All-terrain Vehicle",
         specs: ["Колёсная формула 6×6", "Грузоподъёмность: 700 кг (твёрдый грунт), 400 кг (болото, вода)", "Эксплуатация от −45 °C до +45 °C"],
         specsEn: ["6×6 drive", "Load capacity: 700 kg (solid ground), 400 kg (swamp, water)", "Operating range −45 °C to +45 °C"],
-        image: "/images/trekol.png"
+        image: "/images/equipment/trekol.png"
       },
       {
-        name: "Автомобиль повышенной проходимости",
+        name: "Автомобили повышенной проходимости",
         nameEn: "Off-road Vehicle",
         specs: ["Полный привод", "Грузоподъемность: 1.5 т", "Кунг для оборудования"],
         specsEn: ["4WD", "Load capacity: 1.5 t", "Equipment box body"],
 
-        image: "/images/offroad.jpg"
+        image: "/images/equipment/vezdehod.png"
       },
       {
-        name: "Мобильный лагерь",
-        nameEn: "Mobile Camp",
-        specs: ["Вместимость: 20 человек", "Автономность: 30 дней", "Отопление/кондиционер"],
-        specsEn: ["Capacity: 20 people", "Autonomy: 30 days", "Heating/AC"],
-
-        image: "/images/camp.jpg"
-      },
-      {
-        name: "Камаз",
+        name: "Водовозки",
         nameEn: "Kamaz Truck",
         specs: ["Грузоподъемность: 10 т", "Полный привод", "Работа при -40°C"],
         specsEn: ["Load capacity: 10 t", "4WD", "Operation at -40°C"],
 
-        image: "/images/kamaz.jpg"
+        image: "/images/equipment/vodovozka.png"
       },
       {
-        name: "Каротажная станция",
+        name: "Каротажные станции",
         nameEn: "Logging Unit",
         specs: ["Каротаж скважин", "Автономность: 14 дней", "Лаборатория на борту"],
         specsEn: ["Well logging", "Autonomy: 14 days", "Onboard laboratory"],
 
-        image: "/images/logging-station.jpg"
+        image: "/images/equipment/karotazh.png"
       },
       {
-        name: "Бульдозер",
+        name: "Бульдозеры",
         nameEn: "Bulldozer",
         specs: ["Мощность: 300 л.с.", "Глубина подъема отвала: 1.5 м", "Работа при -50°C"],
         specsEn: ["Power: 300 HP", "Blade lift depth: 1.5 m", "Operation at -50°C"],
 
-        image: "/images/bulldozer.jpg"
+        image: "/images/equipment/bulldozer.png"
       },
       {
-        name: "Экскаватор",
+        name: "Экскаваторы",
         nameEn: "Excavator",
         specs: ["Вместимость ковша: 2.5 м³", "Глубина копания: 5 м", "Дизельный двигатель"],
         specsEn: ["Bucket capacity: 2.5 m³", "Digging depth: 5 m", "Diesel engine"],
 
-        image: "/images/excavator.jpg"
+        image: "/images/equipment/excavator.jpg"
       },
       {
-        name: "Погрузчик",
+        name: "Погрузчики",
         nameEn: "Loader",
         specs: ["Грузоподъемность: 3.5 т", "Ковш 2 м³", "Полный привод"],
         specsEn: ["Load capacity: 3.5 t", "Bucket 2 m³", "4WD"],
 
-        image: "/images/loader.jpg"
+        image: "/images/equipment/pogruzchik.jpg"
+      },
+      {
+        name: "Вахтовые автобусы",
+        nameEn: "Loader",
+        specs: ["Грузоподъемность: 3.5 т", "Ковш 2 м³", "Полный привод"],
+        specsEn: ["Load capacity: 3.5 t", "Bucket 2 m³", "4WD"],
+
+        image: "/images/equipment/vahtovka.png"
       }
     ]
   }

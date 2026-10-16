@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Комплекс наземных и скважинных геофизических исследований для поиска и разведки месторождений полезных ископаемых. Современное оборудование и опытные специалисты.',
   descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
   heroImage: '/images/geophys5.jpeg',
+  introRu:
+    'Подбираем комплекс методов под геологическую задачу и условия участка: электроразведка (АМТЗ, ЗСБ, ВП, электротомография), магниторазведка наземная и каротаж скважин.\n\nПеред выходом в поле выполняем физико-геологическое моделирование, чтобы заранее понять, что метод способен показать на этом объекте. Данные обрабатываем и интерпретируем собственными специалистами. На выходе карты аномалий, геофизические разрезы, модели и обоснованные точки для заверочного бурения.',
+  introEn:
+    'We select a set of methods to suit the geological task and site conditions: electrical surveys (AMT, TEM, IP, electrical resistivity tomography), ground and UAV magnetic surveys, gravity and seismic surveys, and well logging.\n\nBefore going into the field we run physical-geological modeling to understand in advance what a method can show at the site. Our own specialists process and interpret the data. The deliverables are anomaly maps, geophysical sections, models and justified locations for verification drilling.',
+
   reverse: true,
   sectionTitleRu: 'Полный комплекс геофизических работ',
   sectionTitleEn: 'Full range of geophysical works',

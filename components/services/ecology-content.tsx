@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Полный комплекс экологических услуг: от изысканий и ОВОС до технической и биологической рекультивации. Сопровождение проектов в Росприроднадзоре.',
   descEn: 'Full range of environmental services: from surveys and EIA to technical and biological reclamation. Project support at Rosprirodnadzor.',
   heroImage: '/images/ecol.jpg',
+   introRu:
+    'Выполняем инженерно-экологические изыскания для обоснования проектных решений: фоновое состояние воздуха, воды, почв и донных отложений, радиационное обследование. Разрабатываем ОВОС, проекты рекультивации и санитарно-защитных зон, сопровождаем государственную экологическую экспертизу и согласование в Росприроднадзоре, затем выполняем техническую и биологическую рекультивацию.',
+  introEn:
+    'We carry out environmental engineering surveys to support design decisions: baseline condition of air, water, soils and bottom sediments, and radiation surveys. We develop EIA, reclamation and sanitary protection zone projects, support the state environmental review and approval at Rosprirodnadzor, and then perform technical and biological reclamation.',
+
   reverse: false,
   
   sectionTitleRu: 'Полный комплекс экологических услуг',

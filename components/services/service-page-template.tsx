@@ -82,6 +82,8 @@ export interface ServicePageData {
   descRu: string
   descEn: string
   heroImage: string
+  introRu?: string
+  introEn?: string
   methods: ServiceMethod[]
   methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
@@ -130,7 +132,11 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
       setEquipmentItemIndex(0)
     }
   }
-
+  const introParagraphs = t(data.introRu ?? '', data.introEn ?? data.introRu ?? '')
+    .split('\n\n')
+    .map((p) => p.trim())
+    .filter(Boolean)
+    
   const prevEquipmentItem = () => {
     if (equipmentItemIndex > 0) {
       setEquipmentItemIndex(equipmentItemIndex - 1)
@@ -178,7 +184,17 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           </div>
         </div>
       </section>
-
+{introParagraphs.length > 0 && (
+        <section className="py-16 px-8">
+          <div className="container mx-auto">
+            <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-[var(--text)]">
+              {introParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       {/* TOP SECTION (лицензия, сертификаты и т.д.) */}
       {topSection && topSection}
 
@@ -247,14 +263,14 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
-      {/* Equipment — карусель с переключателем категорий */}
+      /*{/* 
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
             {t('Применяемые методики и оборудование', 'Methods & Equipment')}
           </h2>
 
-          {/* Переключатель категорий (табы) */}
+          
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             {data.equipment.map((eq, idx) => (
               <button
@@ -271,7 +287,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
             ))}
           </div>
 
-          {/* Карусель для выбранной категории */}
+          
           {currentCategory && currentItem && (
             <div className="relative max-w-5xl mx-auto">
               <motion.div
@@ -283,7 +299,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 className="card-enhanced overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row">
-                  {/* Левая часть — текст */}
+                  
                   <div className="flex-1 p-6 md:p-8">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-1 h-6 bg-[var(--accent)] rounded-full" />
@@ -312,7 +328,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                     )}
                   </div>
 
-                  {/* Правая часть — изображение */}
+                  
                   <div className="flex justify-center items-center md:w-80 lg:w-96 h-64">
                     <div className="relative w-56 h-48">
                       <Image
@@ -327,7 +343,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 </div>
               </motion.div>
 
-              {/* Стрелки навигации */}
+              
               {currentItems.length > 1 && (
                 <>
                   <button
@@ -347,7 +363,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 </>
               )}
 
-              {/* Индикаторы (точки) */}
+              
               {currentItems.length > 1 && (
                 <div className="flex justify-center gap-2 mt-6">
                   {currentItems.map((_, idx) => (
@@ -368,7 +384,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           )}
         </div>
       </section>
-
+    */}
       {/* Process Steps */}
       <section className="section bg-gradient-to-b from-[var(--bg)] to-[var(--bg2)]">
         <div className="container mx-auto">
@@ -495,22 +511,6 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="section">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-[var(--text)] text-center mb-10">
-            {t('Ключевые цифры', 'Key Figures')}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.stats.map((stat, i) => (
-              <div key={i} className="card text-center">
-                <div className="stat-num">{stat.value}</div>
-                <div className="stat-label">{t(stat.labelRu, stat.labelEn)}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   )
 }

@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Комплексное логистическое обеспечение геологоразведочных и горных проектов в Арктике и Сибири. Доставка грузов, снабжение удалённых объектов, экспедиционное сопровождение.',
   descEn: 'Comprehensive logistics support for exploration and mining projects in the Arctic and Siberia. Cargo delivery, remote site supply, expedition support.',
   heroImage: '/images/two.JPG',
+   introRu:
+    'Организуем доставку людей, техники и грузов на удалённые участки Арктики и Сибири: зимники, вертолётные и авиаперевозки, речной и морской северный завоз, топливообеспечение, складское хранение на базах. Маршруты и сроки планируем под график полевых работ, чтобы буровые, геофизические и горные отряды не простаивали из-за снабжения.',
+  introEn:
+    'We organize delivery of people, equipment and cargo to remote sites in the Arctic and Siberia: ice roads, helicopter and air transport, river and sea northern supply runs, fuel supply, and warehousing at bases. Routes and timing are planned around the field work schedule so that drilling, geophysical and mining crews are never idle because of supply.',
+
   reverse: true,
   
   sectionTitleRu: 'Полный комплекс логистических услуг',
@@ -19,12 +24,10 @@ const data: ServicePageData = {
   sectionDescEn: 'Cargo delivery to Arctic and Siberia, remote site supply',
   
   methods: [
-    { ru: 'Доставка грузов в Арктику', en: 'Arctic cargo delivery' },
-    { ru: 'Северный завоз', en: 'Northern supply' },
+    { ru: 'Доставка грузов в Заполярье', en: 'Arctic cargo delivery' },
     { ru: 'Снабжение удалённых объектов', en: 'Remote site supply' },
     { ru: 'Экспедиционное сопровождение', en: 'Expedition support' },
     { ru: 'Складское хранение', en: 'Warehousing' },
-    { ru: 'Таможенное оформление', en: 'Customs clearance' },
     { ru: 'Транспортная логистика', en: 'Transport logistics' },
     { ru: 'Топливообеспечение', en: 'Fuel supply' },
   ],
@@ -41,23 +44,10 @@ const data: ServicePageData = {
       ]
     },
     {
-      titleRu: 'Авиационное обеспечение',
-      titleEn: 'Aviation Support',
-      icon: Plane,
-      methods: [
-        { ru: 'Вертолётные перевозки (Ми-8, Ми-26)', en: 'Helicopter transport' },
-        { ru: 'Авиаперевозки грузов (Ту-134, АН-26, ИЛ-76)', en: 'Cargo flights' },
-        { ru: 'Поисково-спасательное обеспечение', en: 'SAR support' },
-        { ru: 'Аэровизуальные облёты', en: 'Aerial visual surveys' },
-      ]
-    },
-    {
       titleRu: 'Северный завоз',
       titleEn: 'Northern Supply',
       icon: Ship,
       methods: [
-        { ru: 'Речные перевозки по Енисею', en: 'River transport on Yenisei' },
-        { ru: 'Доставка грузов морским транспортом', en: 'Sea cargo delivery' },
         { ru: 'Завоз на зимовку', en: 'Winter supply delivery' },
         { ru: 'Складское хранение на базах', en: 'Base warehousing' },
       ]

@@ -129,9 +129,6 @@ export function Footer() {
             <Link href="/privacy" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">
               {t('Политика конфиденциальности', 'Privacy Policy')}
             </Link>
-            <Link href="/sitemap" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">
-              {t('Карта сайта', 'Sitemap')}
-            </Link>
           </div>
         </div>
       </div>

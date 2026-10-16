@@ -30,244 +30,30 @@ const officeInfo = {
 const vacancies = [
   {
     id: 1,
-    titleRu: "Главный геолог",
-    titleEn: "Chief Geologist",
-    locationRu: "Красноярск",
-    locationEn: "Krasnoyarsk",
-    experienceRu: "от 5 лет",
-    experienceEn: "5+ years",
-    salary: "от 150 000 ₽",
-    employment: "Полная занятость",
-    employmentEn: "Full-time",
-    schedule: "5/2",
-    scheduleEn: "5/2",
+    titleRu: "-",
+    titleEn: "-",
+    locationRu: "-",
+    locationEn: "-",
+    experienceRu: "-",
+    experienceEn: "-",
+    salary: "-",
+    employment: "-",
+    employmentEn: "-",
+    schedule: "-",
+    scheduleEn: "-",
     requirementsRu: [
-      "Высшее геологическое образование",
-      "Опыт руководства геологическими проектами от 3 лет",
-      "Знание ГКЗ и JORC стандартов",
-      "Уверенное владение Micromine, Surpac",
-      "Опыт работы в Арктике/Сибири приветствуется"
+      
     ],
     requirementsEn: [
-      "Higher geological education",
-      "3+ years of experience managing geological projects",
-      "Knowledge of GKZ and JORC standards",
-      "Proficiency in Micromine, Surpac",
-      "Experience in Arctic/Siberia is a plus"
+      
     ],
     dutiesRu: [
-      "Руководство геологическими проектами",
-      "Подготовка отчётов ГКЗ/ТКЗ",
-      "Координация полевых работ",
-      "Взаимодействие с недропользователями"
+      
     ],
     dutiesEn: [
-      "Management of geological projects",
-      "Preparation of GKZ/TKZ reports",
-      "Coordination of field work",
-      "Interaction with subsoil users"
+      
     ]
   },
-  {
-    id: 2,
-    titleRu: "Геофизик",
-    titleEn: "Geophysicist",
-    locationRu: "Красноярск / Вахта",
-    locationEn: "Krasnoyarsk / Rotation",
-    experienceRu: "от 3 лет",
-    experienceEn: "3+ years",
-    salary: "от 120 000 ₽",
-    employment: "Полная занятость",
-    employmentEn: "Full-time",
-    schedule: "Вахта / 5/2",
-    scheduleEn: "Rotation / 5/2",
-    requirementsRu: [
-      "Высшее геофизическое образование",
-      "Опыт полевых работ от 2 лет",
-      "Знание методов АМТЗ, ЗСБ, ВП",
-      "Навыки обработки данных (Oasis Montaj, Zond)",
-      "Готовность к вахтовому методу"
-    ],
-    requirementsEn: [
-      "Higher geophysical education",
-      "2+ years of field work experience",
-      "Knowledge of AMT, TEM, IP methods",
-      "Data processing skills (Oasis Montaj, Zond)",
-      "Ready for rotational work"
-    ],
-    dutiesRu: [
-      "Проведение полевых геофизических работ",
-      "Первичная обработка и интерпретация данных",
-      "Составление отчётной документации",
-      "Настройка и калибровка оборудования"
-    ],
-    dutiesEn: [
-      "Field geophysical surveys",
-      "Data processing and interpretation",
-      "Report documentation preparation",
-      "Equipment setup and calibration"
-    ]
-  },
-  {
-    id: 3,
-    titleRu: "Инженер-буровик",
-    titleEn: "Drilling Engineer",
-    locationRu: "Вахта",
-    locationEn: "Rotation",
-    experienceRu: "от 3 лет",
-    experienceEn: "3+ years",
-    salary: "от 130 000 ₽",
-    employment: "Полная занятость",
-    employmentEn: "Full-time",
-    schedule: "Вахта",
-    scheduleEn: "Rotation",
-    requirementsRu: [
-      "Профильное образование",
-      "Опыт колонкового бурения от 3 лет",
-      "Знание технологии ССК",
-      "Навыки руководства буровой бригадой",
-      "Готовность к работе в сложных климатических условиях"
-    ],
-    requirementsEn: [
-      "Specialized education",
-      "3+ years of core drilling experience",
-      "Knowledge of SSK technology",
-      "Drilling crew management skills",
-      "Ready to work in harsh climate conditions"
-    ],
-    dutiesRu: [
-      "Организация и контроль буровых работ",
-      "Ведение буровой документации",
-      "Контроль выхода керна",
-      "Обеспечение соблюдения ТБ"
-    ],
-    dutiesEn: [
-      "Drilling operations organization and control",
-      "Drilling documentation maintenance",
-      "Core recovery control",
-      "Safety compliance ensuring"
-    ]
-  },
-  {
-    id: 4,
-    titleRu: "Маркшейдер",
-    titleEn: "Surveyor",
-    locationRu: "Красноярск / Вахта",
-    locationEn: "Krasnoyarsk / Rotation",
-    experienceRu: "от 3 лет",
-    experienceEn: "3+ years",
-    salary: "от 120 000 ₽",
-    employment: "Полная занятость",
-    employmentEn: "Full-time",
-    schedule: "5/2 / Вахта",
-    scheduleEn: "5/2 / Rotation",
-    requirementsRu: [
-      "Высшее горное образование",
-      "Опыт работы от 3 лет",
-      "Навыки работы с GNSS-оборудованием",
-      "Знание Nanosoft, КРЕДО-Диалог",
-      "Аттестация в Ростехнадзоре приветствуется"
-    ],
-    requirementsEn: [
-      "Higher mining education",
-      "3+ years of experience",
-      "GNSS equipment skills",
-      "Knowledge of Nanosoft, CREDO-Dialog",
-      "Rostechnadzor certification is a plus"
-    ],
-    dutiesRu: [
-      "Геодезическое обеспечение горных работ",
-      "Создание опорных сетей",
-      "Топографическая съёмка",
-      "Подготовка маркшейдерской документации"
-    ],
-    dutiesEn: [
-      "Geodetic support of mining operations",
-      "Control network creation",
-      "Topographic surveying",
-      "Survey documentation preparation"
-    ]
-  },
-  {
-    id: 5,
-    titleRu: "Программист ГИС",
-    titleEn: "GIS Programmer",
-    locationRu: "Красноярск",
-    locationEn: "Krasnoyarsk",
-    experienceRu: "от 2 лет",
-    experienceEn: "2+ years",
-    salary: "от 100 000 ₽",
-    employment: "Полная занятость",
-    employmentEn: "Full-time",
-    schedule: "5/2",
-    scheduleEn: "5/2",
-    requirementsRu: [
-      "Опыт работы с QGIS, ArcGIS от 2 лет",
-      "Знание Python, SQL",
-      "Навыки автоматизации процессов",
-      "Опыт работы с геологическими базами данных",
-      "Понимание геоинформатики"
-    ],
-    requirementsEn: [
-      "2+ years of experience with QGIS, ArcGIS",
-      "Knowledge of Python, SQL",
-      "Process automation skills",
-      "Experience with geological databases",
-      "Understanding of geoinformatics"
-    ],
-    dutiesRu: [
-      "Разработка и поддержка ГИС-проектов",
-      "Автоматизация геологических расчетов",
-      "Создание карт и 3D-моделей",
-      "Интеграция данных из различных источников"
-    ],
-    dutiesEn: [
-      "GIS projects development and support",
-      "Automation of geological calculations",
-      "Creation of maps and 3D models",
-      "Data integration from various sources"
-    ]
-  },
-  {
-    id: 6,
-    titleRu: "Лаборант-аналитик",
-    titleEn: "Laboratory Analyst",
-    locationRu: "Красноярск",
-    locationEn: "Krasnoyarsk",
-    experienceRu: "от 1 года",
-    experienceEn: "1+ year",
-    salary: "от 60 000 ₽",
-    employment: "Полная занятость",
-    employmentEn: "Full-time",
-    schedule: "5/2",
-    scheduleEn: "5/2",
-    requirementsRu: [
-      "Среднее специальное или высшее химическое образование",
-      "Опыт работы в лаборатории от 1 года",
-      "Навыки работы с ICP-MS, XRF",
-      "Аккуратность и внимательность",
-      "Знание методик пробоподготовки"
-    ],
-    requirementsEn: [
-      "Secondary specialized or higher chemical education",
-      "1+ year of laboratory experience",
-      "Skills with ICP-MS, XRF",
-      "Accuracy and attentiveness",
-      "Knowledge of sample preparation methods"
-    ],
-    dutiesRu: [
-      "Проведение химических анализов проб",
-      "Ведение журналов и протоколов",
-      "Подготовка проб к анализу",
-      "Контроль качества результатов"
-    ],
-    dutiesEn: [
-      "Chemical analysis of samples",
-      "Maintenance of logs and protocols",
-      "Sample preparation for analysis",
-      "Quality control of results"
-    ]
-  }
 ]
 
 export default function ContactsContent() {

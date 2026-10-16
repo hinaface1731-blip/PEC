@@ -396,7 +396,7 @@ export function InvestorsContent() {
         </div>
       </section>
 
-      {/* Documents */}
+      {/* Documents 
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-3xl">
           <FadeIn>
@@ -430,7 +430,7 @@ export function InvestorsContent() {
             </div>
           </FadeIn>
         </div>
-      </section>
-    </div>
+      </section>*/}
+    </div> 
   )
 }
