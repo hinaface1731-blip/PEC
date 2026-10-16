@@ -273,13 +273,6 @@ export function Header() {
                             {t(service.ru, service.en)}
                           </Link>
                         ))}
-                        <Link
-                          href="/services"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="block px-4 py-2 font-semibold text-[var(--accent)]"
-                        >
-                          {t('Все услуги →', 'All Services →')}
-                        </Link>
                       </div>
                     </motion.div>
                   )}
