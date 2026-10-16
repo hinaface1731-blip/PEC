@@ -644,7 +644,7 @@ export function ServicePageTemplate({
         </div>
       </section>
 
-      {data.showStats === true && (data.stats?.length ?? 0) > 0 && (
+      {data.showStats === true && data.stats && data.stats.length > 0 && (
         <>
       {/* Stats */}
       <section className="section">
