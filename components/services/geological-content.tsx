@@ -187,6 +187,7 @@ results: [
     resultEn: 'Results and conclusions should be described only on the basis of approved project materials.',
   },
   caseImage: '/images/geoproject.JPG',
+  showCaseStudy: false,
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
