@@ -7,13 +7,13 @@ import Link from "next/link"
 import Image from "next/image"
 
 const milestones = [
-  { year: "2008", titleRu: "Основание компании", titleEn: "Company Foundation", descRu: "Создание Полярной Экспедиционной Компании", descEn: "Establishment of Polar Expedition Company" },
-  { year: "2009", titleRu: "Первый крупный контракт", titleEn: "First Major Contract", descRu: "Начало работы на золоторудных месторождениях", descEn: "Start of work at gold deposits" },
-  { year: "2010", titleRu: "Расширение географии", titleEn: "Geographic Expansion", descRu: "Выход на дальний восток и крайний север", descEn: "Expansion to Far East and Far North" },
-  { year: "2012", titleRu: "Собственная лаборатория", titleEn: "Own Laboratory", descRu: "Открытие аналитической лаборатории", descEn: "Opening of accredited analytical laboratory" },
-  { year: "2016", titleRu: "Международные стандарты", titleEn: "International Standards", descRu: "Сертификация по ISO 9001 и JORC", descEn: "ISO 9001 and JORC certification" },
-  { year: "2020", titleRu: "Цифровизация", titleEn: "Digitalization", descRu: "Внедрение цифровых технологий и 3D-моделирования", descEn: "Implementation of digital technologies and 3D modeling" },
-  { year: "2024", titleRu: "Лидер отрасли", titleEn: "Industry Leader", descRu: "Более 20 выполненных проектов, 200+ сотрудников", descEn: "200+ completed projects, 500+ employees" }
+  {
+    year: "2008",
+    titleRu: "Основание компании",
+    titleEn: "Company foundation",
+    descRu: "Создание Полярной Экспедиционной Компании",
+    descEn: "Establishment of Polar Expedition Company",
+  },
 ]
 
 const values = [
@@ -21,8 +21,8 @@ const values = [
     icon: Shield,
     titleRu: "Надежность",
     titleEn: "Reliability",
-    descriptionRu: "Гарантируем качество работ и соблюдение сроков на каждом проекте",
-    descriptionEn: "We guarantee work quality and deadlines on every project"
+    descriptionRu: "Учитываем требования проекта, качество работ и согласованные сроки",
+    descriptionEn: "We consider project requirements, work quality and agreed deadlines"
   },
   {
     icon: TrendingUp,
@@ -35,15 +35,15 @@ const values = [
     icon: Users,
     titleRu: "Профессионализм",
     titleEn: "Professionalism",
-    descriptionRu: "Команда опытных специалистов с профессиональной квалификацией",
-    descriptionEn: "Team of experienced specialists with professional qualifications"
+    descriptionRu: "Профессиональный подход к организации полевых и камеральных работ",
+    descriptionEn: "A professional approach to fieldwork and office-based work"
   },
   {
     icon: Award,
     titleRu: "Качество",
     titleEn: "Quality",
-    descriptionRu: "Работа по международным стандартам JORC и NI 43-101",
-    descriptionEn: "Work in compliance with JORC and NI 43-101 international standards"
+    descriptionRu: "Подбор методик и требований к отчётности под задачи проекта",
+    descriptionEn: "Methods and reporting requirements are selected for each project"
   }
 ]
 
@@ -193,35 +193,7 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: "18+", labelRu: "Лет опыта", labelEn: "Years of experience" },
-              { value: "200+", labelRu: "Сотрудников", labelEn: "Employees" },
-              { value: "20+", labelRu: "Проектов", labelEn: "Projects" },
-              { value: "8", labelRu: "Регионов работы", labelEn: "Regions of operation" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-primary-foreground/80">
-                  {t(stat.labelRu, stat.labelEn)}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
     
     </div>
