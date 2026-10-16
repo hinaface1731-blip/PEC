@@ -35,8 +35,8 @@ const values = [
     icon: Users,
     titleRu: "Профессионализм",
     titleEn: "Professionalism",
-    descriptionRu: "Команда опытных специалистов с международной квалификацией",
-    descriptionEn: "Team of experienced specialists with international qualifications"
+    descriptionRu: "Команда опытных специалистов с профессиональной квалификацией",
+    descriptionEn: "Team of experienced specialists with professional qualifications"
   },
   {
     icon: Award,

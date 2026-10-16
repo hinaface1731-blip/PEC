@@ -11,6 +11,10 @@ const data: ServicePageData = {
   descRu: 'Комплекс полевых и камеральных работ по геологическому изучению недр. От региональных съёмок до детальной разведки месторождений с подсчётом запасов.',
   descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
   heroImage: '/images/geo.jpg',
+  introRu:
+    'Выполняем геологическое изучение территории на всех стадиях: от рекогносцировочных маршрутов и картирования масштабов 1:200 000 – 1:10 000 до оценочных и разведочных работ на конкретном объекте. Поиски ведём комплексно: геологические маршруты, литогеохимическое опробование по вторичным ореолам рассеяния, шлиховое опробование, документация канав, шурфов и керна. Результаты оформляем в цифровых моделях и отчётах по формам ГКЗ/ТКЗ с рекомендациями по дальнейшим работам.',
+  introEn:
+    'We carry out geological study of territories at every stage: from reconnaissance routes and mapping at 1:200,000 – 1:10,000 to appraisal and exploration work at a specific site. Prospecting is done as a complex: geological routes, lithogeochemical sampling over secondary dispersion halos, heavy mineral sampling, and documentation of trenches, pits and core. Results are delivered as digital models and reports in GKZ/TKZ formats, with recommendations for further work.',
   reverse: false,
   methods: [], // пустой, используем groups
     // ✅ Добавьте эти поля

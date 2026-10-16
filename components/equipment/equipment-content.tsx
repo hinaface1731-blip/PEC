@@ -143,8 +143,8 @@ const equipmentCategories = [
       {
         name: "Электроразведочная станция АМТЗ NORD",
         nameEn: "AMT System NORD",
-        specs: ["Метод АМТЗ", "Глубина исследований: до 500 м"],
-        specsEn: ["AMT method", "Survey depth: up to 500 m"],
+        specs: ["Метод АМТЗ", "Глубина исследований: до 2000 м"],
+        specsEn: ["AMT method", "Survey depth: up to 2000 m"],
         image: "/images/equipment/nord.png"
       },
       {
@@ -164,16 +164,16 @@ const equipmentCategories = [
       {
         name: "Комплект каротажный на поисковые скважины на руду КС, ПС, КМ, ГГК, ВП",
         nameEn: "Well Logging System",
-        specs: ["Каротаж", "Глубина исследований: до 500 м"],
-        specsEn: ["Well logging", "Survey depth: up to 500 m"],
+        specs: ["Каротаж", "Глубина исследований: до 1000 м"],
+        specsEn: ["Well logging", "Survey depth: up to 1000 m"],
 
         image: "/images/pasha.jpg"
       },
       {
         name: "Высокоточные инклинометры для контроля проходки скважин",
         nameEn: "High-precision Inclinometers",
-        specs: ["Гироскопические и магнитные", "Глубина исследований: до 500 м"],
-        specsEn: ["Gyroscopic and magnetic", "Survey depth: up to 500 m"],
+        specs: ["Гироскопические и магнитные", "Глубина исследований: до 1000 м"],
+        specsEn: ["Gyroscopic and magnetic", "Survey depth: up to 1000 m"],
 
         image: "/images/gyro.jpg"
       }
@@ -187,14 +187,6 @@ const equipmentCategories = [
     descriptionRu: "Аналитические приборы для исследования проб",
     descriptionEn: "Analytical instruments for sample analysis",
     items: [
-      {
-        name: "Атомно-абсорбционный спектрометр",
-        nameEn: "Atomic Absorption Spectrometer",
-        specs: ["Определение: Au, Ag, Cu, Pb, Zn", "Точность: до 0.001 г/т", "Автосамплер на 60 проб"],
-        specsEn: ["Determination: Au, Ag, Cu, Pb, Zn", "Accuracy: up to 0.001 g/t", "60-sample autosampler"],
-
-        image: "/images/HGA.png"
-      },
       {
         name: "Рентгенофлуоресцентный анализатор",
         nameEn: "XRF Analyzer",
@@ -230,14 +222,6 @@ const equipmentCategories = [
         image: "/images/Trimble-R12i.png"
       },
       {
-        name: "Электронный тахеометр Leica TS16",
-        nameEn: "Leica TS16 Total Station",
-        specs: ["Точность: 1\"", "Безотражательный дальномер: 1000 м", "Автофокус и сканер"],
-        specsEn: ["Accuracy: 1\"", "Reflectorless range: 1000 m", "Autofocus and scanner"],
-  
-        image: "/images/leica_ts16_1.png"
-      },
-      {
         name: "GNSS приемник SOUTH Galaxy G9",
         nameEn: "SOUTH Galaxy G9 GNSS Receiver",
         specs: ["Высокая интегрированность", "Дальность: 130 м", "HDR камера"],
@@ -259,7 +243,7 @@ const equipmentCategories = [
         specs: ["Размах крыла: 1.3 м", "Время полёта: 90 мин", "Камера 42 МП"],
         specsEn: ["Wingspan: 1.3 m", "Flight time: 90 min", "42 MP camera"],
 
-        image: "/images/5DM47866_2x.jpg"
+        image: "/images/equipment/dji.png"
       }
     ]
   },
@@ -287,15 +271,7 @@ const equipmentCategories = [
         image: "/images/offroad.jpg"
       },
       {
-        name: "Мобильный лагерь",
-        nameEn: "Mobile Camp",
-        specs: ["Вместимость: 20 человек", "Автономность: 30 дней", "Отопление/кондиционер"],
-        specsEn: ["Capacity: 20 people", "Autonomy: 30 days", "Heating/AC"],
-
-        image: "/images/camp.jpg"
-      },
-      {
-        name: "Камаз",
+        name: "Водовозы",
         nameEn: "Kamaz Truck",
         specs: ["Грузоподъемность: 10 т", "Полный привод", "Работа при -40°C"],
         specsEn: ["Load capacity: 10 t", "4WD", "Operation at -40°C"],
@@ -303,7 +279,7 @@ const equipmentCategories = [
         image: "/images/kamaz.jpg"
       },
       {
-        name: "Каротажная станция",
+        name: "Каротажные станции",
         nameEn: "Logging Unit",
         specs: ["Каротаж скважин", "Автономность: 14 дней", "Лаборатория на борту"],
         specsEn: ["Well logging", "Autonomy: 14 days", "Onboard laboratory"],
@@ -311,7 +287,7 @@ const equipmentCategories = [
         image: "/images/logging-station.jpg"
       },
       {
-        name: "Бульдозер",
+        name: "Бульдозеры",
         nameEn: "Bulldozer",
         specs: ["Мощность: 300 л.с.", "Глубина подъема отвала: 1.5 м", "Работа при -50°C"],
         specsEn: ["Power: 300 HP", "Blade lift depth: 1.5 m", "Operation at -50°C"],
@@ -319,7 +295,7 @@ const equipmentCategories = [
         image: "/images/bulldozer.jpg"
       },
       {
-        name: "Экскаватор",
+        name: "Экскаваторы",
         nameEn: "Excavator",
         specs: ["Вместимость ковша: 2.5 м³", "Глубина копания: 5 м", "Дизельный двигатель"],
         specsEn: ["Bucket capacity: 2.5 m³", "Digging depth: 5 m", "Diesel engine"],
@@ -327,7 +303,15 @@ const equipmentCategories = [
         image: "/images/excavator.jpg"
       },
       {
-        name: "Погрузчик",
+        name: "Погрузчики",
+        nameEn: "Loader",
+        specs: ["Грузоподъемность: 3.5 т", "Ковш 2 м³", "Полный привод"],
+        specsEn: ["Load capacity: 3.5 t", "Bucket 2 m³", "4WD"],
+
+        image: "/images/loader.jpg"
+      },
+      {
+        name: "Вахтовые автомобили",
         nameEn: "Loader",
         specs: ["Грузоподъемность: 3.5 т", "Ковш 2 м³", "Полный привод"],
         specsEn: ["Load capacity: 3.5 t", "Bucket 2 m³", "4WD"],
@@ -379,7 +363,7 @@ export function EquipmentContent() {
             </div>
             
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {t('Современное оборудование', 'Modern Equipment')}
+              {t('Современное оборудование и техника', 'Modern Equipment and Technology')}
             </h1>
             
             <p className="text-xl text-white/90 leading-relaxed">
