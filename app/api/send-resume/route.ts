@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Файл резюме должен быть не больше 8 МБ.' }, { status: 400 })
       }
       if (!ALLOWED_EXTENSIONS.has(extension) || !ALLOWED_MIME_TYPES.has(resume.type || 'application/octet-stream')) {
-        return NextResponse.json({ error: 'Поддерживаются файлы PDF, DOC, DOCX, RTF и ODT.' }, { status: 400 })
+        return NextResponse.json({ error: 'Поддерживаются файлы PDF, DOC и DOCX.' }, { status: 400 })
       }
 
       attachments.push({
@@ -75,6 +75,7 @@ export async function POST(request: NextRequest) {
         content: Buffer.from(await resume.arrayBuffer()),
         contentType: resume.type || undefined,
       })
+    }
 
     if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
       console.error('Resume form: SMTP credentials are not configured')
