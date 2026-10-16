@@ -587,6 +587,7 @@ export default function ContactsContent() {
                           id="resume"
                           type="file"
                           accept=".pdf,.doc,.docx"
+                          required
                           onChange={handleFileChange}
                           className="flex-1 bg-background"
                         />
