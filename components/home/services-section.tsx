@@ -80,22 +80,38 @@ const services = [
   },
 ]
 
-export function ServicesSection() {
+interface ServicesSectionProps {
+  /** 'page' — используется как основной блок страницы /services (заголовок h1, без кнопки «Все услуги») */
+  variant?: 'section' | 'page'
+}
+
+export function ServicesSection({ variant = 'section' }: ServicesSectionProps) {
   const { t } = useLanguage()
+  const isPage = variant === 'page'
+  const Heading = isPage ? motion.h1 : motion.h2
 
   return (
-    <section id="services" className="section">
+    <section id="services" className={isPage ? 'section pt-32' : 'section'}>
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
           <div>
-            <motion.h2 
+            {isPage && (
+              <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm">
+                <Link href="/" className="hover:text-[var(--accent)] transition-colors">
+                  {t('Главная', 'Home')}
+                </Link>
+                <span>/</span>
+                <span className="text-foreground">{t('Услуги', 'Services')}</span>
+              </div>
+            )}
+            <Heading
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-4"
+              className={`${isPage ? 'text-4xl lg:text-5xl' : 'text-3xl lg:text-4xl'} font-bold text-foreground mb-4`}
             >
               {t('Наши услуги', 'Our Services')}
-            </motion.h2>
+            </Heading>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -110,13 +126,15 @@ export function ServicesSection() {
             </motion.p>
           </div>
           
-          <Link 
-            href="/services" 
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f97316] text-white font-medium transition-all hover:bg-[#ea580c] shrink-0"
-          >
-            {t('Все услуги', 'All Services')}
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          {!isPage && (
+            <Link
+              href="/services"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium transition-all hover:bg-[var(--accent-h)] shrink-0"
+            >
+              {t('Все услуги', 'All Services')}
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -142,7 +160,7 @@ export function ServicesSection() {
                 <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                   {t(service.descRu, service.descEn)}
                 </p>
-                <div className="mt-4 flex items-center gap-1 text-sm text-[var(--accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0">
+                <div className="mt-4 flex items-center gap-1 text-sm text-[var(--accent)] lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 shrink-0">
                   {t('Подробнее', 'Learn more')}
                   <ArrowUpRight className="w-3 h-3" />
                 </div>

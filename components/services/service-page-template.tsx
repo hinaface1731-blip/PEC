@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { FallbackImage } from '@/components/ui/fallback-image'
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
 import { MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -164,9 +165,13 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-white/80 mb-4">
+            <div className="flex items-center gap-2 text-white/80 mb-4 flex-wrap">
               <Link href="/" className="hover:text-white transition-colors">
                 {t('Главная', 'Home')}
+              </Link>
+              <span>/</span>
+              <Link href="/services" className="hover:text-white transition-colors">
+                {t('Услуги', 'Services')}
               </Link>
               <span>/</span>
               <span className="text-white">
@@ -250,7 +255,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 </ul>
               </div>
               <div className="flex-1 lg:max-w-md">
-                <Image
+                <FallbackImage
                   src={data.methodsImage}
                   alt={t('Методы работ', 'Work methods')}
                   width={500}
@@ -263,7 +268,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
-      /*{/* 
+      {/* Блок «Применяемые методики и оборудование» временно отключён
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
@@ -425,7 +430,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                   </p>
                 </div>
                 <div className="relative w-full h-48 overflow-hidden bg-[var(--bg3)]">
-                  <Image
+                  <FallbackImage
                     src={result.image}
                     alt={t(result.titleRu, result.titleEn)}
                     fill
@@ -447,7 +452,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           </h2>
           <div className="card flex flex-col lg:flex-row gap-8">
             <div className="lg:w-1/3">
-              <Image
+              <FallbackImage
                 src={data.caseImage}
                 alt={t(data.caseStudy.titleRu, data.caseStudy.titleEn)}
                 width={500}
@@ -479,7 +484,6 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
       </section>
 
       {/* Geography */}
-        {/* Geography */}
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
@@ -501,7 +505,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
             {data.regions.map((region, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg3)] border border-[var(--border)] hover:border-[var(--accent)] transition-all cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg3)] border border-[var(--border)]"
               >
                 <MapPin className="w-4 h-4 text-[var(--accent)]" />
                 <span className="text-sm text-[var(--text)]">{t(region.ru, region.en)}</span>

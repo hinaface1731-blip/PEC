@@ -28,3 +28,5 @@ node_modules
 # IDE
 .vscode/
 .idea/
+# TypeScript incremental build info
+*.tsbuildinfo

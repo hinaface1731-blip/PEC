@@ -1,96 +1,45 @@
-// app/sitemap.ts
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://polar-ec.ru' // Замените на ваш реальный домен
-  
-  // Статические страницы
-  const staticPages = [
-    {
-      url: `${baseUrl}/`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/equipment`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contacts`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/career`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
-  ]
-  
-  // Страницы услуг
-  const servicePages = [
-    { path: '/services/geological', priority: 0.8 },
-    { path: '/services/geophysics', priority: 0.9 },
-    { path: '/services/drilling', priority: 0.8 },
-    { path: '/services/survey', priority: 0.8 },
-    { path: '/services/lab', priority: 0.8 },
-    { path: '/services/consulting', priority: 0.8 },
-    { path: '/services/ecology', priority: 0.8 },
-  ].map(service => ({
-    url: `${baseUrl}${service.path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: service.priority,
-  }))
-  
+const baseUrl = 'https://polar-ec.ru'
+
+type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>
+
+const pages: Array<{ path: string; priority: number; changeFrequency: ChangeFrequency }> = [
+  { path: '/', priority: 1.0, changeFrequency: 'weekly' },
+  { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/projects', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/equipment', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/investors', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/contacts', priority: 0.7, changeFrequency: 'weekly' },
+  { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
+
+  // Услуги
+  { path: '/services/geological', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/geophysics', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/drilling', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/mining', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/survey', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/logistics', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/lab', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/consulting', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/services/ecology', priority: 0.8, changeFrequency: 'monthly' },
+
   // Методы геофизики
-  const geophysicsMethods = [
-    { path: '/services/geophysics/electrical', priority: 0.7 },
-    { path: '/services/geophysics/magnetic', priority: 0.7 },
-    { path: '/services/geophysics/gravity', priority: 0.7 },
-    { path: '/services/geophysics/seismic', priority: 0.7 },
-    { path: '/services/geophysics/logging', priority: 0.7 },
-    { path: '/services/geophysics/software', priority: 0.6 },
-  ].map(method => ({
-    url: `${baseUrl}${method.path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: method.priority,
+  { path: '/services/geophysics/electrical', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/services/geophysics/magnetic', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/services/geophysics/gravity', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/services/geophysics/seismic', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/services/geophysics/logging', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/services/geophysics/software', priority: 0.5, changeFrequency: 'monthly' },
+]
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date()
+  return pages.map(({ path, priority, changeFrequency }) => ({
+    url: `${baseUrl}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
   }))
-  
-  
-  return [
-    ...staticPages,
-    ...servicePages,
-    ...geophysicsMethods,
-  ]
 }

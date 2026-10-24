@@ -1,13 +1,13 @@
 // components/language-provider.tsx
 'use client'
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useCallback, useContext, useState, useEffect, ReactNode } from 'react'
 
 type Language = 'ru' | 'en'
 
 interface LanguageContextType {
   language: Language
-  setLanguage: (lang: Language) => void  // ← должно быть
+  setLanguage: (lang: Language) => void
   t: (ru: string, en: string) => string
 }
 
@@ -17,20 +17,27 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('ru')
 
   useEffect(() => {
-    const saved = localStorage.getItem('language') as Language
-    if (saved && (saved === 'ru' || saved === 'en')) {
-      setLanguage(saved)
-    }
+    try {
+      const saved = localStorage.getItem('language')
+      if (saved === 'ru' || saved === 'en') {
+        setLanguage(saved)
+      }
+    } catch {}
   }, [])
 
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang)
-    localStorage.setItem('language', lang)
-  }
+  useEffect(() => {
+    document.documentElement.lang = language
+  }, [language])
 
-  const t = (ru: string, en: string) => {
-    return language === 'ru' ? ru : en
-  }
+  const handleSetLanguage = useCallback((lang: Language) => {
+    setLanguage(lang)
+    try {
+      localStorage.setItem('language', lang)
+    } catch {}
+  }, [])
+
+  // Стабильная ссылка на t, чтобы эффекты, зависящие от неё, не перезапускались на каждом рендере
+  const t = useCallback((ru: string, en: string) => (language === 'ru' ? ru : en), [language])
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>

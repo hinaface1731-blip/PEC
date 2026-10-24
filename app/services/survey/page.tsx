@@ -2,7 +2,7 @@ import { PageLayout } from '@/components/page-layout'
 import { SurveyContent } from '@/components/services/survey-content'
 
 export const metadata = {
-  title: 'Маркшейдерские работы — ПЭК',
+  title: 'Маркшейдерские работы',
   description: 'GNSS-съёмка RTK, тахеометрия, лазерное сканирование, аэрофотосъёмка с БПЛА.',
 }
 

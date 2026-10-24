@@ -3,11 +3,10 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Drill, Cpu, TestTube, Truck, ChevronRight, Check, Compass } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { CTAForm } from "@/components/cta-form"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
+import { FallbackImage } from "@/components/ui/fallback-image"
 
 const equipmentCategories = [
   {
@@ -436,7 +435,7 @@ export function EquipmentContent() {
                           className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all"
                         >
                           <div className="relative h-48 overflow-hidden">
-  <Image
+  <FallbackImage
     src={item.image}
     alt={t(item.name, item.nameEn || item.name)}
     fill
@@ -444,8 +443,6 @@ export function EquipmentContent() {
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     loading="lazy"
   />
-  <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
-  </div>
 </div>
                           
                           <div className="p-5">

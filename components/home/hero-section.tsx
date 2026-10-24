@@ -4,21 +4,9 @@ import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
 import { ArrowRight, Briefcase } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
 
 export function HeroSection() {
   const { t } = useLanguage()
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-  const [isFadingOut, setIsFadingOut] = useState(false)
-
-  useEffect(() => {
-    // Небольшая задержка перед началом фейда видео
-    const fadeTimer = setTimeout(() => {
-      setIsFadingOut(true)
-    }, 200)
-    
-    return () => clearTimeout(fadeTimer)
-  }, [])
 
   const scrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -30,28 +18,21 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Чёрный фон до загрузки видео */}
-      <div className="absolute inset-0 z-0 bg-black" />
-      
-      {/* Видео с плавным появлением */}
-      <div 
-        className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${
-          isFadingOut ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
+      {/* Видео; до его загрузки показывается постер (первый кадр ролика) */}
+      <div className="absolute inset-0 z-0 bg-black">
         <video 
           autoPlay 
           muted 
           loop 
           playsInline
           preload="auto"
+          poster="/videos/hero-poster.jpg"
+          aria-hidden="true"
           className="w-full h-full object-cover"
-          onLoadedData={() => setIsVideoLoaded(true)}
-          onCanPlay={() => setIsVideoLoaded(true)}
         >
-          <source src="/promo2.mp4" type="video/mp4" />
-          <source src="/Promo2(1).webm" type="video/webm" />
-          Ваш браузер не поддерживает видео
+          {/* Веб-версия ролика (H.264/VP9, 720p, без звука). Исходник: public/promo2.mp4 */}
+          <source src="/videos/hero.webm" type="video/webm" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

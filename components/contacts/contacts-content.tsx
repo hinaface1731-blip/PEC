@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Phone, Mail, Clock, Send, Building, Globe, Upload, FileText, CheckCircle, Briefcase, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
-import { useYandexMapsContext } from "@/components/yandex-map-loader"
+import { YandexMap } from "@/components/yandex-map-v3"
 import { useLanguage } from "@/components/language-provider"
 
 const officeInfo = {
@@ -23,8 +23,10 @@ const officeInfo = {
   email: "hr@polar-ec.ru",
   hours: "Пн-Пт: 10:00 - 18:00",
   hoursEn: "Mon-Fri: 10:00 - 18:00",
-  coordinates: [56.013528, 92.867583] as [number, number]
+  coordinates: [92.867583, 56.013528] as [number, number] // [долгота, широта]
 }
+
+const MAX_RESUME_SIZE_MB = 10
 
 // Вакансии с подробным описанием
 const vacancies = [
@@ -56,6 +58,9 @@ const vacancies = [
   },
 ]
 
+// Карточки-заготовки без названия (например, "-") на сайте не показываем
+const openVacancies = vacancies.filter((v) => v.titleRu.trim() && v.titleRu.trim() !== "-")
+
 export default function ContactsContent() {
   const { t } = useLanguage()
   const [formData, setFormData] = useState({
@@ -73,54 +78,16 @@ export default function ContactsContent() {
   const [activeVacancy, setActiveVacancy] = useState("")
   const [openDetails, setOpenDetails] = useState<number | null>(null)
   
-  const mapRef = useRef<HTMLDivElement>(null)
-  const { isReady, ymaps } = useYandexMapsContext()
-
-  // Инициализация карты
-  useEffect(() => {
-    if (!isReady || !ymaps || !mapRef.current) return
-
-    let map: any = null
-
-    try {
-      map = new ymaps.Map(mapRef.current, {
-        center: officeInfo.coordinates,
-        zoom: 15,
-        controls: ['zoomControl', 'fullscreenControl'],
-      })
-
-      const placemark = new ymaps.Placemark(
-        officeInfo.coordinates,
-        {
-          hintContent: t(officeInfo.city, officeInfo.cityEn),
-          balloonContent: `
-            <div style="padding: 10px; font-family: sans-serif;">
-              <strong>🏢 ${t(officeInfo.city, officeInfo.cityEn)}</strong><br/>
-              📍 ${t(officeInfo.address, officeInfo.addressEn)}<br/>
-              📞 ${officeInfo.phone}<br/>
-              ✉️ ${officeInfo.email}
-            </div>
-          `,
-        },
-        { preset: 'islands#blueIcon' }
-      )
-      map.geoObjects.add(placemark)
-    } catch (err) {
-      console.error('Ошибка инициализации карты:', err)
-    }
-
-    return () => {
-      if (map) {
-        map.destroy()
-        map = null
-      }
-    }
-  }, [isReady, ymaps, t])
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedFile(e.target.files[0])
+    const file = e.target.files?.[0] ?? null
+    if (file && file.size > MAX_RESUME_SIZE_MB * 1024 * 1024) {
+      setError(t(`Файл слишком большой (максимум ${MAX_RESUME_SIZE_MB} МБ)`, `File is too large (max ${MAX_RESUME_SIZE_MB} MB)`))
+      e.target.value = ''
+      setSelectedFile(null)
+      return
     }
+    setError('')
+    setSelectedFile(file)
   }
 
   const handleVacancyClick = (titleRu: string) => {
@@ -166,7 +133,7 @@ export default function ContactsContent() {
       setActiveVacancy("")
       setTimeout(() => setIsSubmitted(false), 5000)
     } catch (err) {
-      setError('Ошибка отправки. Попробуйте позже.')
+      setError(t('Ошибка отправки. Попробуйте позже.', 'Failed to send. Please try again later.'))
       setIsSubmitting(false)
     }
   }
@@ -373,6 +340,7 @@ export default function ContactsContent() {
                           id="resume"
                           type="file"
                           accept=".pdf,.doc,.docx"
+                          required
                           onChange={handleFileChange}
                           className="flex-1 bg-background"
                         />
@@ -384,7 +352,7 @@ export default function ContactsContent() {
                         )}
                       </div>
                       <p className="text-xs text-muted-foreground mt-1">
-                        {t('Поддерживаемые форматы: PDF, DOC, DOCX', 'Supported formats: PDF, DOC, DOCX')}
+                        {t(`Поддерживаемые форматы: PDF, DOC, DOCX (до ${MAX_RESUME_SIZE_MB} МБ)`, `Supported formats: PDF, DOC, DOCX (up to ${MAX_RESUME_SIZE_MB} MB)`)}
                       </p>
                     </div>
 
@@ -432,20 +400,22 @@ export default function ContactsContent() {
                 <h3 className="font-display text-xl font-semibold text-foreground mb-4">
                   {t('Мы находимся здесь', 'We Are Located Here')}
                 </h3>
-                <div
-                  ref={mapRef}
-                  className="rounded-xl overflow-hidden"
-                  style={{ width: '100%', height: '400px' }}
-                >
-                  {!isReady && (
-                    <div className="w-full h-full flex items-center justify-center bg-muted">
-                      <span className="text-muted-foreground">{t('Загрузка карты...', 'Loading map...')}</span>
-                    </div>
-                  )}
-                </div>
+                <YandexMap
+                  points={[{
+                    coordinates: officeInfo.coordinates,
+                    title: `${t(officeInfo.city, officeInfo.cityEn)}, ${t(officeInfo.address, officeInfo.addressEn)}`,
+                    color: '#2980b9',
+                    size: 28,
+                  }]}
+                  center={officeInfo.coordinates}
+                  zoom={15}
+                  height={400}
+                  styled={false}
+                  className="rounded-xl shadow-none"
+                />
                 <div className="mt-4 text-center">
                   <a
-                    href="https://maps.yandex.ru/?text=Красноярск, улица Ленина, 84"
+                    href="https://yandex.ru/maps/?text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%8F%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0%2C%2084"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-primary hover:underline inline-flex items-center gap-1"
@@ -480,8 +450,17 @@ export default function ContactsContent() {
             </p>
           </motion.div>
 
+          {openVacancies.length === 0 && (
+            <p className="text-center text-muted-foreground max-w-xl mx-auto">
+              {t(
+                'Сейчас открытых вакансий нет. Отправьте резюме через форму выше — мы свяжемся с вами, когда появится подходящая позиция.',
+                'There are no open positions right now. Send your resume using the form above and we will contact you when a suitable position opens.'
+              )}
+            </p>
+          )}
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {vacancies.map((vacancy, index) => (
+            {openVacancies.map((vacancy, index) => (
               <motion.div
                 key={vacancy.id}
                 initial={{ opacity: 0, y: 20 }}

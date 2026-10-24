@@ -3,7 +3,6 @@ import { Unbounded, Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
-import { YandexMapScript } from '@/components/yandex-map-script'  // ← импортируем API 3.0
 import './globals.css'
 
 const unbounded = Unbounded({
@@ -21,8 +20,11 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://polar-ec.ru'), 
-  title: 'Полярная Экспедиционная Компания',
+  metadataBase: new URL('https://polar-ec.ru'),
+  title: {
+    default: 'Полярная Экспедиционная Компания',
+    template: '%s — Полярная Экспедиционная Компания',
+  },
   description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
   keywords: 'геологоразведка, ГРР, бурение, геофизика, Арктика, Сибирь, геологические работы',
   openGraph: {
@@ -34,8 +36,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/logo.png',
-        width: 1200,
-        height: 630,
+        width: 1272,
+        height: 509,
         alt: 'Полярная Экспедиционная Компания',
       },
     ],
@@ -53,6 +55,8 @@ export const metadata: Metadata = {
   },
 }
 
+const themeInitScript = `try{var t=localStorage.getItem('pek-theme');document.documentElement.classList.toggle('dark',t!=='light')}catch(e){}`
+
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
@@ -66,11 +70,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" suppressHydrationWarning data-scroll-behavior="smooth">
+    <html lang="ru" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
+      <head>
+        {/* Применяем сохранённую тему до первой отрисовки, чтобы не было «вспышки» светлой темы */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className={`${unbounded.variable} ${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
-            <YandexMapScript />  {/* ← заменено на API 3.0 */}
             {children}
           </LanguageProvider>
         </ThemeProvider>

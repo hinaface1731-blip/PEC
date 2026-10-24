@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'  // ← добавляем
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
@@ -31,7 +31,7 @@ const navItems = [
 ]
 
 export function Header() {
-  const pathname = usePathname()  // ← текущий путь
+  const pathname = usePathname()
   const { theme, toggleTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -57,7 +57,10 @@ export function Header() {
   // Закрытие мобильного меню при клике вне
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+      const target = event.target as HTMLElement
+      // Клик по кнопке-бургеру обрабатывает её собственный onClick
+      if (target.closest('[data-mobile-menu-toggle]')) return
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(target)) {
         setMobileMenuOpen(false)
         setMobileServicesOpen(false)
       }
@@ -80,7 +83,20 @@ export function Header() {
   useEffect(() => {
     setMobileMenuOpen(false)
     setMobileServicesOpen(false)
+    setServicesOpen(false)
   }, [pathname])
+
+  // Закрытие меню по Escape
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setServicesOpen(false)
+        setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -132,8 +148,17 @@ export function Header() {
             className="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setServicesOpen(false)
+            }}
           >
             <button
+              type="button"
+              // Мышью меню открывается по наведению, поэтому клик только открывает его;
+              // с клавиатуры (detail === 0) кнопка работает как переключатель
+              onClick={(e) => setServicesOpen((open) => (e.detail === 0 ? !open : true))}
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
               className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 ${
                 isServicesActive()
                   ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
@@ -144,6 +169,7 @@ export function Header() {
               <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
             </button>
 
+            <AnimatePresence>
             {servicesOpen && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -165,10 +191,16 @@ export function Header() {
                       {t(service.ru, service.en)}
                     </Link>
                   ))}
-                 
+                  <Link
+                    href="/services"
+                    className="block px-5 py-3 mt-1 border-t border-[var(--border)] font-semibold text-[var(--accent)] hover:bg-[var(--bg3)] transition-all"
+                  >
+                    {t('Все услуги →', 'All Services →')}
+                  </Link>
                 </div>
               </motion.div>
             )}
+            </AnimatePresence>
           </div>
 
           {/* Остальные пункты */}
@@ -190,21 +222,29 @@ export function Header() {
         {/* Right side controls */}
         <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}
+            aria-label={t('Switch to English', 'Переключить на русский')}
             className="px-3 py-2 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
           >
             {language === 'ru' ? 'EN' : 'RU'}
           </button>
 
           <button
+            type="button"
             onClick={toggleTheme}
+            aria-label={theme === 'dark' ? t('Светлая тема', 'Light theme') : t('Тёмная тема', 'Dark theme')}
             className="p-2 text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
           >
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
 
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            data-mobile-menu-toggle
+            aria-label={mobileMenuOpen ? t('Закрыть меню', 'Close menu') : t('Открыть меню', 'Open menu')}
+            aria-expanded={mobileMenuOpen}
             className="lg:hidden p-2 text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -239,7 +279,9 @@ export function Header() {
               {/* Услуги Dropdown в мобильном меню */}
               <div>
                 <button
+                  type="button"
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  aria-expanded={mobileServicesOpen}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all ${
                     isServicesActive()
                       ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'

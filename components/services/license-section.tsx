@@ -19,12 +19,12 @@ const licenseInfo = {
     {
       titleRu: 'Уведомление о предоставлении лицензии',
       titleEn: 'License Grant Notification',
-      url: '/docs/license-marksheyderskie-raboty.pdf',
+      url: '/documents/license-marksheyderskie-raboty.pdf',
     },
     {
       titleRu: 'Выписка из реестра лицензий',
       titleEn: 'License Registry Extract',
-      url: '/docs/vypiska-reestr-license.pdf',
+      url: '/documents/vypiska-reestr-license.pdf',
     },
   ],
   works: [
@@ -51,10 +51,10 @@ export function LicenseSection() {
               <Shield className="w-4 h-4" />
               {t('Лицензия', 'License')}
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--fg)] mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[var(--text)] mb-4">
               {t('Лицензия Ростехнадзора', 'Rostechnadzor License')}
             </h2>
-            <p className="text-[var(--fg2)] max-w-2xl mx-auto">
+            <p className="text-[var(--muted)] max-w-2xl mx-auto">
               {t(
                 'Маркшейдерское обеспечение выполняемых работ осуществляется на основании лицензии Федеральной службы по экологическому, технологическому и атомному надзору',
                 'Mining surveying support is provided under the license of the Federal Service for Ecological, Technological and Nuclear Supervision'
@@ -73,10 +73,10 @@ export function LicenseSection() {
                     <Award className="w-6 h-6 text-[var(--accent)]" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-bold text-[var(--fg)]">
+                    <h3 className="font-display text-xl font-bold text-[var(--text)]">
                       {t(licenseInfo.activityRu, licenseInfo.activityEn)}
                     </h3>
-                    <p className="text-sm text-[var(--fg2)]">
+                    <p className="text-sm text-[var(--muted)]">
                       {t(licenseInfo.authorityRu, licenseInfo.authorityEn)}
                     </p>
                   </div>
@@ -84,19 +84,19 @@ export function LicenseSection() {
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-6">
                   <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Регистрационный номер', 'Registration Number')}</p>
-                    <p className="font-mono text-sm font-semibold text-[var(--fg)]">{t(licenseInfo.numberRu, licenseInfo.numberEn)}</p>
+                    <p className="text-xs text-[var(--muted)] mb-1">{t('Регистрационный номер', 'Registration Number')}</p>
+                    <p className="font-mono text-sm font-semibold text-[var(--text)]">{t(licenseInfo.numberRu, licenseInfo.numberEn)}</p>
                   </div>
                   <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Дата выдачи', 'Issue Date')}</p>
-                    <p className="font-semibold text-[var(--fg)]">{t(licenseInfo.dateRu, licenseInfo.dateEn)}</p>
+                    <p className="text-xs text-[var(--muted)] mb-1">{t('Дата выдачи', 'Issue Date')}</p>
+                    <p className="font-semibold text-[var(--text)]">{t(licenseInfo.dateRu, licenseInfo.dateEn)}</p>
                   </div>
                   <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Срок действия', 'Validity')}</p>
+                    <p className="text-xs text-[var(--muted)] mb-1">{t('Срок действия', 'Validity')}</p>
                     <p className="font-semibold text-[var(--accent)]">{t(licenseInfo.termRu, licenseInfo.termEn)}</p>
                   </div>
                   <div className="p-4 rounded-lg bg-[var(--bg)]">
-                    <p className="text-xs text-[var(--fg2)] mb-1">{t('Статус', 'Status')}</p>
+                    <p className="text-xs text-[var(--muted)] mb-1">{t('Статус', 'Status')}</p>
                     <p className="font-semibold text-green-500">{t('Действующая', 'Active')}</p>
                   </div>
                 </div>
@@ -120,13 +120,13 @@ export function LicenseSection() {
 
               {/* Licensed Works */}
               <div className="flex-1">
-                <h4 className="font-semibold text-[var(--fg)] mb-4 flex items-center gap-2">
+                <h4 className="font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
                   <FileText className="w-5 h-5 text-[var(--accent)]" />
                   {t('Лицензируемые виды работ', 'Licensed Work Types')}
                 </h4>
                 <ul className="space-y-2">
                   {licenseInfo.works.map((work, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-[var(--fg2)]">
+                    <li key={idx} className="flex items-start gap-2 text-sm text-[var(--muted)]">
                       <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2 shrink-0" />
                       {t(work.ru, work.en)}
                     </li>
@@ -143,10 +143,10 @@ export function LicenseSection() {
               <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
                 <Award className="w-5 h-5 text-[var(--accent)]" />
               </div>
-              <h4 className="font-semibold text-[var(--fg)] mb-2">
+              <h4 className="font-semibold text-[var(--text)] mb-2">
                 {t('Специалисты:', 'Specialists:')}
               </h4>
-              <p className="text-sm text-[var(--fg2)]">
+              <p className="text-sm text-[var(--muted)]">
                 {t(
                   'Сотрудники маркшейдерской службы имеют профессиональное образование, проходят обязательное повышение квалификации, имеют необходимые аттестации по промышленной безопасности для безопасной работы на объектах горных, буровых работ, опасных производственных объектах.',
                   'Employees of the mine surveying service have professional education, undergo mandatory advanced training, and have the necessary industrial safety certifications for safe work at mining, drilling, and hazardous production facilities.'
@@ -158,10 +158,10 @@ export function LicenseSection() {
               <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
                 <Shield className="w-5 h-5 text-[var(--accent)]" />
               </div>
-              <h4 className="font-semibold text-[var(--fg)] mb-2">
+              <h4 className="font-semibold text-[var(--text)] mb-2">
                 {t('Высокие стандарты', 'High standards')}
               </h4>
-              <p className="text-sm text-[var(--fg2)]">
+              <p className="text-sm text-[var(--muted)]">
                 {t(
                   'Работы выполняются в соответствии с требованиями законодательства РФ и локальными нормативными актами компании. Осуществляется регулярный внутренний контроль за качеством работ.',
                   'Work is performed in accordance with Russian legislation and company regulatory documents. Regular internal quality control is carried out.'
@@ -173,10 +173,10 @@ export function LicenseSection() {
               <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
                 <Compass className="w-5 h-5 text-[var(--accent)]" />
               </div>
-              <h4 className="font-semibold text-[var(--fg)] mb-2">
+              <h4 className="font-semibold text-[var(--text)] mb-2">
                 {t('Оборудование:', 'Equipment:')}
               </h4>
-              <p className="text-sm text-[var(--fg2)]">
+              <p className="text-sm text-[var(--muted)]">
                 {t(
                   'Парк оборудования состоит из высокоточных, точных и технических средств измерений. Все оборудование проходит обязательные метрологические поверки.',
                   'The equipment park consists of high-precision, accurate, and technical measuring instruments. All equipment undergoes mandatory metrological inspections.'

@@ -2,7 +2,7 @@ import { PageLayout } from '@/components/page-layout'
 import { DrillingContent } from '@/components/services/drilling-content'
 
 export const metadata = {
-  title: 'Буровые работы — Полярная Экспедиционная Компания',
+  title: 'Буровые работы',
   description: 'Колонковое бурение, шарошечное бурение, гидрогеологические скважины.',
 }
 

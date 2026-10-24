@@ -2,7 +2,7 @@ import { PageLayout } from '@/components/page-layout'
 import { EcologyContent } from '@/components/services/ecology-content'
 
 export const metadata = {
-  title: 'Экология и рекультивация — Полярная Экспедиционная Компания',
+  title: 'Экология и рекультивация',
   description: 'ОВОС, экологический мониторинг, проекты рекультивации, прохождение ГЭЭ.',
 }
 

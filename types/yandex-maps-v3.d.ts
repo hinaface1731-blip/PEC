@@ -5,11 +5,12 @@ declare global {
       YMap: any
       YMapDefaultSchemeLayer: any
       YMapDefaultMarker: any
+      YMapMarker: any
       YMapZoomControl: any
       YMapGeolocationControl: any
       YMapDefaultFeaturesLayer: any
       YMapListener: any
-      ready: () => Promise<void>
+      ready: Promise<void>
     }
   }
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Image from 'next/image'
+import { FallbackImage } from '@/components/ui/fallback-image'
 
 interface Step {
   titleRu: string
@@ -79,12 +79,6 @@ export function StepsCarousel({ steps, stepImages, t }: StepsCarouselProps) {
             className="space-y-4 transition-opacity duration-200"
             style={{ opacity: isFading ? 0 : 1 }}
           >
-            {/* Номер шага */}
-            <div className="flex items-center gap-3">
-             
-              
-            </div>
-
             {/* Заголовок - фиксированная высота (2 строки) */}
             <div className="min-h-[4rem]">
               <h3 className="text-2xl font-bold text-[var(--text)] leading-tight">
@@ -106,6 +100,8 @@ export function StepsCarousel({ steps, stepImages, t }: StepsCarouselProps) {
               <button
                 key={i}
                 onClick={() => goTo(i)}
+                aria-label={t(`Этап ${i + 1}`, `Step ${i + 1}`)}
+                aria-current={i === currentIndex ? 'step' : undefined}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   i === currentIndex
                     ? 'w-8 bg-[var(--accent)]'
@@ -119,10 +115,11 @@ export function StepsCarousel({ steps, stepImages, t }: StepsCarouselProps) {
         {/* Правая колонка - изображение с кнопками на нём */}
         <div className="relative group">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--bg3)]">
-            <Image
+            <FallbackImage
               src={currentImage}
               alt={t(currentStep.titleRu, currentStep.titleEn)}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover transition-opacity duration-200"
               style={{ opacity: isFading ? 0.8 : 1 }}
             />
@@ -137,14 +134,16 @@ export function StepsCarousel({ steps, stepImages, t }: StepsCarouselProps) {
             {/* Кнопки навигации НА КАРТИНКЕ */}
             <button
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
+              aria-label={t('Предыдущий этап', 'Previous step')}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-black/70"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             
             <button
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
+              aria-label={t('Следующий этап', 'Next step')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-black/70"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

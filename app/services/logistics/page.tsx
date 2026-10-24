@@ -2,7 +2,7 @@ import { PageLayout } from '@/components/page-layout'
 import { LogisticsContent } from '@/components/services/logistics-content'
 
 export const metadata = {
-  title: 'Логистика и снабжение — Полярная Экспедиционная Компания',
+  title: 'Логистика и снабжение',
   description: 'Северный завоз, доставка грузов в Арктику и Сибирь, снабжение удалённых объектов, экспедиционное сопровождение. Надёжная логистика для ГРР.',
 }
 

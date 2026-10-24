@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: { ignoreBuildErrors: true },
-  images: { 
-    unoptimized: false,  // ← убедитесь, что false (или удалите эту строку)
-    formats: ['image/avif', 'image/webp'],  // ← конвертация в AVIF и WebP
+  images: {
+    formats: ['image/avif', 'image/webp'],
   },
   allowedDevOrigins: ['192.168.175.1'],
 }

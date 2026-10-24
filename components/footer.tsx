@@ -9,9 +9,9 @@ const services = [
   { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
   { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Works' },
   { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Works' },
-  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },  // ← добавить
+  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },
   { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Survey Works' },
-  { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' },  // ← добавить
+  { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' },
   { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
   { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
   { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
@@ -19,7 +19,7 @@ const services = [
 
 const company = [
   { href: '/about', ru: 'О компании', en: 'About Us' },
-  { href: '/investors', ru: 'Инвесторам', en: 'Investors' },  // ← добавить
+  { href: '/investors', ru: 'Инвесторам', en: 'Investors' },
   { href: '/projects', ru: 'Проекты', en: 'Projects' },
   { href: '/equipment', ru: 'Техника', en: 'Equipment' },
   { href: '/contacts', ru: 'Контакты', en: 'Contacts' },
@@ -41,7 +41,6 @@ export function Footer() {
                 width={150}
                 height={60}
                 className="object-contain dark:brightness-0 dark:invert"
-                priority
               />
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
@@ -123,7 +122,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-[var(--muted2)]">
-            © 2026 {t('ООО «Полярная Экспедиционная Компания». Все права защищены.', 'LLC "Polar Expedition Company". All rights reserved.')}
+            © {new Date().getFullYear()} {t('ООО «Полярная Экспедиционная Компания». Все права защищены.', 'LLC "Polar Expedition Company". All rights reserved.')}
           </p>
           <div className="flex items-center gap-6 text-sm">
             <Link href="/privacy" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">

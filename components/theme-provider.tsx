@@ -14,18 +14,17 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark')
 
+  // Класс на <html> уже выставлен скриптом в layout — синхронизируем с ним состояние
   useEffect(() => {
-    const stored = localStorage.getItem('pek-theme') as Theme | null
-    if (stored) {
-      setTheme(stored)
-      document.documentElement.classList.toggle('dark', stored === 'dark')
-    }
+    setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light')
   }, [])
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     setTheme(newTheme)
-    localStorage.setItem('pek-theme', newTheme)
+    try {
+      localStorage.setItem('pek-theme', newTheme)
+    } catch {}
     document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
