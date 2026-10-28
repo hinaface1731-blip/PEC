@@ -204,11 +204,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/project.jpg',
+    '/images/site/stream-sampling.jpg',
+    '/images/site/core-cutting.jpg',
+    '/images/methods/software-gis.jpg',
+    '/images/site/desk-documents.jpg',
   ],
   
 results: [
@@ -253,7 +253,7 @@ results: [
     resultRu: 'Выявлено 7 перспективных участков на медно-никелевое оруденение. Подготовлены рекомендации по дальнейшим работам.',
     resultEn: 'Identified 7 prospective areas for copper-nickel mineralization. Prepared recommendations for further work.',
   },
-  caseImage: '/images/geoproject.JPG',
+  caseImage: '/images/site/geologists-outcrop.jpg',
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },

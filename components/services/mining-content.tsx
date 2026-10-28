@@ -158,11 +158,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/site/camp-aerial.jpg',
+    '/images/site/site-clearing.jpg',
+    '/images/site/trenching.jpg',
+    '/images/site/excavator.jpg',
+    '/images/site/bulldozer-chukotka.jpg',
   ],
   
   results: [
@@ -171,28 +171,28 @@ const data: ServicePageData = {
       titleEn: 'Exposed Reserves',
       descRu: 'Подготовка запасов к добыче, вскрытие продуктивных горизонтов',
       descEn: 'Reserve preparation for mining, productive horizon exposure',
-      image: '/images/results/exposed-reserves.jpg',
+      image: '/images/site/bulldozers-night.jpg',
     },
     {
       titleRu: 'Добытое сырьё',
       titleEn: 'Extracted Minerals',
       descRu: 'Полезное ископаемое, подготовленное к переработке или отгрузке',
       descEn: 'Mineral ready for processing or shipping',
-      image: '/images/results/extracted-minerals.jpg',
+      image: '/images/site/placer-panning.jpg',
     },
     {
       titleRu: 'Горная документация',
       titleEn: 'Mining Documentation',
       descRu: 'Планы горных работ, акты на списание, маркшейдерские планы',
       descEn: 'Mining plans, write-off acts, survey plans',
-      image: '/images/results/mining-docs.jpg',
+      image: '/images/results/georazrez.jpg',
     },
     {
       titleRu: 'Рекультивация',
       titleEn: 'Reclamation',
       descRu: 'Восстановление нарушенных земель, возврат исходного ландшафта',
       descEn: 'Land restoration, original landscape return',
-      image: '/images/results/reclamation-area.jpg',
+      image: '/images/site/reclamation.jpg',
     },
   ],
   
@@ -207,7 +207,7 @@ const data: ServicePageData = {
     resultRu: 'Отработка месторождения выполнена с опережением графика на 15%. Применена технология сезонной оттайки пород, что позволило снизить затраты на подготовку.',
     resultEn: 'Deposit mining completed 15% ahead of schedule. Seasonal rock thawing technology reduced preparation costs.',
   },
-  caseImage: '/images/mining-case.jpg',
+  caseImage: '/images/site/tundra-helicopter.jpg',
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },

@@ -175,11 +175,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/site/sample-intake.jpg',
+    '/images/site/sample-prep.jpg',
+    '/images/site/lab-analysis.jpg',
+    '/images/site/lab-qc.jpg',
+    '/images/site/desk-documents.jpg',
   ],
   
   results: [
@@ -188,28 +188,28 @@ const data: ServicePageData = {
       titleEn: 'Analysis Protocols',
       descRu: 'Аккредитованные протоколы испытаний',
       descEn: 'Accredited test protocols',
-      image: '/images/results/protocols.jpg',
+      image: '/images/results/geootchet.jpg',
     },
     {
       titleRu: 'Цифровые данные',
       titleEn: 'Digital Data',
       descRu: 'Результаты в Excel, CSV для импорта в базы',
       descEn: 'Results in Excel, CSV for database import',
-      image: '/images/results/digital-data.jpg',
+      image: '/images/results/geobaza.jpg',
     },
     {
       titleRu: 'Минералогические заключения',
       titleEn: 'Mineralogical Reports',
       descRu: 'Описания шлифов, фотографии, интерпретация',
       descEn: 'Thin section descriptions, photos, interpretation',
-      image: '/images/results/mineralogy.jpg',
+      image: '/images/site/rock-samples.jpg',
     },
     {
       titleRu: 'Грунтовые заключения',
       titleEn: 'Soil Reports',
       descRu: 'Характеристики грунтов для проектирования',
       descEn: 'Soil properties for design purposes',
-      image: '/images/results/soil-report.jpg',
+      image: '/images/site/lab-soil.jpg',
     },
   ],
   
@@ -224,7 +224,7 @@ const data: ServicePageData = {
     resultRu: 'Выявлено рудное тело мощностью 12 м с содержанием Au до 8 г/т. Данные использованы для подсчёта запасов.',
     resultEn: 'Identified ore body 12m thick with Au grades up to 8 g/t. Data used for resource estimation.',
   },
-  caseImage: '/images/rocks.jpg',
+  caseImage: '/images/site/core-cutting.jpg',
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },

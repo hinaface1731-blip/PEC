@@ -4,9 +4,17 @@ import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
 import { ArrowRight, Briefcase } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 export function HeroSection() {
   const { t } = useLanguage()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isVideoReady, setIsVideoReady] = useState(false)
+
+  // Видео могло успеть загрузиться до гидрации — тогда onCanPlay уже не сработает
+  useEffect(() => {
+    if (videoRef.current && videoRef.current.readyState >= 3) setIsVideoReady(true)
+  }, [])
 
   const scrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -18,17 +26,20 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Видео; до его загрузки показывается постер (первый кадр ролика) */}
+      {/* Тёмный фон, пока видео не готово, затем плавное появление ролика */}
       <div className="absolute inset-0 z-0 bg-black">
-        <video 
+        <video
+          ref={videoRef}
           autoPlay 
           muted 
           loop 
           playsInline
           preload="auto"
-          poster="/videos/hero-poster.jpg"
           aria-hidden="true"
-          className="w-full h-full object-cover"
+          onCanPlay={() => setIsVideoReady(true)}
+          className={`w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+            isVideoReady ? 'opacity-100' : 'opacity-0'
+          }`}
         >
           {/* Веб-версия ролика (H.264/VP9, 720p, без звука). Исходник: public/promo2.mp4 */}
           <source src="/videos/hero.webm" type="video/webm" />

@@ -153,11 +153,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/site/survey-area.jpg',
+    '/images/site/gnss-peak.jpg',
+    '/images/site/uav-survey.jpg',
+    '/images/methods/software-gis.jpg',
+    '/images/results/geobaza.jpg',
   ],
   results: [
     {
@@ -165,28 +165,28 @@ const data: ServicePageData = {
       titleEn: 'Survey Plans',
       descRu: '2D и 3D форматы участков работ',
       descEn: '2D and 3D work area formats',
-      image: '/images/results/survey-plans.jpg',
+      image: '/images/results/geomap.jpg',
     },
     {
       titleRu: 'Акты замеров',
       titleEn: 'Measurement Acts',
       descRu: 'Координатная привязка и объемы горных работ',
       descEn: 'Coordinate referencing and mining volumes',
-      image: '/images/results/measurement-acts.jpg',
+      image: '/images/site/gnss-tripod.jpg',
     },
     {
       titleRu: 'Картограммы объемов',
       titleEn: 'Volume Cartograms',
       descRu: 'Сравнение проектных и фактических показателей',
       descEn: 'Project vs actual comparison',
-      image: '/images/results/volume-cartograms.jpg',
+      image: '/images/results/magmap.jpg',
     },
     {
       titleRu: 'Часть отчета ГРР',
       titleEn: 'GRR Report Section',
       descRu: 'Маркшейдерская документация для отчета',
       descEn: 'Survey documentation for report',
-      image: '/images/results/grr-report.jpg',
+      image: '/images/results/geootchet.jpg',
     },
   ],
   caseStudy: {
@@ -200,7 +200,7 @@ const data: ServicePageData = {
     resultRu: 'Высокоточная привязка всех горных выработок. Оперативный контроль буровых работ. Полный комплект исполнительной документации.',
     resultEn: 'High-precision referencing of all workings. Prompt drilling control. Complete executive documentation package.',
   },
-  caseImage: '/images/mark-case.JPG',
+  caseImage: '/images/site/survey-slope.jpg',
   regions: [
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
     { ru: 'Якутия', en: 'Yakutia' },

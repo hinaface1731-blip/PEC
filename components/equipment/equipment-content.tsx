@@ -192,7 +192,7 @@ const equipmentCategories = [
         specs: ["Элементы: от Na до U", "Время анализа: 2-5 мин", "Портативный вариант"],
         specsEn: ["Elements: from Na to U", "Analysis time: 2-5 min", "Portable version"],
 
-        image: "/images/vanta.jpg"
+        image: "/images/equipment/1530699564047_1.png"
       },
       {
         name: "Тринокулярный микроскоп Opto-Edu A15.1017-T поляризационный",
@@ -200,7 +200,7 @@ const equipmentCategories = [
         specs: ["Мультиэлементный анализ", "Оптическое увеличение 40-400 крат", "До 70 элементов"],
         specsEn: ["Multi-element analysis", "Optical magnification 40-400x", "Up to 70 elements"],
 
-        image: "/images/micro.jpg"
+        image: "/images/equipment/mircoscope.png"
       }
     ]
   },
@@ -218,7 +218,7 @@ const equipmentCategories = [
         specs: ["RTK точность: 8 мм + 1 ppm", "GPS/ГЛОНАСС/Galileo/BeiDou", "IMU для измерения наклона"],
         specsEn: ["RTK accuracy: 8 mm + 1 ppm", "GPS/GLONASS/Galileo/BeiDou", "Tilt compensation IMU"],
 
-        image: "/images/Trimble-R12i.png"
+        image: "/images/site/gnss-tripod.jpg"
       },
       {
         name: "GNSS приемник SOUTH Galaxy G9",
@@ -226,7 +226,7 @@ const equipmentCategories = [
         specs: ["Высокая интегрированность", "Дальность: 130 м", "HDR камера"],
         specsEn: ["High integration", "Range: 130 m", "HDR camera"],
   
-        image: "/images/g9.jpg"
+        image: "/images/site/gnss-peak.jpg"
       },
       {
         name: "GNSS приемник SOUTH Galaxy G1",
@@ -234,7 +234,7 @@ const equipmentCategories = [
         specs: ["Точность: 0.3 мм/км", "Автоматическая запись", "Работа при -20°C"],
         specsEn: ["Accuracy: 0.3 mm/km", "Automatic recording", "Operation at -20°C"],
 
-        image: "/images/south-galaxy-g1-001.jpg"
+        image: "/images/site/survey-slope.jpg"
       },
       {
         name: "БПЛА для аэрофотосъёмки",

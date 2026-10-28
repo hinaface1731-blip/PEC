@@ -152,11 +152,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/results/georazrez.jpg',
+    '/images/site/loading-crane.jpg',
+    '/images/site/drilling-rig-inside.jpg',
+    '/images/site/core-documentation.jpg',
+    '/images/site/drill-site-winter.jpg',
   ],
   
   results: [
@@ -165,28 +165,28 @@ const data: ServicePageData = {
       titleEn: 'Core',
       descRu: 'Образцы горных пород для геологического изучения и анализа',
       descEn: 'Rock samples for geological study and analysis',
-      image: '/images/results/core-sample.jpg',
+      image: '/images/site/core-boxes.jpg',
     },
     {
       titleRu: 'Документация',
       titleEn: 'Documentation',
       descRu: 'Буровые журналы, акты, фото керна, разрезы скважин',
       descEn: 'Drilling logs, reports, core photos, well sections',
-      image: '/images/results/drilling-docs.jpg',
+      image: '/images/results/geootchet.jpg',
     },
     {
       titleRu: 'Каротажные данные',
       titleEn: 'Logging Data',
       descRu: 'Результаты ГИС для интерпретации разреза',
       descEn: 'Well log results for section interpretation',
-      image: '/images/results/logging-data.jpg',
+      image: '/images/methods/software-logging.jpg',
     },
     {
       titleRu: 'Скважины',
       titleEn: 'Wells',
       descRu: 'Готовые скважины для мониторинга или эксплуатации',
       descEn: 'Completed wells for monitoring or operation',
-      image: '/images/results/wells.jpg',
+      image: '/images/site/drilling-winter.jpg',
     },
   ],
   
@@ -201,7 +201,7 @@ const data: ServicePageData = {
     resultRu: 'Средний выход керна 96%. Подтверждено продолжение золоторудных зон на глубину. Прирост запасов категории С1.',
     resultEn: 'Average core recovery 96%. Confirmed gold zone extension at depth. C1 category resource increase.',
   },
-  caseImage: '/images/Mars.jpg',
+  caseImage: '/images/site/drill-rig-mountain.jpg',
   
   regions: [
     { ru: 'Иркутская область', en: 'Irkutsk Region' },

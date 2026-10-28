@@ -160,11 +160,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/results/geobaza.jpg',
+    '/images/results/georazrez.jpg',
+    '/images/methods/software-magnetic.jpg',
+    '/images/methods/software-gis.jpg',
+    '/images/results/geomap.jpg',
   ],
   
   results: [
@@ -173,28 +173,28 @@ const data: ServicePageData = {
       titleEn: 'GKZ Report',
       descRu: 'Полный комплект материалов для защиты запасов',
       descEn: 'Complete documentation for resource approval',
-      image: '/images/results/gkz-report.jpg',
+      image: '/images/results/geootchet.jpg',
     },
     {
       titleRu: 'JORC-отчёт',
       titleEn: 'JORC Report',
       descRu: 'Технический отчёт по международным стандартам',
       descEn: 'Technical report per international standards',
-      image: '/images/results/jorc-report.jpg',
+      image: '/images/site/core-logging.jpg',
     },
     {
       titleRu: '3D-модели',
       titleEn: '3D Models',
       descRu: 'Геологические и блочные модели в Micromine/Surpac',
       descEn: 'Geological and block models in Micromine/Surpac',
-      image: '/images/results/3d-models.jpg',
+      image: '/images/results/geophys3d.jpg',
     },
     {
       titleRu: 'ТЭО',
       titleEn: 'Feasibility Study',
       descRu: 'Технико-экономическое обоснование проекта',
       descEn: 'Project feasibility study',
-      image: '/images/results/feasibility-study.jpg',
+      image: '/images/site/desk-documents.jpg',
     },
   ],
   
@@ -209,7 +209,7 @@ const data: ServicePageData = {
     resultRu: 'Защищены запасы категорий С1+С2 в объёме 15 тонн золота. Утверждены кондиции для открытой отработки.',
     resultEn: 'Approved C1+C2 resources of 15 tonnes gold. Cutoff grades approved for open-pit mining.',
   },
-  caseImage: '/images/case-study-consulting.jpg',
+  caseImage: '/images/site/nevenrekan.jpg',
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },

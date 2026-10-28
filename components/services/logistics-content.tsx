@@ -143,11 +143,11 @@ const data: ServicePageData = {
     },
   ],
   stepImages: [
-    '/images/one.JPG',
-    '/images/two.JPG',
-    '/images/three.JPG',
-    '/images/four.jpg',
-    '/images/five.jpg',
+    '/images/site/base-aerial.jpg',
+    '/images/site/loading-crane.jpg',
+    '/images/site/convoy-blizzard.jpg',
+    '/images/site/base-containers.jpg',
+    '/images/site/site-office.jpg',
   ],
   
   results: [
@@ -156,28 +156,28 @@ const data: ServicePageData = {
       titleEn: 'Delivered Cargo',
       descRu: 'Своевременная доставка материалов и оборудования на объекты',
       descEn: 'Timely delivery of materials and equipment to sites',
-      image: '/images/results/delivered-cargo.jpg',
+      image: '/images/site/barge-delivery.jpg',
     },
     {
       titleRu: 'Снабжение объектов',
       titleEn: 'Site Supply',
       descRu: 'Бесперебойное обеспечение ГСМ, продуктами, запчастями',
       descEn: 'Uninterrupted supply of fuel, food, spare parts',
-      image: '/images/results/site-supply.jpg',
+      image: '/images/site/fuel-supply.jpg',
     },
     {
       titleRu: 'Складской учёт',
       titleEn: 'Warehouse Accounting',
       descRu: 'Полная отчётность по движению товарно-материальных ценностей',
       descEn: 'Complete reporting on inventory movement',
-      image: '/images/results/warehouse-accounting.jpg',
+      image: '/images/site/container-yard.jpg',
     },
     {
       titleRu: 'Транспортная документация',
       titleEn: 'Transport Documentation',
       descRu: 'Оформление всех разрешений, накладных, путевых листов',
       descEn: 'Permits, waybills, travel sheets preparation',
-      image: '/images/results/transport-docs.jpg',
+      image: '/images/site/helicopter-loading.jpg',
     },
   ],
   
@@ -192,7 +192,7 @@ const data: ServicePageData = {
     resultRu: 'Все грузы доставлены в установленные сроки. Обеспечена работа 15 удалённых объектов. Потери при транспортировке — менее 1%.',
     resultEn: 'All cargo delivered on schedule. Operations of 15 remote sites supported. Transportation loss less than 1%.',
   },
-  caseImage: '/images/logistics-case.jpg',
+  caseImage: '/images/site/sea-delivery.jpg',
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
