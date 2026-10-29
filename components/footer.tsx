@@ -35,7 +35,7 @@ export function Footer() {
           {/* Logo & Description - колонка 1 */}
           <div className="space-y-1">
             <Link href="/" className="inline-block">
-              <Logo alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')} />
+              <Logo variant="full" alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')} />
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
               {t(
