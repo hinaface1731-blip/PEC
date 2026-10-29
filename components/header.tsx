@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
+import { Logo } from './logo'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
 import { Sun, Moon, Menu, X, ChevronDown } from 'lucide-react'
@@ -118,14 +118,7 @@ export function Header() {
       <nav className="h-full max-w-7xl mx-auto px-6 grid grid-cols-[auto_1fr_auto] items-center gap-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/logo.png"
-            alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
-            width={150}
-            height={60}
-            className="object-contain dark:brightness-0 dark:invert"
-            priority
-          />
+          <Logo alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')} priority />
         </Link>
 
         {/* Desktop Navigation */}

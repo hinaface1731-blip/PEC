@@ -144,7 +144,7 @@ export default function ContactsContent() {
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-contacts2.png"
+            src="/images/career-hero.jpg"
             alt={t("Карьера в Полярной ЭК", "Career at Polar EC")}
             fill
             priority

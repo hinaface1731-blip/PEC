@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
+import { Logo } from './logo'
 import { useLanguage } from './language-provider'
 import { Phone, Mail, MapPin } from 'lucide-react'
 
@@ -35,13 +35,7 @@ export function Footer() {
           {/* Logo & Description - колонка 1 */}
           <div className="space-y-1">
             <Link href="/" className="inline-block">
-              <Image
-                src="/images/logo.png"
-                alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')}
-                width={150}
-                height={60}
-                className="object-contain dark:brightness-0 dark:invert"
-              />
+              <Logo alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')} />
             </Link>
             <p className="text-[var(--muted)] text-sm leading-relaxed">
               {t(

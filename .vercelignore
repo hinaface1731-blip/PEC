@@ -1,0 +1,130 @@
+# Файлы, которые не используются на сайте и не должны загружаться в Vercel
+# (они остаются в репозитории). Список сгенерирован по ссылкам в app/ и components/:
+# если начнёте использовать файл отсюда, удалите его строку.
+/images/
+/docs/
+/public/images/gallery/
+/public/Promo2(1).webm
+/public/apple-icon.png
+/public/documents/documents.rar
+/public/documents/КРР03707БП Сев-Шир.pdf
+/public/documents/КРР03708БП Центр-Шир.pdf
+/public/documents/КРР03709БП Трехсестр.PDF
+/public/documents/КРР03710БП Дорожнинская.PDF
+/public/documents/КРР03711БП Симсовская.PDF
+/public/icon-dark-32x32.png
+/public/icon-light-32x32.png
+/public/icon.svg
+/public/images/1.jpg
+/public/images/123.jpg
+/public/images/12345.jpg
+/public/images/123456.jpg
+/public/images/2025-07-03 11-59-19.JPG
+/public/images/2025-07-10 01-46-57.JPG
+/public/images/2025-07-26 15-47-06.JPG
+/public/images/2025-08-01 16-32-09.JPG
+/public/images/321.jpg
+/public/images/85ec2ee9-5b81-48dd-aa2a-531a504f247b.JPG
+/public/images/DSC06357-1.jpg
+/public/images/DSC07313.jpg
+/public/images/DSCN1296.JPG
+/public/images/DSCN2204.jpg
+/public/images/DSCN2295.jpg
+/public/images/G0201024.JPG
+/public/images/GOPR1014.JPG
+/public/images/GOPR1039.JPG
+/public/images/GOPR1049.JPG
+/public/images/IMG_0395.JPG
+/public/images/IMG_1092.jpg
+/public/images/IMG_1162.jpg
+/public/images/IMG_1187.jpg
+/public/images/IMG_1233.jpg
+/public/images/IMG_9802.JPG
+/public/images/IMG_9804.JPG
+/public/images/IMG_9806.JPG
+/public/images/R1-00771-0024.jpg
+/public/images/_DSC0878.JPG
+/public/images/b1eb7281-4443-4245-8ba9-f09b5c419bfa.JPG
+/public/images/case-study-consulting.jpg
+/public/images/centr.JPG
+/public/images/chelus.JPG
+/public/images/cmpm.jpg
+/public/images/company.JPG
+/public/images/compashka.JPG
+/public/images/compashka2.JPG
+/public/images/compashka3.JPG
+/public/images/electrorazvedka.jpg
+/public/images/equipment/ASTRA-100_1.png
+/public/images/equipment/BIKS_1.png
+/public/images/equipment/Christensen-CS14.jpg
+/public/images/equipment/Core_Drill_Atlas_Copco_CS1000P4-removebg-preview.png
+/public/images/equipment/IP1000_1.png
+/public/images/equipment/MS-1_MS-2_v7_1.png
+/public/images/equipment/era-max-ip-02-600x47.png
+/public/images/equipment/i_1.png
+/public/images/equipment/skala-64-1_1.png
+/public/images/equipment/tomography.jpg
+/public/images/excavator.jpg
+/public/images/field_camp.jpg
+/public/images/field_core.jpg
+/public/images/field_geophysics.jpg
+/public/images/field_helicopter.jpg
+/public/images/field_trenching.jpg
+/public/images/first_lab.jpg
+/public/images/five.jpg
+/public/images/four.jpg
+/public/images/geophys2.jpg
+/public/images/geophys3.jpg
+/public/images/geoproject.JPG
+/public/images/hero-contacts.jpg
+/public/images/hero-contacts2.png
+/public/images/logo.png
+/public/images/magnetic-hero.jpg
+/public/images/mark-case.JPG
+/public/images/methods/pasha.jpg
+/public/images/methods/pasha2.jpg
+/public/images/methods/tem.png
+/public/images/night.JPG
+/public/images/night2.HEIC
+/public/images/night2.png
+/public/images/oborudovanie.JPG
+/public/images/oborudovanie2.JPG
+/public/images/offroad.jpg
+/public/images/one.JPG
+/public/images/project_junior.jpg
+/public/images/project_kamchatka.jpg
+/public/images/project_taymyr.jpg
+/public/images/project_yakutia.jpg
+/public/images/projects.jpg
+/public/images/projects3.jpg
+/public/images/rocks.jpg
+/public/images/second_lab.jpg
+/public/images/services-hub-hero.jpg
+/public/images/stages/geophys2.webp
+/public/images/stages/geophys22.jpg
+/public/images/third_lab.jpg
+/public/images/three.JPG
+/public/images/trisesty.jpg
+/public/images/vp.jpg
+/public/images/wow.jpg
+/public/images/Алтай 2023.JPG
+/public/images/База 3 сестры - 1.png
+/public/images/Камчатка 2025 2.jpg
+/public/images/Камчатка 2025.jpg
+/public/images/Таймыр 2025  1.jpg
+/public/images/Таймыр 2025  3.jpg
+/public/images/Чукотка 2025  5.JPG
+/public/images/Чукотка 2025 (4).JPG
+/public/images/Чукотка 2025.jpg
+/public/images/камчатка 2025.HEIC
+/public/images/таймыр 2023 (3).jpg
+/public/images/таймыр 2023.JPG
+/public/images/юмг6.jpg
+/public/logo2.png
+/public/placeholder-logo.png
+/public/placeholder-logo.svg
+/public/placeholder-user.jpg
+/public/placeholder.jpg
+/public/placeholder.svg
+/public/promo.mp4
+/public/promo2.mp4
