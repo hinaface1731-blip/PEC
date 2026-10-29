@@ -218,7 +218,7 @@ const equipmentCategories = [
         specs: ["RTK точность: 8 мм + 1 ppm", "GPS/ГЛОНАСС/Galileo/BeiDou", "IMU для измерения наклона"],
         specsEn: ["RTK accuracy: 8 mm + 1 ppm", "GPS/GLONASS/Galileo/BeiDou", "Tilt compensation IMU"],
 
-        image: "/images/site/gnss-tripod.jpg"
+        image: "/images/equipment/trimble-r12i.png"
       },
       {
         name: "GNSS приемник SOUTH Galaxy G9",
@@ -226,7 +226,7 @@ const equipmentCategories = [
         specs: ["GPS/ГЛОНАСС/Galileo/BeiDou", "Радиомодем UHF: дальность до 10 км", "Работа от батарей: до 12 ч"],
         specsEn: ["GPS/GLONASS/Galileo/BeiDou", "UHF radio: range up to 10 km", "Battery life: up to 12 h"],
   
-        image: "/images/site/gnss-peak.jpg"
+        image: "/images/equipment/south-galaxy-g9.png"
       },
       {
         name: "GNSS приемник SOUTH Galaxy G1",
@@ -234,7 +234,7 @@ const equipmentCategories = [
         specs: ["GPS/ГЛОНАСС/Galileo/BeiDou", "Режимы RTK и статика", "Корпус из магниевого сплава, IP67"],
         specsEn: ["GPS/GLONASS/Galileo/BeiDou", "RTK and static modes", "Magnesium alloy body, IP67"],
 
-        image: "/images/site/survey-slope.jpg"
+        image: "/images/equipment/south-galaxy-g1.png"
       },
       {
         name: "БПЛА для аэрофотосъёмки",
