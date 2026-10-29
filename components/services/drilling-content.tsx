@@ -204,7 +204,6 @@ const data: ServicePageData = {
   caseImage: '/images/site/drill-rig-mountain.jpg',
   
   regions: [
-    { ru: 'Иркутская область', en: 'Irkutsk Region' },
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Магаданская область', en: 'Magadan Region' },

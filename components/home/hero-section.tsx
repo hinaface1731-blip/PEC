@@ -71,7 +71,7 @@ export function HeroSection() {
           >
             {t(
               'Полный цикл геологоразведочных работ по всей России',
-              'Full-cycle geological exploration in the Arctic and Siberia'
+              'Full-cycle geological exploration across Russia'
             )}
           </motion.p>
 

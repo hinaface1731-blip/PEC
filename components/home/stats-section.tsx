@@ -18,7 +18,7 @@ const stats = [
   },
   {
     icon: Calendar,
-    value: '17',
+    value: '18+',
     labelRu: 'лет работы в Арктике',
     labelEn: 'years in the Arctic',
   },

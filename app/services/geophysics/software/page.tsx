@@ -2,7 +2,6 @@
 
 import { Code2, CheckCircle, ArrowRight, Download, BarChart3, Target, Database, Cloud, Shield, TrendingUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { CTAForm } from '@/components/cta-form'
 import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
 import Link from 'next/link'
@@ -50,27 +49,6 @@ const subMethods = [
       'TEM data inversion',
       '2D/3D modeling',
       'Geoelectric section construction',
-    ],
-  },
-  {
-    id: 'seismic',
-    icon: Database,
-    titleRu: 'Обработка сейсморазведки',
-    titleEn: 'Seismic Data Processing',
-    descRu: 'Современные алгоритмы обработки 2D и 3D сейсмических данных. Миграция, AVO-анализ, инверсия, построение скоростных моделей.',
-    descEn: 'Modern 2D and 3D seismic data processing algorithms. Migration, AVO analysis, inversion, velocity model building.',
-    image: '/images/methods/software-seismic.jpg',
-    tasksRu: [
-      'Обработка 2D и 3D сейсмики',
-      'Миграция до и после суммирования',
-      'AVO анализ и инверсия',
-      'Построение скоростных моделей',
-    ],
-    tasksEn: [
-      '2D and 3D seismic processing',
-      'Pre and post-stack migration',
-      'AVO analysis and inversion',
-      'Velocity model building',
     ],
   },
   {
@@ -124,15 +102,7 @@ const equipment = [
     typeRu: 'Геофизический софт',
     typeEn: 'Geophysical software',
     qty: 1,
-    specs: ['Магниторазведка', 'Гравиразведка', '2D/3D инверсия'],
-  },
-  {
-    nameRu: 'RadExPro',
-    nameEn: 'RadExPro',
-    typeRu: 'Сейсмическая обработка',
-    typeEn: 'Seismic processing',
-    qty: 1,
-    specs: ['2D/3D сейсмика', 'Миграция', 'AVO анализ'],
+    specs: ['Магниторазведка', 'Карты аномалий', '2D/3D инверсия'],
   },
   {
     nameRu: 'ZondRes2D/3D',
@@ -159,8 +129,8 @@ const caseStudy = {
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская', 'Трехсестренская'],
   volumeRu: 'Обработка данных: магниторазведка 850 км², АМТЗ 120 км, ГИС 2500 м',
   volumeEn: 'Data processing: magnetics 850 km², AMT 120 km, logging 2500 m',
-  resultRu: 'Построены карты магнитных и гравитационных аномалий. Выполнена 2D инверсия данных АМТЗ. Проведена литологическая интерпретация ГИС. Локализованы перспективные участки для постановки поисковых работ.',
-  resultEn: 'Magnetic and gravity anomaly maps constructed. 2D AMT data inversion performed. Logging lithological interpretation completed. Prospective areas for exploration identified.',
+  resultRu: 'Построены карты магнитных аномалий. Выполнена 2D инверсия данных АМТЗ. Проведена литологическая интерпретация ГИС. Локализованы перспективные участки для постановки поисковых работ.',
+  resultEn: 'Magnetic anomaly maps constructed. 2D AMT data inversion performed. Logging lithological interpretation completed. Prospective areas for exploration identified.',
 }
 
 export default function SoftwarePage() {

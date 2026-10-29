@@ -11,9 +11,9 @@ const milestones = [
   { year: "2009", titleRu: "Первый крупный контракт", titleEn: "First Major Contract", descRu: "Начало работы на золоторудных месторождениях", descEn: "Start of work at gold deposits" },
   { year: "2010", titleRu: "Расширение географии", titleEn: "Geographic Expansion", descRu: "Выход на дальний восток и крайний север", descEn: "Expansion to Far East and Far North" },
   { year: "2012", titleRu: "Собственная лаборатория", titleEn: "Own Laboratory", descRu: "Открытие аналитической лаборатории", descEn: "Opening of accredited analytical laboratory" },
-  { year: "2016", titleRu: "Международные стандарты", titleEn: "International Standards", descRu: "Сертификация по ISO 9001 и JORC", descEn: "ISO 9001 and JORC certification" },
+  { year: "2016", titleRu: "Международные стандарты", titleEn: "International Standards", descRu: "Сертификация по ISO 9001", descEn: "ISO 9001 certification" },
   { year: "2020", titleRu: "Цифровизация", titleEn: "Digitalization", descRu: "Внедрение цифровых технологий и 3D-моделирования", descEn: "Implementation of digital technologies and 3D modeling" },
-  { year: "2024", titleRu: "Лидер отрасли", titleEn: "Industry Leader", descRu: "Более 20 выполненных проектов, 200+ сотрудников", descEn: "200+ completed projects, 500+ employees" }
+  { year: "2024", titleRu: "Лидер отрасли", titleEn: "Industry Leader", descRu: "Более 20 выполненных проектов, 200+ сотрудников", descEn: "20+ completed projects, 200+ employees" }
 ]
 
 const values = [

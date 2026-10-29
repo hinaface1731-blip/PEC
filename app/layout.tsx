@@ -1,16 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Unbounded, Manrope } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
 import './globals.css'
-
-const unbounded = Unbounded({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-unbounded',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-})
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
@@ -25,11 +18,11 @@ export const metadata: Metadata = {
     default: 'Полярная Экспедиционная Компания',
     template: '%s — Полярная Экспедиционная Компания',
   },
-  description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
+  description: 'Геологоразведочная компания полного цикла. 18+ лет работы в Арктике и Сибири. Геология, геофизика, бурение, лаборатория.',
   keywords: 'геологоразведка, ГРР, бурение, геофизика, Арктика, Сибирь, геологические работы',
   openGraph: {
     title: 'Полярная Экспедиционная Компания',
-    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
+    description: 'Геологоразведочная компания полного цикла. 18+ лет работы в Арктике и Сибири.',
     type: 'website',
     locale: 'ru_RU',
     siteName: 'Полярная Экспедиционная Компания',
@@ -45,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Полярная Экспедиционная Компания',
-    description: 'Геологоразведочная компания полного цикла. 17 лет работы в Арктике и Сибири.',
+    description: 'Геологоразведочная компания полного цикла. 18+ лет работы в Арктике и Сибири.',
     images: ['/logo.png'],
   },
   icons: {
@@ -55,7 +48,7 @@ export const metadata: Metadata = {
   },
 }
 
-const themeInitScript = `try{var t=localStorage.getItem('pek-theme');document.documentElement.classList.toggle('dark',t!=='light')}catch(e){}`
+const themeInitScript = `try{var t=localStorage.getItem('pek-theme');document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}`
 
 export const viewport: Viewport = {
   themeColor: [
@@ -70,12 +63,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
+    <html lang="ru" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         {/* Применяем сохранённую тему до первой отрисовки, чтобы не было «вспышки» светлой темы */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className={`${unbounded.variable} ${manrope.variable} font-sans antialiased`}>
+      <body className={`${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
             {children}

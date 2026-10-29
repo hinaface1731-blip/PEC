@@ -183,14 +183,51 @@ export default function PrivacyPage() {
                   </div>
                 </div>
 
-                {/* 5. Контактная информация */}
+                {/* 5. Сторонние сервисы и хранение данных */}
+                <div className="card-enhanced p-6 md:p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-orange-500" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      {t('5. Сторонние сервисы и хранение данных', '5. Third-Party Services and Data Storage')}
+                    </h2>
+                  </div>
+                  <div className="pl-4">
+                    <ul className="space-y-2 text-muted-foreground pl-6">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 shrink-0" />
+                        <span>{t(
+                          'Vercel Analytics — обезличенная статистика посещений (просмотренные страницы, тип устройства, страна). Сервис не использует cookies и не позволяет идентифицировать пользователя.',
+                          'Vercel Analytics: anonymized visit statistics (pages viewed, device type, country). The service does not use cookies and does not identify users.'
+                        )}</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 shrink-0" />
+                        <span>{t(
+                          'Яндекс Карты — для отображения карт на сайте загружается сервис ООО «Яндекс», который может получать IP-адрес и технические данные браузера в соответствии с собственной политикой конфиденциальности.',
+                          'Yandex Maps: to display maps, the site loads a service of Yandex LLC, which may receive the IP address and technical browser data in accordance with its own privacy policy.'
+                        )}</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 shrink-0" />
+                        <span>{t(
+                          'Резюме, отправленные через форму на странице «Карьера», передаются по электронной почте в отдел кадров Оператора и на сайте не хранятся. Они используются только для рассмотрения кандидатуры и удаляются по запросу кандидата.',
+                          'Resumes sent via the form on the Career page are delivered by email to the Operator\'s HR department and are not stored on the site. They are used only to consider the application and are deleted at the candidate\'s request.'
+                        )}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 6. Контактная информация */}
                 <div className="card-enhanced p-6 md:p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
                       <Mail className="w-6 h-6 text-orange-500" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
-                      {t('5. Контактная информация', '5. Contact Information')}
+                      {t('6. Контактная информация', '6. Contact Information')}
                     </h2>
                   </div>
                   <div className="pl-4 space-y-4">
@@ -217,14 +254,14 @@ export default function PrivacyPage() {
                   </div>
                 </div>
 
-                {/* 6. Заключительные положения */}
+                {/* 7. Заключительные положения */}
                 <div className="card-enhanced p-6 md:p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
                       <Globe className="w-6 h-6 text-orange-500" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
-                      {t('6. Заключительные положения', '6. Final Provisions')}
+                      {t('7. Заключительные положения', '7. Final Provisions')}
                     </h2>
                   </div>
                   <div className="pl-4 space-y-4">
@@ -242,8 +279,8 @@ export default function PrivacyPage() {
                     </p>
                     <p className="text-sm text-muted-foreground/70 pt-4 border-t border-border">
                       {t(
-                        'Дата последнего обновления: 17 апреля 2026 г.',
-                        'Last updated: April 17, 2026'
+                        'Дата последнего обновления: 29 октября 2026 г.',
+                        'Last updated: October 29, 2026'
                       )}
                     </p>
                   </div>

@@ -260,8 +260,6 @@ results: [
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Чукотка', en: 'Chukotka' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
-    { ru: 'Кольский полуостров', en: 'Kola Peninsula' },
-    { ru: 'Иркутская область', en: 'Irkutsk Region' },
   ],
   
   stats: [

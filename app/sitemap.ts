@@ -28,8 +28,6 @@ const pages: Array<{ path: string; priority: number; changeFrequency: ChangeFreq
   // Методы геофизики
   { path: '/services/geophysics/electrical', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/services/geophysics/magnetic', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/services/geophysics/gravity', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/services/geophysics/seismic', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/services/geophysics/logging', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/services/geophysics/software', priority: 0.5, changeFrequency: 'monthly' },
 ]

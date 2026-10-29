@@ -2,7 +2,6 @@
 
 import { Compass, CheckCircle, ArrowRight, Download, Target, BarChart3, Map, Activity } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { CTAForm } from '@/components/cta-form'
 import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
 import Link from 'next/link'

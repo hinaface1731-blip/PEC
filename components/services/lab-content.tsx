@@ -8,8 +8,8 @@ const data: ServicePageData = {
   icon: FlaskConical,
   titleRu: 'Лабораторные исследования',
   titleEn: 'Laboratory Research',
-  descRu: 'Собственная полевая лаборатория с современным аналитическим оборудованием. Полный спектр геохимических, минералогических и физико-механических исследований.',
-  descEn: 'In-house accredited laboratory with modern analytical equipment. Full range of geochemical, mineralogical and physical-mechanical research.',
+  descRu: 'Собственная полевая лаборатория: пробоподготовка, рентгенофлуоресцентный анализ и минералогические исследования.',
+  descEn: 'In-house field laboratory: sample preparation, X-ray fluorescence analysis and mineralogical studies.',
   heroImage: '/images/i.jpg',
   introRu:
     'Сопровождаем пробу на всём пути: приёмка, сушка, дробление, истирание, квартование, подготовка навесок и анализ. Контроль качества встроен в процесс: дубликаты, холостые пробы, стандартные образцы. Результаты выдаём протоколами и цифровыми данными, готовыми для загрузки в базу и использования при подсчёте запасов.',
@@ -18,36 +18,35 @@ const data: ServicePageData = {
 
   reverse: false,
   
-  sectionTitleRu: 'Полный комплекс лабораторных исследований',
-  sectionTitleEn: 'Full range of laboratory research',
-  sectionDescRu: 'ICP-MS, пробирный анализ, минералогия, физико-механические испытания',
-  sectionDescEn: 'ICP-MS, fire assay, mineralogy, physical and mechanical testing',
+  sectionTitleRu: 'Возможности лаборатории',
+  sectionTitleEn: 'Laboratory capabilities',
+  sectionDescRu: 'Пробоподготовка, рентгенофлуоресцентный анализ, минералогия',
+  sectionDescEn: 'Sample preparation, X-ray fluorescence analysis, mineralogy',
   
   methods: [
-    { ru: 'ICP-MS анализ (45 элементов)', en: 'ICP-MS analysis (45 elements)' },
-    { ru: 'Пробирный анализ (Au, Ag, Pt, Pd)', en: 'Fire assay (Au, Ag, Pt, Pd)' },
-    { ru: 'Атомно-абсорбционный анализ', en: 'Atomic absorption analysis' },
+    { ru: 'Сушка, дробление, истирание, квартование', en: 'Drying, crushing, grinding, splitting' },
+    { ru: 'Отбор навесок и подготовка проб к внешнему анализу', en: 'Aliquot selection and preparation for external analysis' },
     { ru: 'Рентгенофлуоресцентный анализ (XRF)', en: 'X-ray fluorescence analysis (XRF)' },
-    { ru: 'Силикатный анализ', en: 'Silicate analysis' },
     { ru: 'Гравитационное обогащение', en: 'Gravity concentration' },
     { ru: 'Минералогические исследования', en: 'Mineralogical studies' },
-    { ru: 'Изготовление шлифов и аншлифов', en: 'Thin and polished section preparation' },
-    { ru: 'Физико-механические испытания грунтов', en: 'Soil physical-mechanical testing' },
-    { ru: 'Гранулометрический анализ', en: 'Grain size analysis' },
-    { ru: 'Компрессионные испытания', en: 'Compression testing' },
-    { ru: 'Испытания на сдвиг', en: 'Shear testing' },
+    { ru: 'Изготовление и описание шлифов и аншлифов', en: 'Thin and polished section preparation and description' },
   ],
   methodsGroups: [
     {
-      titleRu: 'Геохимические методы',
-      titleEn: 'Geochemical Methods',
+      titleRu: 'Пробоподготовка',
+      titleEn: 'Sample Preparation',
+      icon: TestTube,
+      methods: [
+        { ru: 'Сушка, дробление, истирание, квартование', en: 'Drying, crushing, grinding, splitting' },
+        { ru: 'Отбор навесок и подготовка проб к внешнему анализу', en: 'Aliquot selection and preparation for external analysis' },
+      ]
+    },
+    {
+      titleRu: 'Экспресс-анализ',
+      titleEn: 'Rapid Analysis',
       icon: FlaskConical,
       methods: [
-        { ru: 'ICP-MS анализ (45 элементов)', en: 'ICP-MS analysis (45 elements)' },
-        { ru: 'Пробирный анализ (Au, Ag, Pt, Pd)', en: 'Fire assay (Au, Ag, Pt, Pd)' },
-        { ru: 'Атомно-абсорбционный анализ', en: 'Atomic absorption analysis' },
-        { ru: 'Рентгенофлуоресцентный анализ (XRF)', en: 'X-ray fluorescence analysis (XRF)' },
-        { ru: 'Силикатный анализ', en: 'Silicate analysis' },
+        { ru: 'Рентгенофлуоресцентный анализ (XRF), элементы от Na до U', en: 'X-ray fluorescence analysis (XRF), elements from Na to U' },
       ]
     },
     {
@@ -57,18 +56,7 @@ const data: ServicePageData = {
       methods: [
         { ru: 'Гравитационное обогащение', en: 'Gravity concentration' },
         { ru: 'Минералогические исследования', en: 'Mineralogical studies' },
-        { ru: 'Изготовление шлифов и аншлифов', en: 'Thin and polished section preparation' },
-      ]
-    },
-    {
-      titleRu: 'Физико-механические испытания',
-      titleEn: 'Physical-Mechanical Testing',
-      icon: Activity,
-      methods: [
-        { ru: 'Физико-механические испытания грунтов', en: 'Soil physical-mechanical testing' },
-        { ru: 'Гранулометрический анализ', en: 'Grain size analysis' },
-        { ru: 'Компрессионные испытания', en: 'Compression testing' },
-        { ru: 'Испытания на сдвиг', en: 'Shear testing' },
+        { ru: 'Изготовление и описание шлифов и аншлифов', en: 'Thin and polished section preparation and description' },
       ]
     },
   ],
@@ -176,7 +164,7 @@ const data: ServicePageData = {
   ],
   stepImages: [
     '/images/site/sample-intake.jpg',
-    '/images/site/sample-prep.jpg',
+    '/images/site/core-cutting.jpg',
     '/images/site/lab-analysis.jpg',
     '/images/site/lab-qc.jpg',
     '/images/site/desk-documents.jpg',
@@ -186,8 +174,8 @@ const data: ServicePageData = {
     {
       titleRu: 'Протоколы анализов',
       titleEn: 'Analysis Protocols',
-      descRu: 'Аккредитованные протоколы испытаний',
-      descEn: 'Accredited test protocols',
+      descRu: 'Протоколы испытаний по каждой партии проб',
+      descEn: 'Test protocols for each sample batch',
       image: '/images/results/geootchet.jpg',
     },
     {
@@ -205,11 +193,11 @@ const data: ServicePageData = {
       image: '/images/site/rock-samples.jpg',
     },
     {
-      titleRu: 'Грунтовые заключения',
-      titleEn: 'Soil Reports',
-      descRu: 'Характеристики грунтов для проектирования',
-      descEn: 'Soil properties for design purposes',
-      image: '/images/site/lab-soil.jpg',
+      titleRu: 'Подготовленные пробы',
+      titleEn: 'Prepared Samples',
+      descRu: 'Дроблёные и истёртые навески, готовые к отправке на анализ',
+      descEn: 'Crushed and pulverized aliquots ready for analysis',
+      image: '/images/site/sample-prep.jpg',
     },
   ],
   
@@ -228,7 +216,6 @@ const data: ServicePageData = {
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
-    { ru: 'Иркутская область', en: 'Irkutsk Region' },
     { ru: 'Магаданская область', en: 'Magadan Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
     { ru: 'Таймыр', en: 'Taimyr' },

@@ -14,7 +14,7 @@ const data: ServicePageData = {
   introRu:
     'Подбираем комплекс методов под геологическую задачу и условия участка: электроразведка (АМТЗ, ЗСБ, ВП, электротомография), магниторазведка наземная и каротаж скважин.\n\nПеред выходом в поле выполняем физико-геологическое моделирование, чтобы заранее понять, что метод способен показать на этом объекте. Данные обрабатываем и интерпретируем собственными специалистами. На выходе карты аномалий, геофизические разрезы, модели и обоснованные точки для заверочного бурения.',
   introEn:
-    'We select a set of methods to suit the geological task and site conditions: electrical surveys (AMT, TEM, IP, electrical resistivity tomography), ground and UAV magnetic surveys, gravity and seismic surveys, and well logging.\n\nBefore going into the field we run physical-geological modeling to understand in advance what a method can show at the site. Our own specialists process and interpret the data. The deliverables are anomaly maps, geophysical sections, models and justified locations for verification drilling.',
+    'We select a set of methods to suit the geological task and site conditions: electrical surveys (AMT, TEM, IP, electrical resistivity tomography), ground and UAV magnetic surveys, and well logging.\n\nBefore going into the field we run physical-geological modeling to understand in advance what a method can show at the site. Our own specialists process and interpret the data. The deliverables are anomaly maps, geophysical sections, models and justified locations for verification drilling.',
 
   reverse: true,
   sectionTitleRu: 'Полный комплекс геофизических работ',
@@ -165,15 +165,15 @@ const data: ServicePageData = {
     {
       titleRu: 'Карты аномалий',
       titleEn: 'Anomaly Maps',
-      descRu: 'Карты магнитного поля, гравитационных аномалий, ВП',
-      descEn: 'Maps of magnetic field, gravity anomalies, IP',
+      descRu: 'Карты магнитного поля, удельного сопротивления, ВП',
+      descEn: 'Maps of magnetic field, resistivity, IP',
       image: '/images/results/magmap.jpg',
     },
     {
       titleRu: 'Геофизические разрезы',
       titleEn: 'Geophysical Sections',
-      descRu: '2D разрезы удельного сопротивления, плотности',
-      descEn: '2D resistivity and density sections',
+      descRu: '2D разрезы удельного сопротивления и поляризуемости',
+      descEn: '2D resistivity and chargeability sections',
       image: '/images/results/geophysraz.jpg',
     },
     {

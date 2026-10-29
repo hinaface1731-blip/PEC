@@ -27,8 +27,8 @@ const equipmentCategories = [
       {
         name: "Boyles C6",
         nameEn: "Boyles C6 Drill Rig",
-        specs: ["Глубина бурения: до 1824 м", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН", "Бурение под углом 45–90°"],
-        specsEn: ["Drilling depth: up to 1,824 m", "Torque: 7,600 Nm", "Pull force: 138 kN", "Drilling angle 45–90°"],
+        specs: ["Глубина бурения: до 1211 м (N), до 1536 м (B)", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН", "Бурение под углом 45–90°"],
+        specsEn: ["Drilling depth: up to 1,211 m (N), 1,536 m (B)", "Torque: 7,600 Nm", "Pull force: 138 kN", "Drilling angle 45–90°"],
         image: "/images/equipment/boylesC6.png"
       },
       {
@@ -83,8 +83,8 @@ const equipmentCategories = [
       {
         name: "Christensen CS14",
         nameEn: "Christensen CS14 Drill Rig",
-        specs: ["Глубина бурения: до 1200 м (N), до 1540 м (B)", "Крутящий момент: 7 600 Н·м", "Усилие подъёма: 138 кН"],
-        specsEn: ["Drilling depth: up to 1,200 m (N), 1,540 m (B)", "Torque: 7,600 Nm", "Pull force: 138 kN"],
+        specs: ["Глубина бурения: до 1200 м (N), до 1540 м (B)", "Усилие подъёма: 138 кН"],
+        specsEn: ["Drilling depth: up to 1,200 m (N), 1,540 m (B)", "Pull force: 138 kN"],
         image: "/images/equipment/Christensen-CS14.png"
       },
       {
@@ -104,8 +104,8 @@ const equipmentCategories = [
       {
         name: "Christensen CT20",
         nameEn: "Christensen CT20 Drill Rig",
-        specs: ["Глубина бурения: до 	4059 м", "Диаметр бурения: 60-121 мм"],
-        specsEn: ["Drilling depth: up to 2500 m", "Drilling diameter: 60-121 mm"],
+        specs: ["Глубина бурения: до 2450 м", "Диаметр бурения: 60-121 мм"],
+        specsEn: ["Drilling depth: up to 2,450 m", "Drilling diameter: 60-121 mm"],
         image: "/images/equipment/christensen-ct20.png"
       },
       {
@@ -197,8 +197,8 @@ const equipmentCategories = [
       {
         name: "Тринокулярный микроскоп Opto-Edu A15.1017-T поляризационный",
         nameEn: "Polarizing Trinocular Microscope",
-        specs: ["Мультиэлементный анализ", "Оптическое увеличение 40-400 крат", "До 70 элементов"],
-        specsEn: ["Multi-element analysis", "Optical magnification 40-400x", "Up to 70 elements"],
+        specs: ["Поляризационный, тринокулярный", "Оптическое увеличение 40–400 крат", "Изучение шлифов и аншлифов"],
+        specsEn: ["Polarizing, trinocular", "Optical magnification 40–400x", "Thin and polished section study"],
 
         image: "/images/equipment/mircoscope.png"
       }
@@ -223,16 +223,16 @@ const equipmentCategories = [
       {
         name: "GNSS приемник SOUTH Galaxy G9",
         nameEn: "SOUTH Galaxy G9 GNSS Receiver",
-        specs: ["Высокая интегрированность", "Дальность: 130 м", "HDR камера"],
-        specsEn: ["High integration", "Range: 130 m", "HDR camera"],
+        specs: ["GPS/ГЛОНАСС/Galileo/BeiDou", "Радиомодем UHF: дальность до 10 км", "Работа от батарей: до 12 ч"],
+        specsEn: ["GPS/GLONASS/Galileo/BeiDou", "UHF radio: range up to 10 km", "Battery life: up to 12 h"],
   
         image: "/images/site/gnss-peak.jpg"
       },
       {
         name: "GNSS приемник SOUTH Galaxy G1",
         nameEn: "SOUTH Galaxy G1 GNSS Receiver",
-        specs: ["Точность: 0.3 мм/км", "Автоматическая запись", "Работа при -20°C"],
-        specsEn: ["Accuracy: 0.3 mm/km", "Automatic recording", "Operation at -20°C"],
+        specs: ["GPS/ГЛОНАСС/Galileo/BeiDou", "Режимы RTK и статика", "Корпус из магниевого сплава, IP67"],
+        specsEn: ["GPS/GLONASS/Galileo/BeiDou", "RTK and static modes", "Magnesium alloy body, IP67"],
 
         image: "/images/site/survey-slope.jpg"
       },
@@ -271,7 +271,7 @@ const equipmentCategories = [
       },
       {
         name: "Водовозки",
-        nameEn: "Kamaz Truck",
+        nameEn: "Water Trucks",
         specs: ["Грузоподъемность: 10 т", "Полный привод", "Работа при -40°C"],
         specsEn: ["Load capacity: 10 t", "4WD", "Operation at -40°C"],
 
@@ -311,9 +311,9 @@ const equipmentCategories = [
       },
       {
         name: "Вахтовые автобусы",
-        nameEn: "Loader",
-        specs: ["Грузоподъемность: 3.5 т", "Ковш 2 м³", "Полный привод"],
-        specsEn: ["Load capacity: 3.5 t", "Bucket 2 m³", "4WD"],
+        nameEn: "Crew Buses",
+        specs: ["Перевозка вахтовых бригад", "Полный привод", "Отапливаемый салон"],
+        specsEn: ["Crew transportation", "4WD", "Heated cabin"],
 
         image: "/images/equipment/vahtovka.png"
       }

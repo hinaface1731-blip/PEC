@@ -218,8 +218,6 @@ const data: ServicePageData = {
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
-    { ru: 'Ямал', en: 'Yamal' },
-    { ru: 'ХМАО', en: 'KhMAO' },
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
   ],

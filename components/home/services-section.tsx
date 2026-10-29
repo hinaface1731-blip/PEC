@@ -59,8 +59,8 @@ const services = [
     href: '/services/lab',
     titleRu: 'Лабораторные исследования',
     titleEn: 'Laboratory Research',
-    descRu: 'ICP-MS анализ, пробирный анализ, минералогия, физико-механические испытания',
-    descEn: 'ICP-MS analysis, fire assay, mineralogy, physical and mechanical testing',
+    descRu: 'Пробоподготовка, рентгенофлуоресцентный анализ, минералогия, шлифы',
+    descEn: 'Sample preparation, XRF analysis, mineralogy, thin sections',
   },
   {
     icon: FileText,

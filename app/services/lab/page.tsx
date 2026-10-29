@@ -3,7 +3,7 @@ import { LabContent } from '@/components/services/lab-content'
 
 export const metadata = {
   title: 'Лабораторные исследования',
-  description: 'ICP-MS анализ на 45 элементов, пробирный анализ драгметаллов, минералогия.',
+  description: 'Пробоподготовка, рентгенофлуоресцентный анализ, минералогические исследования и изготовление шлифов.',
 }
 
 export default function LabPage() {

@@ -3,7 +3,7 @@ import { GeophysicsContent } from '@/components/services/geophysics-content'
 
 export const metadata = {
   title: 'Геофизические работы',
-  description: 'АМТЗ, ТЭМ/ЗСБ, магниторазведка, гравиразведка, сейсморазведка, каротаж скважин. 85+ проектов, 5 000+ км профилей.',
+  description: 'АМТЗ, ЗСБ, ВП, электротомография, магниторазведка (наземная и с БПЛА), каротаж скважин.',
 }
 
 export default function GeophysicsPage() {

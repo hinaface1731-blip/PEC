@@ -7,8 +7,8 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 
 const data: ServicePageData = {
   icon: Compass,
-  titleRu: 'Маркшейдерские, геодезические, топографические работы.',
-  titleEn: 'Mine surveying, geodetic, and topographic work.',
+  titleRu: 'Маркшейдерские работы',
+  titleEn: 'Survey Works',
   descRu: 'Маркшейдерское обеспечение горных и буровых работ выполняется на основании лицензии на осуществление деятельности по производству маркшейдерских работ, выданной Федеральной Службой по экологическому, технологическому и атомному надзору (Ростехнадзором).',
   descEn: 'Mine and drilling surveying is carried out on the basis of a license for mine surveying issued by the Federal Service for Environmental, Technological, and Nuclear Supervision (Rostekhnadzor).',
   heroImage: '/images/mark.JPG',
@@ -205,7 +205,6 @@ const data: ServicePageData = {
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Таймыр', en: 'Taimyr' },
-    { ru: 'Иркутская область', en: 'Irkutsk Region' },
     { ru: 'Крайний Север', en: 'Far North' },
   ],
   stats: [

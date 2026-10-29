@@ -214,7 +214,6 @@ const data: ServicePageData = {
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Магаданская область', en: 'Magadan Region' },
-    { ru: 'Иркутская область', en: 'Irkutsk Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
     { ru: 'Таймыр', en: 'Taimyr' },
   ],

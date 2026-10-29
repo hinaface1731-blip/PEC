@@ -21,8 +21,8 @@ const officeInfo = {
   addressEn: "84 Lenina St.",
   phone: "+7(391)205-15-84",
   email: "hr@polar-ec.ru",
-  hours: "Пн-Пт: 10:00 - 18:00",
-  hoursEn: "Mon-Fri: 10:00 - 18:00",
+  hours: "Пн–Пт: 10:00–18:00 (время красноярское, UTC+7)",
+  hoursEn: "Mon–Fri: 10:00–18:00 (Krasnoyarsk time, UTC+7)",
   coordinates: [92.867583, 56.013528] as [number, number] // [долгота, широта]
 }
 
@@ -179,8 +179,8 @@ export default function ContactsContent() {
               
               <p className="text-xl text-white/90 leading-relaxed">
                 {t(
-                  'Мы ищем талантливых специалистов в области геологии, геофизики, бурения и IT. Отправьте нам своё резюме, и мы свяжемся с вами при открытии подходящей вакансии.',
-                  'We are looking for talented specialists in geology, geophysics, drilling and IT. Send us your resume and we will contact you when a suitable vacancy opens.'
+                  'Мы ищем талантливых специалистов в области геологии, геофизики и бурения. Отправьте нам своё резюме, и мы свяжемся с вами при открытии подходящей вакансии.',
+                  'We are looking for talented specialists in geology, geophysics and drilling. Send us your resume and we will contact you when a suitable vacancy opens.'
                 )}
               </p>
             </motion.div>
