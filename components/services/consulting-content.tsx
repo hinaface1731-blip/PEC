@@ -119,54 +119,41 @@ const data: ServicePageData = {
   
   steps: [
     {
-      numRu: '01',
-      numEn: '01',
+      image: '/images/results/geobaza.jpg',
       titleRu: 'Анализ данных',
       titleEn: 'Data Analysis',
       descRu: 'Сбор и верификация геологических данных, оценка качества',
       descEn: 'Collection and verification of geological data, quality assessment',
     },
     {
-      numRu: '02',
-      numEn: '02',
+      image: '/images/results/georazrez.jpg',
       titleRu: 'Геологическая модель',
       titleEn: 'Geological Model',
       descRu: 'Построение 3D геологической модели месторождения',
       descEn: '3D geological model construction',
     },
     {
-      numRu: '03',
-      numEn: '03',
+      image: '/images/results/geophys3d.jpg',
       titleRu: 'Блочная модель',
       titleEn: 'Block Model',
       descRu: 'Интерполяция содержаний, оценка ресурсов',
       descEn: 'Grade interpolation, resource estimation',
     },
     {
-      numRu: '04',
-      numEn: '04',
+      image: '/images/service-illustrations/field-office.webp',
       titleRu: 'Экономическая оценка',
       titleEn: 'Economic Assessment',
       descRu: 'ТЭО кондиций, оптимизация карьера/подземки',
       descEn: 'Feasibility study, pit/underground optimization',
     },
     {
-      numRu: '05',
-      numEn: '05',
+      image: '/images/service-illustrations/work-report.webp',
       titleRu: 'Защита запасов',
       titleEn: 'Resource Approval',
       descRu: 'Подготовка материалов ГКЗ, сопровождение защиты',
       descEn: 'GKZ documentation, approval support',
     },
   ],
-  stepImages: [
-    '/images/results/geobaza.jpg',
-    '/images/results/georazrez.jpg',
-    '/images/methods/software-magnetic.jpg',
-    '/images/methods/software-gis.jpg',
-    '/images/results/geomap.jpg',
-  ],
-  
   results: [
     {
       titleRu: 'Отчёт ГКЗ',
@@ -180,7 +167,7 @@ const data: ServicePageData = {
       titleEn: 'JORC Report',
       descRu: 'Технический отчёт по международным стандартам',
       descEn: 'Technical report per international standards',
-      image: '/images/site/core-logging.jpg',
+      image: '/images/service-illustrations/work-report.webp',
     },
     {
       titleRu: '3D-модели',
@@ -194,22 +181,10 @@ const data: ServicePageData = {
       titleEn: 'Feasibility Study',
       descRu: 'Технико-экономическое обоснование проекта',
       descEn: 'Project feasibility study',
-      image: '/images/site/desk-documents.jpg',
+      image: '/images/service-illustrations/field-office.webp',
     },
   ],
   
-  caseStudy: {
-    titleRu: 'Подготовка ТЭО и защита запасов в ГКЗ',
-    titleEn: 'Feasibility Study and GKZ Resource Approval',
-    clientRu: 'Полиметалл',
-    clientEn: 'Polymetal',
-    year: '2023',
-    volumeRu: 'Месторождение золота, 250 скважин, 45 000 м керна, 12 000 анализов',
-    volumeEn: 'Gold deposit, 250 wells, 45,000m core, 12,000 analyses',
-    resultRu: 'Защищены запасы категорий С1+С2 в объёме 15 тонн золота. Утверждены кондиции для открытой отработки.',
-    resultEn: 'Approved C1+C2 resources of 15 tonnes gold. Cutoff grades approved for open-pit mining.',
-  },
-  caseImage: '/images/site/nevenrekan.jpg',
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },

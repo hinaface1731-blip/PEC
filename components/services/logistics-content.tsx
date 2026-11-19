@@ -53,7 +53,7 @@ const data: ServicePageData = {
       ]
     },
   ],
-  methodsImage: '/images/logistics-methods.jpg',
+  methodsImage: '/images/site/loading-crane.jpg',
   
   // ✅ Новая структура оборудования
   equipment: [
@@ -102,54 +102,41 @@ const data: ServicePageData = {
   
   steps: [
     {
-      numRu: '01',
-      numEn: '01',
+      image: '/images/service-illustrations/shipping-records.webp',
       titleRu: 'Планирование',
       titleEn: 'Planning',
       descRu: 'Анализ потребностей, расчёт объёмов, выбор маршрутов и видов транспорта',
       descEn: 'Needs analysis, volume calculation, route and transport selection',
     },
     {
-      numRu: '02',
-      numEn: '02',
+      image: '/images/site/loading-crane.jpg',
       titleRu: 'Формирование грузов',
       titleEn: 'Cargo Consolidation',
       descRu: 'Сбор, упаковка, маркировка, консолидация грузов на базе',
       descEn: 'Collection, packaging, labeling, cargo consolidation at base',
     },
     {
-      numRu: '03',
-      numEn: '03',
+      image: '/images/site/convoy-blizzard.jpg',
       titleRu: 'Транспортировка',
       titleEn: 'Transportation',
       descRu: 'Доставка грузов всеми видами транспорта, экспедиционное сопровождение',
       descEn: 'Cargo delivery by all transport modes, expedition support',
     },
     {
-      numRu: '04',
-      numEn: '04',
+      image: '/images/site/base-containers.jpg',
       titleRu: 'Складское хранение',
       titleEn: 'Warehousing',
       descRu: 'Приём, учёт, хранение, выдача грузов на объектах',
       descEn: 'Receiving, accounting, storage, cargo issuance at sites',
     },
     {
-      numRu: '05',
-      numEn: '05',
+      image: '/images/service-illustrations/shipping-records.webp',
       titleRu: 'Отчётность',
       titleEn: 'Reporting',
       descRu: 'Транспортные накладные, акты, товарные отчёты, закрытие документов',
       descEn: 'Waybills, acts, commodity reports, documentation closure',
     },
   ],
-  stepImages: [
-    '/images/site/base-aerial.jpg',
-    '/images/site/loading-crane.jpg',
-    '/images/site/convoy-blizzard.jpg',
-    '/images/site/base-containers.jpg',
-    '/images/site/site-office.jpg',
-  ],
-  
   results: [
     {
       titleRu: 'Доставленные грузы',
@@ -177,22 +164,10 @@ const data: ServicePageData = {
       titleEn: 'Transport Documentation',
       descRu: 'Оформление всех разрешений, накладных, путевых листов',
       descEn: 'Permits, waybills, travel sheets preparation',
-      image: '/images/site/helicopter-loading.jpg',
+      image: '/images/service-illustrations/shipping-records.webp',
     },
   ],
   
-  caseStudy: {
-    titleRu: 'Северный завоз на Таймыр',
-    titleEn: 'Northern Supply to Taimyr',
-    clientRu: 'Норникель',
-    clientEn: 'Nornickel',
-    year: '2024',
-    volumeRu: 'Доставлено 5 000 тонн грузов, 300 тонн ГСМ, 50 единиц техники',
-    volumeEn: '5,000 tons of cargo, 300 tons of fuel, 50 units of equipment delivered',
-    resultRu: 'Все грузы доставлены в установленные сроки. Обеспечена работа 15 удалённых объектов. Потери при транспортировке — менее 1%.',
-    resultEn: 'All cargo delivered on schedule. Operations of 15 remote sites supported. Transportation loss less than 1%.',
-  },
-  caseImage: '/images/site/sea-delivery.jpg',
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },

@@ -68,7 +68,7 @@ const data: ServicePageData = {
       ]
     },
   ],
-  methodsImage: '/images/mining-methods.jpg',
+  methodsImage: '/images/site/excavator.jpg',
   
   // ✅ Новая структура оборудования
   equipment: [
@@ -117,75 +117,62 @@ const data: ServicePageData = {
   
   steps: [
     {
-      numRu: '01',
-      numEn: '01',
+      image: '/images/service-illustrations/field-office.webp',
       titleRu: 'Планирование',
       titleEn: 'Planning',
       descRu: 'Разработка проекта горных работ, расчёт объёмов, выбор техники',
       descEn: 'Mining project design, volume calculation, equipment selection',
     },
     {
-      numRu: '02',
-      numEn: '02',
+      image: '/images/site/site-clearing.jpg',
       titleRu: 'Подготовка участка',
       titleEn: 'Site Preparation',
       descRu: 'Расчистка территории, снятие плодородного слоя, устройство подъездных путей',
       descEn: 'Site clearing, topsoil removal, access road construction',
     },
     {
-      numRu: '03',
-      numEn: '03',
+      image: '/images/service-illustrations/mining-earthworks.webp',
       titleRu: 'Вскрышные работы',
       titleEn: 'Overburden',
       descRu: 'Удаление вскрышных пород, формирование уступов, создание рабочей площадки',
       descEn: 'Overburden removal, bench formation, work platform creation',
     },
     {
-      numRu: '04',
-      numEn: '04',
+      image: '/images/site/excavator.jpg',
       titleRu: 'Добычные работы',
       titleEn: 'Mining',
       descRu: 'Буровзрывные работы, экскавация, погрузка и транспортировка',
       descEn: 'Drilling and blasting, excavation, loading and hauling',
     },
     {
-      numRu: '05',
-      numEn: '05',
+      image: '/images/site/reclamation.jpg',
       titleRu: 'Заключительный этап',
       titleEn: 'Final Stage',
       descRu: 'Рекультивация нарушенных земель, сдача участка, отчётная документация',
       descEn: 'Land reclamation, site handover, reporting',
     },
   ],
-  stepImages: [
-    '/images/site/camp-aerial.jpg',
-    '/images/site/site-clearing.jpg',
-    '/images/site/trenching.jpg',
-    '/images/site/excavator.jpg',
-    '/images/site/bulldozer-chukotka.jpg',
-  ],
-  
   results: [
     {
       titleRu: 'Вскрытые запасы',
       titleEn: 'Exposed Reserves',
       descRu: 'Подготовка запасов к добыче, вскрытие продуктивных горизонтов',
       descEn: 'Reserve preparation for mining, productive horizon exposure',
-      image: '/images/site/bulldozers-night.jpg',
+      image: '/images/service-illustrations/mining-earthworks.webp',
     },
     {
       titleRu: 'Добытое сырьё',
       titleEn: 'Extracted Minerals',
       descRu: 'Полезное ископаемое, подготовленное к переработке или отгрузке',
       descEn: 'Mineral ready for processing or shipping',
-      image: '/images/site/placer-panning.jpg',
+      image: '/images/site/rock-samples.jpg',
     },
     {
       titleRu: 'Горная документация',
       titleEn: 'Mining Documentation',
       descRu: 'Планы горных работ, акты на списание, маркшейдерские планы',
       descEn: 'Mining plans, write-off acts, survey plans',
-      image: '/images/results/georazrez.jpg',
+      image: '/images/service-illustrations/survey-plan.webp',
     },
     {
       titleRu: 'Рекультивация',
@@ -196,18 +183,7 @@ const data: ServicePageData = {
     },
   ],
   
-  caseStudy: {
-    titleRu: 'Отработка россыпного месторождения в Якутии',
-    titleEn: 'Placer Mining in Yakutia',
-    clientRu: 'Северная Звезда',
-    clientEn: 'Northern Star',
-    year: '2024',
-    volumeRu: 'Вскрыто 1 500 000 м³ песков, добыто 850 кг золота',
-    volumeEn: '1,500,000 m³ of sand exposed, 850 kg of gold extracted',
-    resultRu: 'Отработка месторождения выполнена с опережением графика на 15%. Применена технология сезонной оттайки пород, что позволило снизить затраты на подготовку.',
-    resultEn: 'Deposit mining completed 15% ahead of schedule. Seasonal rock thawing technology reduced preparation costs.',
-  },
-  caseImage: '/images/site/tundra-helicopter.jpg',
+  projectId: 3,
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },

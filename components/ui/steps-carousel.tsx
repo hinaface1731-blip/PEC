@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
 import { FallbackImage } from '@/components/ui/fallback-image'
 
 interface Step {
+  image: string
   titleRu: string
   titleEn: string
   descRu: string
@@ -13,141 +13,53 @@ interface Step {
 
 interface StepsCarouselProps {
   steps: Step[]
-  stepImages: string[]
   t: (ru: string, en: string) => string
 }
 
-export function StepsCarousel({ steps, stepImages, t }: StepsCarouselProps) {
+export function StepsCarousel({ steps, t }: StepsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isFading, setIsFading] = useState(false)
-  const totalSteps = steps.length
-
-  const next = () => {
-    setIsFading(true)
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % totalSteps)
-      setIsFading(false)
-    }, 200)
-  }
-
-  const prev = () => {
-    setIsFading(true)
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + totalSteps) % totalSteps)
-      setIsFading(false)
-    }, 200)
-  }
-
-  const goTo = (index: number) => {
-    if (index === currentIndex) return
-    setIsFading(true)
-    setTimeout(() => {
-      setCurrentIndex(index)
-      setIsFading(false)
-    }, 200)
-  }
-
-  useEffect(() => {
-    const timer = setInterval(next, 5000)
-    return () => clearInterval(timer)
-  }, [currentIndex])
-
   const currentStep = steps[currentIndex]
-  const currentImage = stepImages[currentIndex] || stepImages[0]
+  const currentImage = currentStep.image
+  const isIllustration = currentImage.startsWith('/images/service-illustrations/')
+  const isTechnical = /^\/images\/(results|methods|stages)\//.test(currentImage)
 
   return (
-    <div className="relative">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Левая колонка - текст с фиксированной высотой */}
-        <div className="space-y-6">
-          {/* Прогресс-бар */}
-          <div className="space-y-2">
-            <div className="flex justify-between text-sm text-[var(--muted)]">
-              <span>{t('Этап', 'Step')} {currentIndex + 1}</span>
-              <span>{currentIndex + 1} / {totalSteps}</span>
-            </div>
-            <div className="h-1 bg-[var(--bg3)] rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-[var(--accent)] rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${((currentIndex + 1) / totalSteps) * 100}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Текстовый блок с фиксированной высотой и плавным fade-in */}
-          <div 
-            className="space-y-4 transition-opacity duration-200"
-            style={{ opacity: isFading ? 0 : 1 }}
-          >
-            {/* Заголовок - фиксированная высота (2 строки) */}
-            <div className="min-h-[4rem]">
-              <h3 className="text-2xl font-bold text-[var(--text)] leading-tight">
-                {t(currentStep.titleRu, currentStep.titleEn)}
-              </h3>
-            </div>
-
-            {/* Описание - фиксированная высота (3 строки) */}
-            <div className="min-h-[4.5rem]">
-              <p className="text-[var(--muted)] leading-relaxed">
-                {t(currentStep.descRu, currentStep.descEn)}
-              </p>
-            </div>
-          </div>
-
-          {/* Dots навигация под текстом */}
-          <div className="flex gap-2 pt-4">
-            {steps.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                aria-label={t(`Этап ${i + 1}`, `Step ${i + 1}`)}
-                aria-current={i === currentIndex ? 'step' : undefined}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === currentIndex
-                    ? 'w-8 bg-[var(--accent)]'
-                    : 'w-1.5 bg-[var(--border)] hover:bg-[var(--muted)]'
-                }`}
-              />
-            ))}
-          </div>
+    <div className="grid gap-6 lg:grid-cols-[minmax(16rem,0.65fr)_minmax(0,1fr)]">
+      <ol className="flex flex-col gap-2">
+        {steps.map((step, index) => (
+          <li key={step.titleRu}>
+            <button
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              aria-current={index === currentIndex ? 'step' : undefined}
+              className="flex w-full items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-start font-medium text-[var(--text)] transition-colors hover:border-primary aria-[current=step]:border-primary aria-[current=step]:bg-accent"
+            >
+              <span aria-hidden="true" className="shrink-0 text-sm tabular-nums">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span>{t(step.titleRu, step.titleEn)}</span>
+            </button>
+          </li>
+        ))}
+      </ol>
+      <div aria-live="polite" className="overflow-hidden rounded-2xl border border-border bg-card">
+        <div className={`relative aspect-[16/10] ${isTechnical ? 'bg-white' : 'bg-muted'}`}>
+          <FallbackImage
+            src={currentImage}
+            alt=""
+            fill
+            sizes="(max-width: 1023px) 100vw, 60vw"
+            className={isTechnical ? 'object-contain p-3' : 'object-cover'}
+          />
+          {isIllustration && (
+            <span className="absolute bottom-3 right-3 rounded-md bg-black/75 px-2 py-1 text-xs text-white">
+              {t('Иллюстрация', 'Illustration')}
+            </span>
+          )}
         </div>
-
-        {/* Правая колонка - изображение с кнопками на нём */}
-        <div className="relative group">
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--bg3)]">
-            <FallbackImage
-              src={currentImage}
-              alt={t(currentStep.titleRu, currentStep.titleEn)}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover transition-opacity duration-200"
-              style={{ opacity: isFading ? 0.8 : 1 }}
-            />
-            
-            {/* Номер шага на картинке */}
-            <div className="absolute top-4 left-4">
-              <div className="w-10 h-10 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white font-bold">
-                {currentIndex + 1}
-              </div>
-            </div>
-
-            {/* Кнопки навигации НА КАРТИНКЕ */}
-            <button
-              onClick={prev}
-              aria-label={t('Предыдущий этап', 'Previous step')}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-black/70"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            
-            <button
-              onClick={next}
-              aria-label={t('Следующий этап', 'Next step')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur text-white flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-black/70"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+        <div className="p-5 sm:p-6">
+          <h3 className="text-xl font-semibold text-[var(--text)]">{t(currentStep.titleRu, currentStep.titleEn)}</h3>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t(currentStep.descRu, currentStep.descEn)}</p>
         </div>
       </div>
     </div>

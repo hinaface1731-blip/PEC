@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next'
-import { Manrope } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
 import './globals.css'
 
-const manrope = Manrope({
-  subsets: ['latin', 'cyrillic'],
+const manrope = localFont({
+  src: './fonts/manrope-variable.ttf',
   variable: '--font-manrope',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: '200 800',
 })
 
 export const metadata: Metadata = {

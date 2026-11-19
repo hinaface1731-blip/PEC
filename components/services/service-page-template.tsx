@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
 import { YandexMapV3 } from '@/components/yandex-map-v3'
 import { motion } from 'framer-motion'
+import { projects } from '@/lib/projects'
 
 interface ServiceMethod {
   ru: string
@@ -29,8 +30,7 @@ interface ServiceEquipment {
 }
 
 interface ServiceStep {
-  numRu: string
-  numEn: string
+  image: string
   titleRu: string
   titleEn: string
   descRu: string
@@ -43,18 +43,6 @@ interface ServiceResult {
   descRu: string
   descEn: string
   image: string
-}
-
-interface ServiceCase {
-  titleRu: string
-  titleEn: string
-  clientRu: string
-  clientEn: string
-  year: string
-  volumeRu: string
-  volumeEn: string
-  resultRu: string
-  resultEn: string
 }
 
 interface ServiceStat {
@@ -91,10 +79,8 @@ export interface ServicePageData {
   reverse?: boolean
   equipment: ServiceEquipment[]
   steps: ServiceStep[]
-  stepImages: string[]
   results: ServiceResult[]
-  caseStudy: ServiceCase
-  caseImage: string
+  projectId?: number
   regions: ServiceRegion[]
   stats: ServiceStat[]
   sectionTitleRu?: string
@@ -111,6 +97,7 @@ export interface ServicePageTemplateProps {
 
 export function ServicePageTemplate({ data, topSection }: ServicePageTemplateProps) {
   const { t } = useLanguage()
+  const project = projects.find(({ id }) => id === data.projectId)
   
   // Состояния для карусели оборудования
   const [equipmentCategoryIndex, setEquipmentCategoryIndex] = useState(0)
@@ -393,20 +380,11 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
       {/* Process Steps */}
       <section className="section bg-gradient-to-b from-[var(--bg)] to-[var(--bg2)]">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
-              {t('Процесс выполнения', 'Work Process')}
-            </h2>
-            <p className="text-[var(--muted)] max-w-2xl mx-auto">
-              {t(
-                'От проектирования до финального отчёта — прозрачный и контролируемый процесс',
-                'From design to final report — transparent and controlled process'
-              )}
-            </p>
-          </div>
+          <h2 className="mb-8 text-3xl font-bold text-[var(--text)] lg:text-4xl">
+            {t('Этапы работ', 'Work Stages')}
+          </h2>
           <StepsCarousel
             steps={data.steps}
-            stepImages={data.stepImages}
             t={t}
           />
         </div>
@@ -415,73 +393,86 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
       {/* Results */}
       <section className="section bg-[var(--bg2)]">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
+          <h2 className="mb-8 text-3xl font-bold text-[var(--text)] lg:text-4xl">
             {t('Результаты работ', 'Work Results')}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.results.map((result, i) => (
-              <div key={i} className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-[var(--accent)]/30 transition-all flex flex-col">
-                <div className="p-5 flex-1">
-                  <h3 className="font-semibold text-[var(--text)] mb-2 text-lg">
-                    {t(result.titleRu, result.titleEn)}
-                  </h3>
-                  <p className="text-sm text-[var(--muted)]">
-                    {t(result.descRu, result.descEn)}
-                  </p>
-                </div>
-                <div className="relative w-full h-48 overflow-hidden bg-[var(--bg3)]">
-                  <FallbackImage
-                    src={result.image}
-                    alt={t(result.titleRu, result.titleEn)}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {data.results.map((result) => {
+              const isTechnical = /^\/images\/(results|methods)\//.test(result.image)
+              const isIllustration = result.image.startsWith('/images/service-illustrations/')
+              return (
+                <article key={result.titleRu} className="overflow-hidden rounded-2xl border border-border bg-card">
+                  <div className={`relative aspect-[4/3] ${isTechnical ? 'bg-white' : 'bg-muted'}`}>
+                    <FallbackImage
+                      src={result.image}
+                      alt=""
+                      fill
+                      className={isTechnical ? 'object-contain p-3' : 'object-cover'}
+                      sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 25vw"
+                    />
+                    {isIllustration && (
+                      <span className="absolute bottom-3 right-3 rounded-md bg-black/75 px-2 py-1 text-xs text-white">
+                        {t('Иллюстрация', 'Illustration')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold text-[var(--text)]">{t(result.titleRu, result.titleEn)}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t(result.descRu, result.descEn)}</p>
+                  </div>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Case Study */}
-      <section className="section">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10">
-            {t('Пример проекта', 'Project Example')}
-          </h2>
-          <div className="card flex flex-col lg:flex-row gap-8">
-            <div className="lg:w-1/3">
-              <FallbackImage
-                src={data.caseImage}
-                alt={t(data.caseStudy.titleRu, data.caseStudy.titleEn)}
-                width={500}
-                height={300}
-                className="rounded-xl w-full object-cover"
-              />
-            </div>
-            <div className="lg:w-2/3">
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="px-3 py-1 rounded-full bg-[var(--accent)] text-white text-sm font-medium">
-                  {t(data.caseStudy.clientRu, data.caseStudy.clientEn)}
-                </span>
-                <span className="text-sm text-[var(--muted)]">{data.caseStudy.year}</span>
+      {project && (
+        <section className="section">
+          <div className="container mx-auto">
+            <h2 className="mb-10 text-3xl font-bold text-[var(--text)]">
+              {t('Пример проекта', 'Project Example')}
+            </h2>
+            <Link
+              href={`/projects#project-${project.id}`}
+              className="card flex flex-col gap-8 focus-visible:outline-2 focus-visible:outline-[var(--accent)] lg:flex-row"
+            >
+              <div className="relative aspect-[5/3] w-full self-start overflow-hidden rounded-xl bg-muted lg:w-1/3 lg:shrink-0">
+                <FallbackImage
+                  src={project.image}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1344px) 410px, (min-width: 1024px) 33vw, 100vw"
+                />
               </div>
-              <h3 className="text-2xl font-bold text-[var(--text)] mb-4">
-                {t(data.caseStudy.titleRu, data.caseStudy.titleEn)}
-              </h3>
-              <div className="mb-4">
-                <span className="text-sm text-[var(--muted2)]">{t('Объём работ:', 'Scope of work:')}</span>
-                <p className="text-[var(--text)]">{t(data.caseStudy.volumeRu, data.caseStudy.volumeEn)}</p>
+              <div className="min-w-0 flex-1">
+                <div className="mb-4 flex flex-wrap items-center gap-3">
+                  <span className="rounded-full bg-[var(--accent)] px-3 py-1 text-sm font-medium text-slate-950">
+                    {t(project.client, project.clientEn)}
+                  </span>
+                  <span className="text-sm text-[var(--muted)]">{project.year}</span>
+                </div>
+                <h3 className="mb-4 text-2xl font-bold text-[var(--text)]">
+                  {t(project.title, project.titleEn)}
+                </h3>
+                <div className="space-y-4 text-[var(--text)]">
+                  <div>
+                    <p className="text-sm text-[var(--muted)]">{t('Задача', 'Objective')}</p>
+                    <p>{t(project.task, project.taskEn)}</p>
+                  </div>
+                  {project.result && (
+                    <div>
+                      <p className="text-sm text-[var(--muted)]">{t('Результат', 'Result')}</p>
+                      <p>{t(project.result, project.resultEn ?? project.result)}</p>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div>
-                <span className="text-sm text-[var(--muted2)]">{t('Результат:', 'Result:')}</span>
-                <p className="text-[var(--text)]">{t(data.caseStudy.resultRu, data.caseStudy.resultEn)}</p>
-              </div>
-            </div>
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Geography */}
       <section className="section bg-[var(--bg2)]">

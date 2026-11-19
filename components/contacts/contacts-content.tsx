@@ -234,8 +234,8 @@ export default function ContactsContent() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <div id="application-form" className="bg-card p-8 md:p-10 rounded-2xl border border-border">
@@ -392,8 +392,8 @@ export default function ContactsContent() {
 
             {/* Map */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <div className="bg-card p-6 rounded-2xl border border-border h-full">

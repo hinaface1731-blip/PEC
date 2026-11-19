@@ -62,7 +62,7 @@ const data: ServicePageData = {
       ]
     },
   ],
-  methodsImage: '/images/geo-methods.jpg',
+  methodsImage: '/images/site/geologists-outcrop.jpg',
   
  equipment: [
   {
@@ -163,55 +163,42 @@ const data: ServicePageData = {
   
   steps: [
     {
-      numRu: '01',
-      numEn: '01',
+      image: '/images/service-illustrations/field-office.webp',
       titleRu: 'Подготовительный этап',
       titleEn: 'Preparation Stage',
       descRu: 'Анализ фондовых материалов, составление проекта работ, планирование маршрутов',
       descEn: 'Analysis of archival materials, work project preparation, route planning',
     },
     {
-      numRu: '02',
-      numEn: '02',
+      image: '/images/site/geologists-outcrop.jpg',
       titleRu: 'Полевые геологические работы',
       titleEn: 'Field Geological Work',
       descRu: 'Геологические маршруты, документация обнажений, отбор проб, закладка горных выработок',
       descEn: 'Geological routes, outcrop documentation, sampling, mine workings',
     },
     {
-      numRu: '03',
-      numEn: '03',
+      image: '/images/site/lab-analysis.jpg',
       titleRu: 'Лабораторные исследования',
       titleEn: 'Laboratory Research',
       descRu: 'Петрография, минералогия, геохимические анализы проб',
       descEn: 'Petrography, mineralogy, geochemical analysis',
     },
     {
-      numRu: '04',
-      numEn: '04',
+      image: '/images/methods/software-gis.jpg',
       titleRu: 'Камеральная обработка',
       titleEn: 'Office Processing',
       descRu: 'Построение карт, разрезов, 3D-моделей, интерпретация данных',
       descEn: 'Map construction, cross-sections, 3D models, data interpretation',
     },
     {
-      numRu: '05',
-      numEn: '05',
+      image: '/images/results/geootchet.jpg',
       titleRu: 'Составление отчёта',
       titleEn: 'Report Preparation',
       descRu: 'Подготовка геологического отчёта по формам ГКЗ/ТКЗ, сдача отчётности',
       descEn: 'Geological report preparation per GKZ/TKZ forms, reporting',
     },
   ],
-  stepImages: [
-    '/images/project.jpg',
-    '/images/site/stream-sampling.jpg',
-    '/images/site/core-cutting.jpg',
-    '/images/methods/software-gis.jpg',
-    '/images/site/desk-documents.jpg',
-  ],
-  
-results: [
+  results: [
   {
     titleRu: 'Геологические карты',
     titleEn: 'Geological Maps',
@@ -242,18 +229,7 @@ results: [
   },
 ],
   
-  caseStudy: {
-    titleRu: 'Геологическое доизучение Норильского рудного узла',
-    titleEn: 'Geological Study of Norilsk Ore Cluster',
-    clientRu: 'Норникель',
-    clientEn: 'Nornickel',
-    year: '2023-2024',
-    volumeRu: '3 планшета масштаба 1:50 000, площадь 850 км², 1 200 км маршрутов, 3 500 проб',
-    volumeEn: '3 map sheets at 1:50,000 scale, 850 km² area, 1,200 km routes, 3,500 samples',
-    resultRu: 'Выявлено 7 перспективных участков на медно-никелевое оруденение. Подготовлены рекомендации по дальнейшим работам.',
-    resultEn: 'Identified 7 prospective areas for copper-nickel mineralization. Prepared recommendations for further work.',
-  },
-  caseImage: '/images/site/geologists-outcrop.jpg',
+  projectId: 7,
   
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },

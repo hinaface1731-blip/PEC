@@ -103,8 +103,8 @@ export function AboutContent() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-card p-8 md:p-10 rounded-2xl border border-border"
             >
@@ -123,8 +123,8 @@ export function AboutContent() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-card p-8 md:p-10 rounded-2xl border border-border"
             >

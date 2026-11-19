@@ -111,54 +111,41 @@ const data: ServicePageData = {
   
   steps: [
     {
-      numRu: '01',
-      numEn: '01',
+      image: '/images/service-illustrations/field-office.webp',
       titleRu: 'Проектирование',
       titleEn: 'Project Design',
       descRu: 'Разработка ГТН, выбор конструкции скважин, расчёт параметров',
       descEn: 'Technical design, well construction selection, parameter calculation',
     },
     {
-      numRu: '02',
-      numEn: '02',
+      image: '/images/site/loading-crane.jpg',
       titleRu: 'Мобилизация',
       titleEn: 'Mobilization',
       descRu: 'Доставка оборудования, монтаж буровой установки',
       descEn: 'Equipment delivery, drilling rig installation',
     },
     {
-      numRu: '03',
-      numEn: '03',
+      image: '/images/site/drilling-rig-inside.jpg',
       titleRu: 'Бурение',
       titleEn: 'Drilling',
       descRu: 'Проходка скважины с отбором керна и контролем параметров',
       descEn: 'Well drilling with core recovery and parameter monitoring',
     },
     {
-      numRu: '04',
-      numEn: '04',
+      image: '/images/site/core-logging.jpg',
       titleRu: 'Документация керна',
       titleEn: 'Core Documentation',
       descRu: 'Геологическая документация, маркировка, фотографирование',
       descEn: 'Geological documentation, marking, photography',
     },
     {
-      numRu: '05',
-      numEn: '05',
+      image: '/images/site/drill-site-winter.jpg',
       titleRu: 'Завершение работ',
       titleEn: 'Completion',
       descRu: 'Каротаж, тампонаж, ликвидация или обустройство скважины',
       descEn: 'Logging, cementing, well abandonment or completion',
     },
   ],
-  stepImages: [
-    '/images/results/georazrez.jpg',
-    '/images/site/loading-crane.jpg',
-    '/images/site/drilling-rig-inside.jpg',
-    '/images/site/core-documentation.jpg',
-    '/images/site/drill-site-winter.jpg',
-  ],
-  
   results: [
     {
       titleRu: 'Керн',
@@ -172,7 +159,7 @@ const data: ServicePageData = {
       titleEn: 'Documentation',
       descRu: 'Буровые журналы, акты, фото керна, разрезы скважин',
       descEn: 'Drilling logs, reports, core photos, well sections',
-      image: '/images/results/geootchet.jpg',
+      image: '/images/service-illustrations/work-report.webp',
     },
     {
       titleRu: 'Каротажные данные',
@@ -190,18 +177,7 @@ const data: ServicePageData = {
     },
   ],
   
-  caseStudy: {
-    titleRu: 'Бурение на Марсианских площадях',
-    titleEn: 'Drilling on Marsian licenses',
-    clientRu: 'Полюс',
-    clientEn: 'Polyus',
-    year: '2025',
-    volumeRu: '78 скважин, общий метраж 12 500 м, глубина до 550 м',
-    volumeEn: '78 wells, total footage 12 500m, depth up to 550m',
-    resultRu: 'Средний выход керна 96%. Подтверждено продолжение золоторудных зон на глубину. Прирост запасов категории С1.',
-    resultEn: 'Average core recovery 96%. Confirmed gold zone extension at depth. C1 category resource increase.',
-  },
-  caseImage: '/images/site/drill-rig-mountain.jpg',
+  projectId: 1,
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },

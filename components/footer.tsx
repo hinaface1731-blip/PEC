@@ -103,11 +103,15 @@ export function Footer() {
               {t('Лицензии', 'Licenses')}
             </h4>
             <ul className="space-y-2">
-              <li className="text-sm text-[var(--muted)]">
-                {t('Лицензия Роснедр № КРР 03707 БП', 'Rosnedra License No. КРР 03707 BP')}
+              <li>
+                <Link href="/services/survey#license" className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--accent)]">
+                  {t('Лицензия на маркшейдерские работы', 'Mine Surveying License')}
+                </Link>
               </li>
-              <li className="text-sm text-[var(--muted)]">
-                {t('Свидетельство СРО № 1234-2024', 'SRO Certificate No. 1234-2024')}
+              <li>
+                <Link href="/investors" className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--accent)]">
+                  {t('Лицензии на недропользование', 'Subsoil Use Licenses')}
+                </Link>
               </li>
             </ul>
           </div>

@@ -43,7 +43,7 @@ export function LicenseSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 bg-[var(--bg2)]">
+    <section id="license" className="scroll-mt-24 py-20 bg-[var(--bg2)]">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center mb-12">

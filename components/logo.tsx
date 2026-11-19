@@ -3,22 +3,31 @@ import Image from 'next/image'
 interface LogoProps {
   alt: string
   priority?: boolean
-  /** navbar — компактный логотип для шапки; full — горизонтальный с русской подписью */
   variant?: 'navbar' | 'full'
 }
 
-const LOGOS = {
-  navbar: { light: '/images/brand/logo-on-light.png', dark: '/images/brand/logo-on-dark.png', width: 190, height: 48 },
-  full: { light: '/images/brand/logo-horizontal-light.png', dark: '/images/brand/logo-horizontal-dark.png', width: 230, height: 68 },
-}
-
-/** Логотип в двух вариантах: тёмный текст для светлой темы и белый — для тёмной */
 export function Logo({ alt, priority, variant = 'navbar' }: LogoProps) {
-  const { light, dark, width, height } = LOGOS[variant]
+  const isFull = variant === 'full'
+  const iconSize = isFull ? 48 : 36
+
   return (
-    <>
-      <Image src={light} alt={alt} width={width} height={height} priority={priority} className="dark:hidden" />
-      <Image src={dark} alt={alt} width={width} height={height} priority={priority} className="hidden dark:block" />
-    </>
+    <span role="img" aria-label={alt} className="inline-flex items-center gap-2.5 whitespace-nowrap">
+      <Image
+        src="/icon-192.png"
+        alt=""
+        width={iconSize}
+        height={iconSize}
+        priority={priority}
+        className="shrink-0"
+      />
+      <span className="flex flex-col gap-1.5">
+        <span className={`${isFull ? 'text-[26px]' : 'text-[21px]'} leading-none font-medium tracking-[0.14em] text-[var(--text)]`}>
+          POLAR
+        </span>
+        <span className={`${isFull ? 'text-[10px]' : 'text-[9px]'} leading-none font-medium tracking-[0.08em] text-[var(--muted)]`}>
+          EXPEDITION COMPANY
+        </span>
+      </span>
+    </span>
   )
 }

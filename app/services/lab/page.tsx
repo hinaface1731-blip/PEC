@@ -3,7 +3,7 @@ import { LabContent } from '@/components/services/lab-content'
 
 export const metadata = {
   title: 'Лабораторные исследования',
-  description: 'Пробоподготовка, рентгенофлуоресцентный анализ, минералогические исследования и изготовление шлифов.',
+  description: 'Пробоподготовка, минералогические исследования и определение золота в полевой аналитической лаборатории «Золотинка».',
 }
 
 export default function LabPage() {

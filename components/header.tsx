@@ -115,7 +115,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 h-[78px] border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-xl">
-      <nav className="h-full max-w-7xl mx-auto px-6 grid grid-cols-[auto_1fr_auto] items-center gap-8">
+      <nav className="mx-auto flex h-full max-w-7xl items-center justify-between gap-2 px-4 sm:px-6 lg:grid lg:grid-cols-[auto_1fr_auto] lg:gap-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Logo alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')} priority />
@@ -213,7 +213,7 @@ export function Header() {
         </div>
 
         {/* Right side controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <button
             type="button"
             onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}

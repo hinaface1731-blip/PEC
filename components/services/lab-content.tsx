@@ -1,7 +1,8 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { FlaskConical, Microscope, TestTube, FileText, Activity, BarChart3 } from 'lucide-react'
+import { ZolotinkaSection } from './zolotinka-section'
+import { FlaskConical, Microscope, TestTube } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
@@ -122,61 +123,48 @@ const data: ServicePageData = {
   
   steps: [
     {
-      numRu: '01',
-      numEn: '01',
+      image: '/images/service-illustrations/lab-receiving.webp',
       titleRu: 'Приёмка проб',
       titleEn: 'Sample Reception',
       descRu: 'Регистрация, взвешивание, сушка, маркировка',
       descEn: 'Registration, weighing, drying, labeling',
     },
     {
-      numRu: '02',
-      numEn: '02',
+      image: '/images/site/sample-prep.jpg',
       titleRu: 'Пробоподготовка',
       titleEn: 'Sample Preparation',
       descRu: 'Дробление, истирание, квартование, отбор навесок',
       descEn: 'Crushing, grinding, splitting, aliquot selection',
     },
     {
-      numRu: '03',
-      numEn: '03',
+      image: '/images/site/lab-analysis.jpg',
       titleRu: 'Анализ',
       titleEn: 'Analysis',
       descRu: 'Выполнение определений согласно методикам',
       descEn: 'Determinations according to methods',
     },
     {
-      numRu: '04',
-      numEn: '04',
+      image: '/images/site/lab-qc.jpg',
       titleRu: 'Контроль качества',
       titleEn: 'Quality Control',
       descRu: 'Внутренний и внешний контроль, CRM, дубликаты',
       descEn: 'Internal and external control, CRM, duplicates',
     },
     {
-      numRu: '05',
-      numEn: '05',
+      image: '/images/service-illustrations/lab-protocol.webp',
       titleRu: 'Отчётность',
       titleEn: 'Reporting',
       descRu: 'Выдача протоколов, сертификатов, цифровых данных',
       descEn: 'Issuance of protocols, certificates, digital data',
     },
   ],
-  stepImages: [
-    '/images/site/sample-intake.jpg',
-    '/images/site/core-cutting.jpg',
-    '/images/site/lab-analysis.jpg',
-    '/images/site/lab-qc.jpg',
-    '/images/site/desk-documents.jpg',
-  ],
-  
   results: [
     {
       titleRu: 'Протоколы анализов',
       titleEn: 'Analysis Protocols',
       descRu: 'Протоколы испытаний по каждой партии проб',
       descEn: 'Test protocols for each sample batch',
-      image: '/images/results/geootchet.jpg',
+      image: '/images/service-illustrations/lab-protocol.webp',
     },
     {
       titleRu: 'Цифровые данные',
@@ -190,29 +178,18 @@ const data: ServicePageData = {
       titleEn: 'Mineralogical Reports',
       descRu: 'Описания шлифов, фотографии, интерпретация',
       descEn: 'Thin section descriptions, photos, interpretation',
-      image: '/images/site/rock-samples.jpg',
+      image: '/images/service-illustrations/mineralogy.webp',
     },
     {
       titleRu: 'Подготовленные пробы',
       titleEn: 'Prepared Samples',
       descRu: 'Дроблёные и истёртые навески, готовые к отправке на анализ',
       descEn: 'Crushed and pulverized aliquots ready for analysis',
-      image: '/images/site/sample-prep.jpg',
+      image: '/images/service-illustrations/lab-pulps.webp',
     },
   ],
   
-  caseStudy: {
-    titleRu: 'Аналитическое сопровождение ГРР в Якутии',
-    titleEn: 'Analytical Support of GRR in Yakutia',
-    clientRu: 'Полюс Алдан',
-    clientEn: 'Polyus Aldan',
-    year: '2024',
-    volumeRu: '8 500 проб на ICP-MS, 2 100 проб пробирный анализ, 450 шлифов',
-    volumeEn: '8,500 ICP-MS samples, 2,100 fire assay samples, 450 thin sections',
-    resultRu: 'Выявлено рудное тело мощностью 12 м с содержанием Au до 8 г/т. Данные использованы для подсчёта запасов.',
-    resultEn: 'Identified ore body 12m thick with Au grades up to 8 g/t. Data used for resource estimation.',
-  },
-  caseImage: '/images/site/core-cutting.jpg',
+  projectId: 1,
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
@@ -230,5 +207,5 @@ const data: ServicePageData = {
 }
 
 export function LabContent() {
-  return <ServicePageTemplate data={data} />
+  return <ServicePageTemplate data={data} topSection={<ZolotinkaSection />} />
 }
