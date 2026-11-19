@@ -163,35 +163,35 @@ const data: ServicePageData = {
   
   steps: [
     {
-      image: '/images/service-illustrations/field-office.webp',
+      image: '/images/work-stage-illustrations/planning.webp',
       titleRu: 'Подготовительный этап',
       titleEn: 'Preparation Stage',
       descRu: 'Анализ фондовых материалов, составление проекта работ, планирование маршрутов',
       descEn: 'Analysis of archival materials, work project preparation, route planning',
     },
     {
-      image: '/images/service-photos/taimyr-outcrop.webp',
+      image: '/images/work-stage-illustrations/field.webp',
       titleRu: 'Полевые геологические работы',
       titleEn: 'Field Geological Work',
       descRu: 'Геологические маршруты, документация обнажений, отбор проб, закладка горных выработок',
       descEn: 'Geological routes, outcrop documentation, sampling, mine workings',
     },
     {
-      image: '/images/site/lab-analysis.jpg',
+      image: '/images/work-stage-illustrations/microscopy.webp',
       titleRu: 'Лабораторные исследования',
       titleEn: 'Laboratory Research',
       descRu: 'Петрография, минералогия, геохимические анализы проб',
       descEn: 'Petrography, mineralogy, geochemical analysis',
     },
     {
-      image: '/images/methods/software-gis.jpg',
+      image: '/images/work-stage-illustrations/analysis.webp',
       titleRu: 'Камеральная обработка',
       titleEn: 'Office Processing',
       descRu: 'Построение карт, разрезов, 3D-моделей, интерпретация данных',
       descEn: 'Map construction, cross-sections, 3D models, data interpretation',
     },
     {
-      image: '/images/results/geootchet.jpg',
+      image: '/images/work-stage-illustrations/reporting.webp',
       titleRu: 'Составление отчёта',
       titleEn: 'Report Preparation',
       descRu: 'Подготовка геологического отчёта по формам ГКЗ/ТКЗ, сдача отчётности',
@@ -199,38 +199,63 @@ const data: ServicePageData = {
     },
   ],
   results: [
-  {
-    titleRu: 'Геологические карты',
-    titleEn: 'Geological Maps',
-    descRu: 'Комплект карт заданного масштаба с условными обозначениями',
-    descEn: 'Set of maps at specified scale with legend',
-    image: '/images/results/geomap.jpg',
-  },
-  {
-    titleRu: 'Геологические разрезы',
-    titleEn: 'Geological Sections',
-    descRu: 'Поперечные и продольные разрезы с интерпретацией',
-    descEn: 'Cross and longitudinal sections with interpretation',
-    image: '/images/results/georazrez.jpg',
-  },
-  {
-    titleRu: 'База данных',
-    titleEn: 'Database',
-    descRu: 'Структурированная база с пробами, описаниями и координатами',
-    descEn: 'Structured database with samples, descriptions and coordinates',
-    image: '/images/results/geobaza.jpg',
-  },
-  {
-    titleRu: 'Геологический отчёт',
-    titleEn: 'Geological Report',
-    descRu: 'Текстовая и графическая части по формам ГКЗ/ТКЗ',
-    descEn: 'Text and graphic parts per GKZ/TKZ forms',
-    image: '/images/results/geootchet.jpg',
-  },
+    {
+      titleRu: "Геологические карты и разрезы",
+      titleEn: "Geological maps and sections",
+      descRu: "Геологическое строение участка, контуры пород и минерализованных зон, поперечные и продольные разрезы.",
+      descEn: "Site geology, rock and mineralized zone outlines, and cross and longitudinal sections.",
+    },
+    {
+      titleRu: "Геохимические карты",
+      titleEn: "Geochemical maps",
+      descRu: "Карты фактического опробования, распределения элементов и геохимических аномалий.",
+      descEn: "Sample location maps, element distribution maps, and geochemical anomalies.",
+    },
+    {
+      titleRu: "Дела скважин",
+      titleEn: "Borehole files",
+      descRu: "Свод материалов по каждой скважине: привязка, геологическая колонка, интервалы опробования и результаты анализов.",
+      descEn: "A compilation for each borehole with its location, geological log, sampling intervals, and analytical results.",
+    },
+    {
+      titleRu: "Документация керна",
+      titleEn: "Core documentation",
+      descRu: "Описания пород, минерализации и изменений, выход керна по интервалам и фотоматериалы.",
+      descEn: "Descriptions of rock types, mineralization and alteration, interval recovery, and photographs.",
+    },
+    {
+      titleRu: "Документация канав",
+      titleEn: "Trench documentation",
+      descRu: "Зарисовки и фотографии полотен и стенок, привязка выработок и интервалы бороздового опробования.",
+      descEn: "Drawings and photographs of trench floors and faces, survey ties, and channel sampling intervals.",
+    },
+    {
+      titleRu: "Пробы и реестры опробования",
+      titleEn: "Samples and registers",
+      descRu: "Керновые, бороздовые, штуфные, литогеохимические или шлиховые пробы по заданию, с номерами и привязкой.",
+      descEn: "Core, channel, grab, lithogeochemical, or heavy-mineral samples as specified, with identifiers and locations.",
+    },
+    {
+      titleRu: "База геологических данных",
+      titleEn: "Geological database",
+      descRu: "Координаты, описания маршрутов и точек, интервалы опробования, протоколы анализов и контроль качества.",
+      descEn: "Coordinates, traverse and station descriptions, sampling intervals, analytical certificates, and quality-control records.",
+    },
+    {
+      titleRu: "Отчёт и рекомендации",
+      titleEn: "Report and recommendations",
+      descRu: "Интерпретация данных, выделение перспективных участков, рекомендации по дальнейшей проверке и комплект приложений.",
+      descEn: "Data interpretation, target areas, recommendations for follow-up, and supporting appendices.",
+    },
 ],
   
-  projectId: 7,
   
+  projectExample: {
+    id: 6,
+    workRu: "На поисковом участке ПЭК документировала керн и полотна канав, проводила керновое и шлиховое опробование и геохимические работы по вторичным ореолам.",
+    workEn: "At the prospect, PEC logged drill core and trench faces, collected core and heavy-mineral samples, and carried out geochemical surveys over secondary dispersion halos.",
+  },
+
   regions: [
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Якутия', en: 'Yakutia' },

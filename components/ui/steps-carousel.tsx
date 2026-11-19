@@ -19,9 +19,9 @@ interface StepsCarouselProps {
 export function StepsCarousel({ steps, t }: StepsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const currentStep = steps[currentIndex]
-  const currentImage = currentStep.image
-  const isIllustration = currentImage.startsWith('/images/service-illustrations/')
-  const isTechnical = /^\/images\/(results|methods|stages)\//.test(currentImage)
+  const image = currentStep.image
+  const isIllustration = image.startsWith('/images/work-stage-illustrations/')
+  const isTechnical = /^\/images\/(results|methods|stages)\//.test(image)
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(16rem,0.65fr)_minmax(0,1fr)]">
@@ -42,25 +42,27 @@ export function StepsCarousel({ steps, t }: StepsCarouselProps) {
           </li>
         ))}
       </ol>
-      <div aria-live="polite" className="overflow-hidden rounded-2xl border border-border bg-card">
-        <div className={`relative aspect-[16/10] ${isTechnical ? 'bg-white' : 'bg-muted'}`}>
-          <FallbackImage
-            src={currentImage}
-            alt=""
-            fill
-            sizes="(max-width: 1023px) 100vw, 60vw"
-            className={isTechnical ? 'object-contain p-3' : 'object-cover'}
-          />
-          {isIllustration && (
-            <span className="absolute bottom-3 right-3 rounded-md bg-black/75 px-2 py-1 text-xs text-white">
-              {t('Иллюстрация', 'Illustration')}
-            </span>
-          )}
-        </div>
-        <div className="p-5 sm:p-6">
+      <div className="self-start overflow-hidden rounded-2xl border border-border bg-card">
+        <div aria-live="polite" className="p-5 sm:p-6">
           <h3 className="text-xl font-semibold text-[var(--text)]">{t(currentStep.titleRu, currentStep.titleEn)}</h3>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t(currentStep.descRu, currentStep.descEn)}</p>
         </div>
+        <figure className="border-t border-border">
+          <div className={`relative aspect-[16/10] ${isTechnical ? 'bg-white' : 'bg-muted'}`}>
+            <FallbackImage
+              src={image}
+              alt=""
+              fill
+              sizes="(max-width: 1023px) 100vw, 60vw"
+              className={isTechnical ? 'object-contain p-3' : 'object-cover'}
+            />
+          </div>
+          {isIllustration && (
+            <figcaption className="border-t border-border px-4 py-2 text-xs text-muted-foreground">
+              {t('Иллюстрация', 'Illustration')}
+            </figcaption>
+          )}
+        </figure>
       </div>
     </div>
   )

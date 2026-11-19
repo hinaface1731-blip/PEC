@@ -366,7 +366,7 @@ export const projects: Project[] = [
     worksEn: ["Drilling", "Secondary halo geochemistry"],
     result: "Локализированы перспективные поисковые участки, выполнен подсчёт запасов",
     resultEn: "Reserve estimation completed",
-    image: "/images/tipoLora.JPG",
+    image: "/images/lora.jpg",
   },
   {
     id: 17,
@@ -450,6 +450,6 @@ export const projects: Project[] = [
     worksEn: ["Drilling", "Well logging", "Laboratory studies"],
     result: "Локализированы перспективные поисковые участки, выполнен подсчёт запасов",
     resultEn: "Reserve estimation completed",
-    image: "/images/kekura.jpg",
+    image: "/images/mezozoyi.jpg",
   },
 ]

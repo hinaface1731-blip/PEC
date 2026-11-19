@@ -117,7 +117,7 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[78px] border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-xl">
       <nav className="mx-auto flex h-full max-w-7xl items-center justify-between gap-2 px-4 sm:px-6 lg:grid lg:grid-cols-[auto_1fr_auto] lg:gap-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex min-w-0 items-center gap-2">
           <Logo alt={t('Полярная Экспедиционная Компания', 'Polar Expedition Company')} priority />
         </Link>
 

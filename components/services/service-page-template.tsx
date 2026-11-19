@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { FallbackImage } from '@/components/ui/fallback-image'
 import Link from 'next/link'
 import { useLanguage } from '@/components/language-provider'
-import { MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
 import { YandexMapV3 } from '@/components/yandex-map-v3'
@@ -42,7 +42,13 @@ interface ServiceResult {
   titleEn: string
   descRu: string
   descEn: string
-  image: string
+}
+
+interface ServiceProjectExample {
+  id: number
+  image?: string
+  workRu: string
+  workEn: string
 }
 
 interface ServiceStat {
@@ -80,15 +86,13 @@ export interface ServicePageData {
   equipment: ServiceEquipment[]
   steps: ServiceStep[]
   results: ServiceResult[]
-  projectId?: number
-  projectImage?: string
+  projectExample?: ServiceProjectExample
   regions: ServiceRegion[]
   stats: ServiceStat[]
   sectionTitleRu?: string
   sectionTitleEn?: string
   sectionDescRu?: string
   sectionDescEn?: string
-  resultsImage?: string
 }
 
 export interface ServicePageTemplateProps {
@@ -98,7 +102,8 @@ export interface ServicePageTemplateProps {
 
 export function ServicePageTemplate({ data, topSection }: ServicePageTemplateProps) {
   const { t } = useLanguage()
-  const project = projects.find(({ id }) => id === data.projectId)
+  const example = data.projectExample
+  const project = example && projects.find(({ id }) => id === example.id)
   
   // Состояния для карусели оборудования
   const [equipmentCategoryIndex, setEquipmentCategoryIndex] = useState(0)
@@ -392,43 +397,31 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
       </section>
 
       {/* Results */}
-      <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto">
-          <h2 className="mb-8 text-3xl font-bold text-[var(--text)] lg:text-4xl">
-            {t('Результаты работ', 'Work Results')}
-          </h2>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {data.results.map((result) => {
-              const isTechnical = /^\/images\/(results|methods)\//.test(result.image)
-              const isIllustration = result.image.startsWith('/images/service-illustrations/')
-              return (
-                <article key={result.titleRu} className="overflow-hidden rounded-2xl border border-border bg-card">
-                  <div className={`relative aspect-[4/3] ${isTechnical ? 'bg-white' : 'bg-muted'}`}>
-                    <FallbackImage
-                      src={result.image}
-                      alt=""
-                      fill
-                      className={isTechnical ? 'object-contain p-3' : 'object-cover'}
-                      sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 25vw"
-                    />
-                    {isIllustration && (
-                      <span className="absolute bottom-3 right-3 rounded-md bg-black/75 px-2 py-1 text-xs text-white">
-                        {t('Иллюстрация', 'Illustration')}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-semibold text-[var(--text)]">{t(result.titleRu, result.titleEn)}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t(result.descRu, result.descEn)}</p>
-                  </div>
-                </article>
-              )
-            })}
+      <section className="section bg-[var(--bg2)]" aria-labelledby="service-deliverables">
+        <div className="container mx-auto grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
+          <div>
+            <h2 id="service-deliverables" className="text-3xl font-bold text-[var(--text)] lg:text-4xl">
+              {t('Что получает заказчик', 'What You Receive')}
+            </h2>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+              {t(
+                'Состав материалов и формат передачи определяем в техническом задании.',
+                'The scope and format of the deliverables are agreed in the project brief.'
+              )}
+            </p>
           </div>
+          <ul className="divide-y divide-border border-y border-border">
+            {data.results.map((result) => (
+              <li key={result.titleRu} className="grid gap-1.5 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] sm:gap-6 sm:py-5">
+                <h3 className="font-semibold text-[var(--text)]">{t(result.titleRu, result.titleEn)}</h3>
+                <p className="text-sm leading-relaxed text-[var(--muted)] sm:text-base">{t(result.descRu, result.descEn)}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {project && (
+      {project && example && (
         <section className="section">
           <div className="container mx-auto">
             <h2 className="mb-10 text-3xl font-bold text-[var(--text)]">
@@ -436,11 +429,11 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
             </h2>
             <Link
               href={`/projects#project-${project.id}`}
-              className="card flex flex-col gap-8 focus-visible:outline-2 focus-visible:outline-[var(--accent)] lg:flex-row"
+              className="card group flex flex-col gap-8 focus-visible:outline-2 focus-visible:outline-[var(--accent)] lg:flex-row"
             >
               <div className="relative aspect-[5/3] w-full self-start overflow-hidden rounded-xl bg-muted lg:w-1/3 lg:shrink-0">
                 <FallbackImage
-                  src={data.projectImage ?? project.image}
+                  src={example.image ?? project.image}
                   alt=""
                   fill
                   className="object-cover"
@@ -453,22 +446,16 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                     {t(project.client, project.clientEn)}
                   </span>
                   <span className="text-sm text-[var(--muted)]">{project.year}</span>
+                  <span className="text-sm text-[var(--muted)]">{t(project.location, project.locationEn)}</span>
                 </div>
                 <h3 className="mb-4 text-2xl font-bold text-[var(--text)]">
                   {t(project.title, project.titleEn)}
                 </h3>
-                <div className="space-y-4 text-[var(--text)]">
-                  <div>
-                    <p className="text-sm text-[var(--muted)]">{t('Задача', 'Objective')}</p>
-                    <p>{t(project.task, project.taskEn)}</p>
-                  </div>
-                  {project.result && (
-                    <div>
-                      <p className="text-sm text-[var(--muted)]">{t('Результат', 'Result')}</p>
-                      <p>{t(project.result, project.resultEn ?? project.result)}</p>
-                    </div>
-                  )}
-                </div>
+                <p className="leading-relaxed text-[var(--text)]">{t(example.workRu, example.workEn)}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text)] underline-offset-4 group-hover:underline">
+                  {t('Смотреть проект', 'View project')}
+                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                </span>
               </div>
             </Link>
           </div>
