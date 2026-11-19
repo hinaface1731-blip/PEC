@@ -164,8 +164,8 @@ export const projects: Project[] = [
     id: 7,
     title: "Агынджа",
     titleEn: "Agyndzha",
-    location: "Якутия",
-    locationEn: "Yakutia",
+    location: "Республика Саха (Якутия)",
+    locationEn: "Sakha Republic",
     year: "2022",
     status: "completed",
     category: "gold",
@@ -344,7 +344,7 @@ export const projects: Project[] = [
     worksEn: ["Drilling", "Secondary halo geochemistry"],
     result: "Локализированы перспективные поисковые участки, выполнен подсчёт запасов",
     resultEn: "Reserve estimation completed",
-    image: "/images/kekura.jpg",
+    image: "/images/olcha.JPG",
   },
   {
     id: 16,
@@ -386,7 +386,7 @@ export const projects: Project[] = [
     worksEn: ["Drilling", "Well logging", "Laboratory studies"],
     result: "Локализированы перспективные поисковые участки, выполнен подсчёт запасов",
     resultEn: "Reserve estimation completed",
-    image: "/images/kekura.jpg",
+    image: "/images/shir.JPG",
   },
   {
     id: 18,
