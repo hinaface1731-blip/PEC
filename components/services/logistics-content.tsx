@@ -10,7 +10,7 @@ const data: ServicePageData = {
   titleEn: 'Logistics & Supply',
   descRu: 'Комплексное логистическое обеспечение геологоразведочных и горных проектов в Арктике и Сибири. Доставка грузов, снабжение удалённых объектов, экспедиционное сопровождение.',
   descEn: 'Comprehensive logistics support for exploration and mining projects in the Arctic and Siberia. Cargo delivery, remote site supply, expedition support.',
-  heroImage: '/images/two.JPG',
+  heroImage: '/images/service-photos/logistics-vehicle.webp',
    introRu:
     'Организуем доставку людей, техники и грузов на удалённые участки Арктики и Сибири: зимники, вертолётные и авиаперевозки, речной и морской северный завоз, топливообеспечение, складское хранение на базах. Маршруты и сроки планируем под график полевых работ, чтобы буровые, геофизические и горные отряды не простаивали из-за снабжения.',
   introEn:
@@ -116,14 +116,14 @@ const data: ServicePageData = {
       descEn: 'Collection, packaging, labeling, cargo consolidation at base',
     },
     {
-      image: '/images/site/convoy-blizzard.jpg',
+      image: '/images/service-photos/logistics-helicopter.webp',
       titleRu: 'Транспортировка',
       titleEn: 'Transportation',
       descRu: 'Доставка грузов всеми видами транспорта, экспедиционное сопровождение',
       descEn: 'Cargo delivery by all transport modes, expedition support',
     },
     {
-      image: '/images/site/base-containers.jpg',
+      image: '/images/service-photos/logistics-camp.webp',
       titleRu: 'Складское хранение',
       titleEn: 'Warehousing',
       descRu: 'Приём, учёт, хранение, выдача грузов на объектах',

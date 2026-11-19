@@ -81,6 +81,7 @@ export interface ServicePageData {
   steps: ServiceStep[]
   results: ServiceResult[]
   projectId?: number
+  projectImage?: string
   regions: ServiceRegion[]
   stats: ServiceStat[]
   sectionTitleRu?: string
@@ -439,7 +440,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
             >
               <div className="relative aspect-[5/3] w-full self-start overflow-hidden rounded-xl bg-muted lg:w-1/3 lg:shrink-0">
                 <FallbackImage
-                  src={project.image}
+                  src={data.projectImage ?? project.image}
                   alt=""
                   fill
                   className="object-cover"

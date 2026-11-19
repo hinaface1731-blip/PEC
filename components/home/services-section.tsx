@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/components/language-provider'
 import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, ArrowUpRight, ArrowRight, Pickaxe, Truck } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -93,7 +94,7 @@ export function ServicesSection({ variant = 'section' }: ServicesSectionProps) {
   return (
     <section id="services" className={isPage ? 'section pt-32' : 'section'}>
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
+        <div className={isPage ? 'mb-12 grid items-center gap-6 lg:grid-cols-2 lg:gap-12' : 'flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12'}>
           <div>
             {isPage && (
               <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm">
@@ -126,7 +127,21 @@ export function ServicesSection({ variant = 'section' }: ServicesSectionProps) {
             </motion.p>
           </div>
           
-          {!isPage && (
+          {isPage ? (
+            <figure className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-muted">
+              <Image
+                src="/images/service-photos/taimyr-camp.webp"
+                alt={t('Вид с воздуха на полевой лагерь у реки на Таймыре', 'Aerial view of a riverside field camp on the Taimyr Peninsula')}
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <figcaption className="absolute bottom-3 right-3 rounded-md bg-black/75 px-3 py-1.5 text-xs text-white">
+                {t('Таймыр, Широтная-2 · 2026', 'Taimyr, Shirotnaya-2 · 2026')}
+              </figcaption>
+            </figure>
+          ) : (
             <Link
               href="/services"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium transition-all hover:bg-[var(--accent-h)] shrink-0"

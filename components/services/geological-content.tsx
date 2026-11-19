@@ -170,7 +170,7 @@ const data: ServicePageData = {
       descEn: 'Analysis of archival materials, work project preparation, route planning',
     },
     {
-      image: '/images/site/geologists-outcrop.jpg',
+      image: '/images/service-photos/taimyr-outcrop.webp',
       titleRu: 'Полевые геологические работы',
       titleEn: 'Field Geological Work',
       descRu: 'Геологические маршруты, документация обнажений, отбор проб, закладка горных выработок',

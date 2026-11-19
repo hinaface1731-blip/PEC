@@ -10,7 +10,7 @@ const data: ServicePageData = {
   titleEn: 'Drilling Works',
   descRu: 'Полный комплекс буровых работ для геологоразведки: колонковое бурение с высоким выходом керна, гидрогеологические и инженерные скважины.',
   descEn: 'Full range of drilling services for geological exploration: core drilling with high recovery, rotary drilling, hydrogeological and engineering wells.',
-  heroImage: '/images/hero-drilling-image2.jpg',
+  heroImage: '/images/service-photos/drilling-rig.webp',
   introRu:
     'Колонковое бурение на твёрдые полезные ископаемые с отбором керна, в том числе в условиях Арктики и Крайнего Севера. Работаем станками разных классов, от лёгких мобильных до установок для глубоких скважин. Бурение сопровождаем геологической документацией и опробованием керна, инклинометрией и каротажем. Заказчик получает не только метраж, но и данные, готовые к интерпретации.',
   introEn:
@@ -177,7 +177,8 @@ const data: ServicePageData = {
     },
   ],
   
-  projectId: 1,
+  projectId: 14,
+  projectImage: '/images/service-photos/burgachchan-drilling.webp',
   
   regions: [
     { ru: 'Якутия', en: 'Yakutia' },
