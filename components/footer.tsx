@@ -6,15 +6,15 @@ import { useLanguage } from './language-provider'
 import { Phone, Mail, MapPin } from 'lucide-react'
 
 const services = [
-  { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
-  { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Works' },
-  { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Works' },
-  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },
-  { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Survey Works' },
+  { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Services' },
+  { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Services' },
+  { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Services' },
+  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Services' },
+  { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Mine Surveying' },
   { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' },
-  { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
-  { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
-  { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
+  { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Testing' },
+  { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Exploration Design & Consulting' },
+  { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Environmental Services & Reclamation' },
 ]
 
 const company = [

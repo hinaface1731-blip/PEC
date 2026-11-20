@@ -50,7 +50,7 @@ const focusAreas = [
     nameRu: 'Северо-Широкинская',
     nameEn: 'North Shirokinskaya',
     license: 'КРР 03707 ТП',
-    area: '99 км²',
+    area: 99,
     typeRu: 'Cu-Mo-порфировый тип',
     typeEn: 'Cu-Mo porphyry type',
     image: '/images/investors/north-shirokinskaya.jpg',
@@ -75,7 +75,7 @@ const focusAreas = [
     nameRu: 'Центрально-Широкинская',
     nameEn: 'Central Shirokinskaya',
     license: 'КРР 03708 ТП',
-    area: '99 км²',
+    area: 99,
     typeRu: 'Cu-Mo-порфировый тип',
     typeEn: 'Cu-Mo porphyry type',
     image: '/images/investors/central-shirokinskaya.jpg',
@@ -100,7 +100,7 @@ const focusAreas = [
     nameRu: 'Трёхсестерская',
     nameEn: 'Tryokhsesterskaya',
     license: 'КРР 03709 ТП',
-    area: '96 км²',
+    area: 96,
     typeRu: 'Au-Ag-Pb-Zn полиметаллический тип',
     typeEn: 'Au-Ag-Pb-Zn polymetallic type',
     image: '/images/investors/trisestry.jpg',
@@ -345,7 +345,7 @@ export function InvestorsContent() {
                     <div key={area.license} className="flex flex-wrap items-center gap-3 p-4 rounded-xl bg-card border border-border">
                       <span className="font-semibold text-foreground">{t(area.nameRu, area.nameEn)}</span>
                       <span className="px-2 py-0.5 bg-[var(--accent-glow)] text-[var(--accent)] text-xs font-mono rounded">{area.license}</span>
-                      <span className="text-sm text-muted-foreground">{area.area}</span>
+                      <span className="text-sm text-muted-foreground">{area.area} {t('км²', 'km²')}</span>
                       <span className="text-sm text-muted-foreground">· {t(area.typeRu, area.typeEn)}</span>
                     </div>
                   ))}
@@ -399,14 +399,14 @@ export function InvestorsContent() {
                   <tr key={row.ru} className="border-t border-border">
                     <td className="p-4 text-foreground">{t(row.ru, row.en)}</td>
                     {row.values.map((v, i) => (
-                      <td key={i} className="p-4 text-center text-muted-foreground">{v}</td>
+                      <td key={i} className="p-4 text-center text-muted-foreground">{t(v, v.replace(',', '.'))}</td>
                     ))}
                   </tr>
                 ))}
                 <tr className="border-t border-border bg-[var(--accent-glow)] font-semibold">
                   <td className="p-4 text-foreground">{t('Суммарный потенциал', 'Total potential')}</td>
                   {resourcesTable.total.map((v, i) => (
-                    <td key={i} className="p-4 text-center text-[var(--accent)]">{v}</td>
+                    <td key={i} className="p-4 text-center text-[var(--accent)]">{t(v, v.replace(',', '.'))}</td>
                   ))}
                 </tr>
               </tbody>
@@ -445,7 +445,7 @@ export function InvestorsContent() {
                         <span className="px-2 py-0.5 bg-[var(--accent-glow)] text-[var(--accent)] text-xs font-mono rounded">{area.license}</span>
                         <span className="flex items-center gap-1 text-sm text-muted-foreground">
                           <Layers className="w-3 h-3" />
-                          {area.area}
+                          {area.area} {t('км²', 'km²')}
                         </span>
                       </div>
                       <p className="text-[var(--accent)] font-medium mb-4">

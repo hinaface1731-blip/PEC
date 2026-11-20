@@ -26,9 +26,9 @@ export function ZolotinkaSection() {
     },
     {
       icon: MapPin,
-      title: t('Северный Марс · 2025', 'Severny Mars · 2025'),
+      title: t('Марсианская площадь · 2025', 'Mars Field · 2025'),
       text: t(
-        'Проанализировали 2 714 проб с октября по декабрь.',
+        'Был успешно проанализирован весь объем проб с октября по декабрь.',
         'Analyzed 2,714 samples from October through December.',
       ),
     },

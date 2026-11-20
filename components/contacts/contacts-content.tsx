@@ -28,6 +28,13 @@ const officeInfo = {
 
 const MAX_RESUME_SIZE_MB = 10
 
+const resumeErrors = {
+  requiredFields: ['Заполните все обязательные поля.', 'Fill in all required fields.'],
+  fileFormat: ['Допустимые форматы резюме: PDF, DOC, DOCX.', 'Upload your resume as a PDF, DOC, or DOCX file.'],
+  fileSize: [`Файл слишком большой (максимум ${MAX_RESUME_SIZE_MB} МБ).`, `The file exceeds the ${MAX_RESUME_SIZE_MB} MB limit.`],
+  sendFailed: ['Не удалось отправить резюме. Попробуйте позже.', 'Your resume could not be sent. Please try again later.'],
+} as const
+
 // Вакансии с подробным описанием
 const vacancies = [
   {
@@ -74,25 +81,25 @@ export default function ContactsContent() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState<keyof typeof resumeErrors | null>(null)
   const [activeVacancy, setActiveVacancy] = useState("")
   const [openDetails, setOpenDetails] = useState<number | null>(null)
   
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null
     if (file && file.size > MAX_RESUME_SIZE_MB * 1024 * 1024) {
-      setError(t(`Файл слишком большой (максимум ${MAX_RESUME_SIZE_MB} МБ)`, `File is too large (max ${MAX_RESUME_SIZE_MB} MB)`))
+      setError('fileSize')
       e.target.value = ''
       setSelectedFile(null)
       return
     }
-    setError('')
+    setError(null)
     setSelectedFile(file)
   }
 
-  const handleVacancyClick = (titleRu: string) => {
-    setActiveVacancy(titleRu)
-    setFormData(prev => ({ ...prev, position: titleRu }))
+  const handleVacancyClick = (title: string) => {
+    setActiveVacancy(title)
+    setFormData(prev => ({ ...prev, position: title }))
     document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -103,7 +110,7 @@ export default function ContactsContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setError('')
+    setError(null)
     
     try {
       const formDataToSend = new FormData()
@@ -123,17 +130,19 @@ export default function ContactsContent() {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to send')
+        const { code } = await response.json()
+        setError(code === 'requiredFields' || code === 'fileFormat' || code === 'fileSize' ? code : 'sendFailed')
+        return
       }
 
-      setIsSubmitting(false)
       setIsSubmitted(true)
       setFormData({ fullName: "", email: "", phone: "", position: "", experience: "", message: "" })
       setSelectedFile(null)
       setActiveVacancy("")
       setTimeout(() => setIsSubmitted(false), 5000)
-    } catch (err) {
-      setError(t('Ошибка отправки. Попробуйте позже.', 'Failed to send. Please try again later.'))
+    } catch {
+      setError('sendFailed')
+    } finally {
       setIsSubmitting(false)
     }
   }
@@ -145,7 +154,7 @@ export default function ContactsContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/career-hero.jpg"
-            alt={t("Карьера в Полярной ЭК", "Career at Polar EC")}
+            alt={t("Карьера в Полярной ЭК", "Careers at Polar Expedition Company")}
             fill
             priority
             className="object-cover"
@@ -376,7 +385,7 @@ export default function ContactsContent() {
                     </Button>
 
                     {error && (
-                      <p className="text-red-500 text-sm text-center">{error}</p>
+                      <p role="alert" className="text-red-500 text-sm text-center">{t(resumeErrors[error][0], resumeErrors[error][1])}</p>
                     )}
 
                     <p className="text-xs text-muted-foreground text-center">
@@ -421,7 +430,7 @@ export default function ContactsContent() {
                     className="text-sm text-primary hover:underline inline-flex items-center gap-1"
                   >
                     <MapPin className="w-4 h-4" />
-                    {t('Открыть в Яндекс.Картах', 'Open in Yandex.Maps')}
+                    {t('Открыть в Яндекс.Картах', 'Open in Yandex Maps')}
                   </a>
                 </div>
               </div>
@@ -546,7 +555,7 @@ export default function ContactsContent() {
                   <Button
                     variant="outline"
                     className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
-                    onClick={() => handleVacancyClick(vacancy.titleRu)}
+                    onClick={() => handleVacancyClick(t(vacancy.titleRu, vacancy.titleEn))}
                   >
                     {t('Откликнуться', 'Apply Now')}
                   </Button>

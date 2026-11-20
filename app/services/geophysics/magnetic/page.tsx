@@ -103,6 +103,7 @@ const equipment = [
     typeEn: 'Overhauser magnetometer',
     qty: 1,
     specs: ['Точность 0.01 нТл', 'GPS интеграция', 'Непрерывная запись'],
+    specsEn: ["Accuracy: 0.01 nT", "GPS integration", "Continuous recording"],
   },
   {
     nameRu: 'MiniMag',
@@ -111,6 +112,7 @@ const equipment = [
     typeEn: 'Overhauser magnetometer',
     qty: 6,
     specs: ['Компактный дизайн', 'Высокая стабильность', 'Вес 3.1 кг'],
+    specsEn: ["Compact design", "High stability", "Weight: 3.1 kg"],
   },
   {
     nameRu: 'MaxiMag',
@@ -119,6 +121,7 @@ const equipment = [
     typeEn: 'Overhauser gradiometer',
     qty: 1,
     specs: ['Два датчика', 'Градиентные измерения', 'CAN интерфейс'],
+    specsEn: ["Two sensors", "Gradient measurements", "CAN interface"],
   },
   {
     nameRu: 'СРП-68-01',
@@ -127,6 +130,7 @@ const equipment = [
     typeEn: 'Dosimeter for gamma survey',
     qty: 2,
     specs: ['Гамма-излучение', 'Полевой вариант', 'Высокая чувствительность'],
+    specsEn: ["Gamma radiation measurement", "Field-ready configuration", "High sensitivity"],
   },
 ]
 
@@ -135,6 +139,7 @@ const caseStudy = {
   titleEn: 'Magnetic Survey at Marsianskaya Area',
   licenses: ['КРР03707БП', 'КРР03708БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская'],
+  licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya"],
   volumeRu: 'Площадь 850 км², пешеходная магнитная съемка с шагом 50×20 м',
   volumeEn: '850 km² area, ground magnetic survey with 50×20 m spacing',
   resultRu: 'Выявлены локальные магнитные аномалии, оконтурены перспективные участки для постановки поисковых работ. Даны рекомендации на бурение.',
@@ -285,7 +290,7 @@ export default function MagneticPage() {
                       {item.specs.map((spec, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                          {spec}
+                          {t(spec, item.specsEn[idx])}
                         </li>
                       ))}
                     </ul>
@@ -318,7 +323,7 @@ export default function MagneticPage() {
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.licenses.map((license, idx) => (
                         <span key={license} className="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm font-mono rounded-lg">
-                          {license} — {caseStudy.licenseNames[idx]}
+                          {license} — {t(caseStudy.licenseNames[idx], caseStudy.licenseNamesEn[idx])}
                         </span>
                       ))}
                     </div>

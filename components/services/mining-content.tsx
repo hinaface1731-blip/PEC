@@ -7,19 +7,19 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: Pickaxe,
   titleRu: 'Горные работы',
-  titleEn: 'Mining Works',
+  titleEn: 'Mining Services',
   descRu: 'Полный комплекс горных работ: от вскрышных до добычных. Проходка канав и шурфов, вскрышные работы, добыча полезных ископаемых, взрывные работы, отработка россыпей.',
   descEn: 'Full range of mining operations: from overburden to extraction. Trenching and pitting, overburden removal, mineral extraction, blasting, placer mining.',
   heroImage: '/images/mining-hero.jpeg',
   introRu:
-    'Проходим горные выработки для поисков, оценки и разведки: канавы, траншеи и шурфы, вскрышные работы, подготовка и отработка россыпных объектов, буровзрывные работы. Выработки документируются и опробуются геологами, привязываются маркшейдерами, а объёмы подтверждаются замерами. Это снимает разрыв между «прошли» и «можно использовать в подсчёте запасов».',
+    'Проходим горные выработки для поисков, оценки и разведки: канавы, траншеи и шурфы, вскрышные работы. Выработки документируются и опробуются геологами, привязываются маркшейдерами, а объёмы подтверждаются замерами. Это снимает разрыв между «прошли» и «можно использовать в подсчёте запасов».',
   introEn:
     'We excavate workings for prospecting, appraisal and exploration: trenches, test pits, overburden removal, preparation and mining of placer deposits, and drilling and blasting. Workings are logged and sampled by geologists, tied in by mine surveyors, and volumes are confirmed by measurements. This closes the gap between "excavated" and "usable in a resource estimate".',
 
   reverse: false,
   
   sectionTitleRu: 'Полный комплекс горных работ',
-  sectionTitleEn: 'Full range of mining works',
+  sectionTitleEn: 'Full range of mining services',
   sectionDescRu: 'От вскрышных работ до добычи полезных ископаемых',
   sectionDescEn: 'From overburden to mineral extraction',
   
@@ -27,10 +27,6 @@ const data: ServicePageData = {
     { ru: 'Проходка канав', en: 'Trenching' },
     { ru: 'Проходка шурфов', en: 'Pitting' },
     { ru: 'Вскрышные работы', en: 'Overburden removal' },
-    { ru: 'Добычные работы', en: 'Mining operations' },
-    { ru: 'Буровзрывные работы', en: 'Drilling and blasting' },
-    { ru: 'Отработка россыпей', en: 'Placer mining' },
-    { ru: 'Отгрузка полезного ископаемого', en: 'Mineral shipping' },
     { ru: 'Рекультивация нарушенных земель', en: 'Land reclamation' },
   ],
   methodsGroups: [
@@ -43,28 +39,6 @@ const data: ServicePageData = {
         { ru: 'Выемка вскрышных пород', en: 'Overburden excavation' },
         { ru: 'Транспортировка породы', en: 'Rock transportation' },
         { ru: 'Складирование отвалов', en: 'Dump storage' },
-      ]
-    },
-    {
-      titleRu: 'Добычные работы',
-      titleEn: 'Mining Operations',
-      icon: HardHat,
-      methods: [
-        { ru: 'Подготовка блоков к выемке', en: 'Block preparation' },
-        { ru: 'Буровзрывные работы', en: 'Drilling and blasting' },
-        { ru: 'Экскавация полезного ископаемого', en: 'Mineral excavation' },
-        { ru: 'Погрузка и транспортировка', en: 'Loading and hauling' },
-      ]
-    },
-    {
-      titleRu: 'Геотехнический контроль',
-      titleEn: 'Geotechnical Control',
-      icon: AlertTriangle,
-      methods: [
-        { ru: 'Контроль устойчивости бортов', en: 'Slope stability monitoring' },
-        { ru: 'Наблюдение за деформациями', en: 'Deformation monitoring' },
-        { ru: 'Контроль качества руды', en: 'Ore quality control' },
-        { ru: 'Ведение горно-графической документации', en: 'Mining documentation' },
       ]
     },
   ],
@@ -166,18 +140,6 @@ const data: ServicePageData = {
       descEn: "Completed trenches and pits, with actual dimensions and locations where surveying is included.",
     },
     {
-      titleRu: "Вскрытые горизонты",
-      titleEn: "Exposed horizons",
-      descRu: "Подготовленные блоки или уступы с доступом к продуктивным горизонтам.",
-      descEn: "Prepared blocks or benches providing access to productive horizons.",
-    },
-    {
-      titleRu: "Добытое сырьё и размещённая порода",
-      titleEn: "Extracted material and placed overburden",
-      descRu: "Руда или россыпной материал на согласованной точке передачи, вскрышная порода в предусмотренных местах размещения.",
-      descEn: "Ore or placer material at the agreed handover point, with overburden placed as specified.",
-    },
-    {
       titleRu: "Учёт выполненных объёмов",
       titleEn: "Work quantity records",
       descRu: "Сводки по выемке, вскрыше, перемещению и добыче в согласованных единицах.",
@@ -200,8 +162,8 @@ const data: ServicePageData = {
   
   projectExample: {
     id: 11,
-    workRu: "На участке Прогнозное ПЭК выполнила горнопроходческие работы в составе проекта, который также включал бурение.",
-    workEn: "PEC carried out excavation works at Prognoznoye as part of a project that also included drilling.",
+    workRu: "На участке выполнены горнопроходческие работы в объёме задания: проходка канав, вскрышные работы, подготовка площадок и подъездных путей. По результатам работ подготовлен отчёт.",
+    workEn: "PEC completed the specified excavation work, including trenching, overburden removal, site preparation, and the construction of access roads, and prepared a final report.",
   },
 
   regions: [

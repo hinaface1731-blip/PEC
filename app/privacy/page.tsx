@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                     <p>
                       {t(
                         'Оператор ставит своей важнейшей целью и условием осуществления своей деятельности соблюдение прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиты прав на неприкосновенность частной жизни, личную и семейную тайну.',
-                        'The Operator places its most important goal and condition for carrying out its activities the observance of human and civil rights and freedoms when processing their personal data, including the protection of the rights to privacy, personal and family secrets.'
+                        'When processing personal data, the Operator treats respect for human and civil rights and freedoms as a primary objective and a condition of its activities. This includes protecting the right to privacy and the confidentiality of personal and family matters.'
                       )}
                     </p>
                   </div>
@@ -177,7 +177,7 @@ export default function PrivacyPage() {
                     <p className="text-muted-foreground">
                       {t(
                         'Оператор обрабатывает персональные данные пользователя только в случае их заполнения и отправки пользователем через формы, расположенные на сайте. Заполняя соответствующие формы и отправляя свои персональные данные Оператору, пользователь выражает свое согласие с данной политикой.',
-                        'The Operator processes the user\'s personal data only if they are filled out and sent by the user through forms located on the site. By filling out the relevant forms and sending their personal data to the Operator, the user expresses their consent to this policy.'
+                        'The Operator processes users’ personal data only when they submit it through forms on the website. By completing the relevant forms and submitting their personal data, users consent to this policy.'
                       )}
                     </p>
                   </div>

@@ -7,7 +7,7 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: Drill,
   titleRu: 'Буровые работы',
-  titleEn: 'Drilling Works',
+  titleEn: 'Drilling Services',
   descRu: 'Полный комплекс буровых работ для геологоразведки: колонковое бурение с высоким выходом керна, гидрогеологические и инженерные скважины.',
   descEn: 'Full range of drilling services for geological exploration: core drilling with high recovery, rotary drilling, hydrogeological and engineering wells.',
   heroImage: '/images/service-photos/drilling-rig.webp',
@@ -19,7 +19,7 @@ const data: ServicePageData = {
   reverse: false,
   
   sectionTitleRu: 'Полный комплекс буровых работ',
-  sectionTitleEn: 'Full range of drilling works',
+  sectionTitleEn: 'Full range of drilling services',
   sectionDescRu: 'Колонковое бурение, гидрогеологические и инженерные скважины',
   sectionDescEn: 'Core drilling, rotary drilling, hydrogeological and engineering wells',
   
@@ -193,10 +193,9 @@ const data: ServicePageData = {
   
   
   projectExample: {
-    id: 14,
-    image: "/images/service-photos/burgachchan-drilling.webp",
-    workRu: "На золоторудном объекте ПЭК выполнила буровые работы. Геохимические исследования входили в комплекс проекта.",
-    workEn: "PEC carried out drilling at the gold prospect. Geochemical surveys were also part of the broader project.",
+    id: 12,
+    workRu: "Бурение на участке выполнялось с высоким выходом керна и контролем траектории скважин согласно геолого-техническому наряду.",
+    workEn: "The drilling program achieved high core recovery and maintained borehole trajectories in line with the drilling specifications.",
   },
 
   regions: [

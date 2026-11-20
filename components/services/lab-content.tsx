@@ -8,7 +8,7 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: FlaskConical,
   titleRu: 'Лабораторные исследования',
-  titleEn: 'Laboratory Research',
+  titleEn: 'Laboratory Testing',
   descRu: 'Собственная полевая лаборатория: пробоподготовка, рентгенофлуоресцентный анализ и минералогические исследования.',
   descEn: 'In-house field laboratory: sample preparation, X-ray fluorescence analysis and mineralogical studies.',
   heroImage: '/images/i.jpg',
@@ -205,9 +205,9 @@ const data: ServicePageData = {
   
   
   projectExample: {
-    id: 17,
-    workRu: "На участке «Широтные» в программу ПЭК вошли пробоподготовка, аналитические, минеграфические и петрографические исследования.",
-    workEn: "PEC’s program at Shirotnye included sample preparation, analytical testing, ore microscopy, and petrographic studies.",
+    id: 9,
+    workRu: "На участке была проведена пробоподготовка, аналитические, минеграфические и петрографические исследования. Полевая лаборатория Золотинка успешно проанализировала весь обьем проб с контролем.",
+    workEn: "The program included sample preparation, analytical testing, ore microscopy, and petrographic studies. The Zolotinka field laboratory analyzed the full set of samples with quality control.",
   },
 
   regions: [

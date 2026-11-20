@@ -8,14 +8,14 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: Compass,
   titleRu: 'Маркшейдерские работы',
-  titleEn: 'Survey Works',
+  titleEn: 'Mine Surveying',
   descRu: 'Маркшейдерское обеспечение горных и буровых работ выполняется на основании лицензии на осуществление деятельности по производству маркшейдерских работ, выданной Федеральной Службой по экологическому, технологическому и атомному надзору (Ростехнадзором).',
   descEn: 'Mine and drilling surveying is carried out on the basis of a license for mine surveying issued by the Federal Service for Environmental, Technological, and Nuclear Supervision (Rostekhnadzor).',
   heroImage: '/images/mark.JPG',
   introRu:
     'Маркшейдерско-геодезическое обеспечение работ выполняется на основании лицензии Ростехнадзора. Развиваем опорную маркшейдерскую сеть от пунктов государственной геодезической сети, выполняем топографические съёмки наземными методами и с БПЛА, выносим в натуру проектные выработки и скважины, контролируем их положение и считаем объёмы горных работ. Итог: планы, картограммы и исполнительная документация, пригодная для отчёта и подсчёта запасов.',
   introEn:
-    'Mine surveying and geodetic support is carried out under a Rostechnadzor license. We develop the reference mine survey network from state geodetic network points, perform topographic surveys by ground methods and with UAVs, stake out designed workings and boreholes, monitor their position and calculate mining volumes. The result: plans, volume cartograms and as-built documentation suitable for reporting and resource estimation.',
+    'We provide licensed mine surveying and geodetic support under a Rostekhnadzor license. We establish survey control tied to the state geodetic network, conduct ground and UAV topographic surveys, set out planned workings and boreholes, verify their positions, and calculate excavation volumes. Deliverables include survey plans, volume maps, and as-built records suitable for reporting and reserve estimation.',
 
   reverse: true,
   sectionTitleRu: 'Что входит в услугу',
@@ -29,9 +29,9 @@ const data: ServicePageData = {
       titleEn: 'Mine Surveying and Geodesy',
       icon: Globe,
       methods: [
-        { ru: 'Развитие опорной маркшейдерской сети (ОМС) от пунктов ГГС', en: 'Development of the Reference Mine Surveying Network (RMS) from GGS points' },
+        { ru: 'Развитие опорной маркшейдерской сети (ОМС) от пунктов ГГС', en: 'Establishment of mine survey control tied to the state geodetic network' },
         { ru: 'Топографические съемки исходных поверхностей наземным и воздушным методами', en: 'Topographic surveys of the initial surfaces using ground-based and aerial methods' },
-        { ru: 'Вынос на местности проектируемых горных выработок', en: 'Location of the projected mine workings on the ground' },
+        { ru: 'Вынос на местности проектируемых горных выработок', en: 'Setting out planned mine workings' },
       ]
     },
     {
@@ -39,9 +39,9 @@ const data: ServicePageData = {
       titleEn: 'Control & Surveying',
       icon: Crosshair,
       methods: [
-        { ru: 'Контроль проходки буровых скважин', en: 'Drilling operations control' },
-        { ru: 'Инклинометрический контроль скважин', en: 'Borehole inclinometry control' },
-        { ru: 'Маркшейдерская съемка после производства работ', en: 'Post-work surveying' },
+        { ru: 'Контроль проходки буровых скважин', en: 'Borehole position checks during drilling' },
+        { ru: 'Инклинометрический контроль скважин', en: 'Borehole deviation checks' },
+        { ru: 'Маркшейдерская съемка после производства работ', en: 'As-built mine surveys' },
         { ru: 'Съемка рекультивируемых территорий', en: 'Reclamation area surveying' },
       ]
     },
@@ -51,7 +51,7 @@ const data: ServicePageData = {
       icon: LineChart,
       methods: [
         { ru: 'Подготовка 2D и 3D маркшейдерских планов', en: '2D and 3D survey plan preparation' },
-        { ru: 'Составление картограмм объёмов горных работ', en: 'Mining volume cartogram preparation' },
+        { ru: 'Составление картограмм объёмов горных работ', en: 'Preparation of mine volume maps' },
         { ru: 'Подсчёт объёмов горной массы', en: 'Rock mass volume calculation' },
         { ru: '3D-моделирование горных выработок', en: '3D mine workings modeling' },
       ]
@@ -61,7 +61,7 @@ const data: ServicePageData = {
       titleEn: 'Interaction with government agencies',
       icon: LineChart,
       methods: [
-        { ru: 'Получение сведений от Роскадастра и Росреестра о пунктах государственных геодезических сетях (ГГС)', en: 'Obtaining information from Roskadastr and Rosreestr about state geodetic networks (SGN)' },
+        { ru: 'Получение сведений от Роскадастра и Росреестра о пунктах государственных геодезических сетях (ГГС)', en: 'Obtaining state geodetic control point records from Roskadastr and Rosreestr' },
       ]
     },
     {
@@ -69,7 +69,7 @@ const data: ServicePageData = {
       titleEn: 'Design and planning of works',
       icon: LineChart,
       methods: [
-        { ru: 'Построение рельефа местности района работ, проектирование подъездных путей, выдача рекомендаций по оптимизации работ.', en: 'Construction of the terrain in the work area, design of access roads, and recommendations for optimizing the work.' },
+        { ru: 'Построение рельефа местности района работ, проектирование подъездных путей, выдача рекомендаций по оптимизации работ.', en: 'Terrain modeling, access road design, and recommendations to improve site operations.' },
       ]
     },
   ],
@@ -116,21 +116,21 @@ const data: ServicePageData = {
       titleRu: 'Планирование работ',
       titleEn: 'Work Planning',
       descRu: 'Изучение ТЗ, заказ выписок из ФФПД с координатами пунктов ГГС, планирование ОМС',
-      descEn: 'TOR study, FFPD extracts ordering with GGS coordinates, OMS planning',
+      descEn: 'Review of the terms of reference, requests for state geodetic point records, and planning of the mine survey control network',
     },
     {
       image: '/images/work-stage-illustrations/survey.webp',
       titleRu: 'Подготовительные работы',
       titleEn: 'Preparatory Work',
       descRu: 'Рекогносцировка пунктов ГГС, закладка пунктов ОМС, статические измерения',
-      descEn: 'GGS reconnaissance, OMS establishment, static measurements',
+      descEn: 'Reconnaissance of geodetic control points, establishment of mine survey control, and static measurements',
     },
     {
       image: '/images/work-stage-illustrations/topography.webp',
       titleRu: 'Выполнение работ',
       titleEn: 'Field Work',
       descRu: 'Топосъемка, вынос выработок, сопровождение буровых и горных работ',
-      descEn: 'Topographic survey, workings staking, drilling and mining support',
+      descEn: 'Topographic surveys, setting out mine workings, and support for drilling and mining',
     },
     {
       image: '/images/work-stage-illustrations/signal.webp',
@@ -144,7 +144,7 @@ const data: ServicePageData = {
       titleRu: 'Сдача документации',
       titleEn: 'Documentation Delivery',
       descRu: 'Маркшейдерские планы, акты замеров, картограммы объемов, часть отчета ГРР',
-      descEn: 'Survey plans, measurement acts, volume cartograms, GRR report section',
+      descEn: 'Mine survey plans, measurement records, volume maps, and the survey section of the exploration report',
     },
   ],
   results: [
@@ -193,8 +193,8 @@ const data: ServicePageData = {
   ],
   projectExample: {
     id: 4,
-    workRu: "На участке «Зеркальный» ПЭК обеспечивала топогеодезическое сопровождение работ в составе программы колонкового бурения и опробования.",
-    workEn: "PEC provided topographic and geodetic support at Zerkalny as part of a core drilling and sampling program.",
+    workRu: "На участке «Зеркальный» маркшейдерская служба обеспечивала топогеодезическое сопровождение работ: была проведена рекогносцировка и локализация участка, проводился вынос скважин в натуру и сьемка фактических координат в рамках проведения буровых работ.",
+    workEn: "At Zerkalny, PEC provided topographic and geodetic support for the drilling program. The team reconnoitered and located the site, staked out the boreholes, and surveyed their as-drilled coordinates.",
   },
 
   regions: [

@@ -44,7 +44,7 @@ export function ProjectsContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/DSC09137.jpg"
-            alt="Проекты Полярной Экспедиционной Компании"
+            alt={t('Проекты Полярной Экспедиционной Компании', 'Polar Expedition Company projects')}
             fill
             priority
             className="object-cover"
@@ -193,21 +193,16 @@ export function ProjectsContent() {
                   <div className="relative h-48 overflow-hidden rounded-lg mb-4 flex-shrink-0">
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={t(project.title, project.titleEn)}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 left-3 z-10 flex gap-2">
+                    <div className="absolute top-3 left-3 z-10 flex">
                       <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                         {t(project.categoryLabel, project.categoryLabelEn)}
                       </span>
-                      {project.status === "inProgress" && (
-                        <span className="px-3 py-1 bg-black/60 backdrop-blur text-white text-xs font-medium rounded-full">
-                          {t("В работе", "In progress")}
-                        </span>
-                      )}
                     </div>
                   </div>
 
@@ -260,7 +255,7 @@ export function ProjectsContent() {
                     {IS_DEV && project.todo && (
                       <div className="mt-2 flex items-start gap-2 rounded-lg border border-dashed border-orange-500/50 px-3 py-2 text-xs text-orange-500">
                         <Pencil className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-                        <span>Дополнить: {project.todo}</span>
+                        <span>{t('Дополнить', 'Editorial note')}: {t(project.todo, project.todoEn ?? '')}</span>
                       </div>
                     )}
                   </dl>

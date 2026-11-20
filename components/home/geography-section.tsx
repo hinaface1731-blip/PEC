@@ -12,7 +12,7 @@ const regions = [
   { ru: 'Забайкалье', en: 'Transbaikal', coordinates: [115.0, 52.0], projects: 1 },
   { ru: 'Камчатка', en: 'Kamchatka', coordinates: [160.0, 56.0], projects: 2 },
   { ru: 'Магадан', en: 'Magadan', coordinates: [159.740413, 62.374036], projects: 2 },
-  { ru: 'Красноярский Край', en: 'Krasnoyarsk Kray', coordinates: [86.799120, 67.746315], projects: 2 },
+  { ru: 'Красноярский Край', en: 'Krasnoyarsk Krai', coordinates: [86.799120, 67.746315], projects: 2 },
 ]
 
 const bases = [
@@ -57,7 +57,7 @@ export function GeographySection() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
-            {t('География работ', 'Work Geography')}
+            {t('География работ', 'Where We Work')}
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
             {t('Проекты в ключевых горнодобывающих регионах России', 'Projects in key mining regions of Russia')}

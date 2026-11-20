@@ -7,28 +7,28 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: Radio,
   titleRu: 'Геофизические работы',
-  titleEn: 'Geophysical Works',
+  titleEn: 'Geophysical Services',
   descRu: 'Комплекс наземных и скважинных геофизических исследований для поиска и разведки месторождений полезных ископаемых. Современное оборудование и опытные специалисты.',
   descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
   heroImage: '/images/geophys5.jpeg',
   introRu:
     'Подбираем комплекс методов под геологическую задачу и условия участка: электроразведка (АМТЗ, ЗСБ, ВП, электротомография), магниторазведка наземная и каротаж скважин.\n\nПеред выходом в поле выполняем физико-геологическое моделирование, чтобы заранее понять, что метод способен показать на этом объекте. Данные обрабатываем и интерпретируем собственными специалистами. На выходе карты аномалий, геофизические разрезы, модели и обоснованные точки для заверочного бурения.',
   introEn:
-    'We select a set of methods to suit the geological task and site conditions: electrical surveys (AMT, TEM, IP, electrical resistivity tomography), ground and UAV magnetic surveys, and well logging.\n\nBefore going into the field we run physical-geological modeling to understand in advance what a method can show at the site. Our own specialists process and interpret the data. The deliverables are anomaly maps, geophysical sections, models and justified locations for verification drilling.',
+    'We select methods to suit the geological objectives and site conditions. These include electrical and electromagnetic surveys (AMT, TEM, IP, and electrical resistivity tomography), ground magnetic surveys, and borehole logging.\n\nBefore fieldwork, we model the expected geophysical response to determine what each method can detect at the site. Our team processes and interprets the data and delivers anomaly maps, geophysical sections, models, and recommended targets for follow-up drilling.',
 
   reverse: true,
   sectionTitleRu: 'Полный комплекс геофизических работ',
-  sectionTitleEn: 'Full range of geophysical works',
+  sectionTitleEn: 'Full range of geophysical services',
   sectionDescRu: 'От региональных съёмок до детальной разведки месторождений',
   sectionDescEn: 'From regional surveys to detailed deposit exploration',
   methods: [
-    { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
-    { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
-    { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
+    { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard borehole logging suite (gamma ray, gamma-gamma, resistivity, spontaneous potential, and induced polarization)' },
+    { ru: 'Инклинометрия и навигация скважин', en: 'Borehole deviation and trajectory surveys' },
+    { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and nuclear logging' },
     { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
-    { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical survey' },
-    { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
-    { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
+    { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical and electromagnetic surveys' },
+    { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Ground and UAV magnetic surveys' },
+    { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry (gamma-ray spectrometry)' },
   ],
   methodsGroups: [
     {
@@ -36,9 +36,9 @@ const data: ServicePageData = {
       titleEn: 'Borehole Geophysics',
       icon: Drill,
       methods: [
-        { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard GIS complex' },
-        { ru: 'Инклинометрия и навигация скважин', en: 'Inclinometry and well navigation' },
-        { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and radioactive logging' },
+        { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard borehole logging suite (gamma ray, gamma-gamma, resistivity, spontaneous potential, and induced polarization)' },
+        { ru: 'Инклинометрия и навигация скважин', en: 'Borehole deviation and trajectory surveys' },
+        { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and nuclear logging' },
         { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
       ]
     },
@@ -47,9 +47,9 @@ const data: ServicePageData = {
       titleEn: 'Ground Geophysics',
       icon: Radio,
       methods: [
-        { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical survey' },
-        { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Magnetic survey' },
-        { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry' },
+        { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical and electromagnetic surveys' },
+        { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Ground and UAV magnetic surveys' },
+        { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry (gamma-ray spectrometry)' },
       ]
     },
   ],
@@ -194,9 +194,9 @@ const data: ServicePageData = {
     },
   ],
   projectExample: {
-    id: 18,
-    workRu: "В составе поисковых работ на участке ПЭК выполняла наземные геофизические исследования и каротаж скважин.",
-    workEn: "PEC carried out ground geophysical surveys and borehole logging as part of exploration at the site.",
+    id: 17,
+    workRu: "Были выполнены наземные электроразведочные исследования АМТЗ и ЗСБ, по результатам работ была проведена обработка и инверсия данных, были построенны разрезы УЭС и подготовлен отчет по выполненым работам.",
+    workEn: "PEC carried out ground-based audio-magnetotelluric (AMT) and transient electromagnetic (TEM) surveys. The team processed and inverted the data, produced electrical resistivity sections, and prepared a final report.",
   },
 
   regions: [

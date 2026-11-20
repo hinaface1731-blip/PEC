@@ -124,6 +124,7 @@ const equipment = [
     typeEn: 'Logging station',
     qty: 5,
     specs: ['Скорость регистрации до 30 м/мин', '16 каналов', 'Глубина до 3000 м'],
+    specsEn: ["Logging speed: up to 30 m/min", "16 channels", "Depth: up to 3,000 m"],
   },
   {
     nameRu: 'ГК-43',
@@ -132,6 +133,7 @@ const equipment = [
     typeEn: 'Gamma ray tool',
     qty: 3,
     specs: ['Диапазон 0-1000 мкР/ч', 'Чувствительность 10 имп/мкР', 'Термостабильный'],
+    specsEn: ["Range: 0–1,000 µR/h", "Sensitivity: 10 counts/µR", "Temperature-stable"],
   },
   {
     nameRu: 'ГГКМ-43',
@@ -140,6 +142,7 @@ const equipment = [
     typeEn: 'Density gamma-gamma tool',
     qty: 2,
     specs: ['Плотность 1.0-3.0 г/см³', 'Погрешность 0.03 г/см³', 'Источник Cs-137'],
+    specsEn: ["Density: 1.0–3.0 g/cm³", "Error: 0.03 g/cm³", "Cs-137 source"],
   },
   {
     nameRu: 'ИГТ-43',
@@ -148,6 +151,7 @@ const equipment = [
     typeEn: 'Gyroscopic inclinometer',
     qty: 8,
     specs: ['Зенит 0-180°', 'Азимут 0-360°', 'Точность 0.1°'],
+    specsEn: ["Inclination: 0–180°", "Azimuth: 0–360°", "Accuracy: 0.1°"],
   },
 ]
 
@@ -156,6 +160,7 @@ const caseStudy = {
   titleEn: 'Well Logging at Taimyr Exploration Wells',
   licenses: ['КРР03707БП', 'КРР03708БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская'],
+  licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya"],
   volumeRu: 'Каротаж 12 скважин, общий объем 2500 метров',
   volumeEn: 'Logging of 12 wells, total 2500 meters',
   resultRu: 'Проведен комплекс ГИС (ГК, ГГК, КС, ПС, инклинометрия). Выполнена литологическая интерпретация, выделены рудные интервалы. Подготовлены материалы для подсчета запасов.',
@@ -306,7 +311,7 @@ export default function LoggingPage() {
                       {item.specs.map((spec, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                          {spec}
+                          {t(spec, item.specsEn[idx])}
                         </li>
                       ))}
                     </ul>
@@ -339,7 +344,7 @@ export default function LoggingPage() {
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.licenses.map((license, idx) => (
                         <span key={license} className="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm font-mono rounded-lg">
-                          {license} — {caseStudy.licenseNames[idx]}
+                          {license} — {t(caseStudy.licenseNames[idx], caseStudy.licenseNamesEn[idx])}
                         </span>
                       ))}
                     </div>

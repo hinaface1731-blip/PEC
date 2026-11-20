@@ -10,15 +10,15 @@ import { Sun, Moon, Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
-  { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Works' },
-  { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Works' },
-  { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Works' },
-  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Works' },
-  { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Survey Works' },
+  { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Services' },
+  { href: '/services/geophysics', ru: 'Геофизические работы', en: 'Geophysical Services' },
+  { href: '/services/drilling', ru: 'Буровые работы', en: 'Drilling Services' },
+  { href: '/services/mining', ru: 'Горные работы', en: 'Mining Services' },
+  { href: '/services/survey', ru: 'Маркшейдерские работы', en: 'Mine Surveying' },
   { href: '/services/logistics', ru: 'Логистика и снабжение', en: 'Logistics & Supply' },
-  { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Research' },
-  { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Design & Consulting' },
-  { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Ecology & Reclamation' },
+  { href: '/services/lab', ru: 'Лабораторные исследования', en: 'Laboratory Testing' },
+  { href: '/services/consulting', ru: 'Проектирование и консалтинг', en: 'Exploration Design & Consulting' },
+  { href: '/services/ecology', ru: 'Экология и рекультивация', en: 'Environmental Services & Reclamation' },
 ]
 
 const navItems = [
@@ -217,7 +217,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}
-            aria-label={t('Switch to English', 'Переключить на русский')}
+            aria-label={t('Переключить на английский', 'Switch to Russian')}
             className="px-3 py-2 text-sm font-medium text-[var(--muted)] hover:text-[var(--text)] transition-colors rounded-lg hover:bg-[var(--bg3)]"
           >
             {language === 'ru' ? 'EN' : 'RU'}

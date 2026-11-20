@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
+import { LocalizedDocumentTitle } from '@/components/localized-document-title'
 import './globals.css'
 
 const manrope = localFont({
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body className={`${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
+            <LocalizedDocumentTitle />
             {children}
           </LanguageProvider>
         </ThemeProvider>

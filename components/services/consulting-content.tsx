@@ -1,20 +1,20 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { FileText, BarChart3, ClipboardCheck, ShieldCheck, TrendingUp, Users } from 'lucide-react'
+import { FileText, BarChart3, ClipboardCheck } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
 
 const data: ServicePageData = {
   icon: FileText,
   titleRu: 'Проектирование и консалтинг',
-  titleEn: 'Design & Consulting',
+  titleEn: 'Exploration Design & Consulting',
   descRu: 'Полный комплекс проектных работ и консультационных услуг: от ТЭО кондиций до защиты запасов в ГКЗ. Опыт работы с российскими и международными стандартами.',
-  descEn: 'Full range of design and consulting services: from feasibility studies to resource approval at GKZ. Experience with Russian and international standards.',
+  descEn: 'Exploration design and consulting services, from studies on reserve estimation criteria to support during reserve review by the State Commission on Mineral Reserves (GKZ). We work with Russian and international reporting standards.',
   heroImage: '/images/project.jpg',
   introRu:
     'Готовим проекты геологоразведочных работ: обоснование методики и объёмов, расчёт сроков и затрат, мероприятия по безопасности, графические приложения, и сопровождаем согласование. По результатам работ составляем отчёты с оценкой прогнозных ресурсов и подсчётом запасов (ГКЗ/ТКЗ), разрабатываем ТЭО кондиций, строим каркасные и блочные модели в Micromine и Surpac, готовим отчётность по стандартам JORC и CRIRSCO.',
   introEn:
-    'We prepare exploration project documents: justification of methods and volumes, calculation of schedule and costs, safety measures and graphic appendices, and support their approval. Based on the results of the work we prepare reports with prospective resource assessment and resource estimation (GKZ/TKZ), develop feasibility studies for cut-off grades, build wireframe and block models in Micromine and Surpac, and prepare reporting under JORC and CRIRSCO standards.',
+    'We design exploration programs, justify the methods and scope, estimate schedules and costs, prepare safety measures and drawings, and support the approval process. Using the exploration results, we prepare reports with forecast resource assessments and reserve estimates for the state or territorial reserves commission (GKZ or TKZ), evaluate reserve estimation criteria, build wireframe and block models in Micromine and Surpac, and prepare reports under JORC and CRIRSCO standards.',
 
   reverse: true,
   
@@ -24,7 +24,7 @@ const data: ServicePageData = {
   sectionDescEn: 'From feasibility studies to reserve approval at GKZ',
   
   methods: [
-    { ru: 'Проектирование ГРР (геологическое задание)', en: 'GRR project design (geological assignment)' },
+    { ru: 'Проектирование ГРР (геологическое задание)', en: 'Mineral exploration program design (geological scope of work)' },
     { ru: 'Разработка инвестиционных программ', en: 'Investment program development' },
     { ru: 'Сопровождение лицензирования', en: 'Licensing support' },
     { ru: 'Технико-экономическое обоснование', en: 'Technical and economic assessment' },
@@ -40,10 +40,10 @@ const data: ServicePageData = {
   methodsGroups: [
     {
       titleRu: 'Проектирование ГРР',
-      titleEn: 'GRR Design',
+      titleEn: 'Exploration Program Design',
       icon: FileText,
       methods: [
-        { ru: 'Проектирование ГРР (геологическое задание)', en: 'GRR project design (geological assignment)' },
+        { ru: 'Проектирование ГРР (геологическое задание)', en: 'Mineral exploration program design (geological scope of work)' },
         { ru: 'Разработка инвестиционных программ', en: 'Investment program development' },
         { ru: 'Сопровождение лицензирования', en: 'Licensing support' },
         { ru: 'Технико-экономическое обоснование', en: 'Technical and economic assessment' },
@@ -207,9 +207,9 @@ const data: ServicePageData = {
   
   
   projectExample: {
-    id: 9,
-    workRu: "По итогам детальной разведки золоторудного объекта «Вилюйская» выявлены признаки оруденения и выполнен подсчёт запасов.",
-    workEn: "Detailed exploration at the Vilyuyskaya gold prospect identified evidence of mineralization and included a reserve estimate.",
+    id: 10,
+    workRu: "Перед началом работ на участке ПЭК проанализировала и переинтерпретировала архивные геологические, геофизические и геохимические данные и подготовила проект геологоразведочных работ в соответствии с техническим заданием.",
+    workEn: "Before work began on site, PEC reviewed and reinterpreted archival geological, geophysical, and geochemical data and prepared an exploration work plan in accordance with the terms of reference.",
   },
 
   regions: [

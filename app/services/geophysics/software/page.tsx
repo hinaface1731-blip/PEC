@@ -103,6 +103,7 @@ const equipment = [
     typeEn: 'Geophysical software',
     qty: 1,
     specs: ['Магниторазведка', 'Карты аномалий', '2D/3D инверсия'],
+    specsEn: ["Magnetic surveys", "Anomaly maps", "2D/3D inversion"],
   },
   {
     nameRu: 'ZondRes2D/3D',
@@ -111,6 +112,7 @@ const equipment = [
     typeEn: 'Electrical survey',
     qty: 1,
     specs: ['АМТЗ инверсия', 'ЗСБ инверсия', '2D/3D модели'],
+    specsEn: ["AMT inversion", "TEM inversion", "2D/3D models"],
   },
   {
     nameRu: 'Micromine',
@@ -119,6 +121,7 @@ const equipment = [
     typeEn: 'GIS & modeling',
     qty: 1,
     specs: ['3D моделирование', 'Подсчет запасов', 'Планирование ГРР'],
+    specsEn: ["3D modeling", "Reserve estimation", "Exploration planning"],
   },
 ]
 
@@ -127,6 +130,7 @@ const caseStudy = {
   titleEn: 'Integrated Geophysical Data Processing',
   licenses: ['КРР03707БП', 'КРР03708БП', 'КРР03709БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская', 'Трехсестренская'],
+  licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya", "Tryokhsesterskaya"],
   volumeRu: 'Обработка данных: магниторазведка 850 км², АМТЗ 120 км, ГИС 2500 м',
   volumeEn: 'Data processing: magnetics 850 km², AMT 120 km, logging 2500 m',
   resultRu: 'Построены карты магнитных аномалий. Выполнена 2D инверсия данных АМТЗ. Проведена литологическая интерпретация ГИС. Локализованы перспективные участки для постановки поисковых работ.',
@@ -277,7 +281,7 @@ export default function SoftwarePage() {
                       {item.specs.map((spec, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                          {spec}
+                          {t(spec, item.specsEn[idx])}
                         </li>
                       ))}
                     </ul>
@@ -310,7 +314,7 @@ export default function SoftwarePage() {
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.licenses.map((license, idx) => (
                         <span key={license} className="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm font-mono rounded-lg">
-                          {license} — {caseStudy.licenseNames[idx]}
+                          {license} — {t(caseStudy.licenseNames[idx], caseStudy.licenseNamesEn[idx])}
                         </span>
                       ))}
                     </div>

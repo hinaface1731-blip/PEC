@@ -7,7 +7,7 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: Mountain,
   titleRu: 'Геологические работы',
-  titleEn: 'Geological Works',
+  titleEn: 'Geological Services',
   descRu: 'Комплекс полевых и камеральных работ по геологическому изучению недр. От региональных съёмок до детальной разведки месторождений с подсчётом запасов.',
   descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
   heroImage: '/images/geo.jpg',
@@ -20,13 +20,13 @@ const data: ServicePageData = {
   methods: [], // пустой, используем groups
     // ✅ Добавьте эти поля
   sectionTitleRu: 'Полный комплекс геологических работ',
-  sectionTitleEn: 'Full range of geological works',
+  sectionTitleEn: 'Full range of geological services',
   sectionDescRu: 'От региональных съёмок до детальной разведки месторождений с подсчётом запасов',
   sectionDescEn: 'From regional surveys to detailed deposit exploration with resource estimation',
   methodsGroups: [
     {
       titleRu: 'Полевые геологические работы',
-      titleEn: 'Field Geological Works',
+      titleEn: 'Field Geology',
       icon: Pickaxe,
       methods: [
         { ru: 'Геологическое картирование масштабов 1:200 000 – 1:10 000', en: 'Geological mapping 1:200,000 – 1:10,000' },
@@ -179,7 +179,7 @@ const data: ServicePageData = {
     {
       image: '/images/work-stage-illustrations/microscopy.webp',
       titleRu: 'Лабораторные исследования',
-      titleEn: 'Laboratory Research',
+      titleEn: 'Laboratory Testing',
       descRu: 'Петрография, минералогия, геохимические анализы проб',
       descEn: 'Petrography, mineralogy, geochemical analysis',
     },
@@ -251,9 +251,9 @@ const data: ServicePageData = {
   
   
   projectExample: {
-    id: 6,
-    workRu: "На поисковом участке ПЭК документировала керн и полотна канав, проводила керновое и шлиховое опробование и геохимические работы по вторичным ореолам.",
-    workEn: "At the prospect, PEC logged drill core and trench faces, collected core and heavy-mineral samples, and carried out geochemical surveys over secondary dispersion halos.",
+    id: 1,
+    workRu: "На поисковом участке был задокументирован керн и полотна канав, проводились поисковые маршруты, керновое и шлиховое опробование и геохимические работы по вторичным ореолам. По результатам работ подготовлен отчёт с рекомендациями по дальнейшим геологоразведочным работам.",
+    workEn: "At the prospect, PEC logged drill core and trench faces, carried out prospecting traverses, collected core and heavy mineral concentrate samples, and conducted geochemical surveys over secondary dispersion halos. The final report recommended further exploration work.",
   },
 
   regions: [

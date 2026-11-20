@@ -7,7 +7,7 @@ import type { ServicePageData } from '@/components/services/service-page-templat
 const data: ServicePageData = {
   icon: Leaf,
   titleRu: 'Экология и рекультивация',
-  titleEn: 'Ecology & Reclamation',
+  titleEn: 'Environmental Services & Reclamation',
   descRu: 'Полный комплекс экологических услуг: от изысканий и ОВОС до технической и биологической рекультивации. Сопровождение проектов в Росприроднадзоре.',
   descEn: 'Full range of environmental services: from surveys and EIA to technical and biological reclamation. Project support at Rosprirodnadzor.',
   heroImage: '/images/ecol.jpg',
@@ -149,7 +149,7 @@ const data: ServicePageData = {
       titleRu: 'Согласование',
       titleEn: 'Approval',
       descRu: 'Прохождение ГЭЭ, согласование в Росприроднадзоре',
-      descEn: 'SER passage, Rosprirodnadzor approval',
+      descEn: 'State environmental review and approval by Rosprirodnadzor',
     },
     {
       image: '/images/work-stage-illustrations/reclamation.webp',
@@ -213,8 +213,8 @@ const data: ServicePageData = {
   
   projectExample: {
     id: 19,
-    workRu: "Поисковые работы на участке «Черное» включали геоэкологические работы. Они выполнялись в составе полевой программы ПЭК.",
-    workEn: "Prospecting at Chernoye included geoenvironmental work as part of PEC’s field program.",
+    workRu: "Поисковые работы включали в себя комплексные геоэкологические работы. По результатам были подготовлены материалы: карты, базы данных с проанализироваными пробами и рекомендации по работе.",
+    workEn: "The prospecting program at Chernoye included comprehensive geoenvironmental surveys. PEC produced maps, compiled databases of sample analysis results, and prepared recommendations for further work.",
   },
 
   regions: [

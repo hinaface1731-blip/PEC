@@ -27,7 +27,11 @@ export function loadYmaps3(): Promise<typeof window.ymaps3> {
 
     const timeoutId = setTimeout(() => reject(new Error('Yandex Maps API load timeout')), SCRIPT_TIMEOUT_MS)
     const script = document.createElement('script')
-    script.src = `https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`
+    let locale = 'ru_RU'
+    try {
+      if (window.localStorage.getItem('language') === 'en') locale = 'en_RU'
+    } catch {}
+    script.src = `https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=${locale}`
     script.async = true
     script.onload = () => {
       clearTimeout(timeoutId)

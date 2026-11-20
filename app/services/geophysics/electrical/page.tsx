@@ -168,6 +168,7 @@ const equipment = [
     typeRu: 'Регистратор данных АМТЗ',
     typeEn: 'AMT data recorder',
     specs: ['32-бит АЦП', '0.001-20000 Hz', 'Wi-Fi управление', 'Вес 1.8 кг'],
+    specsEn: ["32-bit ADC", "0.001–20,000 Hz", "Wi-Fi control", "Weight: 1.8 kg"],
   },
   {
     nameRu: 'ЦИКЛ',
@@ -175,6 +176,7 @@ const equipment = [
     typeRu: 'Электроразведочная система ЗСБ',
     typeEn: 'TEM electrical survey system',
     specs: ['Цифровая передача информации', 'Без калибровки перед записью', 'Сопряжение с любыми каротажными регистраторами'],
+    specsEn: ["Digital data transmission", "No calibration required before recording", "Compatible with any borehole logging recorder"],
   },
   {
     nameRu: 'АСТРА-100АТ',
@@ -182,6 +184,7 @@ const equipment = [
     typeRu: 'Генератор электроразведочный',
     typeEn: 'Electrical survey transmitter',
     specs: ['1000W', '0.1-100A', 'Стабильность 0.008%'],
+    specsEn: ["1,000 W", "0.1–100 A", "Stability: 0.008%"],
   },
   {
     nameRu: 'Скала-48',
@@ -189,6 +192,7 @@ const equipment = [
     typeRu: 'Станция электротомографии',
     typeEn: 'ERT station',
     specs: ['48 каналов', 'Коммутатор КЭ-48', 'Автоматическая регистрация'],
+    specsEn: ["48 channels", "KE-48 switching unit", "Automatic data recording"],
   }
 ]
 
@@ -205,6 +209,7 @@ const software = [
   },
   {
     name: 'ПРОБА / ПОДБОР',
+    nameEn: 'PROBA / PODBOR',
     descriptionRu: 'Обработка и интерпретация данных ЗСБ',
     descriptionEn: 'TEM data processing and interpretation'
   },
@@ -220,6 +225,7 @@ const caseStudy = {
   titleEn: 'Copper-nickel exploration in Taimyr',
   licenses: ['КРР03707БП', 'КРР03708БП', 'КРР03709БП', 'КРР03710БП', 'КРР03711БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская', 'Трехсестренская', 'Дорожнинская', 'Симсовская'],
+  licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya", "Tryokhsesterskaya", "Dorozhninskaya", "Simsovskaya"],
   volumeRu: 'Комплекс АМТЗ+ЗСБ на площади 200 км², 450 км профилей ВП',
   volumeEn: 'AMT+TEM complex over 200 km² area, 450 km IP profiles',
   resultRu: 'Выявлены перспективные проводящие аномалии, совпадающие с зонами повышенной поляризуемости. Локализованы 5 первоочередных участков для заверки бурением.',
@@ -390,7 +396,7 @@ export default function ElectricalPage() {
                       {item.specs.map((spec, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                          {spec}
+                          {t(spec, item.specsEn[idx])}
                         </li>
                       ))}
                     </ul>
@@ -427,7 +433,7 @@ export default function ElectricalPage() {
                       <Layers className="w-6 h-6 text-orange-500" />
                     </div>
                     <h4 className="font-display text-lg font-semibold text-foreground mb-2">
-                      {item.name}
+                      {t(item.name, item.nameEn ?? item.name)}
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       {t(item.descriptionRu, item.descriptionEn)}
@@ -461,7 +467,7 @@ export default function ElectricalPage() {
                     <div className="flex flex-wrap gap-2">
                       {caseStudy.licenses.map((license, idx) => (
                         <span key={license} className="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm font-mono rounded-lg">
-                          {license} — {caseStudy.licenseNames[idx]}
+                          {license} — {t(caseStudy.licenseNames[idx], caseStudy.licenseNamesEn[idx])}
                         </span>
                       ))}
                     </div>

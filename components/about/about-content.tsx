@@ -57,7 +57,7 @@ export function AboutContent() {
         <div className="absolute inset-0">
           <Image
             src="/images/company8.jpg"
-            alt="О компании"
+            alt={t('О компании', 'About the company')}
             fill
             priority
             className="object-cover"

@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     // Валидация
     if (!fullName || !email || !phone || !position) {
       return NextResponse.json(
-        { error: 'Заполните все обязательные поля' },
+        { code: 'requiredFields', error: 'Заполните все обязательные поля' },
         { status: 400 }
       )
     }
@@ -29,10 +29,10 @@ export async function POST(request: NextRequest) {
     if (resumeFile instanceof File && resumeFile.size > 0) {
       const lowerName = resumeFile.name.toLowerCase()
       if (!ALLOWED_EXTENSIONS.some((ext) => lowerName.endsWith(ext))) {
-        return NextResponse.json({ error: 'Допустимые форматы резюме: PDF, DOC, DOCX' }, { status: 400 })
+        return NextResponse.json({ code: 'fileFormat', error: 'Допустимые форматы резюме: PDF, DOC, DOCX' }, { status: 400 })
       }
       if (resumeFile.size > MAX_FILE_SIZE) {
-        return NextResponse.json({ error: 'Файл резюме больше 10 МБ' }, { status: 400 })
+        return NextResponse.json({ code: 'fileSize', error: 'Файл резюме больше 10 МБ' }, { status: 400 })
       }
       attachments.push({
         filename: resumeFile.name,

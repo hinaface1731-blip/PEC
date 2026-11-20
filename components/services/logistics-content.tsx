@@ -184,10 +184,9 @@ const data: ServicePageData = {
   
   
   projectExample: {
-    id: 3,
-    image: "/images/service-photos/nevenrekan-camp.webp",
-    workRu: "На участке Невенрекан работал полевой лагерь ПЭК для экспедиции. На фото — база на участке.",
-    workEn: "PEC operated a field camp for the expedition at Nevenrekan. The photo shows the site camp.",
+    id: 18,
+    workRu: "На участок расположеный на крайнем Севере был произведен комплексный и многоэтапный завоз материалов и оборудования для экспедиции. По результатам был успешно организован лагерь и доставлена техника для проведения полевых работ.",
+    workEn: "PEC delivered materials and equipment to a remote Far North site in several stages, set up the expedition camp, and supplied the machinery needed for fieldwork.",
   },
 
   regions: [

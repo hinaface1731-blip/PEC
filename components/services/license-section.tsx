@@ -10,11 +10,11 @@ const licenseInfo = {
   dateRu: '13 ноября 2025 г.',
   dateEn: 'November 13, 2025',
   authorityRu: 'Енисейское управление Ростехнадзора',
-  authorityEn: 'Yenisei Office of Rostechnadzor',
+  authorityEn: 'Yenisei Office of Rostekhnadzor',
   termRu: 'Бессрочно',
-  termEn: 'Unlimited',
+  termEn: 'No expiration date',
   activityRu: 'Производство маркшейдерских работ',
-  activityEn: 'Mining surveying operations',
+  activityEn: 'Mine surveying',
   documents: [
     {
       titleRu: 'Уведомление о предоставлении лицензии',
@@ -122,7 +122,7 @@ export function LicenseSection() {
               <div className="flex-1">
                 <h4 className="font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
                   <FileText className="w-5 h-5 text-[var(--accent)]" />
-                  {t('Лицензируемые виды работ', 'Licensed Work Types')}
+                  {t('Лицензируемые виды работ', 'Licensed Activities')}
                 </h4>
                 <ul className="space-y-2">
                   {licenseInfo.works.map((work, idx) => (
