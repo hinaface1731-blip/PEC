@@ -1,14 +1,34 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Drill, Cpu, TestTube, Truck, ChevronRight, Check, Compass } from "lucide-react"
+import { Drill, Cpu, TestTube, Truck, ChevronRight, Check, Compass, type LucideIcon } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
 import { FallbackImage } from "@/components/ui/fallback-image"
+import { equipmentManufacturers } from "@/lib/equipment-manufacturers"
+import { drawEquipmentPhoto, equipmentPhotoDisplay } from "@/lib/equipment-photo-display"
 
-const equipmentCategories = [
+interface EquipmentCategory {
+  id: string
+  icon: LucideIcon
+  titleRu: string
+  titleEn: string
+  descriptionRu: string
+  descriptionEn: string
+  items: (Pick<EquipmentPhotoProps, 'illustration' | 'modelLinks'> & {
+    name: string
+    nameEn: string
+    specs: string[]
+    specsEn: string[]
+    image: string
+    imageAlt?: { ru: string; en: string }
+    detailsHref?: string
+  })[]
+}
+
+const equipmentCategories: EquipmentCategory[] = [
   {
     id: "drilling",
     icon: Drill,
@@ -166,7 +186,8 @@ const equipmentCategories = [
         specs: ["Каротаж", "Глубина исследований: до 500 м"],
         specsEn: ["Well logging", "Survey depth: up to 500 m"],
 
-        image: "/images/pasha.jpg"
+        image: "/images/equipment/ingeo-logging-kit.webp",
+        illustration: true,
       },
       {
         name: "Высокоточные инклинометры для контроля проходки скважин",
@@ -174,7 +195,12 @@ const equipmentCategories = [
         specs: ["Гироскопические и магнитные", "Глубина исследований: до 500 м"],
         specsEn: ["Gyroscopic and magnetic", "Survey depth: up to 500 m"],
 
-        image: "/images/gyro.jpg"
+        image: "/images/equipment/igt-43-kit.webp",
+        illustration: { ru: "ИГТ-43", en: "IGT-43" },
+        modelLinks: [
+          { name: "ИГТ-43", nameEn: "IGT-43", url: "https://m-geo.ru/equipment/geologicheskoe-oborudovanie/inklinometr-igt-43/" },
+          { name: "АИ-30", nameEn: "AI-30", url: "https://group-pribor.ru/inklinometr-avtonomnyj-ai-30/" },
+        ],
       }
     ]
   },
@@ -187,12 +213,38 @@ const equipmentCategories = [
     descriptionEn: "Analytical instruments for sample analysis",
     items: [
       {
-        name: "Рентгенофлуоресцентный анализатор",
-        nameEn: "XRF Analyzer",
+        name: "Полевая лаборатория «Золотинка»",
+        nameEn: "Zolotinka Field Laboratory",
+        specs: [
+          "Определение золота в пробах горных пород и руд в полевых условиях",
+          "Рентгенофлуоресцентный анализ после предварительного концентрирования золота",
+          "Диапазон определения по методике НСАМ № 392-Х/РС: 0,3–50 г/т",
+        ],
+        specsEn: [
+          "On-site determination of gold in rock and ore samples",
+          "X-ray fluorescence analysis after gold preconcentration",
+          "Determination range under NSAM Method No. 392-Kh/RS: 0.3–50 g/t",
+        ],
+        image: "/images/equipment/zolotinka-lab.webp",
+        imageAlt: {
+          ru: "Оборудование полевой лаборатории «Золотинка» на фото из каталога «МосТест»",
+          en: "Zolotinka field laboratory equipment in the MosTest catalog photo",
+        },
+        modelLinks: [
+          { name: "Фото: МосТест", nameEn: "Photo: MosTest", url: "https://mos-test.ru/solution/for-mining-industry/dobycha-zolota.html" },
+        ],
+        detailsHref: "/services/lab#zolotinka",
+      },
+      {
+        name: "Рентгенофлуоресцентный анализатор Vanta",
+        nameEn: "Vanta XRF Analyzer",
         specs: ["Элементы: от Na до U", "Время анализа: 2-5 мин", "Портативный вариант"],
         specsEn: ["Elements: from Na to U", "Analysis time: 2-5 min", "Portable version"],
 
-        image: "/images/equipment/1530699564047_1.png"
+        image: "/images/equipment/1530699564047_1.png",
+        modelLinks: [
+          { name: "Vanta", nameEn: "Vanta", url: "https://www.geo-ndt.ru/pribor-10139-rentgenoflyorescentnii-analizator-vanta.htm" },
+        ],
       },
       {
         name: "Тринокулярный микроскоп Opto-Edu A15.1017-T поляризационный",
@@ -278,12 +330,15 @@ const equipmentCategories = [
         image: "/images/equipment/vodovozka.png"
       },
       {
-        name: "Каротажные станции",
-        nameEn: "Logging Unit",
+        name: "Каротажная станция «Кедр-05П»",
+        nameEn: "Kedr-05P Borehole Logging Unit",
         specs: ["Каротаж скважин", "Автономность: 14 дней", "Лаборатория на борту"],
         specsEn: ["Well logging", "Autonomy: 14 days", "Onboard laboratory"],
 
-        image: "/images/equipment/karotazh.png"
+        image: "/images/equipment/karotazh.png",
+        modelLinks: [
+          { name: "Кедр-05П", nameEn: "Kedr-05P", url: "https://stsuz.com/logging-tools/laboratoriya-kompleksnaya-geofizicheskaya-kedr-05p/" },
+        ],
       },
       {
         name: "Бульдозеры",
@@ -320,6 +375,88 @@ const equipmentCategories = [
     ]
   }
 ]
+
+interface EquipmentPhotoProps {
+  src: string
+  alt: string
+  illustration?: boolean | { ru: string; en: string }
+  modelLinks?: { name: string; nameEn: string; url: string }[]
+}
+
+function EquipmentPhoto({ src, alt, illustration, modelLinks = [] }: EquipmentPhotoProps) {
+  const { t } = useLanguage()
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [drawnSrc, setDrawnSrc] = useState<string>()
+  const display = equipmentPhotoDisplay[src]
+  const showCanvas = drawnSrc === src
+  const photoClass = "object-contain transition-transform duration-500 group-hover:scale-110"
+  const manufacturer = equipmentManufacturers[src]
+  const illustrationModel = typeof illustration === 'object' ? t(illustration.ru, illustration.en) : undefined
+  const illustrationLabel = illustrationModel
+    ? t(`Иллюстрация ${illustrationModel}`, `${illustrationModel} illustration`)
+    : t('Иллюстрация', 'Illustration')
+  const links = modelLinks.map(({ name, nameEn, url }) => ({
+    name: t(name, nameEn), url, label: t(`Открыть «${name}»`, `Open ${nameEn}`),
+  }))
+  if (manufacturer) {
+    const name = t(manufacturer.name, manufacturer.nameEn ?? manufacturer.name)
+    links.push({ name, url: manufacturer.url, label: t(`Сайт производителя «${alt}»: ${name}`, `Manufacturer website for ${alt}: ${name}`) })
+  }
+
+  return (
+    <div className="relative h-48 overflow-hidden">
+      <FallbackImage
+        src={src}
+        alt={illustrationModel ? illustrationLabel : illustration ? `${illustrationLabel}: ${alt}` : alt}
+        fill
+        className={showCanvas ? `${photoClass} opacity-0` : photoClass}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        loading="lazy"
+        onLoad={display ? ({ currentTarget }) => {
+          const canvas = canvasRef.current
+          if (!canvas) return
+          try {
+            if (drawEquipmentPhoto(canvas, currentTarget, display)) setDrawnSrc(src)
+          } catch {
+            // Keep the original image when a browser cannot read its pixels.
+          }
+        } : undefined}
+      />
+      {display && (
+        <canvas
+          ref={canvasRef}
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 size-full ${photoClass}${showCanvas ? '' : ' invisible'}`}
+        />
+      )}
+      {(illustration || links.length > 0) && (
+        <div className="pointer-events-none absolute inset-x-2 bottom-2 z-10 flex flex-wrap items-end gap-1">
+          {illustration && (
+            <span className="rounded bg-card/90 px-2 py-1 text-xs leading-4 text-muted-foreground">
+              {illustrationLabel}
+            </span>
+          )}
+          {links.length > 0 && (
+            <div className="ml-auto flex flex-wrap justify-end gap-1">
+              {links.map(({ url, name, label }) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pointer-events-auto rounded bg-black/65 px-2 py-1 text-xs leading-4 text-white transition-colors hover:bg-black/85 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  aria-label={label}
+                >
+                  {name} <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export function EquipmentContent() {
   const { t } = useLanguage()
@@ -434,16 +571,12 @@ export function EquipmentContent() {
                           transition={{ delay: index * 0.1 }}
                           className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all"
                         >
-                          <div className="relative h-48 overflow-hidden">
-  <FallbackImage
-    src={item.image}
-    alt={t(item.name, item.nameEn || item.name)}
-    fill
-    className="object-contain transition-transform duration-500 group-hover:scale-110"
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    loading="lazy"
-  />
-</div>
+                          <EquipmentPhoto
+                            src={item.image}
+                            alt={item.imageAlt ? t(item.imageAlt.ru, item.imageAlt.en) : t(item.name, item.nameEn || item.name)}
+                            illustration={item.illustration}
+                            modelLinks={item.modelLinks}
+                          />
                           
                           <div className="p-5">
                             <h3 className="font-display text-lg font-semibold text-foreground mb-3">
@@ -460,6 +593,15 @@ export function EquipmentContent() {
                                 </div>
                               ))}
                             </div>
+                            {item.detailsHref && (
+                              <Link
+                                href={item.detailsHref}
+                                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                              >
+                                {t('О лаборатории', 'About the laboratory')}
+                                <ChevronRight aria-hidden="true" className="size-4" />
+                              </Link>
+                            )}
                           </div>
                         </motion.div>
                       ))}

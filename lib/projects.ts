@@ -178,8 +178,8 @@ export const projects: Project[] = [
     taskEn: "Prospecting",
     works: ["Геохимия по вторичным ореолам", "Шлиховое опробование"],
     worksEn: ["Geochemical surveys over secondary dispersion halos", "Heavy mineral concentrate sampling"],
-    todo: "площадь работ, кол-во проб, сколько зон выделено",
-    todoEn: "Survey area, sample count, and number of zones delineated",
+    result: "Локализированы перспективные поисковые участки",
+    resultEn: "Prospective exploration targets were delineated.",
     image: "/images/agyndzha-overview.webp",
   },
   {

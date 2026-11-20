@@ -10,6 +10,7 @@ import { StepsCarousel } from '@/components/ui/steps-carousel'
 import { YandexMapV3 } from '@/components/yandex-map-v3'
 import { motion } from 'framer-motion'
 import { projects } from '@/lib/projects'
+import { ProjectPhotoCredit } from '@/components/projects/project-photo-credit'
 
 interface ServiceMethod {
   ru: string
@@ -439,6 +440,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                   className="object-cover"
                   sizes="(min-width: 1344px) 410px, (min-width: 1024px) 33vw, 100vw"
                 />
+                <ProjectPhotoCredit />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="mb-4 flex flex-wrap items-center gap-3">

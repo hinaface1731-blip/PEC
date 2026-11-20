@@ -7,6 +7,7 @@ import { FadeIn } from "@/components/fade-in"
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import Image from "next/image"
+import { ProjectPhotoCredit } from "@/components/projects/project-photo-credit"
 
 import { projects } from "@/lib/projects"
 
@@ -51,6 +52,7 @@ export function ProjectsContent() {
             sizes="100vw"
             style={{ objectPosition: "center 53%" }}
           />
+          <ProjectPhotoCredit />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -199,6 +201,7 @@ export function ProjectsContent() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       loading="lazy"
                     />
+                    <ProjectPhotoCredit />
                     <div className="absolute top-3 left-3 z-10 flex">
                       <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                         {t(project.categoryLabel, project.categoryLabelEn)}
