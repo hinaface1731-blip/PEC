@@ -206,8 +206,8 @@ const data: ServicePageData = {
   
   projectExample: {
     id: 9,
-    workRu: "На участке была проведена пробоподготовка, аналитические, минеграфические и петрографические исследования. Полевая лаборатория Золотинка успешно проанализировала весь обьем проб с контролем.",
-    workEn: "The program included sample preparation, analytical testing, ore microscopy, and petrographic studies. The Zolotinka field laboratory analyzed the full set of samples with quality control.",
+    workRu: "На участке выполнили пробоподготовку, аналитические, минеграфические и петрографические исследования. Полевая лаборатория «Золотинка» провела анализ проб с внутрилабораторным контролем качества.",
+    workEn: "The program included sample preparation, analytical testing, ore microscopy, and petrographic studies. The Zolotinka field laboratory analyzed samples and carried out internal quality checks.",
   },
 
   regions: [
@@ -215,13 +215,6 @@ const data: ServicePageData = {
     { ru: 'Магаданская область', en: 'Magadan Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
     { ru: 'Таймыр', en: 'Taimyr' },
-  ],
-  
-  stats: [
-    { value: '25 000', labelRu: 'проб в год', labelEn: 'samples/year' },
-    { value: '45', labelRu: 'элементов ICP-MS', labelEn: 'ICP-MS elements' },
-    { value: '1', labelRu: 'аккредитация', labelEn: 'accreditation' },
-    { value: '< 5%', labelRu: 'погрешность', labelEn: 'error margin' },
   ],
 }
 

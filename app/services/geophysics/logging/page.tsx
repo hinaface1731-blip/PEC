@@ -161,8 +161,8 @@ const caseStudy = {
   licenses: ['КРР03707БП', 'КРР03708БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская'],
   licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya"],
-  volumeRu: 'Каротаж 12 скважин, общий объем 2500 метров',
-  volumeEn: 'Logging of 12 wells, total 2500 meters',
+  scopeRu: 'Геофизические исследования поисковых скважин.',
+  scopeEn: 'Geophysical logging of exploration boreholes.',
   resultRu: 'Проведен комплекс ГИС (ГК, ГГК, КС, ПС, инклинометрия). Выполнена литологическая интерпретация, выделены рудные интервалы. Подготовлены материалы для подсчета запасов.',
   resultEn: 'Logging complex completed (GR, Density, Resistivity, SP, inclinometry). Lithological interpretation performed, ore intervals identified. Resource estimation materials prepared.',
 }
@@ -352,8 +352,8 @@ export default function LoggingPage() {
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">{t('Объем работ:', 'Scope:')}</p>
-                      <p className="text-foreground">{t(caseStudy.volumeRu, caseStudy.volumeEn)}</p>
+                      <p className="text-sm text-muted-foreground mb-1">{t('Выполненные работы:', 'Work completed:')}</p>
+                      <p className="text-foreground">{t(caseStudy.scopeRu, caseStudy.scopeEn)}</p>
                     </div>
                   </div>
 

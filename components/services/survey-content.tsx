@@ -203,12 +203,6 @@ const data: ServicePageData = {
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Крайний Север', en: 'Far North' },
   ],
-  stats: [
-    { value: '10+', labelRu: 'проектов', labelEn: 'projects' },
-    { value: '2008', labelRu: 'год основания', labelEn: 'founded' },
-    { value: '3 см', labelRu: 'точность съёмки', labelEn: 'survey accuracy' },
-    { value: '∞', labelRu: 'срок лицензии', labelEn: 'license term' },
-  ],
 }
 
 export function SurveyContent() {

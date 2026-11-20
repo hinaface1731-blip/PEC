@@ -131,8 +131,8 @@ const caseStudy = {
   licenses: ['КРР03707БП', 'КРР03708БП', 'КРР03709БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская', 'Трехсестренская'],
   licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya", "Tryokhsesterskaya"],
-  volumeRu: 'Обработка данных: магниторазведка 850 км², АМТЗ 120 км, ГИС 2500 м',
-  volumeEn: 'Data processing: magnetics 850 km², AMT 120 km, logging 2500 m',
+  scopeRu: 'Обработка данных магниторазведки, АМТЗ и каротажа.',
+  scopeEn: 'Processing of magnetic survey, AMT, and borehole logging data.',
   resultRu: 'Построены карты магнитных аномалий. Выполнена 2D инверсия данных АМТЗ. Проведена литологическая интерпретация ГИС. Локализованы перспективные участки для постановки поисковых работ.',
   resultEn: 'Magnetic anomaly maps constructed. 2D AMT data inversion performed. Logging lithological interpretation completed. Prospective areas for exploration identified.',
 }
@@ -322,8 +322,8 @@ export default function SoftwarePage() {
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">{t('Объем работ:', 'Scope:')}</p>
-                      <p className="text-foreground">{t(caseStudy.volumeRu, caseStudy.volumeEn)}</p>
+                      <p className="text-sm text-muted-foreground mb-1">{t('Выполненные работы:', 'Work completed:')}</p>
+                      <p className="text-foreground">{t(caseStudy.scopeRu, caseStudy.scopeEn)}</p>
                     </div>
                   </div>
 

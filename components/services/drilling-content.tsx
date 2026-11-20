@@ -204,12 +204,6 @@ const data: ServicePageData = {
     { ru: 'Магаданская область', en: 'Magadan Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
   ],
-  
-  stats: [
-    { value: '40 000 м', labelRu: 'в год', labelEn: 'per year' },
-    { value: '98%', labelRu: 'выход керна', labelEn: 'core recovery' },
-    { value: '650 м', labelRu: 'макс. глубина', labelEn: 'max depth' },
-  ],
 }
 
 export function DrillingContent() {

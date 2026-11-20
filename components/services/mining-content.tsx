@@ -173,11 +173,6 @@ const data: ServicePageData = {
     { ru: 'Магаданская область', en: 'Magadan Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
   ],
-  
-  stats: [
-    { value: '1 500 000 м³', labelRu: 'вскрыто породы', labelEn: 'rock exposed' },
-    { value: '500 000 м³', labelRu: 'добыто', labelEn: 'extracted' },
-  ],
 }
 
 export function MiningContent() {

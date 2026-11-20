@@ -115,10 +115,10 @@ const equipmentCategories: EquipmentCategory[] = [
         image: "/images/equipment/bulldril-1200.png"
       },
       {
-        name: "ST-20",
-        nameEn: "ST-20 Drill Rig",
-        specs: ["Глубина бурения: до 2000 м", "Диаметр: 60-121 мм"],
-        specsEn: ["Drilling depth: up to 2000 m", "Diameter: 60-121 mm"],
+        name: "Буровая установка на автомобильном шасси",
+        nameEn: "Truck-Mounted Drill Rig",
+        specs: ["Мобильная установка для наземных буровых работ"],
+        specsEn: ["Mobile rig for surface drilling"],
         image: "/images/equipment/st-20.png"
       },
       {
@@ -199,7 +199,6 @@ const equipmentCategories: EquipmentCategory[] = [
         illustration: { ru: "ИГТ-43", en: "IGT-43" },
         modelLinks: [
           { name: "ИГТ-43", nameEn: "IGT-43", url: "https://m-geo.ru/equipment/geologicheskoe-oborudovanie/inklinometr-igt-43/" },
-          { name: "АИ-30", nameEn: "AI-30", url: "https://group-pribor.ru/inklinometr-avtonomnyj-ai-30/" },
         ],
       }
     ]
@@ -289,10 +288,10 @@ const equipmentCategories: EquipmentCategory[] = [
         image: "/images/equipment/south-galaxy-g1.png"
       },
       {
-        name: "БПЛА для аэрофотосъёмки",
-        nameEn: "UAV for Aerial Photography",
-        specs: ["Размах крыла: 1.3 м", "Время полёта: 90 мин", "Камера 42 МП"],
-        specsEn: ["Wingspan: 1.3 m", "Flight time: 90 min", "42 MP camera"],
+        name: "Квадрокоптер DJI для аэрофотосъёмки",
+        nameEn: "DJI Quadcopter for Aerial Photography",
+        specs: ["Аэрофотосъёмка участков работ"],
+        specsEn: ["Aerial photography of work sites"],
 
         image: "/images/equipment/dji.png"
       }

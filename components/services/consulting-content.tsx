@@ -218,13 +218,6 @@ const data: ServicePageData = {
     { ru: 'Забайкалье', en: 'Transbaikal' },
     { ru: 'Таймыр', en: 'Taimyr' },
   ],
-  
-  stats: [
-    { value: '15+', labelRu: 'проектов ГКЗ', labelEn: 'GKZ projects' },
-    { value: '30+', labelRu: 'ТЭО', labelEn: 'feasibility studies' },
-    { value: '10+', labelRu: 'JORC-отчётов', labelEn: 'JORC reports' },
-    { value: '15 т', labelRu: 'защищено Au', labelEn: 'Au approved' },
-  ],
 }
 
 export function ConsultingContent() {

@@ -140,8 +140,8 @@ const caseStudy = {
   licenses: ['КРР03707БП', 'КРР03708БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская'],
   licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya"],
-  volumeRu: 'Площадь 850 км², пешеходная магнитная съемка с шагом 50×20 м',
-  volumeEn: '850 km² area, ground magnetic survey with 50×20 m spacing',
+  scopeRu: 'Наземная пешеходная магнитная съёмка по сети профилей.',
+  scopeEn: 'Ground magnetic surveying along a grid of profiles.',
   resultRu: 'Выявлены локальные магнитные аномалии, оконтурены перспективные участки для постановки поисковых работ. Даны рекомендации на бурение.',
   resultEn: 'Local magnetic anomalies identified, prospective areas outlined for exploration. Drilling recommendations provided.',
 }
@@ -331,8 +331,8 @@ export default function MagneticPage() {
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">{t('Объем работ:', 'Scope:')}</p>
-                      <p className="text-foreground">{t(caseStudy.volumeRu, caseStudy.volumeEn)}</p>
+                      <p className="text-sm text-muted-foreground mb-1">{t('Выполненные работы:', 'Work completed:')}</p>
+                      <p className="text-foreground">{t(caseStudy.scopeRu, caseStudy.scopeEn)}</p>
                     </div>
                   </div>
 

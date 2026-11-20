@@ -262,13 +262,6 @@ const data: ServicePageData = {
     { ru: 'Чукотка', en: 'Chukotka' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
   ],
-  
-  stats: [
-    { value: '120+', labelRu: 'проектов', labelEn: 'projects' },
-    { value: '4 500 км', labelRu: 'маршрутов', labelEn: 'of routes' },
-    { value: '15 000+', labelRu: 'проб отобрано', labelEn: 'samples collected' },
-    { value: '850 км²', labelRu: 'макс. площадь', labelEn: 'max area' },
-  ],
 }
 
 export function GeologicalContent() {

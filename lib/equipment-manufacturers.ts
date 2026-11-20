@@ -37,7 +37,6 @@ export const equipmentManufacturers: Partial<Record<string, Manufacturer>> = {
   '/images/equipment/forwardC6.jpg': { name: 'Forward', url: 'https://www.forwardrill.com/' },
   '/images/equipment/Christensen-CS14.png': { name: 'Atlas Copco', url: 'https://www.atlascopco.com/' },
   '/images/equipment/bulldril-1200.png': { name: 'Barkom Group', url: 'https://www.barkomltd.com/en/' },
-  '/images/equipment/st-20.png': { name: 'Soilmec', url: 'https://www.soilmec.co.uk/equipment/mini-piling/st-range/' },
   '/images/equipment/christensen-ct20.png': {
     name: 'Epiroc',
     url: 'https://www.epiroc.com/ru-kz/products/drill-rigs/exploration-drill-rigs/core-drilling-rigs/christensen-ct20',

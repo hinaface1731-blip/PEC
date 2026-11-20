@@ -226,10 +226,10 @@ const caseStudy = {
   licenses: ['КРР03707БП', 'КРР03708БП', 'КРР03709БП', 'КРР03710БП', 'КРР03711БП'],
   licenseNames: ['Северо-Широкинская', 'Центрально-Широкинская', 'Трехсестренская', 'Дорожнинская', 'Симсовская'],
   licenseNamesEn: ["North Shirokinskaya", "Central Shirokinskaya", "Tryokhsesterskaya", "Dorozhninskaya", "Simsovskaya"],
-  volumeRu: 'Комплекс АМТЗ+ЗСБ на площади 200 км², 450 км профилей ВП',
-  volumeEn: 'AMT+TEM complex over 200 km² area, 450 km IP profiles',
-  resultRu: 'Выявлены перспективные проводящие аномалии, совпадающие с зонами повышенной поляризуемости. Локализованы 5 первоочередных участков для заверки бурением.',
-  resultEn: 'Identified prospective conductive anomalies coinciding with high chargeability zones. Located 5 priority areas for drilling verification.',
+  scopeRu: 'АМТЗ, ЗСБ и профилирование методом вызванной поляризации.',
+  scopeEn: 'Audio-magnetotelluric sounding, transient electromagnetics, and induced polarization profiling.',
+  resultRu: 'Выявлены проводящие аномалии, совпадающие с зонами повышенной поляризуемости. Намечены приоритетные участки для проверки бурением.',
+  resultEn: 'The surveys identified conductive anomalies coinciding with zones of high chargeability and outlined priority targets for follow-up drilling.',
 }
 
 export default function ElectricalPage() {
@@ -475,8 +475,8 @@ export default function ElectricalPage() {
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">{t('Объем работ:', 'Scope:')}</p>
-                      <p className="text-foreground">{t(caseStudy.volumeRu, caseStudy.volumeEn)}</p>
+                      <p className="text-sm text-muted-foreground mb-1">{t('Выполненные работы:', 'Work completed:')}</p>
+                      <p className="text-foreground">{t(caseStudy.scopeRu, caseStudy.scopeEn)}</p>
                     </div>
                   </div>
 

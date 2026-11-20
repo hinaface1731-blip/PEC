@@ -28,8 +28,8 @@ export function ZolotinkaSection() {
       icon: MapPin,
       title: t('Марсианская площадь · 2025', 'Mars Field · 2025'),
       text: t(
-        'Был успешно проанализирован весь объем проб с октября по декабрь.',
-        'Analyzed 2,714 samples from October through December.',
+        'С октября по декабрь «Золотинка» определяла содержание золота в пробах с Марсианской площади.',
+        'From October through December, Zolotinka analyzed samples from the Mars Field for gold content.',
       ),
     },
   ]

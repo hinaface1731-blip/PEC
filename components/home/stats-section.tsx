@@ -1,7 +1,7 @@
 'use client'
 
 import { useLanguage } from '@/components/language-provider'
-import { Users, Drill, Calendar, FlaskConical } from 'lucide-react'
+import { Users, Calendar, FlaskConical } from 'lucide-react'
 
 const stats = [
   {
@@ -9,12 +9,6 @@ const stats = [
     value: '200+',
     labelRu: 'специалистов в штате',
     labelEn: 'specialists on staff',
-  },
-  {
-    icon: Drill,
-    value: '40 000',
-    labelRu: 'метров бурения в год',
-    labelEn: 'meters of drilling per year',
   },
   {
     icon: Calendar,

@@ -206,11 +206,6 @@ const data: ServicePageData = {
     { ru: 'Магаданская область', en: 'Magadanskaya oblast' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
   ],
-  stats: [
-    { value: '15+', labelRu: 'проектов', labelEn: 'projects' },
-    { value: '1000 + км', labelRu: 'профилей', labelEn: 'of profiles' },
-    { value: '400 +', labelRu: 'скважин каротажа', labelEn: 'logged wells' },
-  ],
 }
 
 export function GeophysicsContent() {

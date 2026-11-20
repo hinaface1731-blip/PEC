@@ -1,10 +1,10 @@
 /**
- * Структура карточки проекта: Задача → Виды работ → Объём → Результат.
+ * Структура карточки проекта: Задача → Виды работ → Результат.
  *
  * КАК ДОПОЛНЯТЬ:
- *  - Пустые поля (volume / result) на сайте НЕ показываются — в продакшене строки просто скрыты.
- *  - В режиме разработки (npm run dev) вместо них виден пунктирный блок с подсказкой из `todo`.
- *  - Когда появились данные: впиши volume + volumeEn (и/или result + resultEn) и удали `todo`.
+ *  - Карточка показывает только согласованный для публикации результат без объёмов работ.
+ *  - Если поле result пустое, строка результата скрыта. Редакционная подсказка из `todo` видна только в dev.
+ *  - Когда текст согласован: заполни result и resultEn и удали `todo` и `todoEn`.
  *  - Поиск всех незаполненных мест: Ctrl+F по "todo:".
  */
 interface Project {
@@ -24,9 +24,7 @@ interface Project {
   taskEn: string
   works: string[]
   worksEn: string[]
-  volume?: string        // метраж, площадь, кол-во проб и т.п.
-  volumeEn?: string
-  result?: string        // итог работ, по возможности с цифрой
+  result?: string
   resultEn?: string
   todo?: string          // подсказка себе: что дописать (видна только в dev)
   todoEn?: string
@@ -304,8 +302,8 @@ export const projects: Project[] = [
     taskEn: "Drilling at a gold prospect",
     works: ["Буровые работы", "Геохимия по вторичным ореолам"],
     worksEn: ["Drilling", "Geochemical surveys over secondary dispersion halos"],
-    todo: "метраж бурения, кол-во скважин, сколько зон выделено",
-    todoEn: "Total drilling length, borehole count, and number of zones delineated",
+    todo: "Согласовать описание результата буровых работ",
+    todoEn: "Confirm the wording of the drilling results for publication",
     image: "/images/kekura.jpg",
   },
   {

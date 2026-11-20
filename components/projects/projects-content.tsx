@@ -243,11 +243,6 @@ export function ProjectsContent() {
                         ))}
                       </ul>
                     </Row>
-                    {project.volume && (
-                      <Row label={t("Объём", "Volume")}>
-                        {t(project.volume, project.volumeEn ?? project.volume)}
-                      </Row>
-                    )}
                     {project.result && (
                       <Row label={t("Результат", "Result")}>
                         <span className="font-medium">

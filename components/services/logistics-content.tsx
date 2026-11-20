@@ -196,13 +196,6 @@ const data: ServicePageData = {
     { ru: 'Эвенкия', en: 'Evenkia' },
     { ru: 'Крайний Север', en: 'Far North' },
   ],
-  
-  stats: [
-    { value: '5 000+ т', labelRu: 'грузов доставлено', labelEn: 'cargo delivered' },
-    { value: '15+', labelRu: 'удалённых объектов', labelEn: 'remote sites' },
-    { value: '30+', labelRu: 'единиц техники', labelEn: 'vehicles' },
-    { value: '100%', labelRu: 'выполнение сроков', labelEn: 'on-time delivery' },
-  ],
 }
 
 export function LogisticsContent() {

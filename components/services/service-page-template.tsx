@@ -52,12 +52,6 @@ interface ServiceProjectExample {
   workEn: string
 }
 
-interface ServiceStat {
-  value: string
-  labelRu: string
-  labelEn: string
-}
-
 interface ServiceRegion {
   ru: string
   en: string
@@ -89,7 +83,6 @@ export interface ServicePageData {
   results: ServiceResult[]
   projectExample?: ServiceProjectExample
   regions: ServiceRegion[]
-  stats: ServiceStat[]
   sectionTitleRu?: string
   sectionTitleEn?: string
   sectionDescRu?: string

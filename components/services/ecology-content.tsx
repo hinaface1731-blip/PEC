@@ -222,13 +222,6 @@ const data: ServicePageData = {
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
   ],
-  
-  stats: [
-    { value: '30+', labelRu: 'проектов ОВОС', labelEn: 'EIA projects' },
-    { value: '250+ га', labelRu: 'рекультивации', labelEn: 'reclamation' },
-    { value: '15+', labelRu: 'ГЭЭ пройдено', labelEn: 'SER passed' },
-    { value: '38 га', labelRu: 'тундры восстановлено', labelEn: 'tundra restored' },
-  ],
 }
 
 export function EcologyContent() {
