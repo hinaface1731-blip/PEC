@@ -9,7 +9,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ProjectPhotoCredit } from "@/components/projects/project-photo-credit"
 
-import { projects } from "@/lib/projects"
+import { projectRegions, projects } from "@/lib/projects"
 
 const IS_DEV = process.env.NODE_ENV !== "production"
 
@@ -87,7 +87,7 @@ export function ProjectsContent() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: "20+", label: t("Проектов выполнено", "Projects completed") },
-              { value: "7", label: t("Регионов работы", "Working regions") },
+              { value: String(projectRegions.length), label: t("Территорий работ", "Project areas") },
               { value: "5", label: t("Крупных заказчиков", "Major clients") },
               { value: "100%", label: t("Выполнение в срок", "On-time delivery") },
             ].map((stat, index) => (

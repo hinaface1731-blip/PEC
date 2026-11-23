@@ -7,11 +7,24 @@
  *  - Когда текст согласован: заполни result и resultEn и удали `todo` и `todoEn`.
  *  - Поиск всех незаполненных мест: Ctrl+F по "todo:".
  */
+const projectRegionDetails = {
+  'Таймыр': { en: 'Taimyr', coordinates: [109.921747, 76.143144] },
+  'Республика Саха (Якутия)': { en: 'Sakha Republic (Yakutia)', coordinates: [130, 66] },
+  'Чукотка': { en: 'Chukotka', coordinates: [170, 66] },
+  'Забайкальский край': { en: 'Zabaykalsky Krai', coordinates: [115, 52] },
+  'Камчатка': { en: 'Kamchatka', coordinates: [160, 56] },
+  'Магаданская область': { en: 'Magadan Oblast', coordinates: [159.740413, 62.374036] },
+  'Красноярский край': { en: 'Krasnoyarsk Krai', coordinates: [86.799120, 67.746315] },
+  'Хабаровский край': { en: 'Khabarovsk Krai', coordinates: [136.8333, 54.8] },
+} satisfies Record<string, { en: string; coordinates: [number, number] }>
+
+type ProjectRegion = keyof typeof projectRegionDetails
+
 interface Project {
   id: number
   title: string
   titleEn: string
-  location: string
+  location: ProjectRegion | 'Магадан'
   locationEn: string
   year: string
   status: "completed" | "inProgress"
@@ -454,3 +467,15 @@ export const projects: Project[] = [
     image: "/images/mezozoyi.jpg",
   },
 ]
+
+const projectCountsByRegion = new Map<ProjectRegion, number>()
+for (const { location } of projects) {
+  const region = location === 'Магадан' ? 'Магаданская область' : location
+  projectCountsByRegion.set(region, (projectCountsByRegion.get(region) ?? 0) + 1)
+}
+
+export const projectRegions = Array.from(projectCountsByRegion, ([ru, projectCount]) => ({
+  ru,
+  ...projectRegionDetails[ru],
+  projectCount,
+}))

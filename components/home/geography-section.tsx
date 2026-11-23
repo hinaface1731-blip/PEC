@@ -2,18 +2,8 @@
 
 import { useLanguage } from '@/components/language-provider'
 import { YandexMap } from '@/components/yandex-map-v3'
+import { projectRegions } from '@/lib/projects'
 import type { MapPoint } from '@/lib/ymaps3'
-
-const regions = [
-  { ru: 'Таймыр', en: 'Taimyr', coordinates: [109.921747, 76.143144], projects: 7 },
-  { ru: 'Якутия', en: 'Yakutia', coordinates: [130.0, 66.0], projects: 2 },
-  { ru: 'Чукотка', en: 'Chukotka', coordinates: [170.0, 66.0], projects: 5 },
-  { ru: 'Алтай', en: 'Altay', coordinates: [86.0, 51.0], projects: 1 },
-  { ru: 'Забайкалье', en: 'Transbaikal', coordinates: [115.0, 52.0], projects: 1 },
-  { ru: 'Камчатка', en: 'Kamchatka', coordinates: [160.0, 56.0], projects: 2 },
-  { ru: 'Магадан', en: 'Magadan', coordinates: [159.740413, 62.374036], projects: 2 },
-  { ru: 'Красноярский Край', en: 'Krasnoyarsk Krai', coordinates: [86.799120, 67.746315], projects: 2 },
-]
 
 const bases = [
   { 
@@ -38,12 +28,12 @@ export function GeographySection() {
   const { t } = useLanguage()
 
   const points: MapPoint[] = [
-    ...regions.map((region) => ({
-      coordinates: region.coordinates as [number, number],
+    ...projectRegions.map((region) => ({
+      coordinates: region.coordinates,
       title: t(region.ru, region.en),
       color: '#e74c3c',
       size: 32,
-      label: String(region.projects),
+      label: String(region.projectCount),
     })),
     ...bases.map((base) => ({
       coordinates: base.coordinates as [number, number],
@@ -64,7 +54,7 @@ export function GeographySection() {
           </p>
         </div>
 
-        <YandexMap points={points} center={[100.0, 65.0]} zoom={4} height={550} className="mb-8" />
+        <YandexMap points={points} center={[100, 65]} zoom={4} fitPoints height={550} className="mb-8" />
 
         <div className="flex flex-wrap justify-center gap-6 mb-8">
           <div className="flex items-center gap-2">

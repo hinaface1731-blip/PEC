@@ -17,9 +17,9 @@ const data: ServicePageData = {
     altEn: 'Geophysicists with equipment at a field site',
   },
   introRu:
-    'Подбираем комплекс методов под геологическую задачу и условия участка: электроразведка (АМТЗ, ЗСБ, ВП, электротомография), магниторазведка наземная и каротаж скважин.\n\nПеред выходом в поле выполняем физико-геологическое моделирование, чтобы заранее понять, что метод способен показать на этом объекте. Данные обрабатываем и интерпретируем собственными специалистами. На выходе карты аномалий, геофизические разрезы, модели и обоснованные точки для заверочного бурения.',
+    'Проводим геофизические работы по методам, заданным заказчиком в техническом задании. Выполняем электроразведку, магниторазведку и каротаж скважин. В поле контролируем качество измерений, затем обрабатываем и интерпретируем данные.\n\nВ зависимости от метода и задачи передаём заказчику карты аномалий, геофизические разрезы, материалы каротажа и рекомендации по проверочному бурению.',
   introEn:
-    'We select methods to suit the geological objectives and site conditions. These include electrical and electromagnetic surveys (AMT, TEM, IP, and electrical resistivity tomography), ground magnetic surveys, and borehole logging.\n\nBefore fieldwork, we model the expected geophysical response to determine what each method can detect at the site. Our team processes and interprets the data and delivers anomaly maps, geophysical sections, models, and recommended targets for follow-up drilling.',
+    'We carry out geophysical surveys using the methods specified by the client in the project brief. Our services include electrical and electromagnetic surveys, magnetic surveys, and borehole logging. We check measurement quality in the field, then process and interpret the data.\n\nDepending on the method and project objectives, we deliver anomaly maps, geophysical sections, borehole logs, and recommendations for follow-up drilling.',
 
   reverse: true,
   sectionTitleRu: 'Полный комплекс геофизических работ',
@@ -120,10 +120,10 @@ const data: ServicePageData = {
   steps: [
     {
       image: '/images/work-stage-illustrations/planning.webp',
-      titleRu: 'Проектирование',
-      titleEn: 'Project Design',
-      descRu: 'Выбор методов, расчёт сети наблюдений, планирование логистики',
-      descEn: 'Method selection, observation grid calculation, logistics planning',
+      titleRu: 'Подготовка к работам',
+      titleEn: 'Survey Preparation',
+      descRu: 'Планирование сети наблюдений и логистики по техническому заданию',
+      descEn: 'Survey layout and logistics planning based on the project brief',
     },
     {
       image: '/images/work-stage-illustrations/geophysics.webp',

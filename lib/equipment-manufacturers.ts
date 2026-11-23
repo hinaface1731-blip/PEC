@@ -86,6 +86,11 @@ export const equipmentManufacturers: Partial<Record<string, Manufacturer>> = {
     nameEn: 'TREKOL',
     url: 'https://www.trecol.ru/catalog/car/vnedorozhnoe-transportnoe-sredstvo-snegobolotokhod-trekol-sever/',
   },
+  '/images/equipment/vezdehod.png': {
+    name: 'СЕВЕР',
+    nameEn: 'SEVER',
+    url: 'https://severtrucks.ru/models/sever-eger/',
+  },
   '/images/equipment/vodovozka.png': {
     name: 'SHACMAN (шасси)',
     nameEn: 'SHACMAN (chassis)',

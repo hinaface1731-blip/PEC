@@ -36,13 +36,14 @@ interface YandexMapProps {
   points: MapPoint[]
   center: [number, number]
   zoom: number
+  fitPoints?: boolean
   height?: number
   styled?: boolean
   className?: string
 }
 
 /** Универсальная карта на API 3.0: сама загружает скрипт, показывает лоадер и аккуратную заглушку при ошибке. */
-export function YandexMap({ points, center, zoom, height = 500, styled = true, className = '' }: YandexMapProps) {
+export function YandexMap({ points, center, zoom, fitPoints = false, height = 500, styled = true, className = '' }: YandexMapProps) {
   const { t } = useLanguage()
   const containerRef = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
@@ -60,8 +61,22 @@ export function YandexMap({ points, center, zoom, height = 500, styled = true, c
         if (cancelled || !containerRef.current) return
         const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker } = ymaps3 as any
 
+        const longitudes = points.map(({ coordinates }) => coordinates[0])
+        const latitudes = points.map(({ coordinates }) => coordinates[1])
+        const fitBounds = fitPoints && points.length > 1
+        const viewport = fitBounds
+          ? {
+              location: {
+                bounds: [
+                  [Math.min(...longitudes), Math.min(...latitudes)],
+                  [Math.max(...longitudes), Math.max(...latitudes)],
+                ],
+              },
+              margin: [32, 32, 32, 32],
+            }
+          : { location: { center, zoom } }
         const instance = new YMap(containerRef.current, {
-          location: { center, zoom },
+          ...viewport,
           mode: 'vector',
         })
         instance.addChild(new YMapDefaultSchemeLayer(styled ? { customization: CUSTOM_MAP_STYLE } : {}))
@@ -83,7 +98,7 @@ export function YandexMap({ points, center, zoom, height = 500, styled = true, c
       map?.destroy()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pointsKey, centerKey, zoom, styled])
+  }, [pointsKey, centerKey, zoom, fitPoints, styled])
 
   return (
     <div

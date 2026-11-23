@@ -13,6 +13,7 @@ const englishTitles: Record<string, string> = {
   '/equipment': 'Equipment',
   '/investors': 'Investors – Taimyr Copper',
   '/privacy': 'Privacy Policy',
+  '/privacy/consent': 'Consent to the Processing of Applicant Personal Data',
   '/projects': 'Projects',
   '/services': 'Services',
   '/services/consulting': 'Exploration Design & Consulting',

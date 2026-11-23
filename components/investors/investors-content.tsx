@@ -49,7 +49,7 @@ const focusAreas = [
   {
     nameRu: 'Северо-Широкинская',
     nameEn: 'North Shirokinskaya',
-    license: 'КРР 03707 ТП',
+    license: 'КРР 03707 БП',
     area: 99,
     typeRu: 'Cu-Mo-порфировый тип',
     typeEn: 'Cu-Mo porphyry type',
@@ -74,7 +74,7 @@ const focusAreas = [
   {
     nameRu: 'Центрально-Широкинская',
     nameEn: 'Central Shirokinskaya',
-    license: 'КРР 03708 ТП',
+    license: 'КРР 03708 БП',
     area: 99,
     typeRu: 'Cu-Mo-порфировый тип',
     typeEn: 'Cu-Mo porphyry type',
@@ -99,7 +99,7 @@ const focusAreas = [
   {
     nameRu: 'Трёхсестерская',
     nameEn: 'Tryokhsesterskaya',
-    license: 'КРР 03709 ТП',
+    license: 'КРР 03709 БП',
     area: 96,
     typeRu: 'Au-Ag-Pb-Zn полиметаллический тип',
     typeEn: 'Au-Ag-Pb-Zn polymetallic type',

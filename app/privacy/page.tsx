@@ -5,6 +5,7 @@ import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
 import Link from 'next/link'
 import { PageLayout } from '@/components/page-layout'
+import { personalDataOperator as operator } from '@/lib/personal-data-operator'
 
 export default function PrivacyPage() {
   const { t } = useLanguage()
@@ -72,6 +73,12 @@ export default function PrivacyPage() {
                       {t(
                         'Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые ООО «Полярная Экспедиционная Компания» (далее — Оператор).',
                         'This personal data processing policy is compiled in accordance with the requirements of Federal Law No. 152-FZ dated July 27, 2006 "On Personal Data" and defines the procedure for processing personal data and measures to ensure the security of personal data taken by Polar Expedition Company LLC (hereinafter referred to as the Operator).'
+                      )}
+                    </p>
+                    <p>
+                      {t(
+                        `Реквизиты оператора: ИНН ${operator.inn}, ОГРН ${operator.ogrn}. Юридический адрес: ${operator.addressRu}.`,
+                        `Operator details: INN ${operator.inn}, OGRN ${operator.ogrn}. Registered address: ${operator.addressEn}.`
                       )}
                     </p>
                     <p>
@@ -176,9 +183,12 @@ export default function PrivacyPage() {
                   <div className="pl-4">
                     <p className="text-muted-foreground">
                       {t(
-                        'Оператор обрабатывает персональные данные пользователя только в случае их заполнения и отправки пользователем через формы, расположенные на сайте. Заполняя соответствующие формы и отправляя свои персональные данные Оператору, пользователь выражает свое согласие с данной политикой.',
-                        'The Operator processes users’ personal data only when they submit it through forms on the website. By completing the relevant forms and submitting their personal data, users consent to this policy.'
-                      )}
+                        'Для рассмотрения резюме оператор обрабатывает данные, указанные соискателем в форме и приложенном файле, на основании отдельного согласия соискателя.',
+                        'To review an application, the Operator processes the data the applicant provides in the form and attached file on the basis of the applicant’s separate consent.'
+                      )}{' '}
+                      <Link href="/privacy/consent" className="text-primary underline underline-offset-2">
+                        {t('Текст согласия', 'Read the consent')}
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -279,8 +289,8 @@ export default function PrivacyPage() {
                     </p>
                     <p className="text-sm text-muted-foreground/70 pt-4 border-t border-border">
                       {t(
-                        'Дата последнего обновления: 29 октября 2026 г.',
-                        'Last updated: October 29, 2026'
+                        'Дата последнего обновления: 23 ноября 2026 г.',
+                        'Last updated: November 23, 2026'
                       )}
                     </p>
                   </div>

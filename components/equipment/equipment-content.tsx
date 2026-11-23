@@ -315,8 +315,8 @@ const equipmentCategories: EquipmentCategory[] = [
       {
         name: "Автомобили повышенной проходимости",
         nameEn: "Off-road Vehicle",
-        specs: ["Полный привод", "Грузоподъемность: 1.5 т", "Кунг для оборудования"],
-        specsEn: ["4WD", "Load capacity: 1.5 t", "Equipment box body"],
+        specs: ["Полный привод", "Грузоподъёмность: до 1 т", "Вместимость: до 8 человек"],
+        specsEn: ["4WD", "Load capacity: up to 1 t", "Seats up to 8 people"],
 
         image: "/images/equipment/vezdehod.png"
       },

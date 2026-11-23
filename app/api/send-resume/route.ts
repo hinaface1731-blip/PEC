@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createTransport, headerSafe, renderTable } from '@/lib/mail'
+import { MAX_RESUME_SIZE_MB, RESUME_CONSENT_VERSION } from '@/lib/resume'
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10 МБ
+const MAX_FILE_SIZE = MAX_RESUME_SIZE_MB * 1024 * 1024
 const ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx']
 
 export async function POST(request: NextRequest) {
@@ -25,6 +26,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    if (formData.get('consent') !== RESUME_CONSENT_VERSION) {
+      return NextResponse.json(
+        { code: 'consentRequired', error: 'Подтвердите согласие на обработку персональных данных' },
+        { status: 400 }
+      )
+    }
+
     const attachments = []
     if (resumeFile instanceof File && resumeFile.size > 0) {
       const lowerName = resumeFile.name.toLowerCase()
@@ -32,7 +40,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ code: 'fileFormat', error: 'Допустимые форматы резюме: PDF, DOC, DOCX' }, { status: 400 })
       }
       if (resumeFile.size > MAX_FILE_SIZE) {
-        return NextResponse.json({ code: 'fileSize', error: 'Файл резюме больше 10 МБ' }, { status: 400 })
+        return NextResponse.json({ code: 'fileSize', error: `Файл резюме больше ${MAX_RESUME_SIZE_MB} МБ` }, { status: 400 })
       }
       attachments.push({
         filename: resumeFile.name,
@@ -49,6 +57,7 @@ export async function POST(request: NextRequest) {
       ['📋 Опыт работы', experience || 'Не указан'],
       ['💬 Дополнительно', message || 'Не указано'],
       ['📎 Файл резюме', attachments.length ? attachments[0].filename : 'Не приложен'],
+      ['Согласие на обработку персональных данных', `Редакция ${RESUME_CONSENT_VERSION}, получено ${new Date().toISOString()}`],
     ]
 
     await createTransport().sendMail({

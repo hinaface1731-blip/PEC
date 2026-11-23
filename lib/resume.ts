@@ -1,0 +1,2 @@
+export const MAX_RESUME_SIZE_MB = 4
+export const RESUME_CONSENT_VERSION = '2026-11-23'

@@ -218,9 +218,9 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           </div>
 
           {data.methodsGroups ? (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {data.methodsGroups.map((group, idx) => (
-                <div key={idx} className="card group">
+                <div key={idx} className="card group min-w-0 w-full lg:w-[calc((100%_-_3rem)/3)]">
                   <div className="w-14 h-14 rounded-2xl bg-[var(--accent-glow)] flex items-center justify-center mb-5">
                     {group.icon ? (
                       <group.icon className="w-7 h-7 text-[var(--accent)]" />

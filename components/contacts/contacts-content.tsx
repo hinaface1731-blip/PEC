@@ -11,6 +11,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { YandexMap } from "@/components/yandex-map-v3"
 import { useLanguage } from "@/components/language-provider"
+import { MAX_RESUME_SIZE_MB, RESUME_CONSENT_VERSION } from "@/lib/resume"
 
 const officeInfo = {
   city: "Красноярск",
@@ -26,10 +27,9 @@ const officeInfo = {
   coordinates: [92.867583, 56.013528] as [number, number] // [долгота, широта]
 }
 
-const MAX_RESUME_SIZE_MB = 10
-
 const resumeErrors = {
   requiredFields: ['Заполните все обязательные поля.', 'Fill in all required fields.'],
+  consentRequired: ['Подтвердите согласие на обработку персональных данных.', 'Confirm your consent to personal data processing.'],
   fileFormat: ['Допустимые форматы резюме: PDF, DOC, DOCX.', 'Upload your resume as a PDF, DOC, or DOCX file.'],
   fileSize: [`Файл слишком большой (максимум ${MAX_RESUME_SIZE_MB} МБ).`, `The file exceeds the ${MAX_RESUME_SIZE_MB} MB limit.`],
   sendFailed: ['Не удалось отправить резюме. Попробуйте позже.', 'Your resume could not be sent. Please try again later.'],
@@ -107,8 +107,9 @@ export default function ContactsContent() {
     setOpenDetails(openDetails === id ? null : id)
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const form = e.currentTarget
     setIsSubmitting(true)
     setError(null)
     
@@ -120,6 +121,7 @@ export default function ContactsContent() {
       formDataToSend.append('position', formData.position)
       formDataToSend.append('experience', formData.experience)
       formDataToSend.append('message', formData.message)
+      formDataToSend.set('consent', new FormData(form).get('consent') ?? '')
       if (selectedFile) {
         formDataToSend.append('resume', selectedFile)
       }
@@ -129,13 +131,19 @@ export default function ContactsContent() {
         body: formDataToSend,
       })
 
+      if (response.status === 413) {
+        setError('fileSize')
+        return
+      }
+
       if (!response.ok) {
         const { code } = await response.json()
-        setError(code === 'requiredFields' || code === 'fileFormat' || code === 'fileSize' ? code : 'sendFailed')
+        setError(code === 'requiredFields' || code === 'fileFormat' || code === 'fileSize' || code === 'consentRequired' ? code : 'sendFailed')
         return
       }
 
       setIsSubmitted(true)
+      form.reset()
       setFormData({ fullName: "", email: "", phone: "", position: "", experience: "", message: "" })
       setSelectedFile(null)
       setActiveVacancy("")
@@ -365,6 +373,30 @@ export default function ContactsContent() {
                       </p>
                     </div>
 
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-start gap-2">
+                        <input
+                          id="resume-consent"
+                          name="consent"
+                          type="checkbox"
+                          value={RESUME_CONSENT_VERSION}
+                          required
+                          className="mt-0.5 size-4 shrink-0 accent-primary"
+                        />
+                        <label htmlFor="resume-consent">
+                          {t('Даю согласие на обработку персональных данных для рассмотрения резюме.', 'I consent to the processing of my personal data for the review of my application.')}
+                        </label>
+                      </div>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 pl-6">
+                        <Link href="/privacy/consent" target="_blank" rel="noopener" className="text-primary underline underline-offset-2">
+                          {t('Текст согласия', 'Read the consent')}
+                        </Link>
+                        <Link href="/privacy" target="_blank" rel="noopener" className="text-primary underline underline-offset-2">
+                          {t('Политика конфиденциальности', 'Privacy policy')}
+                        </Link>
+                      </div>
+                    </div>
+
                     <Button
                       type="submit"
                       size="lg"
@@ -388,12 +420,6 @@ export default function ContactsContent() {
                       <p role="alert" className="text-red-500 text-sm text-center">{t(resumeErrors[error][0], resumeErrors[error][1])}</p>
                     )}
 
-                    <p className="text-xs text-muted-foreground text-center">
-                      {t('Нажимая кнопку, вы соглашаетесь с', 'By clicking the button, you agree to the')}{" "}
-                      <Link href="/privacy" className="text-primary hover:underline">
-                        {t('политикой конфиденциальности', 'privacy policy')}
-                      </Link>
-                    </p>
                   </form>
                 )}
               </div>
