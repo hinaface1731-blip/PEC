@@ -74,6 +74,7 @@ export interface ServicePageData {
   heroImage: string
   introRu?: string
   introEn?: string
+  introPhoto?: { src: string; altRu: string; altEn: string }
   methods: ServiceMethod[]
   methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
@@ -176,13 +177,27 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           </div>
         </div>
       </section>
-{introParagraphs.length > 0 && (
-        <section className="py-16 px-8">
+      {introParagraphs.length > 0 && (
+        <section className="bg-linear-to-b from-card to-background px-4 py-10 sm:px-8 sm:py-14 lg:py-16">
           <div className="container mx-auto">
-            <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-[var(--text)]">
-              {introParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+            <div className="grid items-center gap-6 rounded-2xl border border-border bg-card p-5 sm:gap-8 sm:p-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-10">
+              <div className="max-w-3xl space-y-4 text-base leading-relaxed text-foreground sm:text-lg sm:leading-relaxed">
+                <div aria-hidden="true" className="h-1 w-10 rounded-full bg-[var(--accent)]" />
+                {introParagraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+              {data.introPhoto && (
+                <div className="relative aspect-[8/5] overflow-hidden rounded-xl border border-border bg-muted">
+                  <Image
+                    src={data.introPhoto.src}
+                    alt={t(data.introPhoto.altRu, data.introPhoto.altEn)}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1344px) 470px, (min-width: 1024px) 40vw, (min-width: 640px) calc(100vw - 8rem), calc(100vw - 4.5rem)"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>

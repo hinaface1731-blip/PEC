@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Полный комплекс проектных работ и консультационных услуг: от ТЭО кондиций до защиты запасов в ГКЗ. Опыт работы с российскими и международными стандартами.',
   descEn: 'Exploration design and consulting services, from studies on reserve estimation criteria to support during reserve review by the State Commission on Mineral Reserves (GKZ). We work with Russian and international reporting standards.',
   heroImage: '/images/project.jpg',
+  introPhoto: {
+    src: '/images/site/desk-documents.jpg',
+    altRu: 'Специалисты обсуждают рабочие документы',
+    altEn: 'Specialists reviewing documents together',
+  },
   introRu:
     'Готовим проекты геологоразведочных работ: обоснование методики и объёмов, расчёт сроков и затрат, мероприятия по безопасности, графические приложения, и сопровождаем согласование. По результатам работ составляем отчёты с оценкой прогнозных ресурсов и подсчётом запасов (ГКЗ/ТКЗ), разрабатываем ТЭО кондиций, строим каркасные и блочные модели в Micromine и Surpac, готовим отчётность по стандартам JORC и CRIRSCO.',
   introEn:

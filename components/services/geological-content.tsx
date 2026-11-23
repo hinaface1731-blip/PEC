@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Комплекс полевых и камеральных работ по геологическому изучению недр. От региональных съёмок до детальной разведки месторождений с подсчётом запасов.',
   descEn: 'A comprehensive range of field and office work for geological study of subsoil. From regional surveys to detailed deposit exploration with resource estimation.',
   heroImage: '/images/geo.jpg',
+  introPhoto: {
+    src: '/images/service-photos/taimyr-outcrop.webp',
+    altRu: 'Геолог осматривает выход горной породы',
+    altEn: 'A geologist examines a rock outcrop',
+  },
   introRu:
     'Выполняем геологическое изучение территории на всех стадиях: от рекогносцировочных маршрутов и картирования масштабов 1:200 000 – 1:10 000 до оценочных и разведочных работ на конкретном объекте. Поиски ведём комплексно: геологические маршруты, литогеохимическое опробование по вторичным ореолам рассеяния, шлиховое опробование, документация канав, шурфов и керна. Результаты оформляем в цифровых моделях и отчётах по формам ГКЗ/ТКЗ с рекомендациями по дальнейшим работам.',
   introEn:

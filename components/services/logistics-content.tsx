@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Комплексное логистическое обеспечение геологоразведочных и горных проектов в Арктике и Сибири. Доставка грузов, снабжение удалённых объектов, экспедиционное сопровождение.',
   descEn: 'Comprehensive logistics support for exploration and mining projects in the Arctic and Siberia. Cargo delivery, remote site supply, expedition support.',
   heroImage: '/images/service-photos/logistics-vehicle.webp',
+  introPhoto: {
+    src: '/images/IMG_0395.JPG',
+    altRu: 'Грузовик на барже у берега',
+    altEn: 'A truck on a barge by the shore',
+  },
    introRu:
     'Организуем доставку людей, техники и грузов на удалённые участки Арктики и Сибири: зимники, вертолётные и авиаперевозки, речной и морской северный завоз, топливообеспечение, складское хранение на базах. Маршруты и сроки планируем под график полевых работ, чтобы буровые, геофизические и горные отряды не простаивали из-за снабжения.',
   introEn:

@@ -11,6 +11,11 @@ const data: ServicePageData = {
   descRu: 'Полный комплекс буровых работ для геологоразведки: колонковое бурение с высоким выходом керна, гидрогеологические и инженерные скважины.',
   descEn: 'Full range of drilling services for geological exploration: core drilling with high recovery, rotary drilling, hydrogeological and engineering wells.',
   heroImage: '/images/service-photos/drilling-rig.webp',
+  introPhoto: {
+    src: '/images/project_taymyr.jpg',
+    altRu: 'Буровая бригада у установки зимой',
+    altEn: 'A drilling crew working at a rig in winter',
+  },
   introRu:
     'Колонковое бурение на твёрдые полезные ископаемые с отбором керна, в том числе в условиях Арктики и Крайнего Севера. Работаем станками разных классов, от лёгких мобильных до установок для глубоких скважин. Бурение сопровождаем геологической документацией и опробованием керна, инклинометрией и каротажем. Заказчик получает не только метраж, но и данные, готовые к интерпретации.',
   introEn:

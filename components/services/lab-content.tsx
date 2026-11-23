@@ -12,6 +12,11 @@ const data: ServicePageData = {
   descRu: 'Собственная полевая лаборатория: пробоподготовка, рентгенофлуоресцентный анализ и минералогические исследования.',
   descEn: 'In-house field laboratory: sample preparation, X-ray fluorescence analysis and mineralogical studies.',
   heroImage: '/images/i.jpg',
+  introPhoto: {
+    src: '/images/site/lab-analysis.jpg',
+    altRu: 'Специалист работает за лабораторным оборудованием',
+    altEn: 'A specialist working with laboratory equipment',
+  },
   introRu:
     'Сопровождаем пробу на всём пути: приёмка, сушка, дробление, истирание, квартование, подготовка навесок и анализ. Контроль качества встроен в процесс: дубликаты, холостые пробы, стандартные образцы. Результаты выдаём протоколами и цифровыми данными, готовыми для загрузки в базу и использования при подсчёте запасов.',
   introEn:
