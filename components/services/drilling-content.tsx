@@ -208,6 +208,7 @@ const data: ServicePageData = {
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Магаданская область', en: 'Magadan Region' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
+    { ru: 'Красноярский край', en: 'Krasnoyarsk Krai' },
   ],
 }
 

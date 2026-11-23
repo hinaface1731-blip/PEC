@@ -210,6 +210,7 @@ const data: ServicePageData = {
     { ru: 'Чукотка', en: 'Chukotka' },
     { ru: 'Магаданская область', en: 'Magadanskaya oblast' },
     { ru: 'Забайкалье', en: 'Transbaikal' },
+    { ru: 'Красноярский край', en: 'Krasnoyarsk Krai' },
   ],
 }
 

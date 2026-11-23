@@ -226,6 +226,7 @@ const data: ServicePageData = {
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Красноярский край', en: 'Krasnoyarsk Region' },
+    { ru: 'Хабаровский край', en: 'Khabarovsk Krai' },
   ],
 }
 

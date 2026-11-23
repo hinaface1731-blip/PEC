@@ -200,6 +200,7 @@ const data: ServicePageData = {
     { ru: 'Чукотка', en: 'Chukotka' },
     { ru: 'Эвенкия', en: 'Evenkia' },
     { ru: 'Крайний Север', en: 'Far North' },
+    { ru: 'Красноярский край', en: 'Krasnoyarsk Krai' },
   ],
 }
 

@@ -207,6 +207,7 @@ const data: ServicePageData = {
     { ru: 'Якутия', en: 'Yakutia' },
     { ru: 'Таймыр', en: 'Taimyr' },
     { ru: 'Крайний Север', en: 'Far North' },
+    { ru: 'Чукотка', en: 'Chukotka' },
   ],
 }
 

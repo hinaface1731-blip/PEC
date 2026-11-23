@@ -5,7 +5,7 @@ import { useLanguage } from '@/components/language-provider'
 import { createMarkerElement, loadYmaps3, type MapPoint } from '@/lib/ymaps3'
 
 // Координаты регионов (Яндекс: [долгота, широта])
-const REGIONS_COORDS: Record<string, [number, number]> = {
+const REGIONS_COORDS = {
   'Таймыр': [98.0, 74.0],
   'Якутия': [130.0, 66.0],
   'Чукотка': [170.0, 66.0],
@@ -14,9 +14,12 @@ const REGIONS_COORDS: Record<string, [number, number]> = {
   'Камчатка': [160.0, 56.0],
   'Магаданская область': [153.0, 63.0],
   'Красноярский край': [96.0, 64.0],
+  'Хабаровский край': [136.8333, 54.8],
   'Эвенкия': [101.0, 62.0],
   'Крайний Север': [102.0, 72.0],
-}
+} satisfies Record<string, [number, number]>
+
+export type MapRegionName = keyof typeof REGIONS_COORDS
 
 // Кастомный стиль карты (сепия)
 export const CUSTOM_MAP_STYLE = [
@@ -123,22 +126,17 @@ export function YandexMap({ points, center, zoom, fitPoints = false, height = 50
 }
 
 interface YandexMapV3Props {
-  regions: Array<{ ru: string; en: string }>
+  regions: Array<{ ru: MapRegionName; en: string }>
 }
 
 export function YandexMapV3({ regions }: YandexMapV3Props) {
   const { t } = useLanguage()
 
-  const points: MapPoint[] = regions.flatMap((region) => {
-    const coords = REGIONS_COORDS[region.ru]
-    if (!coords) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn(`Координаты не найдены для региона: ${region.ru}`)
-      }
-      return []
-    }
-    return [{ coordinates: coords, title: t(region.ru, region.en), color: '#e74c3c' }]
-  })
+  const points: MapPoint[] = regions.map((region) => ({
+    coordinates: REGIONS_COORDS[region.ru],
+    title: t(region.ru, region.en),
+    color: '#e74c3c',
+  }))
 
-  return <YandexMap points={points} center={[100.0, 65.0]} zoom={4} />
+  return <YandexMap points={points} center={points[0]?.coordinates ?? [100, 65]} zoom={4} fitPoints />
 }

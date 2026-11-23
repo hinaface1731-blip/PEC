@@ -7,7 +7,7 @@ import { useLanguage } from '@/components/language-provider'
 import { ArrowUpRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
-import { YandexMapV3 } from '@/components/yandex-map-v3'
+import { YandexMapV3, type MapRegionName } from '@/components/yandex-map-v3'
 import { motion } from 'framer-motion'
 import { projects } from '@/lib/projects'
 import { ProjectPhotoCredit } from '@/components/projects/project-photo-credit'
@@ -53,7 +53,7 @@ interface ServiceProjectExample {
 }
 
 interface ServiceRegion {
-  ru: string
+  ru: MapRegionName
   en: string
 }
 
