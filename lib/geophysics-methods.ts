@@ -4,8 +4,6 @@ export type GeophysicsMethod = 'electrical' | 'magnetic' | 'logging' | 'software
 type Method = {
   title: GeophysicsCopy
   summary: GeophysicsCopy
-  image: string
-  imageAlt: GeophysicsCopy
   techniques: { name: GeophysicsCopy; detail: GeophysicsCopy }[]
   delivery: GeophysicsCopy[]
   note: GeophysicsCopy
@@ -20,8 +18,6 @@ export const geophysicsMethods: Record<GeophysicsMethod, Method> = {
       'Измеряем электрический и электромагнитный отклик пород. По этим данным строим разрезы сопротивления и поляризуемости и выделяем зоны для дальнейшей проверки.',
       'We measure the electrical and electromagnetic response of rocks to build resistivity and chargeability sections and identify targets for follow-up.',
     ],
-    image: '/images/geofiz_project.jpg',
-    imageAlt: ['Геофизик с измерительной аппаратурой в поле', 'Geophysicist with measuring equipment in the field'],
     techniques: [
       { name: ['АМТЗ · аудиомагнитотеллурическое зондирование', 'AMT · audio-magnetotellurics'], detail: ['Используем естественные вариации электромагнитного поля для построения модели удельного электрического сопротивления.', 'We use natural variations in the electromagnetic field to build a resistivity model.'] },
       { name: ['ЗСБ · зондирование становлением поля', 'TEM · transient electromagnetics'], detail: ['Регистрируем затухание вторичного поля после выключения тока в передающей петле. По кривым спада оцениваем распределение проводимости.', 'We record the decay of the secondary field after the transmitter loop is switched off and use the decay curves to estimate subsurface conductivity.'] },
@@ -41,8 +37,6 @@ export const geophysicsMethods: Record<GeophysicsMethod, Method> = {
       'Выполняем наземные и аэромагнитные съёмки с БПЛА. По картам магнитного поля прослеживаем контакты пород и структуры, выделяем локальные аномалии.',
       'We conduct ground and drone magnetic surveys. Magnetic field maps help trace rock contacts and structures and identify local anomalies.',
     ],
-    image: '/images/magnetic-hero.jpg',
-    imageAlt: ['Беспилотник с подвесной измерительной аппаратурой', 'Drone with suspended survey equipment'],
     techniques: [
       { name: ['Наземная магнитная съёмка', 'Ground magnetic surveys'], detail: ['Измеряем магнитное поле по сети профилей. При подготовке данных учитываем временные вариации поля и проверяем увязку наблюдений.', 'We measure the magnetic field along survey lines, account for temporal variations and check consistency between lines.'] },
       { name: ['Аэромагнитная съёмка с БПЛА', 'Drone magnetic surveys'], detail: ['Планируем маршруты и высоту съёмки с учётом рельефа, разрешения и ограничений полётов. По данным можно прослеживать аномалии там, где наземные профили трудно проложить.', 'We plan flight lines and survey height around terrain, resolution requirements and flight restrictions. The data can trace anomalies where ground lines are difficult to lay out.'] },
@@ -61,8 +55,6 @@ export const geophysicsMethods: Record<GeophysicsMethod, Method> = {
       'Измеряем физические свойства пород вдоль ствола скважины и определяем её траекторию. Сопоставляем кривые с буровыми данными и документацией керна.',
       'We measure rock properties along the borehole and determine its trajectory. Logs are correlated with drilling records and core descriptions.',
     ],
-    image: '/images/equipment/ingeo-logging-kit.webp',
-    imageAlt: ['Комплект оборудования для каротажа', 'Borehole logging equipment kit'],
     techniques: [
       { name: ['Электрический каротаж · КС, ПС, ВП', 'Electrical logging · resistivity, SP, IP'], detail: ['Измеряем кажущееся сопротивление, естественную разность потенциалов и отклик вызванной поляризации по согласованному комплексу.', 'Depending on the agreed suite, we measure apparent resistivity, spontaneous potential and induced polarization response.'] },
       { name: ['Гамма-каротаж, ГГК и акустика', 'Gamma, gamma–gamma and acoustic logging'], detail: ['ГК регистрирует естественное гамма-излучение, ГГК используют для оценки плотности по калиброванным данным, акустический каротаж характеризует распространение волн в породе.', 'Gamma logging records natural radioactivity, gamma–gamma logging uses calibrated measurements to estimate density, and acoustic logging characterizes wave propagation.'] },
@@ -82,8 +74,6 @@ export const geophysicsMethods: Record<GeophysicsMethod, Method> = {
       'Проверяем полевые измерения, вносим поправки, строим карты и разрезы. Результаты интерпретации увязываем с геологией и данными скважин.',
       'We check field measurements, apply corrections, and produce maps and sections. Interpretations are integrated with geology and borehole data.',
     ],
-    image: '/images/work-stage-illustrations/analysis.webp',
-    imageAlt: ['Модель геологического разреза и его цифровое представление', 'Geological section model and its digital representation'],
     techniques: [
       { name: ['Подготовка и контроль качества', 'Preparation and quality control'], detail: ['Проверяем координаты, единицы, полноту и повторяемость измерений. Фиксируем исключённые данные и принятые поправки.', 'We check coordinates, units, completeness and repeatability, and document exclusions and corrections.'] },
       { name: ['Обработка полей и построение карт', 'Field processing and mapping'], detail: ['По выбранному методу выполняем увязку профилей, фильтрацию и построение карт с согласованной сеткой и системой координат.', 'Depending on the method, we level survey lines, filter the data, and produce maps in the agreed grid and coordinate system.'] },

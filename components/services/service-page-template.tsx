@@ -95,7 +95,7 @@ export function ServicePageTemplate({ data, topSection, afterHero }: ServicePage
     <>
       {/* Hero Section */}
       <section className="relative isolate overflow-hidden bg-[#101820] pt-32 pb-20 text-white">
-        <div aria-hidden="true" className="hero-media">
+        <div aria-hidden="true" className="hero-media hero-media--service">
           <Image
             src={data.heroImage}
             alt=""
@@ -107,7 +107,7 @@ export function ServicePageTemplate({ data, topSection, afterHero }: ServicePage
           />
         </div>
         <div className="container relative z-10 mx-auto px-4">
-          <div className="max-w-3xl">
+          <div className="hero-text-shadow max-w-3xl">
             <div className="flex items-center gap-2 text-white/80 mb-4 flex-wrap">
               <Link href="/" className="hover:text-white transition-colors">
                 {t('Главная', 'Home')}

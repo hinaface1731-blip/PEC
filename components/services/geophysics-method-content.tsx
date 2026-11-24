@@ -1,7 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-import { ArrowRight, AudioLines, Compass, Drill, Layers3, MoveDownRight } from 'lucide-react'
+import { ArrowRight, AudioLines, Compass, Drill, Layers3, MoveDownRight, Zap } from 'lucide-react'
 import Link from '@/components/localized-link'
 import { useLanguage } from '@/components/language-provider'
 import { geophysicsMethods, geophysicsMethodIds, geophysicsPath, type GeophysicsMethod } from '@/lib/geophysics-methods'
@@ -51,22 +50,31 @@ export function GeophysicsMethodLinks({ current }: { current?: GeophysicsMethod 
 
 export function GeophysicsMethodContent({ method }: { method: GeophysicsMethod }) {
   const { t } = useLanguage()
-  const { title, summary, image, imageAlt, techniques, delivery, note } = geophysicsMethods[method]
+  const { title, summary, techniques, delivery, note } = geophysicsMethods[method]
+  const Icon = method === 'electrical' ? Zap : icons[method]
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-[#101a23] text-white">
-        <div className="hero-media">
-          <Image src={image} alt={t(...imageAlt)} fill preload sizes="100vw" className="object-cover object-center" />
-        </div>
-        <div className="container relative z-10 px-4 py-16 sm:px-8 sm:py-24">
-          <nav aria-label={t('Путь к странице', 'Breadcrumb')} className="mb-7 flex flex-wrap gap-2 text-sm text-slate-200">
-            <Link href="/services" className="underline-offset-4 hover:underline">{t('Услуги', 'Services')}</Link>
-            <span aria-hidden="true">/</span>
-            <Link href={geophysicsPath} className="underline-offset-4 hover:underline">{t('Геофизика', 'Geophysics')}</Link>
-          </nav>
-          <h1 className="max-w-4xl text-4xl font-bold leading-tight sm:text-6xl">{t(...title)}</h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl">{t(...summary)}</p>
+      <section className="bg-linear-to-br from-card to-background pt-32 pb-20">
+        <div className="container px-4">
+          <div className="max-w-3xl">
+            <nav aria-label={t('Путь к странице', 'Breadcrumb')} className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <Link href="/" className="hover:text-accent-foreground">{t('Главная', 'Home')}</Link>
+              <span aria-hidden="true">/</span>
+              <Link href="/services" className="hover:text-accent-foreground">{t('Услуги', 'Services')}</Link>
+              <span aria-hidden="true">/</span>
+              <Link href={geophysicsPath} className="hover:text-accent-foreground">{t('Геофизика', 'Geophysics')}</Link>
+              <span aria-hidden="true">/</span>
+              <span aria-current="page" className="text-foreground">{t(...title)}</span>
+            </nav>
+            <div className="mb-6 flex flex-wrap items-center gap-4 sm:flex-nowrap">
+              <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-accent text-accent-foreground shadow-lg sm:size-16">
+                <Icon aria-hidden="true" className="size-8" />
+              </span>
+              <h1 className="text-4xl font-bold text-foreground md:text-5xl">{t(...title)}</h1>
+            </div>
+            <p className="text-xl leading-relaxed text-muted-foreground">{t(...summary)}</p>
+          </div>
         </div>
       </section>
 

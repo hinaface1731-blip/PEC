@@ -12,6 +12,8 @@ import { ProjectPhotoCredit } from "@/components/projects/project-photo-credit"
 import { projectRegions, projects } from "@/lib/projects"
 
 const IS_DEV = process.env.NODE_ENV !== "production"
+const clientCount = new Set(projects.map((project) => project.clientEn)).size
+const commodityCount = new Set(projects.map((project) => project.category)).size
 
 const categories = [
   { value: "all", label: "Все проекты", labelEn: "All Projects" },
@@ -52,14 +54,13 @@ export function ProjectsContent() {
             sizes="100vw"
             style={{ objectPosition: "center 53%" }}
           />
-          <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/60" />
           <ProjectPhotoCredit />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-2 text-white/80 mb-4">
+            <div className="project-hero-copy hero-text-shadow max-w-3xl">
+              <div className="mb-4 flex flex-wrap items-center gap-2 text-white/95">
                 <Link href="/" className="hover:text-white transition-colors">
                   {t("Главная", "Home")}
                 </Link>
@@ -85,10 +86,12 @@ export function ProjectsContent() {
       {/* Stats Banner */}
       <section className="py-8 bg-primary">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 gap-4 sm:gap-8">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 md:grid-cols-4">
             {[
               { value: String(projects.length), label: t("Проектов в портфолио", "Projects in the portfolio") },
               { value: String(projectRegions.length), label: t("Территорий работ", "Project areas") },
+              { value: String(clientCount), label: t("Заказчиков в портфолио", "Clients in the portfolio") },
+              { value: String(commodityCount), label: t("Вида сырья", "Commodities") },
             ].map((stat, index) => (
               <motion.div
                 key={index}
