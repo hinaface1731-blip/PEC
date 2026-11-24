@@ -1,7 +1,5 @@
-export const metadata = {
-  title: 'Политика конфиденциальности',
-  description: 'Политика обработки персональных данных ООО «Полярная Экспедиционная Компания».',
-}
+import { localizedMetadata } from '@/lib/site-metadata'
+export const metadata = localizedMetadata('/privacy', 'ru')
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children

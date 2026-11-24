@@ -1,11 +1,12 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { usePathname } from 'next/navigation'
 import { Logo } from './logo'
 import { useTheme } from './theme-provider'
 import { useLanguage } from './language-provider'
+import { withoutLanguage } from '@/lib/site-language'
 import { Sun, Moon, Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -31,7 +32,8 @@ const navItems = [
 ]
 
 export function Header() {
-  const pathname = usePathname()
+  const currentPath = usePathname()
+  const pathname = withoutLanguage(currentPath)
   const { theme, toggleTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -84,7 +86,7 @@ export function Header() {
     setMobileMenuOpen(false)
     setMobileServicesOpen(false)
     setServicesOpen(false)
-  }, [pathname])
+  }, [currentPath])
 
   // Закрытие меню по Escape
   useEffect(() => {
@@ -128,8 +130,8 @@ export function Header() {
             href="/about"
             className={`px-4 py-2 rounded-lg transition-all duration-200 ${
               isActive('/about')
-                ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
-                : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
+                ? 'text-accent-foreground bg-[var(--accent-glow)] font-medium'
+                : 'text-[var(--text)] hover:text-accent-foreground hover:bg-[var(--bg3)]'
             }`}
           >
             {t('О компании', 'About')}
@@ -154,8 +156,8 @@ export function Header() {
               aria-haspopup="true"
               className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 ${
                 isServicesActive()
-                  ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
-                  : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
+                  ? 'text-accent-foreground bg-[var(--accent-glow)] font-medium'
+                  : 'text-[var(--text)] hover:text-accent-foreground hover:bg-[var(--bg3)]'
               }`}
             >
               {t('Услуги', 'Services')}
@@ -177,8 +179,8 @@ export function Header() {
                       href={service.href}
                       className={`block px-5 py-3 transition-all hover:translate-x-1 ${
                         isActive(service.href)
-                          ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
-                          : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
+                          ? 'text-accent-foreground bg-[var(--accent-glow)]'
+                          : 'text-[var(--text)] hover:text-accent-foreground hover:bg-[var(--bg3)]'
                       }`}
                     >
                       {t(service.ru, service.en)}
@@ -186,7 +188,7 @@ export function Header() {
                   ))}
                   <Link
                     href="/services"
-                    className="block px-5 py-3 mt-1 border-t border-[var(--border)] font-semibold text-[var(--accent)] hover:bg-[var(--bg3)] transition-all"
+                    className="block px-5 py-3 mt-1 border-t border-[var(--border)] font-semibold text-accent-foreground hover:bg-[var(--bg3)] transition-all"
                   >
                     {t('Все услуги →', 'All Services →')}
                   </Link>
@@ -203,8 +205,8 @@ export function Header() {
               href={item.href}
               className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                 isActive(item.href)
-                  ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
-                  : 'text-[var(--text)] hover:text-[var(--accent)] hover:bg-[var(--bg3)]'
+                  ? 'text-accent-foreground bg-[var(--accent-glow)] font-medium'
+                  : 'text-[var(--text)] hover:text-accent-foreground hover:bg-[var(--bg3)]'
               }`}
             >
               {t(item.ru, item.en)}
@@ -262,7 +264,7 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-4 py-3 rounded-lg transition-all ${
                   isActive('/about')
-                    ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
+                    ? 'text-accent-foreground bg-[var(--accent-glow)] font-medium'
                     : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                 }`}
               >
@@ -277,7 +279,7 @@ export function Header() {
                   aria-expanded={mobileServicesOpen}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all ${
                     isServicesActive()
-                      ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
+                      ? 'text-accent-foreground bg-[var(--accent-glow)] font-medium'
                       : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                   }`}
                 >
@@ -301,8 +303,8 @@ export function Header() {
                             onClick={() => setMobileMenuOpen(false)}
                             className={`block px-4 py-2 rounded-lg transition-all ${
                               isActive(service.href)
-                                ? 'text-[var(--accent)] bg-[var(--accent-glow)]'
-                                : 'text-[var(--muted)] hover:text-[var(--accent)]'
+                                ? 'text-accent-foreground bg-[var(--accent-glow)]'
+                                : 'text-[var(--muted)] hover:text-accent-foreground'
                             }`}
                           >
                             {t(service.ru, service.en)}
@@ -311,7 +313,7 @@ export function Header() {
                         <Link
                           href="/services"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block px-4 py-2 font-semibold text-[var(--accent)]"
+                          className="block px-4 py-2 font-semibold text-accent-foreground"
                         >
                           {t('Все услуги →', 'All Services →')}
                         </Link>
@@ -329,7 +331,7 @@ export function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-lg transition-all ${
                     isActive(item.href)
-                      ? 'text-[var(--accent)] bg-[var(--accent-glow)] font-medium'
+                      ? 'text-accent-foreground bg-[var(--accent-glow)] font-medium'
                       : 'text-[var(--text)] hover:bg-[var(--bg3)]'
                   }`}
                 >

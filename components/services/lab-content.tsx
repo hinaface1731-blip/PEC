@@ -69,62 +69,6 @@ const data: ServicePageData = {
   methodsImage: '/images/lab.jpg',
   
   // ✅ Новая структура оборудования
-  equipment: [
-    {
-      titleRu: 'Спектрометрия',
-      titleEn: 'Spectrometry',
-      items: [
-        { name: 'Agilent 7900 ICP-MS', specs: ['45 элементов', 'Чувствительность ppt', 'Автосамплер'], image: '/images/equipment/icp-ms.jpg' },
-        { name: 'Атомно-абсорбционный спектрометр AAS', specs: ['Au, Ag, Cu, Pb, Zn', 'Пламенный/графит', 'Точность 0.001 г/т'], image: '/images/equipment/aas.jpg' },
-        { name: 'XRF анализатор Olympus', specs: ['Элементы от Na до U', 'Портативный', '2-5 мин анализ'], image: '/images/equipment/xrf.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Пробирная лаборатория',
-      titleEn: 'Fire Assay Lab',
-      items: [
-        { name: 'Пробирные печи', specs: ['Температура до 1200°C', 'Точный контроль', '6 тиглей'], image: '/images/equipment/furnace.jpg' },
-        { name: 'Муфельные печи', specs: ['Температура до 1100°C', 'Программируемый нагрев', 'Безопасность'], image: '/images/equipment/muffle.jpg' },
-        { name: 'Весы аналитические', specs: ['Точность 0.0001 г', 'Калибровка', 'Ветрозащита'], image: '/images/equipment/scales.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Минералогия',
-      titleEn: 'Mineralogy',
-      items: [
-        { name: 'Рентгеновский дифрактометр', specs: ['Фазовый анализ', 'Количественный анализ', 'Порошковая дифракция'], image: '/images/equipment/xrd.jpg' },
-        { name: 'Поляризационные микроскопы', specs: ['Увеличение до 1000x', 'Поляризация', 'Встроенная камера'], image: '/images/equipment/microscope.jpg' },
-        { name: 'Электронный микроскоп', specs: ['Увеличение до 10000x', 'EDS анализ', 'Высокое разрешение'], image: '/images/equipment/sem.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Грунтовая лаборатория',
-      titleEn: 'Soil Lab',
-      items: [
-        { name: 'Компрессионные приборы', specs: ['Нагрузка до 400 кПа', 'Фиксация осадки', 'Образцы 50-100 мм'], image: '/images/equipment/compressometer.jpg' },
-        { name: 'Сдвиговые приборы', specs: ['Сдвиг до 200 кПа', 'Прямой срез', 'Автоматическая запись'], image: '/images/equipment/shear.jpg' },
-        { name: 'Трёхосные приборы', specs: ['Консолидация', 'Нестабилизированный сдвиг', 'Поровое давление'], image: '/images/equipment/triaxial.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Пробоподготовка',
-      titleEn: 'Sample Preparation',
-      items: [
-        { name: 'Щековые дробилки', specs: ['Дробление до 2 мм', 'Производительность 200 кг/ч', 'Регулировка зазора'], image: '/images/equipment/crusher.jpg' },
-        { name: 'Истиратели', specs: ['Истирание до 0.05 мм', 'Вибрационный', 'Ёмкость 100-500 г'], image: '/images/equipment/grinder.jpg' },
-        { name: 'Делители проб', specs: ['Ротационный', 'Коэффициент деления 1/2-1/32', 'Нержавеющая сталь'], image: '/images/equipment/splitter.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Контроль качества',
-      titleEn: 'Quality Control',
-      items: [
-        { name: 'Стандартные образцы', specs: ['СОП золота', 'СОП меди', 'Аттестованные'], image: '/images/equipment/standards.jpg' },
-        { name: 'Дубликаты', specs: ['Каждые 20 проб', 'Контроль воспроизводимости', 'Статистика'], image: '/images/equipment/duplicates.jpg' },
-        { name: 'Холостые пробы', specs: ['Контроль загрязнения', 'Чистые реагенты', 'Фоновые значения'], image: '/images/equipment/blanks.jpg' },
-      ]
-    },
-  ],
   
   steps: [
     {

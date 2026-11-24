@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     const resumeFile = formData.get('resume')
 
     // Валидация
-    if (!fullName || !email || !phone || !position) {
+    if (!fullName || !email || !phone || !position || !(resumeFile instanceof File) || resumeFile.size === 0) {
       return NextResponse.json(
         { code: 'requiredFields', error: 'Заполните все обязательные поля' },
         { status: 400 }
@@ -33,20 +33,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const attachments = []
-    if (resumeFile instanceof File && resumeFile.size > 0) {
-      const lowerName = resumeFile.name.toLowerCase()
-      if (!ALLOWED_EXTENSIONS.some((ext) => lowerName.endsWith(ext))) {
-        return NextResponse.json({ code: 'fileFormat', error: 'Допустимые форматы резюме: PDF, DOC, DOCX' }, { status: 400 })
-      }
-      if (resumeFile.size > MAX_FILE_SIZE) {
-        return NextResponse.json({ code: 'fileSize', error: `Файл резюме больше ${MAX_RESUME_SIZE_MB} МБ` }, { status: 400 })
-      }
-      attachments.push({
-        filename: resumeFile.name,
-        content: Buffer.from(await resumeFile.arrayBuffer()),
-        contentType: resumeFile.type || undefined,
-      })
+    const lowerName = resumeFile.name.toLowerCase()
+    if (!ALLOWED_EXTENSIONS.some((ext) => lowerName.endsWith(ext))) {
+      return NextResponse.json({ code: 'fileFormat', error: 'Допустимые форматы резюме: PDF, DOC, DOCX' }, { status: 400 })
+    }
+    if (resumeFile.size > MAX_FILE_SIZE) {
+      return NextResponse.json({ code: 'fileSize', error: `Файл резюме больше ${MAX_RESUME_SIZE_MB} МБ` }, { status: 400 })
+    }
+    const attachment = {
+      filename: resumeFile.name,
+      content: Buffer.from(await resumeFile.arrayBuffer()),
+      contentType: resumeFile.type || undefined,
     }
 
     const rows: Array<[string, unknown]> = [
@@ -56,7 +53,7 @@ export async function POST(request: NextRequest) {
       ['💼 Желаемая должность', position],
       ['📋 Опыт работы', experience || 'Не указан'],
       ['💬 Дополнительно', message || 'Не указано'],
-      ['📎 Файл резюме', attachments.length ? attachments[0].filename : 'Не приложен'],
+      ['📎 Файл резюме', attachment.filename],
       ['Согласие на обработку персональных данных', `Редакция ${RESUME_CONSENT_VERSION}, получено ${new Date().toISOString()}`],
     ]
 
@@ -67,7 +64,7 @@ export async function POST(request: NextRequest) {
       subject: `Новое резюме: ${headerSafe(position, 80)} - ${headerSafe(fullName, 80)}`,
       text: ['Новое резюме с сайта', '', ...rows.map(([label, value]) => `${label}: ${value}`)].join('\n'),
       html: renderTable('📄 Новое резюме', rows),
-      attachments,
+      attachments: [attachment],
     })
 
     return NextResponse.json({ success: true })

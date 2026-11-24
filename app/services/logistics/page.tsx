@@ -1,10 +1,8 @@
+import { localizedMetadata } from '@/lib/site-metadata'
 import { PageLayout } from '@/components/page-layout'
 import { LogisticsContent } from '@/components/services/logistics-content'
 
-export const metadata = {
-  title: 'Логистика и снабжение',
-  description: 'Северный завоз, доставка грузов в Арктику и Сибирь, снабжение удалённых объектов, экспедиционное сопровождение. Надёжная логистика для ГРР.',
-}
+export const metadata = localizedMetadata('/services/logistics', 'ru')
 
 export default function LogisticsPage() {
   return (

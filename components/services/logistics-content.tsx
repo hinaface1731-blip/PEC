@@ -61,49 +61,6 @@ const data: ServicePageData = {
   methodsImage: '/images/site/loading-crane.jpg',
   
   // ✅ Новая структура оборудования
-  equipment: [
-    {
-      titleRu: 'Автопарк',
-      titleEn: 'Vehicle Fleet',
-      items: [
-        { name: 'КАМАЗ', specs: ['Грузоподъемность 10 т', 'Полный привод', 'Работа при -40°C'], image: '/images/equipment/kamaz.jpg' },
-        { name: 'УРАЛ', specs: ['Высокая проходимость', 'Грузоподъемность 8 т', 'Шины низкого давления'], image: '/images/equipment/ural.jpg' },
-        { name: 'Тягачи с полуприцепами', specs: ['Грузоподъемность 20 т', 'Евро-5', 'Дальность 1000 км'], image: '/images/equipment/tractor.jpg' },
-        { name: 'Бензовозы', specs: ['Объём 15 м³', 'Дизельное топливо', 'Подогрев'], image: '/images/equipment/fuel-truck.jpg' },
-        { name: 'Вахтовые автобусы', specs: ['Вместимость 20 чел', 'Обогрев', 'Багажное отделение'], image: '/images/equipment/bus.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Вездеходная техника',
-      titleEn: 'All-terrain Vehicles',
-      items: [
-        { name: 'ТРЭКОЛ', specs: ['Грузоподъемность 600 кг', 'Широкопрофильные шины', 'Работа при -50°C'], image: '/images/equipment/trekol.jpg' },
-        { name: 'GMC Sierra', specs: ['Полный привод', 'Грузоподъемность 1.5 т', 'Кунг для оборудования'], image: '/images/equipment/gmc.jpg' },
-        { name: 'Снегоболотоходы', specs: ['Гусеничный', 'Грузоподъемность 300 кг', 'Проходимость'], image: '/images/equipment/snowmobile.jpg' },
-        { name: 'Гусеничные транспорты', specs: ['Грузоподъемность 5 т', 'Низкое давление', 'Арктическое исполнение'], image: '/images/equipment/tracked.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Складское оборудование',
-      titleEn: 'Warehouse Equipment',
-      items: [
-        { name: 'Погрузчики (вилочные)', specs: ['Грузоподъемность 2 т', 'Высота подъёма 4 м', 'Дизель'], image: '/images/equipment/forklift.jpg' },
-        { name: 'Краны-манипуляторы', specs: ['Грузоподъемность 3 т', 'Вылет стрелы 8 м', 'На шасси КАМАЗ'], image: '/images/equipment/crane.jpg' },
-        { name: 'Контейнерные площадки', specs: ['Вместимость 20 контейнеров', 'Охраняемая территория', 'Освещение'], image: '/images/equipment/container-yard.jpg' },
-        { name: 'Складские модули', specs: ['Отапливаемые', 'Площадь 100-500 м²', 'Быстровозводимые'], image: '/images/equipment/warehouse-module.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Дополнительное оборудование',
-      titleEn: 'Additional Equipment',
-      items: [
-        { name: 'Тепловые пушки', specs: ['Мощность 30 кВт', 'Дизельные', 'Для прогрева техники'], image: '/images/equipment/heat-gun.jpg' },
-        { name: 'Обогреваемые контейнеры', specs: ['Температура до +20°C', 'Объём 20 футов', 'Автономные'], image: '/images/equipment/heated-container.jpg' },
-        { name: 'Дизель-генераторы', specs: ['Мощность 50 кВт', '380 В', 'Расход 10 л/ч'], image: '/images/equipment/generator.jpg' },
-        { name: 'Системы ГЛОНАСС/GPS', specs: ['Отслеживание в реальном времени', 'Контроль топлива', 'Температурный мониторинг'], image: '/images/equipment/gps.jpg' },
-      ]
-    },
-  ],
   
   steps: [
     {

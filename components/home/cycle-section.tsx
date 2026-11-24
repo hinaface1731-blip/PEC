@@ -60,7 +60,7 @@ export function CycleSection() {
                 className="flex flex-col items-center"
               >
                 <div className="w-20 h-20 rounded-2xl bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center mb-3 hover:border-[var(--accent)] hover:bg-[var(--accent-glow)] transition-all cursor-default group">
-                  <step.icon className="w-8 h-8 text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors" />
+                  <step.icon className="w-8 h-8 text-[var(--muted)] group-hover:text-accent-foreground transition-colors" />
                 </div>
                 {/* На десктопе разрешаем перенос, но с одинаковой высотой */}
                 <span className="text-sm text-foreground font-medium text-center max-w-[80px] leading-tight min-h-[40px] flex items-center">
@@ -88,9 +88,9 @@ export function CycleSection() {
               >
                 <div className="relative">
                   <div className="w-12 h-12 rounded-xl bg-[var(--accent-glow)] flex items-center justify-center mb-2">
-                    <step.icon className="w-6 h-6 text-[var(--accent)]" />
+                    <step.icon className="w-6 h-6 text-accent-foreground" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[var(--accent)] text-white text-[10px] font-bold flex items-center justify-center">
+                  <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[var(--accent)] text-primary-foreground text-[10px] font-bold flex items-center justify-center">
                     {index + 1}
                   </div>
                 </div>

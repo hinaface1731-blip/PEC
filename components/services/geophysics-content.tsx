@@ -1,15 +1,16 @@
 'use client'
 
 import { ServicePageTemplate } from './service-page-template'
-import { Radio, Drill, Compass } from 'lucide-react'
+import { Radio, Drill } from 'lucide-react'
 import type { ServicePageData } from '@/components/services/service-page-template'
+import { GeophysicsMethodLinks } from './geophysics-method-content'
 
 const data: ServicePageData = {
   icon: Radio,
   titleRu: 'Геофизические работы',
   titleEn: 'Geophysical Services',
-  descRu: 'Комплекс наземных и скважинных геофизических исследований для поиска и разведки месторождений полезных ископаемых. Современное оборудование и опытные специалисты.',
-  descEn: 'A comprehensive range of surface and borehole geophysical surveys for mineral exploration. Modern equipment and experienced specialists.',
+  descRu: 'Электроразведка, наземная и аэромагнитная съёмка, каротаж скважин. От полевых измерений до обработки и интерпретации.',
+  descEn: 'Electrical and electromagnetic surveys, ground and drone magnetic surveys, and borehole logging. From field measurements to processing and interpretation.',
   heroImage: '/images/geophys5.jpeg',
   introPhoto: {
     src: '/images/geophysics.jpg',
@@ -59,64 +60,6 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/geofiz_project.jpg',
- equipment: [
-  {
-    titleRu: 'Электроразведка',
-    titleEn: 'Electrical Methods',
-    href: '/services/geophysics/electrical',
-    items: [
-      {
-        name: 'NORD',
-        specs: ['32-бит АЦП', '0.001-20000 Hz', 'Wi-Fi управление', 'Вес 1.8 кг'],
-        image: '/images/equipment/nord.png'
-      },
-      {
-        name: 'ЦИКЛ',
-        specs: ['Цифровая передача информации', 'Без калибровки перед записью', 'Сопряжение с каротажем'],
-        image: '/images/equipment/cikl8.png'
-      },
-      {
-        name: 'Медуза',
-        specs: ['Электротомография', '2D/3D моделирование', 'Автоматическая обработка'],
-        image: '/images/equipment/tomography.png'
-      }
-    ]
-  },
-  {
-    titleRu: 'Магниторазведка',
-    titleEn: 'Magnetic Survey',
-    href: '/services/geophysics/magnetic',
-    items: [
-      {
-        name: 'MiniMag',
-        specs: ['Точность: 0.01 нТл', 'Частота измерений: до 5 Гц', 'GPS синхронизация'],
-        image: '/images/equipment/minimag.png'
-      },
-      {
-        name: 'SmartMag',
-        specs: ['Компактный дизайн', 'Высокая стабильность', 'Вес 3.1 кг'],
-        image: '/images/equipment/smart_mag.png'
-      }
-    ]
-  },
-  {
-    titleRu: 'Каротаж',
-    titleEn: 'Well Logging',
-    href: '/services/geophysics/logging',
-    items: [
-      {
-        name: 'Каротажная станция',
-        specs: ['Полный комплект ГИС на рудные месторождения', 'Частота измерений: до 5 Гц', 'GPS синхронизация'],
-        image: '/images/equipment/karotazh.png'
-      },
-      {
-        name: '***',
-        specs: ['***', '***', '***'],
-        image: '/images/equipment/smart_mag.png'
-      }
-    ]
-  }
-],
   steps: [
     {
       image: '/images/work-stage-illustrations/planning.webp',
@@ -200,7 +143,7 @@ const data: ServicePageData = {
   ],
   projectExample: {
     id: 17,
-    workRu: "Были выполнены наземные электроразведочные исследования АМТЗ и ЗСБ, по результатам работ была проведена обработка и инверсия данных, были построенны разрезы УЭС и подготовлен отчет по выполненым работам.",
+    workRu: "Выполнили наземные съёмки АМТЗ и ЗСБ, обработали и инвертировали данные, построили разрезы удельного электрического сопротивления и подготовили отчёт.",
     workEn: "PEC carried out ground-based audio-magnetotelluric (AMT) and transient electromagnetic (TEM) surveys. The team processed and inverted the data, produced electrical resistivity sections, and prepared a final report.",
   },
 
@@ -215,5 +158,5 @@ const data: ServicePageData = {
 }
 
 export function GeophysicsContent() {
-  return <ServicePageTemplate data={data} />
+  return <ServicePageTemplate data={data} afterHero={<GeophysicsMethodLinks />} />
 }

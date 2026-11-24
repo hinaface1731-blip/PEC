@@ -73,46 +73,6 @@ const data: ServicePageData = {
   methodsImage: '/images/hero-drilling-image.jpg',
   
   // ✅ Новая структура оборудования
-  equipment: [
-    {
-      titleRu: 'Буровые станки',
-      titleEn: 'Drilling Rigs',
-      items: [
-        { name: 'Boart Longyear LF90', specs: ['Глубина до 1200 м', 'Колонковое бурение', '3 единицы'], image: '/images/equipment/lf90.jpg' },
-        { name: 'СКБ-4', specs: ['Глубина до 600 м', 'Колонковое бурение', '5 единиц'], image: '/images/equipment/skb4.jpg' },
-        { name: 'УРБ-2А2', specs: ['Шарошечное бурение', 'Глубина до 300 м', '2 единицы'], image: '/images/equipment/urb2a2.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Буровой инструмент',
-      titleEn: 'Drilling Tools',
-      items: [
-        { name: 'Керноприёмные трубы ССК', specs: ['Длина 3 м', 'Диаметр 57-146 мм', 'Высокий выход керна'], image: '/images/equipment/ssk-tubes.jpg' },
-        { name: 'Алмазные коронки', specs: ['Диаметр 46-146 мм', 'Тип: импрегнированные', 'Ресурс до 200 м'], image: '/images/equipment/diamond-bits.jpg' },
-        { name: 'Твёрдосплавные коронки', specs: ['Диаметр 76-190 мм', 'Для мягких пород', 'Ресурс до 150 м'], image: '/images/equipment/carbide-bits.jpg' },
-        { name: 'Расширители', specs: ['Диаметр до 190 мм', 'Стабилизация ствола', 'Комплект 3 шт'], image: '/images/equipment/reamers.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Вспомогательное оборудование',
-      titleEn: 'Support Equipment',
-      items: [
-        { name: 'Насосы буровые НБ-32', specs: ['Производительность 200 л/мин', 'Давление до 100 атм', '3 единицы'], image: '/images/equipment/pump.jpg' },
-        { name: 'Компрессоры', specs: ['Производительность 5 м³/мин', 'Давление 8 атм', 'Пневмобурение'], image: '/images/equipment/compressor.jpg' },
-        { name: 'Генераторы', specs: ['Мощность 30 кВт', '380 В', 'Топливный бак 100 л'], image: '/images/equipment/generator.jpg' },
-        { name: 'Ёмкости для бурового раствора', specs: ['Объём 10 м³', 'С системой перемешивания', 'Мобильные'], image: '/images/equipment/tank.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Контроль качества',
-      titleEn: 'Quality Control',
-      items: [
-        { name: 'Инклинометры', specs: ['Точность ±0.1°', 'Зенитный угол 0-180°', 'Гироскопические'], image: '/images/equipment/inclinometer.jpg' },
-        { name: 'Каверномеры', specs: ['Диапазон 60-300 мм', 'Точность ±2 мм', '4-рукавный'], image: '/images/equipment/caliper.jpg' },
-        { name: 'Системы мониторинга параметров', specs: ['Осевая нагрузка', 'Частота вращения', 'Расход промывочной жидкости'], image: '/images/equipment/monitoring.jpg' },
-      ]
-    },
-  ],
   
   steps: [
     {

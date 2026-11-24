@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/components/language-provider'
 import { Award, ShieldCheck, FlaskConical, Lock } from 'lucide-react'
+import { engineeringSroMembership } from '@/lib/company-licenses'
 
 const licenses = [
   {
@@ -13,10 +14,11 @@ const licenses = [
   },
   {
     icon: ShieldCheck,
-    titleRu: 'Свидетельство СРО',
-    titleEn: 'SRO Certificate',
-    descRu: 'Инженерных изысканий',
-    descEn: 'Engineering surveys',
+    titleRu: 'Членство в СРО',
+    titleEn: 'SRO Membership',
+    descRu: `Ассоциация «ЭкспертИзыскания» · запись № ${engineeringSroMembership.number}`,
+    descEn: `ExpertIzyskaniya Association · Record No. ${engineeringSroMembership.number}`,
+    href: engineeringSroMembership.registryUrl,
   },
   {
     icon: FlaskConical,
@@ -59,7 +61,7 @@ export function LicensesSection() {
               className="card text-center hover:border-[var(--accent)]/30"
             >
               <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--accent-glow)] flex items-center justify-center">
-                <license.icon className="w-7 h-7 text-[var(--accent)]" />
+                <license.icon className="w-7 h-7 text-accent-foreground" />
               </div>
               <h3 className="text-lg font-semibold text-[var(--text)] mb-2">
                 {t(license.titleRu, license.titleEn)}
@@ -67,6 +69,11 @@ export function LicensesSection() {
               <p className="text-sm text-[var(--muted)]">
                 {t(license.descRu, license.descEn)}
               </p>
+              {license.href && (
+                <a href={license.href} className="mt-3 inline-block text-sm font-medium text-accent-foreground hover:underline">
+                  {t('Открыть запись в реестре', 'View registry entry')}
+                </a>
+              )}
             </div>
           ))}
         </div>

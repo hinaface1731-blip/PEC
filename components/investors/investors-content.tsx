@@ -2,7 +2,7 @@
 
 import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import Image from 'next/image'
 import {
   TrendingUp,
@@ -23,7 +23,7 @@ import {
 const keyFigures = [
   { icon: Coins, value: '1,1 млрд ₽', valueEn: 'RUB 1.1 bn', labelRu: 'инвестиции в поисково-оценочные работы', labelEn: 'investment in exploration and evaluation' },
   { icon: TrendingUp, value: '4,9–7,8 млрд ₽', valueEn: 'RUB 4.9–7.8 bn', labelRu: 'целевая стоимость портфеля на момент постановки запасов', labelEn: 'target portfolio value once reserves are registered' },
-  { icon: Target, value: '5x–8x', valueEn: '5x–8x', labelRu: 'мультипликатор инвестиций', labelEn: 'investment multiple' },
+  { icon: Target, value: '≈ 4,5–7,1×', valueEn: '≈ 4.5–7.1×', labelRu: 'отношение целевой стоимости портфеля к бюджету работ', labelEn: 'target portfolio value relative to the exploration budget' },
   { icon: Shield, value: 'Поисковая', valueEn: 'Exploration', labelRu: 'стадия — ранний вход', labelEn: 'stage — early entry' },
 ]
 
@@ -316,7 +316,7 @@ export function InvestorsContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {keyFigures.map((item) => (
               <div key={item.labelRu} className="p-6 bg-background rounded-2xl border border-border">
-                <item.icon className="w-8 h-8 text-[var(--accent)] mb-4" />
+                <item.icon className="w-8 h-8 text-accent-foreground mb-4" />
                 <div className="text-2xl lg:text-3xl font-bold text-foreground mb-1">{t(item.value, item.valueEn)}</div>
                 <div className="text-sm text-muted-foreground">{t(item.labelRu, item.labelEn)}</div>
               </div>
@@ -326,13 +326,13 @@ export function InvestorsContent() {
       </section>
 
       {/* Portfolio overview */}
-      <section className="py-20">
+      <section id="licenses" aria-labelledby="licenses-title" className="scroll-mt-24 py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                  {t('Фокус на Широкинском узле', 'Focus on the Shirokinsky Cluster')}
+                <h2 id="licenses-title" className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                  {t('Лицензии Широкинского узла', 'Shirokinsky Cluster licences')}
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   {t(
@@ -344,14 +344,18 @@ export function InvestorsContent() {
                   {focusAreas.map((area) => (
                     <div key={area.license} className="flex flex-wrap items-center gap-3 p-4 rounded-xl bg-card border border-border">
                       <span className="font-semibold text-foreground">{t(area.nameRu, area.nameEn)}</span>
-                      <span className="px-2 py-0.5 bg-[var(--accent-glow)] text-[var(--accent)] text-xs font-mono rounded">{area.license}</span>
+                      <span className="px-2 py-0.5 bg-[var(--accent-glow)] text-accent-foreground text-xs font-mono rounded">{area.license}</span>
                       <span className="text-sm text-muted-foreground">{area.area} {t('км²', 'km²')}</span>
                       <span className="text-sm text-muted-foreground">· {t(area.typeRu, area.typeEn)}</span>
                     </div>
                   ))}
                 </div>
+                <a href="https://cfo.rosnedra.gov.ru/gosuslugi/perechen-funktsiy-federalnogo-agentstva-po-nedropolzovaniyu/gosudarstvennyy-uchet-i-vedenie-gosudarstvennogo-reestra-rabot-po-geologicheskomu-izucheniyu-nedr/"
+                  className="mb-5 inline-block text-sm font-semibold text-accent-foreground underline underline-offset-4">
+                  {t('Где проверить лицензию по номеру · Роснедра', 'Find the official licence register · Rosnedra')}
+                </a>
                 <p className="text-sm text-muted-foreground flex items-center gap-2">
-                  <Gem className="w-4 h-4 text-[var(--accent)]" />
+                  <Gem className="w-4 h-4 text-accent-foreground" />
                   {t('Стратегический резерв: Симсовская, Пекинская и Дорожнинская площади', 'Strategic reserve: Simsovskaya, Pekinskaya and Dorozhninskaya areas')}
                 </p>
               </div>
@@ -406,7 +410,7 @@ export function InvestorsContent() {
                 <tr className="border-t border-border bg-[var(--accent-glow)] font-semibold">
                   <td className="p-4 text-foreground">{t('Суммарный потенциал', 'Total potential')}</td>
                   {resourcesTable.total.map((v, i) => (
-                    <td key={i} className="p-4 text-center text-[var(--accent)]">{t(v, v.replace(',', '.'))}</td>
+                    <td key={i} className="p-4 text-center text-accent-foreground">{t(v, v.replace(',', '.'))}</td>
                   ))}
                 </tr>
               </tbody>
@@ -442,19 +446,19 @@ export function InvestorsContent() {
                     <div className="flex-1 p-6 md:p-8">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
                         <h3 className="text-2xl font-bold text-foreground mr-2">{t(area.nameRu, area.nameEn)}</h3>
-                        <span className="px-2 py-0.5 bg-[var(--accent-glow)] text-[var(--accent)] text-xs font-mono rounded">{area.license}</span>
+                        <span className="px-2 py-0.5 bg-[var(--accent-glow)] text-accent-foreground text-xs font-mono rounded">{area.license}</span>
                         <span className="flex items-center gap-1 text-sm text-muted-foreground">
                           <Layers className="w-3 h-3" />
                           {area.area} {t('км²', 'km²')}
                         </span>
                       </div>
-                      <p className="text-[var(--accent)] font-medium mb-4">
+                      <p className="text-accent-foreground font-medium mb-4">
                         {t(area.typeRu, area.typeEn)} — {t(area.titleRu, area.titleEn)}
                       </p>
                       <ul className="space-y-2 mb-4">
                         {area.factsRu.map((fact, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <CheckCircle className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
+                            <CheckCircle className="w-4 h-4 text-accent-foreground shrink-0 mt-0.5" />
                             <span>{t(fact, area.factsEn[idx])}</span>
                           </li>
                         ))}
@@ -535,7 +539,7 @@ export function InvestorsContent() {
                   <div key={item.ru}>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-foreground font-medium">{t(item.ru, item.en)}</span>
-                      <span className="text-[var(--accent)] font-semibold">{item.share}%</span>
+                      <span className="text-accent-foreground font-semibold">{item.share}%</span>
                     </div>
                     <div className="h-2 rounded-full bg-[var(--bg3)] overflow-hidden">
                       <div className="h-full rounded-full bg-[var(--accent)]" style={{ width: `${item.share}%` }} />
@@ -559,7 +563,7 @@ export function InvestorsContent() {
               </div>
               <div className="mt-auto flex justify-between items-center p-4 rounded-xl bg-[var(--accent-glow)]">
                 <span className="font-semibold text-foreground">{t('Итого', 'Total')}</span>
-                <span className="text-xl font-bold text-[var(--accent)]">{t('1,1 млрд ₽', 'RUB 1.1 bn')}</span>
+                <span className="text-xl font-bold text-accent-foreground">{t('1,1 млрд ₽', 'RUB 1.1 bn')}</span>
               </div>
             </div>
           </div>
@@ -589,7 +593,7 @@ export function InvestorsContent() {
                 <ul className="space-y-1">
                   {risk.measuresRu.map((m, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
-                      <CheckCircle className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-accent-foreground shrink-0 mt-0.5" />
                       <span>{t(m, risk.measuresEn[idx])}</span>
                     </li>
                   ))}
@@ -612,7 +616,7 @@ export function InvestorsContent() {
                 <ul className="space-y-3">
                   {expectedResultsRu.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-muted-foreground">
-                      <CheckCircle className="w-5 h-5 text-[var(--accent)] shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-accent-foreground shrink-0 mt-0.5" />
                       <span>{t(item, expectedResultsEn[idx])}</span>
                     </li>
                   ))}
@@ -653,7 +657,7 @@ export function InvestorsContent() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {advantages.map((adv) => (
               <div key={adv.titleRu} className="card-enhanced p-6 h-full">
-                <adv.icon className="w-10 h-10 text-[var(--accent)] mb-4" />
+                <adv.icon className="w-10 h-10 text-accent-foreground mb-4" />
                 <h3 className="text-lg font-semibold text-foreground mb-2">{t(adv.titleRu, adv.titleEn)}</h3>
                 <p className="text-sm text-muted-foreground">{t(adv.descriptionRu, adv.descriptionEn)}</p>
               </div>

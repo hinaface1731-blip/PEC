@@ -1,10 +1,8 @@
+import { localizedMetadata } from '@/lib/site-metadata'
 import { PageLayout } from '@/components/page-layout'
 import { MiningContent } from '@/components/services/mining-content'
 
-export const metadata = {
-  title: 'Горные работы',
-  description: 'Полный комплекс горных работ: вскрышные работы, добычные работы, буровзрывные работы, отработка россыпей. Опыт работы в Арктике и Сибири.',
-}
+export const metadata = localizedMetadata('/services/mining', 'ru')
 
 export default function MiningPage() {
   return (

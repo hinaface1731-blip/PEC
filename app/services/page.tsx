@@ -1,10 +1,8 @@
+import { localizedMetadata } from '@/lib/site-metadata'
 import { PageLayout } from '@/components/page-layout'
 import { ServicesSection } from '@/components/home/services-section'
 
-export const metadata = {
-  title: 'Услуги',
-  description: 'Геологические, геофизические, буровые, горные и маркшейдерские работы, логистика, лабораторные исследования, проектирование и экология.',
-}
+export const metadata = localizedMetadata('/services', 'ru')
 
 export default function ServicesPage() {
   return (

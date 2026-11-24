@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import Image from 'next/image'
 import { useLanguage } from '@/components/language-provider'
 import { ArrowUpRight, MapPin, Calendar } from 'lucide-react'
@@ -21,7 +21,7 @@ export function ProjectsSection() {
           </h2>
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium transition-all hover:bg-[var(--accent-h)] shrink-0"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-primary-foreground font-medium transition-all hover:bg-[var(--accent-h)] shrink-0"
           >
             {t('Все проекты', 'All Projects')}
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -41,7 +41,7 @@ export function ProjectsSection() {
                 />
                 <ProjectPhotoCredit />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center gap-4">
-                  <span className="px-3 py-1 rounded-full bg-[var(--accent)] text-white text-xs font-medium">
+                  <span className="px-3 py-1 rounded-full bg-[var(--accent)] text-primary-foreground text-xs font-medium">
                     {t(project.client, project.clientEn)}
                   </span>
                 </div>

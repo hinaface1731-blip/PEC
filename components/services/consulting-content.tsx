@@ -80,47 +80,6 @@ const data: ServicePageData = {
   methodsImage: '/images/methods-consulting.jpg',
   
   // ✅ Новая структура оборудования
-  equipment: [
-    {
-      titleRu: 'ПО для моделирования',
-      titleEn: 'Modeling Software',
-      items: [
-        { name: 'Micromine', specs: ['3D моделирование', 'Подсчёт запасов', 'Геологическое моделирование'], image: '/images/software/micromine.jpg' },
-        { name: 'Surpac (GEOVIA)', specs: ['Горно-геологическое моделирование', 'Планирование карьера', 'Оценка ресурсов'], image: '/images/software/surpac.jpg' },
-        { name: 'Datamine', specs: ['Геологическое моделирование', 'Оценка ресурсов', 'Планирование горных работ'], image: '/images/software/datamine.jpg' },
-        { name: 'Leapfrog', specs: ['3D геологическое моделирование', 'Интерполяция', 'Визуализация'], image: '/images/software/leapfrog.jpg' },
-      ]
-    },
-    {
-      titleRu: 'ГИС-системы',
-      titleEn: 'GIS Systems',
-      items: [
-        { name: 'ArcGIS Pro', specs: ['Пространственный анализ', '3D визуализация', 'Создание карт'], image: '/images/software/arcgis.jpg' },
-        { name: 'QGIS', specs: ['Бесплатная ГИС', 'Работа с геоданными', 'Плагины'], image: '/images/software/qgis.jpg' },
-        { name: 'MapInfo', specs: ['Географический анализ', 'Картография', 'Пространственная статистика'], image: '/images/software/mapinfo.jpg' },
-        { name: 'Global Mapper', specs: ['3D анализ', 'Обработка LiDAR', 'Создание ЦМР'], image: '/images/software/global-mapper.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Расчётное ПО',
-      titleEn: 'Calculation Software',
-      items: [
-        { name: 'Whittle', specs: ['Оптимизация карьера', 'Стратегическое планирование', 'Оценка NPV'], image: '/images/software/whittle.jpg' },
-        { name: 'NPV Scheduler', specs: ['Планирование горных работ', 'Оптимизация потоков', 'Финансовое моделирование'], image: '/images/software/npv-scheduler.jpg' },
-        { name: 'MineSched', specs: ['Детальное планирование', 'Производственные графики', 'Ресурсное планирование'], image: '/images/software/minesched.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Нормативная база',
-      titleEn: 'Regulatory Framework',
-      items: [
-        { name: 'Классификация ГКЗ 2022', specs: ['Российские стандарты', 'Подсчёт запасов', 'Протоколы ГКЗ'], image: '/images/software/gkz.jpg' },
-        { name: 'JORC Code 2012', specs: ['Международные стандарты', 'Прозрачность отчётов', 'Компетентные лица'], image: '/images/software/jorc.jpg' },
-        { name: 'NI 43-101', specs: ['Канадские стандарты', 'Технические отчёты', 'Раскрытие информации'], image: '/images/software/ni43-101.jpg' },
-        { name: 'CRIRSCO', specs: ['Международный комитет', 'Гармонизация стандартов', 'Отчётность по ресурсам'], image: '/images/software/crirsco.jpg' },
-      ]
-    },
-  ],
   
   steps: [
     {

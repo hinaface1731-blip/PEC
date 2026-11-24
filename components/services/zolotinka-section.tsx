@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { MapPin, ScanLine, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
+import { zolotinkaGoldRange } from '@/lib/zolotinka'
 
 export function ZolotinkaSection() {
   const { t } = useLanguage()
@@ -10,7 +11,7 @@ export function ZolotinkaSection() {
   const highlights = [
     {
       icon: ScanLine,
-      title: t('Методика НСАМ № 392-Х/РС', 'NSAM Method No. 392-Kh/RS'),
+      title: t('Методика НСАМ № 392-Х/РС (ред. 2019 г.)', 'NSAM Method No. 392-Kh/RS (2019 revision)'),
       text: t(
         'Энергодисперсионная рентгенофлуоресцентная спектрометрия после предварительного концентрирования золота.',
         'Energy-dispersive X-ray fluorescence spectrometry after gold preconcentration.',
@@ -57,7 +58,7 @@ export function ZolotinkaSection() {
                   {t('Диапазон определения золота по методике', 'Gold determination range under the method')}
                 </dt>
                 <dd className="text-3xl font-bold tracking-tight text-orange-200 tabular-nums sm:text-4xl">
-                  {t('0,3–50 г/т', '0.3–50 g/t')}
+                  {t(zolotinkaGoldRange.ru, zolotinkaGoldRange.en)}
                 </dd>
               </div>
             </dl>
@@ -85,7 +86,7 @@ export function ZolotinkaSection() {
         <ul className="grid divide-y divide-[var(--border)] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
           {highlights.map(({ icon: Icon, title, text }) => (
             <li key={title} className="flex gap-4 p-6 sm:px-8 sm:py-7">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-glow)] text-[var(--accent)]">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-glow)] text-accent-foreground">
                 <Icon aria-hidden="true" className="size-5" />
               </div>
               <div className="min-w-0">

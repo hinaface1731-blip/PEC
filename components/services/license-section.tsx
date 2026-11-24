@@ -70,7 +70,7 @@ export function LicenseSection() {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-[var(--accent)]" />
+                    <Award className="w-6 h-6 text-accent-foreground" />
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-bold text-[var(--text)]">
@@ -93,7 +93,7 @@ export function LicenseSection() {
                   </div>
                   <div className="p-4 rounded-lg bg-[var(--bg)]">
                     <p className="text-xs text-[var(--muted)] mb-1">{t('Срок действия', 'Validity')}</p>
-                    <p className="font-semibold text-[var(--accent)]">{t(licenseInfo.termRu, licenseInfo.termEn)}</p>
+                    <p className="font-semibold text-accent-foreground">{t(licenseInfo.termRu, licenseInfo.termEn)}</p>
                   </div>
                   <div className="p-4 rounded-lg bg-[var(--bg)]">
                     <p className="text-xs text-[var(--muted)] mb-1">{t('Статус', 'Status')}</p>
@@ -109,7 +109,7 @@ export function LicenseSection() {
                       href={doc.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 text-[var(--accent)] text-sm font-medium transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 text-accent-foreground text-sm font-medium transition-colors"
                     >
                       <Download className="w-4 h-4" />
                       {t(doc.titleRu, doc.titleEn)}
@@ -121,7 +121,7 @@ export function LicenseSection() {
               {/* Licensed Works */}
               <div className="flex-1">
                 <h4 className="font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[var(--accent)]" />
+                  <FileText className="w-5 h-5 text-accent-foreground" />
                   {t('Лицензируемые виды работ', 'Licensed Activities')}
                 </h4>
                 <ul className="space-y-2">
@@ -141,7 +141,7 @@ export function LicenseSection() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="card-enhanced p-6">
               <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
-                <Award className="w-5 h-5 text-[var(--accent)]" />
+                <Award className="w-5 h-5 text-accent-foreground" />
               </div>
               <h4 className="font-semibold text-[var(--text)] mb-2">
                 {t('Специалисты:', 'Specialists:')}
@@ -156,7 +156,7 @@ export function LicenseSection() {
 
             <div className="card-enhanced p-6">
               <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
-                <Shield className="w-5 h-5 text-[var(--accent)]" />
+                <Shield className="w-5 h-5 text-accent-foreground" />
               </div>
               <h4 className="font-semibold text-[var(--text)] mb-2">
                 {t('Высокие стандарты', 'High standards')}
@@ -171,7 +171,7 @@ export function LicenseSection() {
 
             <div className="card-enhanced p-6">
               <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-4">
-                <Compass className="w-5 h-5 text-[var(--accent)]" />
+                <Compass className="w-5 h-5 text-accent-foreground" />
               </div>
               <h4 className="font-semibold text-[var(--text)] mb-2">
                 {t('Оборудование:', 'Equipment:')}

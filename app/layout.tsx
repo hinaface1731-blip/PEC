@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
-import { LocalizedDocumentTitle } from '@/components/localized-document-title'
+import { LocalizedHtml } from '@/components/localized-html'
 import './globals.css'
 
 const manrope = localFont({
@@ -69,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" suppressHydrationWarning data-scroll-behavior="smooth">
+    <LocalizedHtml>
       <head>
         {/* Применяем сохранённую тему до первой отрисовки, чтобы не было «вспышки» светлой темы */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
@@ -77,12 +77,11 @@ export default function RootLayout({
       <body className={`${manrope.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
-            <LocalizedDocumentTitle />
             {children}
           </LanguageProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
-    </html>
+    </LocalizedHtml>
   )
 }

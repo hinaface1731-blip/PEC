@@ -2,32 +2,17 @@
 
 import Image from 'next/image'
 import { FallbackImage } from '@/components/ui/fallback-image'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { useLanguage } from '@/components/language-provider'
-import { ArrowUpRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { ArrowUpRight, MapPin, CheckCircle2, type LucideIcon } from 'lucide-react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
 import { YandexMap } from '@/components/yandex-map-v3'
-import { motion } from 'framer-motion'
 import { projects, workRegionDetails, type WorkRegion } from '@/lib/projects'
 import { ProjectPhotoCredit } from '@/components/projects/project-photo-credit'
 
 interface ServiceMethod {
   ru: string
   en: string
-}
-
-interface ServiceEquipmentItem {
-  name: string
-  specs: string[]
-  image?: string
-}
-
-interface ServiceEquipment {
-  titleRu: string
-  titleEn: string
-  href?: string
-  items: ServiceEquipmentItem[]
 }
 
 interface ServiceStep {
@@ -74,7 +59,6 @@ export interface ServicePageData {
   methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
   reverse?: boolean
-  equipment: ServiceEquipment[]
   steps: ServiceStep[]
   results: ServiceResult[]
   projectExample?: ServiceProjectExample
@@ -88,9 +72,10 @@ export interface ServicePageData {
 export interface ServicePageTemplateProps {
   data: ServicePageData
   topSection?: React.ReactNode
+  afterHero?: React.ReactNode
 }
 
-export function ServicePageTemplate({ data, topSection }: ServicePageTemplateProps) {
+export function ServicePageTemplate({ data, topSection, afterHero }: ServicePageTemplateProps) {
   const { t } = useLanguage()
   const example = data.projectExample
   const project = example && projects.find(({ id }) => id === example.id)
@@ -101,58 +86,27 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
     color: '#e74c3c',
   }))
   
-  // Состояния для карусели оборудования
-  const [equipmentCategoryIndex, setEquipmentCategoryIndex] = useState(0)
-  const [equipmentItemIndex, setEquipmentItemIndex] = useState(0)
-
-  // Текущая категория и текущий элемент
-  const currentCategory = data.equipment[equipmentCategoryIndex]
-  const currentItems = currentCategory?.items || []
-  const currentItem = currentItems[equipmentItemIndex]
-
-  const handleCategoryChange = (index: number) => {
-    setEquipmentCategoryIndex(index)
-    setEquipmentItemIndex(0)
-  }
-
-  const nextEquipmentItem = () => {
-    if (equipmentItemIndex < currentItems.length - 1) {
-      setEquipmentItemIndex(equipmentItemIndex + 1)
-    } else {
-      setEquipmentItemIndex(0)
-    }
-  }
   const introParagraphs = t(data.introRu ?? '', data.introEn ?? data.introRu ?? '')
     .split('\n\n')
     .map((p) => p.trim())
     .filter(Boolean)
     
-  const prevEquipmentItem = () => {
-    if (equipmentItemIndex > 0) {
-      setEquipmentItemIndex(equipmentItemIndex - 1)
-    } else {
-      setEquipmentItemIndex(currentItems.length - 1)
-    }
-  }
-
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-card overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative isolate overflow-hidden bg-[#101820] pt-32 pb-20 text-white">
+        <div aria-hidden="true" className="hero-media">
           <Image
             src={data.heroImage}
-            alt={t(data.titleRu, data.titleEn)}
+            alt=""
             fill
             priority
             className="object-cover"
             sizes="100vw"
             style={{ objectPosition: 'center 50%' }}
           />
-          <div className="absolute inset-0 bg-black/50" />
         </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 text-white/80 mb-4 flex-wrap">
               <Link href="/" className="hover:text-white transition-colors">
@@ -178,6 +132,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
           </div>
         </div>
       </section>
+      {afterHero}
       {introParagraphs.length > 0 && (
         <section className="bg-linear-to-b from-card to-background px-4 py-10 sm:px-8 sm:py-14 lg:py-16">
           <div className="container mx-auto">
@@ -224,7 +179,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 <div key={idx} className="card group min-w-0 w-full lg:w-[calc((100%_-_3rem)/3)]">
                   <div className="w-14 h-14 rounded-2xl bg-[var(--accent-glow)] flex items-center justify-center mb-5">
                     {group.icon ? (
-                      <group.icon className="w-7 h-7 text-[var(--accent)]" />
+                      <group.icon className="w-7 h-7 text-accent-foreground" />
                     ) : (
                       <span className="text-2xl">📌</span>
                     )}
@@ -251,7 +206,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 <ul className="space-y-3">
                   {data.methods.map((method, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[var(--accent)] mt-0.5 shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-accent-foreground mt-0.5 shrink-0" />
                       <span className="text-[var(--text)]">{t(method.ru, method.en)}</span>
                     </li>
                   ))}
@@ -271,128 +226,6 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
         </div>
       </section>
 
-      {/* Блок «Применяемые методики и оборудование» временно отключён
-      <section className="section bg-[var(--bg2)]">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-[var(--text)] mb-10 text-center">
-            {t('Применяемые методики и оборудование', 'Methods & Equipment')}
-          </h2>
-
-          
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {data.equipment.map((eq, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleCategoryChange(idx)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                  equipmentCategoryIndex === idx
-                    ? 'bg-[var(--accent)] text-white shadow-md'
-                    : 'bg-[var(--bg3)] text-[var(--muted)] hover:bg-[var(--accent-glow)] hover:text-[var(--accent)]'
-                }`}
-              >
-                {t(eq.titleRu, eq.titleEn)}
-              </button>
-            ))}
-          </div>
-
-          
-          {currentCategory && currentItem && (
-            <div className="relative max-w-5xl mx-auto">
-              <motion.div
-                key={`${equipmentCategoryIndex}-${equipmentItemIndex}`}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="card-enhanced overflow-hidden"
-              >
-                <div className="flex flex-col md:flex-row">
-                  
-                  <div className="flex-1 p-6 md:p-8">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-1 h-6 bg-[var(--accent)] rounded-full" />
-                      <span className="text-sm text-[var(--accent)] font-medium">
-                        {t(currentCategory.titleRu, currentCategory.titleEn)}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-4">
-                      {currentItem.name}
-                    </h3>
-                    <ul className="space-y-3">
-                      {currentItem.specs.map((spec, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
-                          <span>{spec}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    {currentCategory.href && (
-                      <Link
-                        href={currentCategory.href}
-                        className="inline-flex items-center gap-2 mt-6 text-sm text-[var(--accent)] hover:gap-3 transition-all"
-                      >
-                        {t('Подробнее →', 'Learn more →')}
-                      </Link>
-                    )}
-                  </div>
-
-                  
-                  <div className="flex justify-center items-center md:w-80 lg:w-96 h-64">
-                    <div className="relative w-56 h-48">
-                      <Image
-                        src={currentItem.image || '/images/equipment-placeholder.jpg'}
-                        alt={currentItem.name}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 768px) 100vw, 224px"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              
-              {currentItems.length > 1 && (
-                <>
-                  <button
-                    onClick={prevEquipmentItem}
-                    className="absolute left-0 top-1/2 -translate-x-4 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg"
-                    aria-label="Предыдущий"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={nextEquipmentItem}
-                    className="absolute right-0 top-1/2 translate-x-4 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--bg3)] border border-[var(--border)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg"
-                    aria-label="Следующий"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </>
-              )}
-
-              
-              {currentItems.length > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
-                  {currentItems.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setEquipmentItemIndex(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        equipmentItemIndex === idx
-                          ? 'w-6 bg-[var(--accent)]'
-                          : 'w-2 bg-[var(--muted2)] hover:bg-[var(--accent)]/50'
-                      }`}
-                      aria-label={`Перейти к слайду ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
-    */}
       {/* Process Steps */}
       <section className="section bg-gradient-to-b from-[var(--bg)] to-[var(--bg2)]">
         <div className="container mx-auto">
@@ -496,7 +329,7 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
                 key={region.ru}
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg3)] border border-[var(--border)]"
               >
-                <MapPin className="w-4 h-4 text-[var(--accent)]" />
+                <MapPin className="w-4 h-4 text-accent-foreground" />
                 <span className="text-sm text-[var(--text)]">{t(region.ru, region.en)}</span>
               </div>
             ))}

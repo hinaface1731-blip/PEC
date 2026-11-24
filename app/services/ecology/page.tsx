@@ -1,10 +1,8 @@
+import { localizedMetadata } from '@/lib/site-metadata'
 import { PageLayout } from '@/components/page-layout'
 import { EcologyContent } from '@/components/services/ecology-content'
 
-export const metadata = {
-  title: 'Экология и рекультивация',
-  description: 'ОВОС, экологический мониторинг, проекты рекультивации, прохождение ГЭЭ.',
-}
+export const metadata = localizedMetadata('/services/ecology', 'ru')
 
 export default function EcologyPage() {
   return (

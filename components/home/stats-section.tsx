@@ -46,7 +46,7 @@ export function StatsSection() {
           {stats.map((stat) => (
             <div key={stat.labelRu} className="card text-center">
               <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--accent-glow)] flex items-center justify-center">
-                <stat.icon className="w-7 h-7 text-[var(--accent)]" />
+                <stat.icon className="w-7 h-7 text-accent-foreground" />
               </div>
               <div className="stat-num">{stat.value}</div>
               <div className="stat-label">{t(stat.labelRu, stat.labelEn)}</div>

@@ -3,7 +3,7 @@
 import { Shield, Lock, Database, UserCheck, FileText, Globe, Mail, Phone, MapPin } from 'lucide-react'
 import { FadeIn } from '@/components/fade-in'
 import { useLanguage } from '@/components/language-provider'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { PageLayout } from '@/components/page-layout'
 import { personalDataOperator as operator } from '@/lib/personal-data-operator'
 

@@ -79,42 +79,6 @@ const data: ServicePageData = {
     },
   ],
   methodsImage: '/images/mark_obor.jpg',
-  equipment: [
-    {
-      titleRu: 'ГНСС-оборудование',
-      titleEn: 'GNSS Equipment',
-      items: [
-        { name: 'Высокоточные ГНСС-приемники', specs: ['Двухчастотный GPS/ГЛОНАСС', 'Точность 2-5 мм + 0.5 ppm', 'RTK режим'], image: '/images/equipment/gnss-receiver.jpg' },
-        { name: 'RTK-системы сантиметровой точности', specs: ['Базовая станция + ровер', 'Радиомодем 1 Вт', 'Дальность до 10 км'], image: '/images/equipment/rtk-system.jpg' },
-        { name: 'Базовые станции', specs: ['Непрерывная запись 24/7', '48 каналов', 'Память 4 ГБ'], image: '/images/equipment/base-station.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Геодезические приборы',
-      titleEn: 'Geodetic Instruments',
-      items: [
-        { name: 'Электронные тахеометры', specs: ['Точность измерения углов 2"', 'Безотражательная дальность 500 м', 'Память 50000 точек'], image: '/images/equipment/total-station.jpg' },
-        { name: 'Нивелиры', specs: ['Точность 0.3 мм/км', 'Компенсатор ±15\'', 'Увеличение 32x'], image: '/images/equipment/level.jpg' },
-        { name: 'Отражатели и вешки', specs: ['Призма L1', 'Штатив алюминиевый', 'Высота до 2.5 м'], image: '/images/equipment/prism.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Беспилотные технологии',
-      titleEn: 'Unmanned technologies',
-      items: [
-        { name: 'Квадрокоптер DJI Matrice 350 RTK', specs: ['Аэрофотосъемка', 'Время полета 45 мин', 'RTK модуль', 'Помехоустойчивый приемник'], image: '/images/equipment/drone.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Программное обеспечение',
-      titleEn: 'Software',
-      items: [
-        { name: 'nanoCAD GeoniCS', specs: ['Топоплан 1:500', 'Цифровая модель рельефа', 'Расчет объемов'], image: '/images/equipment/nanocad.jpg' },
-        { name: 'КРЕДО-Диалог', specs: ['Камеральная обработка', 'Создание маркшейдерских планов', 'Экспорт в DXF/DWG'], image: '/images/equipment/kredo.jpg' },
-        { name: 'AutoCAD Civil 3D', specs: ['3D моделирование', 'Проектирование трасс', 'Подсчет объемов работ'], image: '/images/equipment/civil3d.jpg' },
-      ]
-    },
-  ],
   steps: [
     {
       image: '/images/work-stage-illustrations/planning.webp',

@@ -4,11 +4,12 @@ import { useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Drill, Cpu, TestTube, Truck, ChevronRight, Check, Compass, type LucideIcon } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
-import Link from "next/link"
+import Link from '@/components/localized-link'
 import Image from "next/image"
 import { FallbackImage } from "@/components/ui/fallback-image"
 import { equipmentManufacturers } from "@/lib/equipment-manufacturers"
 import { drawEquipmentPhoto, equipmentPhotoDisplay } from "@/lib/equipment-photo-display"
+import { zolotinkaGoldRange } from "@/lib/zolotinka"
 
 interface EquipmentCategory {
   id: string
@@ -294,12 +295,12 @@ const equipmentCategories: EquipmentCategory[] = [
         specs: [
           "Определение золота в пробах горных пород и руд в полевых условиях",
           "Рентгенофлуоресцентный анализ после предварительного концентрирования золота",
-          "Диапазон определения по методике НСАМ № 392-Х/РС (ред. 2019 г.): 0,25–50 г/т",
+          `Диапазон определения по методике НСАМ № 392-Х/РС (ред. 2019 г.): ${zolotinkaGoldRange.ru}`,
         ],
         specsEn: [
           "On-site determination of gold in rock and ore samples",
           "X-ray fluorescence analysis after gold preconcentration",
-          "Determination range under NSAM Method No. 392-Kh/RS (2019 revision): 0.25–50 g/t",
+          `Determination range under NSAM Method No. 392-Kh/RS (2019 revision): ${zolotinkaGoldRange.en}`,
         ],
         image: "/images/equipment/zolotinka-lab-illustration.webp",
         imageAlt: {
@@ -695,8 +696,8 @@ export function EquipmentContent() {
             
             <p className="text-xl text-white/90 leading-relaxed">
               {t(
-                'Собственный парк техники и приборов мирового уровня для выполнения полного цикла геологоразведочных работ в любых условиях.',
-                'Own fleet of world-class equipment for full-cycle geological exploration in any conditions.'
+                'Техника и приборы для бурения, геофизики, маркшейдерских работ и полевого анализа проб.',
+                'Equipment for drilling, geophysical surveys, mine surveying, and on-site sample analysis.'
               )}
             </p>
           </motion.div>
@@ -804,54 +805,6 @@ export function EquipmentContent() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {t('Преимущества нашего оборудования', 'Equipment Advantages')}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('Регулярное обновление парка техники и строгий контроль качества', 'Regular fleet renewal and strict quality control')}
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { titleRu: "100% собственное", titleEn: "100% owned", descRu: "Весь парк оборудования в собственности компании", descEn: "All equipment is company-owned" },
-              { titleRu: "Сертифицировано", titleEn: "Certified", descRu: "Ежегодная поверка и сертификация приборов", descEn: "Annual verification and certification" },
-              { titleRu: "Современное", titleEn: "Modern", descRu: "Средний возраст оборудования — 3 года", descEn: "Average equipment age — 3 years" },
-              { titleRu: "Резервирование", titleEn: "Redundancy", descRu: "Дублирование критически важного оборудования", descEn: "Critical equipment duplication" }
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-background p-6 rounded-2xl border border-border"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <Check className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                  {t(benefit.titleRu, benefit.titleEn)}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {t(benefit.descRu, benefit.descEn)}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-  
     </div>
   )
 }

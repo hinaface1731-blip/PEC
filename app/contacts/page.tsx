@@ -1,10 +1,8 @@
+import { localizedMetadata } from '@/lib/site-metadata'
 import ContactsContent from '@/components/contacts/contacts-content'
 import { PageLayout } from '@/components/page-layout'
 
-export const metadata = {
-  title: 'Карьера и контакты',
-  description: 'Контакты Полярной Экспедиционной Компании. Телефон, email, адрес в Красноярске.',
-}
+export const metadata = localizedMetadata('/contacts', 'ru')
 
 export default function ContactsPage() {
   return (

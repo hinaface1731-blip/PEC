@@ -14,6 +14,7 @@
   --muted2: #64748b;
   --accent: #f97316;
   --accent-h: #ea580c;
+  --accent-text: #a53c07;
   --accent-glow: rgba(249, 115, 22, 0.08);
   --radius: 16px;
   --nav-h: 78px;
@@ -25,13 +26,13 @@
   --popover: var(--bg2);
   --popover-foreground: var(--text);
   --primary: var(--accent);
-  --primary-foreground: #ffffff;
+  --primary-foreground: #0b0e12;
   --secondary: var(--bg3);
   --secondary-foreground: var(--text);
   --muted-bg: var(--bg3);
   --muted-foreground: var(--muted);
   --accent-bg: var(--accent-glow);
-  --accent-foreground: var(--accent);
+  --accent-foreground: var(--accent-text);
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --input: var(--border2);
@@ -46,7 +47,8 @@
   --border2: rgba(255, 255, 255, 0.12);
   --text: #ffffff;
   --muted: #9aa1a9;
-  --muted2: #6c757d;
+  --muted2: #929aa3;
+  --accent-text: #ffad61;
   --accent-glow: rgba(249, 115, 22, 0.15);
 
   --background: var(--bg);
@@ -55,7 +57,6 @@
   --card-foreground: var(--text);
   --popover: var(--bg2);
   --popover-foreground: var(--text);
-  --primary-foreground: #ffffff;
   --secondary: var(--bg3);
   --secondary-foreground: var(--text);
   --muted-bg: var(--bg3);
@@ -110,11 +111,39 @@
 }
 
 .btn-primary {
-  @apply bg-[var(--accent)] text-white hover:bg-[var(--accent-h)];
+  @apply bg-[var(--accent)] text-primary-foreground hover:bg-[var(--accent-h)];
 }
 
 .btn-ghost {
   @apply bg-black/40 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 hover:border-white/50;
+}
+
+.hero-media,
+.hero-media::after {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media {
+  z-index: 0;
+}
+
+.hero-media::after {
+  content: '';
+  z-index: 1;
+  pointer-events: none;
+  background: rgb(10 14 19 / 78%);
+}
+
+@media (min-width: 64rem) {
+  .hero-media::after {
+    background: linear-gradient(
+      to right,
+      rgb(10 14 19 / 85%),
+      rgb(10 14 19 / 76%) max(50rem, calc(50% + 11rem)),
+      rgb(10 14 19 / 30%)
+    );
+  }
 }
 
 .card {
@@ -126,7 +155,7 @@
 }
 
 .section {
-  @apply py-24 px-8;
+  @apply px-4 py-16 sm:px-8 lg:py-24;
 }
 
 .container {

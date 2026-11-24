@@ -84,48 +84,6 @@ const data: ServicePageData = {
   methodsImage: '/images/recul.jpg',
   
   // ✅ Новая структура оборудования
-  equipment: [
-    {
-      titleRu: 'Пробоотбор',
-      titleEn: 'Sampling',
-      items: [
-        { name: 'Пробоотборники почв', specs: ['Нержавеющая сталь', 'Объём 100-500 см³', 'ГОСТ 17.4.4.02'], image: '/images/equipment/soil-sampler.jpg' },
-        { name: 'Батометры', specs: ['Объём 1-5 л', 'Нержавеющая сталь', 'Глубина до 50 м'], image: '/images/equipment/bathometer.jpg' },
-        { name: 'Аспираторы', specs: ['Производительность 20 л/мин', 'Аккумулятор 12 ч', 'Погрешность ±5%'], image: '/images/equipment/aspirator.jpg' },
-        { name: 'Дозиметры', specs: ['Диапазон 0.01-1000 мкЗв/ч', 'Погрешность ±15%', 'Температура -20..+50°C'], image: '/images/equipment/dosimeter.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Лабораторный анализ',
-      titleEn: 'Laboratory Analysis',
-      items: [
-        { name: 'Хроматографы', specs: ['Газовый хроматограф', 'Предел обнаружения 0.1 мг/м³', 'Автопробоотборник'], image: '/images/equipment/chromatograph.jpg' },
-        { name: 'Спектрофотометры', specs: ['Диапазон 190-1100 нм', 'Ширина щели 2 нм', 'Двухлучевой'], image: '/images/equipment/spectrophotometer.jpg' },
-        { name: 'pH-метры', specs: ['Диапазон 0-14 pH', 'Точность ±0.01 pH', 'Автокалибровка'], image: '/images/equipment/ph-meter.jpg' },
-        { name: 'Кондуктометры', specs: ['Диапазон 0-200 мСм/см', 'Точность ±1%', 'Компенсация температуры'], image: '/images/equipment/conductometer.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Нормативы',
-      titleEn: 'Standards',
-      items: [
-        { name: 'ГОСТ 17.4.3.02-85', specs: ['Охрана природы', 'Почвы. Требования к отбору проб', 'Дата введения: 1986-01-01'], image: '/images/equipment/gost.jpg' },
-        { name: 'ГОСТ 17.5.3.04-83', specs: ['Охрана природы', 'Земли. Рекультивация', 'Технические требования'], image: '/images/equipment/gost.jpg' },
-        { name: 'СанПиН 2.1.3684-21', specs: ['Санитарные правила', 'ПДК в почвах, воде, воздухе', 'Актуальная редакция'], image: '/images/equipment/sanpin.jpg' },
-        { name: 'Приказ Минприроды № 525', specs: ['Порядок рекультивации', 'Согласование отчёта', 'Формы документов'], image: '/images/equipment/document.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Рекультивация',
-      titleEn: 'Reclamation',
-      items: [
-        { name: 'Бульдозеры', specs: ['Мощность 300 л.с.', 'Глубина подъема отвала 1.5 м', 'Работа при -50°C'], image: '/images/equipment/bulldozer.jpg' },
-        { name: 'Экскаваторы', specs: ['Вместимость ковша 2.5 м³', 'Глубина копания 5 м', 'Полный привод'], image: '/images/equipment/excavator.jpg' },
-        { name: 'Сеялки', specs: ['Ширина захвата 3 м', 'Емкость бункера 500 кг', 'Регулировка глубины'], image: '/images/equipment/seeder.jpg' },
-        { name: 'Семена местных трав', specs: ['Сорта: овсяница, мятлик', 'Всхожесть > 80%', 'Адаптированы к северу'], image: '/images/equipment/seeds.jpg' },
-      ]
-    },
-  ],
   
   steps: [
     {
@@ -210,8 +168,8 @@ const data: ServicePageData = {
     {
       titleRu: "Документация сдачи рекультивации",
       titleEn: "Reclamation handover records",
-      descRu: "Акты, фотофиксация и результаты контрольных обследований, если ПЭК ведёт этап сдачи.",
-      descEn: "Acceptance records, photographs, and follow-up survey results where PEC handles handover.",
+      descRu: "Акты, фотофиксация и результаты контрольных обследований",
+      descEn: "Acceptance records, photographs, and follow-up survey results",
     },
   ],
   

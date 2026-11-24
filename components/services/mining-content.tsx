@@ -50,49 +50,6 @@ const data: ServicePageData = {
   methodsImage: '/images/site/excavator.jpg',
   
   // ✅ Новая структура оборудования
-  equipment: [
-    {
-      titleRu: 'Землеройная техника',
-      titleEn: 'Earthmoving Equipment',
-      items: [
-        { name: 'Экскаватор Hitachi ZX870', specs: ['Вместимость ковша 5 м³', 'Глубина копания 7 м', 'Мощность 500 л.с.'], image: '/images/equipment/excavator.jpg' },
-        { name: 'Экскаватор Komatsu PC400', specs: ['Вместимость ковша 2.5 м³', 'Глубина копания 6 м', 'Масса 42 т'], image: '/images/equipment/komatsu.jpg' },
-        { name: 'Бульдозер Komatsu D375A', specs: ['Мощность 600 л.с.', 'Отвал 5 м³', 'Глубина подъема 1.5 м'], image: '/images/equipment/bulldozer.jpg' },
-        { name: 'Погрузчик XCMG LW600K', specs: ['Вместимость ковша 3.5 м³', 'Грузоподъемность 6 т', 'Полный привод'], image: '/images/equipment/loader.jpg' },
-        { name: 'Автосамосвал Shacman', specs: ['Грузоподъемность 25 т', 'Двигатель 400 л.с.', 'Работа при -40°C'], image: '/images/equipment/dump-truck.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Буровое оборудование',
-      titleEn: 'Drilling Equipment',
-      items: [
-        { name: 'Буровой станок СБШ-250', specs: ['Диаметр скважин 200-250 мм', 'Глубина до 30 м', 'Шарошечное бурение'], image: '/images/equipment/sbsh-250.jpg' },
-        { name: 'Перфоратор ПП-63', specs: ['Диаметр шпуров 40-60 мм', 'Глубина до 20 м', 'Пневматический'], image: '/images/equipment/perforator.jpg' },
-        { name: 'Буровая установка на гусеницах', specs: ['Диаметр 76-150 мм', 'Глубина до 50 м', 'Угол наклона 0-30°'], image: '/images/equipment/track-drill.jpg' },
-        { name: 'Компрессорная станция', specs: ['Производительность 30 м³/мин', 'Давление 12 атм', 'Дизельная'], image: '/images/equipment/compressor-station.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Вспомогательная техника',
-      titleEn: 'Support Equipment',
-      items: [
-        { name: 'Автогрейдер', specs: ['Ширина отвала 4 м', 'Угол резания 30-70°', 'Мощность 200 л.с.'], image: '/images/equipment/motor-grader.jpg' },
-        { name: 'Поливомоечная машина', specs: ['Объём бака 10 м³', 'Ширина полива 15 м', 'Пылеподавление'], image: '/images/equipment/water-truck.jpg' },
-        { name: 'Топливозаправщик', specs: ['Объём 15 м³', 'Дизельное топливо', 'Производительность 500 л/мин'], image: '/images/equipment/fuel-truck.jpg' },
-        { name: 'Ремонтная мастерская', specs: ['На базе КАМАЗ', 'Сварочный аппарат', 'Подъёмник 5 т'], image: '/images/equipment/workshop.jpg' },
-      ]
-    },
-    {
-      titleRu: 'Безопасность',
-      titleEn: 'Safety Equipment',
-      items: [
-        { name: 'Системы видеонаблюдения', specs: ['IP-камеры', 'Запись 24/7', 'Удалённый доступ'], image: '/images/equipment/cctv.jpg' },
-        { name: 'Датчики загазованности', specs: ['CH4, CO, H2S', 'Звуковая сигнализация', 'Автоматическое отключение'], image: '/images/equipment/gas-sensor.jpg' },
-        { name: 'СИЗ', specs: ['Каски, спецобувь', 'Респираторы', 'Сигнальные жилеты'], image: '/images/equipment/ppe.jpg' },
-        { name: 'Системы оповещения', specs: ['Громкоговорители', 'Сирены', 'Радиосвязь'], image: '/images/equipment/alarm.jpg' },
-      ]
-    },
-  ],
   
   steps: [
     {

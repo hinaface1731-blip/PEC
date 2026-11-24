@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Target, Eye, Award, Users, TrendingUp, Shield, MapPin, Calendar } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
-import Link from "next/link"
+import Link from '@/components/localized-link'
 import Image from "next/image"
 
 const milestones = [

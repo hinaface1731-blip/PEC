@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import Link from "next/link"
+import Link from '@/components/localized-link'
 import Image from "next/image"
 import { YandexMap } from "@/components/yandex-map-v3"
 import { useLanguage } from "@/components/language-provider"
@@ -388,10 +388,10 @@ export default function ContactsContent() {
                         </label>
                       </div>
                       <div className="flex flex-wrap gap-x-4 gap-y-1 pl-6">
-                        <Link href="/privacy/consent" target="_blank" rel="noopener" className="text-primary underline underline-offset-2">
+                        <Link href="/privacy/consent" target="_blank" rel="noopener" className="text-accent-foreground underline underline-offset-2">
                           {t('Текст согласия', 'Read the consent')}
                         </Link>
-                        <Link href="/privacy" target="_blank" rel="noopener" className="text-primary underline underline-offset-2">
+                        <Link href="/privacy" target="_blank" rel="noopener" className="text-accent-foreground underline underline-offset-2">
                           {t('Политика конфиденциальности', 'Privacy policy')}
                         </Link>
                       </div>
@@ -580,7 +580,7 @@ export default function ContactsContent() {
                   {/* Кнопка отклика */}
                   <Button
                     variant="outline"
-                    className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
+                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                     onClick={() => handleVacancyClick(t(vacancy.titleRu, vacancy.titleEn))}
                   >
                     {t('Откликнуться', 'Apply Now')}

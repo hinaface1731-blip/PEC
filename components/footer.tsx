@@ -1,9 +1,10 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { Logo } from './logo'
 import { useLanguage } from './language-provider'
 import { Phone, Mail, MapPin } from 'lucide-react'
+import { engineeringSroMembership } from '@/lib/company-licenses'
 
 const services = [
   { href: '/services/geological', ru: 'Геологические работы', en: 'Geological Services' },
@@ -44,11 +45,11 @@ export function Footer() {
               )}
             </p>
             <div className="space-y-2 text-sm">
-              <a href="tel:+73912051584" className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
+              <a href="tel:+73912051584" className="flex items-center gap-2 text-[var(--muted)] hover:text-accent-foreground transition-colors">
                 <Phone className="w-4 h-4" />
                 +7 (391) 205‑15‑84
               </a>
-              <a href="mailto:info@polar-ec.ru" className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
+              <a href="mailto:info@polar-ec.ru" className="flex items-center gap-2 text-[var(--muted)] hover:text-accent-foreground transition-colors">
                 <Mail className="w-4 h-4" />
                 info@polar-ec.ru
               </a>
@@ -69,7 +70,7 @@ export function Footer() {
                 <li key={service.href}>
                   <Link
                     href={service.href}
-                    className="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+                    className="text-sm text-[var(--muted)] hover:text-accent-foreground transition-colors"
                   >
                     {t(service.ru, service.en)}
                   </Link>
@@ -88,7 +89,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+                    className="text-sm text-[var(--muted)] hover:text-accent-foreground transition-colors"
                   >
                     {t(item.ru, item.en)}
                   </Link>
@@ -100,16 +101,24 @@ export function Footer() {
           {/* Licenses - колонка 4 */}
           <div>
             <h4 className="font-semibold text-[var(--text)] mb-4">
-              {t('Лицензии', 'Licenses')}
+              {t('Лицензии и допуски', 'Licenses & Permits')}
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/survey#license" className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--accent)]">
+                <a
+                  href={engineeringSroMembership.registryUrl}
+                  className="text-sm text-[var(--muted)] transition-colors hover:text-accent-foreground"
+                >
+                  {t(`Членство в СРО · запись № ${engineeringSroMembership.number}`, `SRO Membership · Record No. ${engineeringSroMembership.number}`)}
+                </a>
+              </li>
+              <li>
+                <Link href="/services/survey#license" className="text-sm text-[var(--muted)] transition-colors hover:text-accent-foreground">
                   {t('Лицензия на маркшейдерские работы', 'Mine Surveying License')}
                 </Link>
               </li>
               <li>
-                <Link href="/investors" className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--accent)]">
+                <Link href="/investors#licenses" className="text-sm text-[var(--muted)] transition-colors hover:text-accent-foreground">
                   {t('Лицензии на недропользование', 'Subsoil Use Licenses')}
                 </Link>
               </li>
@@ -123,7 +132,7 @@ export function Footer() {
             © {new Date().getFullYear()} {t('ООО «Полярная Экспедиционная Компания». Все права защищены.', 'LLC "Polar Expedition Company". All rights reserved.')}
           </p>
           <div className="flex items-center gap-6 text-sm">
-            <Link href="/privacy" className="text-[var(--muted2)] hover:text-[var(--accent)] transition-colors">
+            <Link href="/privacy" className="text-[var(--muted2)] hover:text-accent-foreground transition-colors">
               {t('Политика конфиденциальности', 'Privacy Policy')}
             </Link>
           </div>

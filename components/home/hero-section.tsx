@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { useLanguage } from '@/components/language-provider'
-import { ArrowRight, Briefcase } from 'lucide-react'
+import { ArrowRight, Briefcase, Pause, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
@@ -10,11 +10,29 @@ export function HeroSection() {
   const { t } = useLanguage()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isVideoReady, setIsVideoReady] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   // Видео могло успеть загрузиться до гидрации — тогда onCanPlay уже не сработает
   useEffect(() => {
-    if (videoRef.current && videoRef.current.readyState >= 3) setIsVideoReady(true)
+    const video = videoRef.current
+    if (!video) return
+    if (video.readyState >= 3) setIsVideoReady(true)
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const syncPlayback = () => {
+      if (motionPreference.matches) video.pause()
+      else void video.play().catch(() => {})
+    }
+    syncPlayback()
+    motionPreference.addEventListener('change', syncPlayback)
+    return () => motionPreference.removeEventListener('change', syncPlayback)
   }, [])
+
+  const toggleVideo = () => {
+    const video = videoRef.current
+    if (!video) return
+    if (video.paused) void video.play().catch(() => {})
+    else video.pause()
+  }
 
   const scrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -25,19 +43,20 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative isolate flex min-h-[90vh] items-center overflow-hidden bg-black">
       {/* Тёмный фон, пока видео не готово, затем плавное появление ролика */}
-      <div className="absolute inset-0 z-0 bg-black">
+      <div className="hero-media">
         <video
           ref={videoRef}
-          autoPlay 
           muted 
           loop 
           playsInline
-          preload="auto"
+          preload="none"
           aria-hidden="true"
           onCanPlay={() => setIsVideoReady(true)}
-          className={`w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          className={`w-full h-full object-cover transition-opacity duration-1000 ease-in-out motion-reduce:transition-none ${
             isVideoReady ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -45,8 +64,6 @@ export function HeroSection() {
           <source src="/videos/hero.webm" type="video/webm" />
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-24">
@@ -79,7 +96,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-sm md:text-base text-white/60 leading-relaxed mb-10 max-w-2xl"
+            className="text-sm md:text-base text-white/90 leading-relaxed mb-10 max-w-2xl"
           >
             {t(
               'Собственная геологоразведка: от проектирования до защиты запасов в ГКЗ',
@@ -108,6 +125,14 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+      <button
+        type="button"
+        onClick={toggleVideo}
+        aria-label={isPlaying ? t('Поставить видео на паузу', 'Pause background video') : t('Воспроизвести видео', 'Play background video')}
+        className="absolute right-4 bottom-4 z-10 grid size-10 place-items-center rounded-full border border-white/50 bg-black/70 text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-8 sm:bottom-8"
+      >
+        {isPlaying ? <Pause aria-hidden="true" className="size-4" /> : <Play aria-hidden="true" className="size-4" />}
+      </button>
     </section>
   )
 }

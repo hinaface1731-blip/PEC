@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import Image from 'next/image'
 import { useLanguage } from '@/components/language-provider'
 import { Mountain, Radio, Drill, Compass, FlaskConical, FileText, Leaf, ArrowUpRight, ArrowRight, Pickaxe, Truck } from 'lucide-react'
@@ -98,7 +98,7 @@ export function ServicesSection({ variant = 'section' }: ServicesSectionProps) {
           <div>
             {isPage && (
               <div className="flex items-center gap-2 text-muted-foreground mb-4 text-sm">
-                <Link href="/" className="hover:text-[var(--accent)] transition-colors">
+                <Link href="/" className="hover:text-accent-foreground transition-colors">
                   {t('Главная', 'Home')}
                 </Link>
                 <span>/</span>
@@ -144,7 +144,7 @@ export function ServicesSection({ variant = 'section' }: ServicesSectionProps) {
           ) : (
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium transition-all hover:bg-[var(--accent-h)] shrink-0"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-primary-foreground font-medium transition-all hover:bg-[var(--accent-h)] shrink-0"
             >
               {t('Все услуги', 'All Services')}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -167,15 +167,15 @@ export function ServicesSection({ variant = 'section' }: ServicesSectionProps) {
                 className="card group hover:border-[var(--accent)]/30 flex flex-col h-full"
               >
                 <div className="w-12 h-12 rounded-xl bg-[var(--accent-glow)] flex items-center justify-center mb-4 group-hover:bg-[var(--accent)] transition-colors duration-300 shrink-0">
-                  <service.icon className="w-6 h-6 text-[var(--accent)] group-hover:text-white transition-colors duration-300" />
+                  <service.icon className="w-6 h-6 text-accent-foreground group-hover:text-primary-foreground transition-colors duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent-foreground transition-colors duration-300">
                   {t(service.titleRu, service.titleEn)}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                   {t(service.descRu, service.descEn)}
                 </p>
-                <div className="mt-4 flex items-center gap-1 text-sm text-[var(--accent)] lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 shrink-0">
+                <div className="mt-4 flex items-center gap-1 text-sm text-accent-foreground lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 shrink-0">
                   {t('Подробнее', 'Learn more')}
                   <ArrowUpRight className="w-3 h-3" />
                 </div>

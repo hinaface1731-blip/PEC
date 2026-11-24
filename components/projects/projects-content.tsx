@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { MapPin, Calendar, Filter, ChevronDown, Pencil } from "lucide-react"
 import { FadeIn } from "@/components/fade-in"
 import { useLanguage } from "@/components/language-provider"
-import Link from "next/link"
+import Link from '@/components/localized-link'
 import Image from "next/image"
 import { ProjectPhotoCredit } from "@/components/projects/project-photo-credit"
 
@@ -21,9 +21,9 @@ const categories = [
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-[6.5rem_1fr] gap-3 py-2.5 border-t border-border first:border-t-0">
+    <div className="grid grid-cols-[minmax(0,5rem)_minmax(0,1fr)] gap-3 border-t border-border py-2.5 first:border-t-0 sm:grid-cols-[6.5rem_minmax(0,1fr)]">
       <dt className="text-xs text-muted-foreground pt-0.5">{label}</dt>
-      <dd className="text-sm text-foreground">{children}</dd>
+      <dd className="min-w-0 wrap-anywhere text-sm text-foreground">{children}</dd>
     </div>
   )
 }
@@ -52,6 +52,7 @@ export function ProjectsContent() {
             sizes="100vw"
             style={{ objectPosition: "center 53%" }}
           />
+          <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/60" />
           <ProjectPhotoCredit />
         </div>
 
@@ -84,12 +85,10 @@ export function ProjectsContent() {
       {/* Stats Banner */}
       <section className="py-8 bg-primary">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8">
             {[
-              { value: "20+", label: t("Проектов выполнено", "Projects completed") },
+              { value: String(projects.length), label: t("Проектов в портфолио", "Projects in the portfolio") },
               { value: String(projectRegions.length), label: t("Территорий работ", "Project areas") },
-              { value: "5", label: t("Крупных заказчиков", "Major clients") },
-              { value: "100%", label: t("Выполнение в срок", "On-time delivery") },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -102,7 +101,7 @@ export function ProjectsContent() {
                 <div className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-1">
                   {stat.value}
                 </div>
-                <div className="text-primary-foreground/80 text-sm">{stat.label}</div>
+                <div className="text-primary-foreground text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -180,7 +179,7 @@ export function ProjectsContent() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence>
               {filteredProjects.map((project) => (
                 <motion.article
@@ -190,7 +189,7 @@ export function ProjectsContent() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="group card-enhanced scroll-mt-28 p-6 rounded-2xl flex flex-col h-full"
+                  className="group card-enhanced flex h-full min-w-0 scroll-mt-28 flex-col rounded-2xl p-4 sm:p-6"
                 >
                   <div className="relative h-48 overflow-hidden rounded-lg mb-4 flex-shrink-0">
                     <Image
@@ -213,13 +212,13 @@ export function ProjectsContent() {
                     {t(project.title, project.titleEn)}
                   </h3>
 
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
+                      <MapPin className="size-4 shrink-0" />
                       {t(project.location, project.locationEn)}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                    <span className="flex items-center gap-1 whitespace-nowrap">
+                      <Calendar className="size-4 shrink-0" />
                       {project.year}
                     </span>
                   </div>

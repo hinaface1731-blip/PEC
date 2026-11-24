@@ -1,9 +1,9 @@
 // components/language-provider.tsx
 'use client'
 
-import { createContext, useCallback, useContext, useState, useEffect, ReactNode } from 'react'
-
-type Language = 'ru' | 'en'
+import { createContext, useCallback, useContext, type ReactNode } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { languageFromPath, localizedPath, type Language } from '@/lib/site-language'
 
 interface LanguageContextType {
   language: Language
@@ -14,27 +14,14 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('ru')
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('language')
-      if (saved === 'ru' || saved === 'en') {
-        setLanguage(saved)
-      }
-    } catch {}
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.lang = language
-  }, [language])
+  const pathname = usePathname() ?? '/'
+  const language = languageFromPath(pathname)
+  const router = useRouter()
 
   const handleSetLanguage = useCallback((lang: Language) => {
-    setLanguage(lang)
-    try {
-      localStorage.setItem('language', lang)
-    } catch {}
-  }, [])
+    const current = pathname + window.location.search + window.location.hash
+    router.push(localizedPath(current, lang), { scroll: false })
+  }, [pathname, router])
 
   // Стабильная ссылка на t, чтобы эффекты, зависящие от неё, не перезапускались на каждом рендере
   const t = useCallback((ru: string, en: string) => (language === 'ru' ? ru : en), [language])
