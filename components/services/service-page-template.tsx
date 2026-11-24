@@ -7,9 +7,9 @@ import { useLanguage } from '@/components/language-provider'
 import { ArrowUpRight, MapPin, CheckCircle2, type LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { StepsCarousel } from '@/components/ui/steps-carousel'
-import { YandexMapV3, type MapRegionName } from '@/components/yandex-map-v3'
+import { YandexMap } from '@/components/yandex-map-v3'
 import { motion } from 'framer-motion'
-import { projects } from '@/lib/projects'
+import { projects, workRegionDetails, type WorkRegion } from '@/lib/projects'
 import { ProjectPhotoCredit } from '@/components/projects/project-photo-credit'
 
 interface ServiceMethod {
@@ -52,11 +52,6 @@ interface ServiceProjectExample {
   workEn: string
 }
 
-interface ServiceRegion {
-  ru: MapRegionName
-  en: string
-}
-
 interface ServiceMethodGroup {
   titleRu: string
   titleEn: string
@@ -83,7 +78,7 @@ export interface ServicePageData {
   steps: ServiceStep[]
   results: ServiceResult[]
   projectExample?: ServiceProjectExample
-  regions: ServiceRegion[]
+  regions: WorkRegion[]
   sectionTitleRu?: string
   sectionTitleEn?: string
   sectionDescRu?: string
@@ -99,6 +94,12 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
   const { t } = useLanguage()
   const example = data.projectExample
   const project = example && projects.find(({ id }) => id === example.id)
+  const regions = data.regions.map((ru) => ({ ru, ...workRegionDetails[ru] }))
+  const regionPoints = regions.map(({ ru, en, coordinates }) => ({
+    coordinates,
+    title: t(ru, en),
+    color: '#e74c3c',
+  }))
   
   // Состояния для карусели оборудования
   const [equipmentCategoryIndex, setEquipmentCategoryIndex] = useState(0)
@@ -487,13 +488,12 @@ export function ServicePageTemplate({ data, topSection }: ServicePageTemplatePro
             </p>
           </div>
 
-          {/* Добавляем карту */}
-          <YandexMapV3 regions={data.regions} />
+          <YandexMap points={regionPoints} center={regionPoints[0]?.coordinates ?? [100, 65]} zoom={4} fitPoints />
 
           <div className="flex flex-wrap justify-center gap-3 mt-8">
-            {data.regions.map((region, i) => (
+            {regions.map((region) => (
               <div
-                key={i}
+                key={region.ru}
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg3)] border border-[var(--border)]"
               >
                 <MapPin className="w-4 h-4 text-[var(--accent)]" />

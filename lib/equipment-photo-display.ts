@@ -8,7 +8,7 @@ const openFrame = { whiteBackdrop: true, openFrame: true }
 
 export const equipmentPhotoDisplay: Partial<Record<string, PhotoDisplay>> = {
   '/images/equipment/boylesC6.png': openFrame,
-  '/images/equipment/egr800.png': openFrame,
+  '/images/equipment/egr-ep800g.webp': openFrame,
   '/images/equipment/epc300.png': openFrame,
   '/images/equipment/forwardC6.jpg': openFrame,
   '/images/equipment/Christensen-CS14.png': openFrame,
@@ -22,6 +22,13 @@ export const equipmentPhotoDisplay: Partial<Record<string, PhotoDisplay>> = {
   '/images/equipment/pogruzchik.jpg': { whiteBackdrop: true },
   '/images/equipment/vahtovka.png': { whiteBackdrop: true },
   '/images/equipment/zolotinka-lab.webp': { bottomCrop: 592 / 629 },
+  '/images/equipment/prince-i35xr.webp': { whiteBackdrop: true },
+  '/images/equipment/prince-ibase.webp': { whiteBackdrop: true },
+  '/images/equipment/chcnav-hce620.webp': { whiteBackdrop: true },
+  '/images/equipment/south-tru35.webp': { whiteBackdrop: true },
+  '/images/equipment/prince-dl8.webp': { whiteBackdrop: true },
+  '/images/equipment/survey-tribrach.webp': { whiteBackdrop: true },
+  '/images/equipment/survey-pole-tripod.webp': { whiteBackdrop: true },
 }
 
 function makeBackdropTransparent({ data, width, height }: ImageData, clearFrameOpenings = false) {

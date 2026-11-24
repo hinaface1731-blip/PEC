@@ -7,24 +7,26 @@
  *  - Когда текст согласован: заполни result и resultEn и удали `todo` и `todoEn`.
  *  - Поиск всех незаполненных мест: Ctrl+F по "todo:".
  */
-const projectRegionDetails = {
+// Опорные точки территорий для обзорных карт (долгота, широта).
+export const workRegionDetails = {
   'Таймыр': { en: 'Taimyr', coordinates: [109.921747, 76.143144] },
   'Республика Саха (Якутия)': { en: 'Sakha Republic (Yakutia)', coordinates: [130, 66] },
-  'Чукотка': { en: 'Chukotka', coordinates: [170, 66] },
+  'Чукотский автономный округ': { en: 'Chukotka Autonomous Okrug', coordinates: [170, 66] },
   'Забайкальский край': { en: 'Zabaykalsky Krai', coordinates: [115, 52] },
-  'Камчатка': { en: 'Kamchatka', coordinates: [160, 56] },
+  'Камчатский край': { en: 'Kamchatka Krai', coordinates: [160, 56] },
   'Магаданская область': { en: 'Magadan Oblast', coordinates: [159.740413, 62.374036] },
   'Красноярский край': { en: 'Krasnoyarsk Krai', coordinates: [86.799120, 67.746315] },
-  'Хабаровский край': { en: 'Khabarovsk Krai', coordinates: [136.8333, 54.8] },
+  'Хабаровский край': { en: 'Khabarovsk Krai', coordinates: [135.31, 54.71] }, // Чумикан
+  'Эвенкия': { en: 'Evenkia', coordinates: [100.23, 64.27] }, // Тура
 } satisfies Record<string, { en: string; coordinates: [number, number] }>
 
-type ProjectRegion = keyof typeof projectRegionDetails
+export type WorkRegion = keyof typeof workRegionDetails
 
 interface Project {
   id: number
   title: string
   titleEn: string
-  location: ProjectRegion | 'Магадан'
+  location: WorkRegion
   locationEn: string
   year: string
   status: "completed" | "inProgress"
@@ -50,8 +52,8 @@ export const projects: Project[] = [
     id: 1,
     title: "Марсианская",
     titleEn: "Marsianskaya",
-    location: "Чукотка",
-    locationEn: "Chukotka",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
     year: "2024–2026",
     status: "inProgress",
     category: "gold",
@@ -92,8 +94,8 @@ export const projects: Project[] = [
     id: 3,
     title: "Невенрекан",
     titleEn: "Nevenrekan",
-    location: "Магадан",
-    locationEn: "Magadan",
+    location: "Магаданская область",
+    locationEn: "Magadan Oblast",
     year: "2023–2026",
     status: "inProgress",
     category: "gold",
@@ -113,8 +115,8 @@ export const projects: Project[] = [
     id: 4,
     title: "Зеркальный",
     titleEn: "Zerkalny",
-    location: "Чукотка",
-    locationEn: "Chukotka",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
     year: "2025",
     status: "completed",
     category: "gold",
@@ -197,8 +199,8 @@ export const projects: Project[] = [
     id: 8,
     title: "Майницкая",
     titleEn: "Maynitskaya",
-    location: "Чукотка",
-    locationEn: "Chukotka",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
     year: "2024",
     status: "completed",
     category: "gold",
@@ -218,8 +220,8 @@ export const projects: Project[] = [
     id: 9,
     title: "Вилюйская",
     titleEn: "Vilyuyskaya",
-    location: "Чукотка",
-    locationEn: "Chukotka",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
     year: "2024",
     status: "completed",
     category: "gold",
@@ -239,8 +241,8 @@ export const projects: Project[] = [
     id: 10,
     title: "Озерная",
     titleEn: "Ozernaya",
-    location: "Камчатка",
-    locationEn: "Kamchatka",
+    location: "Камчатский край",
+    locationEn: "Kamchatka Krai",
     year: "2024",
     status: "completed",
     category: "copper",
@@ -260,8 +262,8 @@ export const projects: Project[] = [
     id: 11,
     title: "Прогнозное",
     titleEn: "Prognoznoye",
-    location: "Магадан",
-    locationEn: "Magadan",
+    location: "Магаданская область",
+    locationEn: "Magadan Oblast",
     year: "2024",
     status: "completed",
     category: "gold",
@@ -302,15 +304,15 @@ export const projects: Project[] = [
     id: 13,
     title: "Валунный",
     titleEn: "Valunny",
-    location: "Чукотка",
-    locationEn: "Chukotka",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
     year: "2025",
     status: "completed",
     category: "gold",
     categoryLabel: "Золото",
     categoryLabelEn: "Gold",
-    client: "Полюс",
-    clientEn: "Polyus",
+    client: "Хайленд Голд",
+    clientEn: "Highland Gold",
     task: "Буровые работы на золоторудном объекте",
     taskEn: "Drilling at a gold prospect",
     works: ["Буровые работы", "Геохимия по вторичным ореолам"],
@@ -323,8 +325,8 @@ export const projects: Project[] = [
     id: 14,
     title: "Центрально-Бургахчанская",
     titleEn: "Central-Burgachchanskaya",
-    location: "Чукотка",
-    locationEn: "Chukotka",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
     year: "2026",
     status: "completed",
     category: "gold",
@@ -345,7 +347,7 @@ export const projects: Project[] = [
     title: "Ольчинская",
     titleEn: "Olchinskaya",
     location: "Магаданская область",
-    locationEn: "Magadan Region",
+    locationEn: "Magadan Oblast",
     year: "2026-2027",
     status: "completed",
     category: "gold",
@@ -366,7 +368,7 @@ export const projects: Project[] = [
     title: "Лора",
     titleEn: "Lora",
     location: "Магаданская область",
-    locationEn: "Magadan Region",
+    locationEn: "Magadan Oblast",
     year: "2026-2027",
     status: "completed",
     category: "gold",
@@ -376,8 +378,8 @@ export const projects: Project[] = [
     clientEn: "Polymetal",
     task: "Буровые работы на золоторудном объекте",
     taskEn: "Drilling at a gold prospect",
-    works: ["Буровые работы", ],
-    worksEn: ["Drilling"],
+    works: ["Буровые работы", "Инклинометрия",],
+    worksEn: ["Drilling", "Inclinometry"],
     result: "Локализированы перспективные поисковые участки, выполнен подсчёт запасов",
     resultEn: "Prospective exploration targets were delineated and reserves were estimated.",
     image: "/images/lora.jpg",
@@ -466,16 +468,36 @@ export const projects: Project[] = [
     resultEn: "Prospective exploration targets were delineated and reserves were estimated.",
     image: "/images/mezozoyi.jpg",
   },
+  {
+    id: 21,
+    title: "Кекура",
+    titleEn: "Kekura",
+    location: "Чукотский автономный округ",
+    locationEn: "Chukotka Autonomous Okrug",
+    year: "2025",
+    status: "completed",
+    category: "gold",
+    categoryLabel: "Золото",
+    categoryLabelEn: "Gold",
+    client: "Хайленд Голд",
+    clientEn: "Highland Gold",
+    task: "Поисковые работы",
+    taskEn: "Prospecting",
+    works: ["Буровые работы", "Инклинометрия", "Документация керна", "Пробоподготовка и аналитические исследования", "Геоэкологические работы", "Геохимия по вторичным ореолам", ],
+    worksEn: ["Drilling", "Inclinometry" , "Geological logging of drill core", "Sample preparation and analytical testing", "Geoenvironmental surveys", "Geochemical surveys over secondary dispersion halos"],
+    result: "Локализированы перспективные поисковые участки, выполнен подсчёт запасов",
+    resultEn: "Prospective exploration targets were delineated and reserves were estimated.",
+    image: "/images/kekura (2).JPG",
+  },
 ]
 
-const projectCountsByRegion = new Map<ProjectRegion, number>()
+const projectCountsByRegion = new Map<WorkRegion, number>()
 for (const { location } of projects) {
-  const region = location === 'Магадан' ? 'Магаданская область' : location
-  projectCountsByRegion.set(region, (projectCountsByRegion.get(region) ?? 0) + 1)
+  projectCountsByRegion.set(location, (projectCountsByRegion.get(location) ?? 0) + 1)
 }
 
 export const projectRegions = Array.from(projectCountsByRegion, ([ru, projectCount]) => ({
   ru,
-  ...projectRegionDetails[ru],
+  ...workRegionDetails[ru],
   projectCount,
 }))

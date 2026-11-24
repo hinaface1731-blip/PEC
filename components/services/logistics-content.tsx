@@ -195,12 +195,11 @@ const data: ServicePageData = {
   },
 
   regions: [
-    { ru: 'Таймыр', en: 'Taimyr' },
-    { ru: 'Якутия', en: 'Yakutia' },
-    { ru: 'Чукотка', en: 'Chukotka' },
-    { ru: 'Эвенкия', en: 'Evenkia' },
-    { ru: 'Крайний Север', en: 'Far North' },
-    { ru: 'Красноярский край', en: 'Krasnoyarsk Krai' },
+    'Таймыр',
+    'Республика Саха (Якутия)',
+    'Чукотский автономный округ',
+    'Эвенкия',
+    'Красноярский край',
   ],
 }
 
