@@ -21,7 +21,6 @@ export const equipmentPhotoDisplay: Partial<Record<string, PhotoDisplay>> = {
   '/images/equipment/excavator.jpg': { whiteBackdrop: true },
   '/images/equipment/pogruzchik.jpg': { whiteBackdrop: true },
   '/images/equipment/vahtovka.png': { whiteBackdrop: true },
-  '/images/equipment/zolotinka-lab.webp': { bottomCrop: 592 / 629 },
   '/images/equipment/prince-i35xr.webp': { whiteBackdrop: true },
   '/images/equipment/prince-ibase.webp': { whiteBackdrop: true },
   '/images/equipment/chcnav-hce620.webp': { whiteBackdrop: true },

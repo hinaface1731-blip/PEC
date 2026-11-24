@@ -301,14 +301,11 @@ const equipmentCategories: EquipmentCategory[] = [
           "X-ray fluorescence analysis after gold preconcentration",
           "Determination range under NSAM Method No. 392-Kh/RS (2019 revision): 0.25–50 g/t",
         ],
-        image: "/images/equipment/zolotinka-lab.webp",
+        image: "/images/equipment/zolotinka-lab-illustration.webp",
         imageAlt: {
-          ru: "Оборудование полевой лаборатории «Золотинка» на фото из каталога «МосТест»",
-          en: "Zolotinka field laboratory equipment in the MosTest catalog photo",
+          ru: "Оборудование полевой лаборатории «Золотинка»: муфельная печь, вытяжной шкаф и образцы породы",
+          en: "Zolotinka field laboratory equipment: a muffle furnace, fume hood, and rock samples",
         },
-        modelLinks: [
-          { name: "Фото: МосТест", nameEn: "Photo: MosTest", url: "https://mos-test.ru/solution/for-mining-industry/dobycha-zolota.html" },
-        ],
         detailsHref: "/services/lab#zolotinka",
       },
       {
