@@ -9,8 +9,8 @@ const data: ServicePageData = {
   icon: Radio,
   titleRu: 'Геофизические работы',
   titleEn: 'Geophysical Services',
-  descRu: 'Электроразведка, наземная и аэромагнитная съёмка, каротаж скважин. От полевых измерений до обработки и интерпретации.',
-  descEn: 'Electrical and electromagnetic surveys, ground and drone magnetic surveys, and borehole logging. From field measurements to processing and interpretation.',
+  descRu: 'Электроразведка, магниторазведка, каротаж скважин. От полевых измерений до обработки и интерпретации.',
+  descEn: 'Electrical and electromagnetic surveys, ground magnetic surveys, and borehole logging. From field measurements to processing and interpretation.',
   heroImage: '/images/geophys5.jpeg',
   introPhoto: {
     src: '/images/geophysics.jpg',
@@ -30,10 +30,10 @@ const data: ServicePageData = {
   methods: [
     { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard borehole logging suite (gamma ray, gamma-gamma, resistivity, spontaneous potential, and induced polarization)' },
     { ru: 'Инклинометрия и навигация скважин', en: 'Borehole deviation and trajectory surveys' },
-    { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and nuclear logging' },
+    { ru: 'Акустический, оптический и радиоактивный каротаж', en: 'Acoustic, optical and nuclear logging' },
     { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
     { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical and electromagnetic surveys' },
-    { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Ground and UAV magnetic surveys' },
+    { ru: 'Магниторазведка (наземная)', en: 'Ground magnetic surveys' },
     { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry (gamma-ray spectrometry)' },
   ],
   methodsGroups: [
@@ -44,7 +44,7 @@ const data: ServicePageData = {
       methods: [
         { ru: 'Стандартный комплекс ГИС (ГК, ГГК, КС, ПС, ВП)', en: 'Standard borehole logging suite (gamma ray, gamma-gamma, resistivity, spontaneous potential, and induced polarization)' },
         { ru: 'Инклинометрия и навигация скважин', en: 'Borehole deviation and trajectory surveys' },
-        { ru: 'Акустический и радиоактивный каротаж', en: 'Acoustic and nuclear logging' },
+        { ru: 'Акустический, оптический и радиоактивный каротаж', en: 'Acoustic, optical and nuclear logging' },
         { ru: 'Каротаж магнитной восприимчивости', en: 'Magnetic susceptibility logging' },
       ]
     },
@@ -54,7 +54,7 @@ const data: ServicePageData = {
       icon: Radio,
       methods: [
         { ru: 'Электроразведка (АМТЗ, СГ-ВП, ЗСБ, БИЭП, Электротомография, ЕП, ВЭЗ, ЭТ-ВП)', en: 'Electrical and electromagnetic surveys' },
-        { ru: 'Магниторазведка (наземная и БПЛА)', en: 'Ground and UAV magnetic surveys' },
+        { ru: 'Магниторазведка (наземная)', en: 'Ground magnetic surveys' },
         { ru: 'Радиометрия (гамма-спектрометрия)', en: 'Radiometry (gamma-ray spectrometry)' },
       ]
     },

@@ -282,7 +282,9 @@ export function ServicePageTemplate({ data, topSection, afterHero }: ServicePage
                   className="object-cover"
                   sizes="(min-width: 1344px) 410px, (min-width: 1024px) 33vw, 100vw"
                 />
-                <ProjectPhotoCredit />
+                {(!example.image || example.image === project.image) && (
+                  <ProjectPhotoCredit author={project.photoAuthor} />
+                )}
               </div>
               <div className="min-w-0 flex-1">
                 <div className="mb-4 flex flex-wrap items-center gap-3">

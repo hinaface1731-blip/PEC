@@ -9,7 +9,7 @@ import Link from '@/components/localized-link'
 import Image from "next/image"
 import { ProjectPhotoCredit } from "@/components/projects/project-photo-credit"
 
-import { projectRegions, projects } from "@/lib/projects"
+import { projectRegions, projects, projectsHero } from "@/lib/projects"
 
 const IS_DEV = process.env.NODE_ENV !== "production"
 const clientCount = new Set(projects.map((project) => project.clientEn)).size
@@ -46,7 +46,7 @@ export function ProjectsContent() {
       <section className="relative pt-32 pb-20 bg-card overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/DSC09137.jpg"
+            src={projectsHero.image}
             alt={t('Проекты Полярной Экспедиционной Компании', 'Polar Expedition Company projects')}
             fill
             priority
@@ -54,7 +54,6 @@ export function ProjectsContent() {
             sizes="100vw"
             style={{ objectPosition: "center 53%" }}
           />
-          <ProjectPhotoCredit />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -81,6 +80,7 @@ export function ProjectsContent() {
             </div>
           </FadeIn>
         </div>
+        <ProjectPhotoCredit author={projectsHero.photoAuthor} />
       </section>
 
       {/* Stats Banner */}
@@ -203,7 +203,7 @@ export function ProjectsContent() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       loading="lazy"
                     />
-                    <ProjectPhotoCredit />
+                    <ProjectPhotoCredit author={project.photoAuthor} />
                     <div className="absolute top-3 left-3 z-10 flex">
                       <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                         {t(project.categoryLabel, project.categoryLabelEn)}

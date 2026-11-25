@@ -39,7 +39,7 @@ export function ProjectsSection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <ProjectPhotoCredit />
+                <ProjectPhotoCredit author={project.photoAuthor} />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center gap-4">
                   <span className="px-3 py-1 rounded-full bg-[var(--accent)] text-primary-foreground text-xs font-medium">
                     {t(project.client, project.clientEn)}
