@@ -58,7 +58,7 @@ export function ProjectsContent() {
 
         <div className="container mx-auto px-4 relative z-10">
           <FadeIn>
-            <div className="project-hero-copy hero-text-shadow max-w-3xl">
+            <div className="hero-text-shadow max-w-3xl">
               <div className="mb-4 flex flex-wrap items-center gap-2 text-white/95">
                 <Link href="/" className="hover:text-white transition-colors">
                   {t("Главная", "Home")}
@@ -101,7 +101,7 @@ export function ProjectsContent() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-1">
+                <div className="font-display text-3xl md:text-4xl font-bold text-white mb-1">
                   {stat.value}
                 </div>
                 <div className="text-primary-foreground text-sm">{stat.label}</div>

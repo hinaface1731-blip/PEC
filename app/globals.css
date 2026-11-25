@@ -154,28 +154,6 @@
   text-shadow: 0 1px 2px rgb(0 0 0 / 95%), 0 2px 7px rgb(0 0 0 / 70%);
 }
 
-.project-hero-copy {
-  position: relative;
-  isolation: isolate;
-}
-
-.project-hero-copy::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: -1rem -.5rem;
-  border-radius: 1rem;
-  background: rgb(12 20 26 / 65%);
-  filter: blur(1.75rem);
-  pointer-events: none;
-}
-
-@media (min-width: 48rem) {
-  .project-hero-copy::before {
-    background: linear-gradient(to right, rgb(12 20 26 / 50%), rgb(12 20 26 / 35%) 60%, transparent);
-  }
-}
-
 .card {
   @apply bg-[var(--bg2)] rounded-[var(--radius)] border border-[var(--border)] p-6 transition-all duration-200;
 }
