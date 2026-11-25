@@ -1,5 +1,7 @@
 // Загрузка API Яндекс Карт 3.0 — один раз на всё приложение и только там, где карта реально нужна.
 
+import { languageFromPath } from '@/lib/site-language'
+
 const SCRIPT_TIMEOUT_MS = 15000
 
 let ymaps3Promise: Promise<typeof window.ymaps3> | null = null
@@ -27,10 +29,7 @@ export function loadYmaps3(): Promise<typeof window.ymaps3> {
 
     const timeoutId = setTimeout(() => reject(new Error('Yandex Maps API load timeout')), SCRIPT_TIMEOUT_MS)
     const script = document.createElement('script')
-    let locale = 'ru_RU'
-    try {
-      if (window.localStorage.getItem('language') === 'en') locale = 'en_RU'
-    } catch {}
+    const locale = languageFromPath(window.location.pathname) === 'en' ? 'en_RU' : 'ru_RU'
     script.src = `https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=${locale}`
     script.async = true
     script.onload = () => {

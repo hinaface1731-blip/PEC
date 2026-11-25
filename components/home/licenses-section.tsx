@@ -3,6 +3,7 @@
 import { useLanguage } from '@/components/language-provider'
 import { Award, ShieldCheck, FlaskConical, Lock } from 'lucide-react'
 import { engineeringSroMembership } from '@/lib/company-licenses'
+import Link from '@/components/localized-link'
 
 const licenses = [
   {
@@ -18,14 +19,23 @@ const licenses = [
     titleEn: 'SRO Membership',
     descRu: `Ассоциация «ЭкспертИзыскания» · запись № ${engineeringSroMembership.number}`,
     descEn: `ExpertIzyskaniya Association · Record No. ${engineeringSroMembership.number}`,
-    href: engineeringSroMembership.registryUrl,
+    link: {
+      href: engineeringSroMembership.registryUrl,
+      labelRu: 'Открыть запись в реестре',
+      labelEn: 'View registry entry',
+    },
   },
   {
     icon: FlaskConical,
-    titleRu: 'Аттестат аккредитации',
-    titleEn: 'Accreditation Certificate',
-    descRu: 'Аккредитованная лаборатория',
-    descEn: 'Accredited laboratory',
+    titleRu: 'Полевая лаборатория «Золотинка»',
+    titleEn: 'Zolotinka Field Laboratory',
+    descRu: 'Определение содержания золота в пробах на месте работ',
+    descEn: 'On-site determination of gold content in samples',
+    link: {
+      href: '/services/lab',
+      labelRu: 'Лабораторные исследования',
+      labelEn: 'Laboratory services',
+    },
   },
   {
     icon: Lock,
@@ -44,14 +54,8 @@ export function LicensesSection() {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-[var(--text)] mb-4">
-            {t('Лицензии и допуски', 'Licenses & Permits')}
+            {t('Лицензии, допуски и лаборатория', 'Licenses, Permits & Laboratory')}
           </h2>
-          <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            {t(
-              'Все необходимые разрешения для выполнения геологоразведочных работ',
-              'All necessary permits for geological exploration work'
-            )}
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -69,10 +73,10 @@ export function LicensesSection() {
               <p className="text-sm text-[var(--muted)]">
                 {t(license.descRu, license.descEn)}
               </p>
-              {license.href && (
-                <a href={license.href} className="mt-3 inline-block text-sm font-medium text-accent-foreground hover:underline">
-                  {t('Открыть запись в реестре', 'View registry entry')}
-                </a>
+              {license.link && (
+                <Link href={license.link.href} className="mt-3 inline-block text-sm font-medium text-accent-foreground hover:underline">
+                  {t(license.link.labelRu, license.link.labelEn)}
+                </Link>
               )}
             </div>
           ))}

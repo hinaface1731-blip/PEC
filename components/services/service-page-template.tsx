@@ -52,9 +52,10 @@ export interface ServicePageData {
   descRu: string
   descEn: string
   heroImage: string
+  heroPhotoAuthor?: string
   introRu?: string
   introEn?: string
-  introPhoto?: { src: string; altRu: string; altEn: string }
+  introPhoto?: { src: string; altRu: string; altEn: string; objectPosition?: string }
   methods: ServiceMethod[]
   methodsGroups?: ServiceMethodGroup[]
   methodsImage: string
@@ -131,6 +132,7 @@ export function ServicePageTemplate({ data, topSection, afterHero }: ServicePage
             </p>
           </div>
         </div>
+        {data.heroPhotoAuthor && <ProjectPhotoCredit author={data.heroPhotoAuthor} />}
       </section>
       {afterHero}
       {introParagraphs.length > 0 && (
@@ -150,6 +152,7 @@ export function ServicePageTemplate({ data, topSection, afterHero }: ServicePage
                     alt={t(data.introPhoto.altRu, data.introPhoto.altEn)}
                     fill
                     className="object-cover"
+                    style={{ objectPosition: data.introPhoto.objectPosition }}
                     sizes="(min-width: 1344px) 470px, (min-width: 1024px) 40vw, (min-width: 640px) calc(100vw - 8rem), calc(100vw - 4.5rem)"
                   />
                 </div>

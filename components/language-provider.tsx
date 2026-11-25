@@ -2,7 +2,7 @@
 'use client'
 
 import { createContext, useCallback, useContext, type ReactNode } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { languageFromPath, localizedPath, type Language } from '@/lib/site-language'
 
 interface LanguageContextType {
@@ -16,12 +16,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname() ?? '/'
   const language = languageFromPath(pathname)
-  const router = useRouter()
-
   const handleSetLanguage = useCallback((lang: Language) => {
+    if (lang === language) return
     const current = pathname + window.location.search + window.location.hash
-    router.push(localizedPath(current, lang), { scroll: false })
-  }, [pathname, router])
+    // Яндекс Карты выбирают язык при загрузке API для всего документа.
+    window.location.assign(localizedPath(current, lang))
+  }, [pathname, language])
 
   // Стабильная ссылка на t, чтобы эффекты, зависящие от неё, не перезапускались на каждом рендере
   const t = useCallback((ru: string, en: string) => (language === 'ru' ? ru : en), [language])

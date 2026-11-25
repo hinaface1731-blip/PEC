@@ -10,11 +10,12 @@ const data: ServicePageData = {
   titleEn: 'Environmental Services & Reclamation',
   descRu: 'Полный комплекс экологических услуг: от изысканий и ОВОС до технической и биологической рекультивации. Сопровождение проектов в Росприроднадзоре.',
   descEn: 'Full range of environmental services: from surveys and EIA to technical and biological reclamation. Project support at Rosprirodnadzor.',
-  heroImage: '/images/ecol.jpg',
+  heroImage: '/images/service-photos/ecology-chernoye-valley.webp',
   introPhoto: {
-    src: '/images/site/reclamation.jpg',
-    altRu: 'Специалист обследует растительность на участке',
-    altEn: 'A specialist examines vegetation at a field site',
+    src: '/images/service-photos/ecology-chernoye-water-sampling.webp',
+    altRu: 'Специалист проводит замеры воды на участке «Чёрное»',
+    altEn: 'A specialist takes field measurements in a stream at the Chernoye site',
+    objectPosition: 'center 34%',
   },
    introRu:
     'Выполняем инженерно-экологические изыскания для обоснования проектных решений: фоновое состояние воздуха, воды, почв и донных отложений, радиационное обследование. Разрабатываем ОВОС, проекты рекультивации и санитарно-защитных зон, сопровождаем государственную экологическую экспертизу и согласование в Росприроднадзоре, затем выполняем техническую и биологическую рекультивацию.',
@@ -176,8 +177,8 @@ const data: ServicePageData = {
   
   projectExample: {
     id: 19,
-    workRu: "Поисковые работы включали в себя комплексные геоэкологические работы. По результатам были подготовлены материалы: карты, базы данных с проанализироваными пробами и рекомендации по работе.",
-    workEn: "The prospecting program at Chernoye included comprehensive geoenvironmental surveys. PEC produced maps, compiled databases of sample analysis results, and prepared recommendations for further work.",
+    workRu: "На участке провели маршрутное и радиационное обследование, отобрали пробы почв, поверхностных вод, донных отложений и воздуха. Точки наблюдений и опробования нанесли на карту.",
+    workEn: "PEC carried out field traverses and radiation surveys and collected soil, surface water, bottom sediment, and air samples. Observation and sampling locations were mapped. ",
   },
 
   regions: [

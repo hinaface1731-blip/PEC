@@ -124,8 +124,8 @@ const data: ServicePageData = {
   
   projectExample: {
     id: 11,
-    workRu: "На участке выполнены горнопроходческие работы в объёме задания: проходка канав, вскрышные работы, подготовка площадок и подъездных путей. По результатам работ подготовлен отчёт.",
-    workEn: "PEC completed the specified excavation work, including trenching, overburden removal, site preparation, and the construction of access roads, and prepared a final report.",
+    workRu: "На участке выполнили буровые и горнопроходческие работы. К бурению подготовили площадки и подъездные пути. Горнопроходческие работы включали проходку канав и вскрышу. По результатам подготовили отчёт.",
+    workEn: "PEC carried out drilling and excavation. Preparations for drilling included setting up work sites and preparing access roads. Excavation included trenching and overburden removal. PEC prepared a final report.",
   },
 
   regions: [
